@@ -1,14 +1,15 @@
 
 import { NativeBaseProvider, } from "native-base";
-import Login from "./Auth/login";
+import Login from "./Auth/login/LoginForm";
 import AppNavigation from '../../Navigation';
 
 export default function App() {
   return (
     <AppNavigation>
       <NativeBaseProvider>
-        <Box>Hello world</Box>
+
         <Login />
+        
       </NativeBaseProvider>
     </AppNavigation>
   );

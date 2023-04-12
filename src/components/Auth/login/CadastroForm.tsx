@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Carteira () {
+export default function Cadastro() {
     return (
         <div></div>
     );
