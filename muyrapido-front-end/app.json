@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "muyrapido-front-end",
-    "slug": "muyrapido-front-end",
+    "name": "muyrapidofood",
+    "slug": "muyrapidofood",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
