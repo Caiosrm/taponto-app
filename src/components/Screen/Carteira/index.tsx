@@ -1,15 +1,19 @@
-import { useNavigation } from "@react-navigation/native";
-import { View, Text } from "native-base";
+import { View, Text, extendTheme } from "native-base";
+import { NativeBaseConfigProvider } from "native-base/lib/typescript/core/NativeBaseContext";
 import React from "react";
 
+
+
+
 const CarteiraScreen = () => {
-    return(
+    return (
+
         <View>
             <Text> teste </Text>
         </View>
-
+        
     );
-}; 
+};
 
 export default CarteiraScreen;
 ;
