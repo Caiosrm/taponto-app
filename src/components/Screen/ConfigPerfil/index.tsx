@@ -1,11 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
+import { View, Text } from "native-base";
 import React from "react";
 
 const alisson = {};
 
 
-const ConfigPerfil = () => {
-    const navigation = useNavigation();
+const MeuPainel = () => {
+
+    return(
+        <View>
+            <Text> teste </Text>
+        </View>
+
+    );
+
 }; 
 
-export default ConfigPerfil;
+export default MeuPainel;
