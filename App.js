@@ -1,17 +1,13 @@
 
-import { NativeBaseProvider } from "native-base";
 import AppNavigator from "./src/components/Routes/Navigation";
+import React from "react";
 
 
 
 
-function App() {
+const App = () => {
   return (
-    <AppNavigator>
-        <NativeBaseProvider>
-
-        </NativeBaseProvider>
-    </AppNavigator>
+    <AppNavigator/>
 
   );
 }
