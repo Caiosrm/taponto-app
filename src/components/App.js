@@ -1,17 +1,14 @@
 
-import { NativeBaseProvider, } from "native-base";
+import { NativeBaseProvider } from "native-base";
 import Login from "./Auth/login/LoginForm";
-import AppNavigation from '../../Navigation';
+import AppNavigator from '../../Navigation';
 
 export default function App() {
   return (
-    <AppNavigation>
+    <AppNavigator>
       <NativeBaseProvider>
-
-        <Login />
-        
       </NativeBaseProvider>
-    </AppNavigation>
+    </AppNavigator>
   );
 }
 
