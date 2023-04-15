@@ -1,10 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
-const HomeScreen = () => {
+const ConfigPerfil = () => {
     const navigation = useNavigation();
-
-    <div></div>
 }; 
 
-export default HomeScreen;
+export default ConfigPerfil;

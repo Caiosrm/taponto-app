@@ -1,7 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
-export default function Sacola () {
-    return (
-        <div></div>
-    );
-}
+const CardapioScreen = () => {
+    const navigation = useNavigation();
+}; 
+
+export default CardapioScreen;
+;

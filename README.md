@@ -13,6 +13,7 @@
 ### Fluxograma da Aplicação
 
 ```mermaid
+
 graph TB
     A(Aluno)
 		B[Cantina]
@@ -33,4 +34,5 @@ graph TB
     B --> |status do pedido| D
     A --> |visualiza| S
     A --> |reserva p/ buscar depois| B
+    
 ```

@@ -1,7 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
-export default function Carteira () {
-    return (
-        <div></div>
-    );
-}
+const CarteiraScreen = () => {
+    const navigation = useNavigation();
+}; 
+
+export default CarteiraScreen;
+;
