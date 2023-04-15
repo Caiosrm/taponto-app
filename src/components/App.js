@@ -1,14 +1,16 @@
 
 import { NativeBaseProvider } from "native-base";
-import Login from "./Auth/login/LoginForm";
+
 import AppNavigator from '../../Navigation';
+import { TEMAS } from './estilos/Temas';
 
 export default function App() {
   return (
     <AppNavigator>
-      <NativeBaseProvider>
+      <NativeBaseProvider backgroundColor={TEMAS.colors.blue[900]}>
+        
       </NativeBaseProvider>
     </AppNavigator>
-  );
+  ); 
 }
 
