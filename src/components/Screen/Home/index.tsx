@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 const HomeScreen = () => {
     const { colors } = useTheme();
 
-
+    const [ThemeMode, setThemeMode] = useState('light'); // Estado do modo de cor da aplicação
 
     return (
         <View>
