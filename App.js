@@ -1,5 +1,5 @@
 
-import AppNavigator from "./src/components/Routes/Navigation";
+import AppNavigator from "./src/components/routes/Navigation";
 import React from "react";
 
 

@@ -1,9 +1,28 @@
 {
   "compilerOptions": {
-    "typeRoots": [
-      "./node_modules/@types"
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "dom"
     ],
-    "jsx": "react"
+    "jsx": "react-native",
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
   "extends": "expo/tsconfig.base"
 }
