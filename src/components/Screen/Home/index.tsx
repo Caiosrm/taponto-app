@@ -1,8 +1,13 @@
-import { View, Text, Button, useTheme } from "native-base";
+import { useTheme } from "native-base";
 import AppBar from "../AppBar";
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
+import CardapioScreen from "../Cardapio";
+
+
+
 
 const HomeScreen = () => {
+    
     const { colors } = useTheme();
     const [ThemeMode, setThemeMode] = useState('light'); // Estado do modo de cor da aplicação
 
@@ -12,12 +17,12 @@ const HomeScreen = () => {
     };
 
     return (
-        <View>
-            <AppBar />
-            <Button onPress={toggleColorMode}>Toggle Color Mode</Button>
-            <Text>teste</Text>
-
-        </View>
+        <>
+            <AppBar title='inicio'/>
+            <CardapioScreen/>
+            </>
+           
+        
 
     )
 };

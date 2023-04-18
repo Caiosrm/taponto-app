@@ -12,6 +12,7 @@ import theme from '../../themes/Theme';
 import { NativeBaseConfigProvider } from 'native-base/lib/typescript/core/NativeBaseContext';
 import { ColorMode, NativeBaseProvider } from 'native-base';
 import { RootStackParamList } from './types';
+import Login from '../Screen/Login';
 
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -27,15 +28,18 @@ function AppNavigator() {
 
   return (
 
-    <NativeBaseProvider theme={theme} colorModeManager={colorModeManager}>
+    <NativeBaseProvider theme={theme} >
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Cardapio" component={Cardapio} />
-          <Stack.Screen name="Carteira" component={Carteira} />
-          <Stack.Screen name="Sacola" component={Sacola} />
-          <Stack.Screen name="Perfil" component={Perfil} />
+          <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+          <Stack.Screen name="Cardapio" component={Cardapio} options={{ headerShown: false}} />
+          <Stack.Screen name="Carteira" component={Carteira} options={{headerShown: false}}/>
+          <Stack.Screen name="Sacola" component={Sacola} options={{headerShown: false}}/>
+          <Stack.Screen name="Perfil" component={Perfil} options={{headerShown: false}}/>
           <Stack.Screen name="ConfigPerfil" component={ConfigPerfil} />
+          <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+          
+          
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
