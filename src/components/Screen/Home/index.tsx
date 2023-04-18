@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 const HomeScreen = () => {
     const { colors } = useTheme();
-
     const [ThemeMode, setThemeMode] = useState('light'); // Estado do modo de cor da aplicação
 
     const toggleColorMode = () => {

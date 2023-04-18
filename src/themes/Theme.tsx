@@ -1,5 +1,4 @@
 import { extendTheme, ColorMode } from 'native-base';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IColorScheme } from './IColorScheme';
 import { ITheme } from './ITheme';
 
