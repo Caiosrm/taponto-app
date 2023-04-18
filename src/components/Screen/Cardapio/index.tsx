@@ -1,10 +1,15 @@
-import { View, Text } from "native-base";
+import { View, Text, ColorMode } from "native-base";
 import React from "react";
+import theme from "../../../themes/Theme";
 
-const CardapioScreen = () => {
+const CardapioScreen = () => {  
+
+    //STATES ===================================
+
+
     return (
 
-            <View>
+            <View bg={theme.colors.light.cinza}>
                 <Text> teste </Text>
             </View>
 

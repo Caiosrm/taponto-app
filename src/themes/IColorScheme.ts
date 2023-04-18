@@ -1,12 +1,12 @@
 export interface IColorScheme {
     light: {
-        primary: string;
-        secondary: string;
-        // outras cores do tema claro
+        brancoFumaca: string;
+        azulCiano: string;
+        cinza: string;
+        cinzaEscuro: string;
     };
     dark: {
-        primary: string;
-        secondary: string;
-        // outras cores do tema escuro
+        azulDark: string;
+        brancoFumaca: string;
     };
 }

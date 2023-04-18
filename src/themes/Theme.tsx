@@ -1,31 +1,43 @@
 import { extendTheme, ColorMode } from 'native-base';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IColorScheme } from './IColorScheme';
 import { ITheme } from './ITheme';
+import { useState } from 'react';
 
 
-const colors: IColorScheme = {
+
+//const [ThemeMode, setThemeMode] = useState<ColorMode>('light'); // State do modo de cor da aplicação
+
+const colors: IColorScheme = { //Esquema de Cores
     light: {
-        primary: 'blue.500',
-        secondary: 'gray.600',
-        // ... outras cores do tema claro
+        brancoFumaca: '#F1F5F4',
+        azulCiano: '#5CC6BA',
+        cinza: '#A0A0A0',
+        cinzaEscuro: '#717F7F',
     },
     dark: {
-        primary: 'blue.200',
-        secondary: 'gray.300',
-        // ... outras cores do tema escuro
+        azulDark: '#142c29',
+        brancoFumaca: '#F1F5F4',
     },
 };
 
-const theme = extendTheme<ITheme>({
+const theme = extendTheme<ITheme>({ //Configurações do tema
     colors,
     config: {
-        // Define a cor padrão do tema
-        initialColorMode: 'light',
-        // Define os nomes dos temas claro e escuro
-        useSystemColorMode: false,
-        colorModeTypes: ['light', 'dark'],
+        initialColorMode: 'light', // Cor padrão do tema
+        useSystemColorMode: false, // Usar tema padrão de sistema?
+        colorModeTypes: ['light', 'dark'], //Tipos de modo de cor
     },
 });
 
 export default theme;
+
+
+
+
+
+
+
+// const toggleColorMode = () => {
+//     const newMode = ThemeMode === 'light' ? 'dark' : 'light'; // Alterna entre os modos de cor
+//     setThemeMode(newMode); // Define o novo modo de cor
+// };

@@ -7,23 +7,21 @@ import Cardapio from '../Screen/Cardapio';
 import Carteira from '../Screen/Carteira';
 import Perfil from '../Screen/Perfil';
 import Sacola from '../Screen/Sacola';
-import ConfigPerfil from '../Screen/ConfigPerfil';
+import ConfigPerfil from '../Screen/Painel';
 import theme from '../../themes/Theme';
-import { NativeBaseConfigProvider } from 'native-base/lib/typescript/core/NativeBaseContext';
 import { ColorMode, NativeBaseProvider } from 'native-base';
 import { RootStackParamList } from './types';
 
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-
-
 function AppNavigator() {
-  const [mode, setMode] = useState('light'); // Estado do modo de cor da aplicação
+  const [mode, setMode] = useState<ColorMode>('light');
   const colorModeManager = {
-    get: () => Promise.resolve(mode) as Promise<ColorMode>, // Retorna o modo de cor atual
-    set: (value: string) => setMode(value), // Define o modo de cor atual
+    get: () => Promise.resolve(mode),
+    set: (value: ColorMode) => setMode(value),
   };
+
 
   return (
 

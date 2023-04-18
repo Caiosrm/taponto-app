@@ -1,7 +1,7 @@
 import { View, Text } from "native-base";
 import React from "react";
 
-const CarteiraScreen = () => {
+const PerfilScreen = () => {
     return(
         <View>
             <Text> teste </Text>
@@ -10,5 +10,5 @@ const CarteiraScreen = () => {
     );
 }; 
 
-export default CarteiraScreen;
+export default PerfilScreen;
 ;
