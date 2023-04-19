@@ -1,6 +1,6 @@
 import { View, Button, Text, VStack, Image, Input, Box, Link, FormControl, Center } from 'native-base'
 import { GestureResponderEvent, TouchableOpacity } from 'react-native'
-import Logo from '../Login/Logotipo.png'
+import Logo from '../../Screen/Login/Logotipo.png'
 
 export default function Login() {
     function toggleColorMode(event: GestureResponderEvent): void {

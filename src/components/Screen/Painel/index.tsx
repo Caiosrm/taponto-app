@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-const MeuPainel = () => {
+const PainelScreen = () => {
 
     return(
         <View>
@@ -14,4 +14,4 @@ const MeuPainel = () => {
 
 }; 
 
-export default MeuPainel;
+export default PainelScreen;
