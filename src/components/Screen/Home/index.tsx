@@ -13,7 +13,6 @@ const HomeScreen = () => {
     return (
         <View>
             <AppBar title='inicio'/>
-            <CardapioScreen/>
             
 
         </View>

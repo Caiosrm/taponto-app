@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "native-base";
 import React from "react";
 
-const CardapioScreen = () => {
+const SacolaScreen = () => {
     return(
         <View>
             <Text> teste </Text>
@@ -10,5 +10,5 @@ const CardapioScreen = () => {
     );
 }; 
 
-export default CardapioScreen;
+export default SacolaScreen;
 ;

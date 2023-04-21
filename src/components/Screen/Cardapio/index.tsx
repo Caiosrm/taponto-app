@@ -32,16 +32,17 @@ const menuItems = [
         description: 'Bolo confeitado + refri',
         image: 'https://riomarfortalezaonline.com.br/fortalezashopping/2022/11/1-Fatia-Bolo-Refrigerante-%E2%80%93-Lata-350-ml.png',
     },
-   
-    
+
+
 
 ];
 
 
 const CardapioScreen = () => {
-    const [cartItems, setCartItems] = useState([]);
 
-    const addToCart = (item: React.SetStateAction<never[]>) => {
+    const [cartItems, setCartItems] = useState<any>([]);
+
+    const addToCart = (item: any) => {
         setCartItems([...cartItems, item]); // Adiciona o item ao array de itens do carrinho
     }
 
@@ -86,12 +87,11 @@ const CardapioScreen = () => {
             <View>
                 {menuItems.map((item) => (
                     <Text key={item.id}>
-                        {cartItems.filter((cartItem) => cartItem.id === item.id).length}
+                        {cartItems.filter((cartItem: { id: number; }) => cartItem.id === item.id).length}
                     </Text>
                 ))}
             </View>
-            
-        
+
         </>
     );
 };
