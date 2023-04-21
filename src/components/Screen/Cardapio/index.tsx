@@ -89,12 +89,8 @@ const CardapioScreen = () => {
             <View>
                 {menuItems.map((item) => (
                     <Text key={item.id}>
-<<<<<<< HEAD
                         {cartItems.filter((cartItem: { id: number; }) => cartItem.id === item.id).length}
-=======
-                        {cartItems.filter((cartItem) => cartItem.id === item.id).length}
-                        
->>>>>>> 24c923a4facc75383caa14defff94816715fee7b
+                        {cartItems.filter((cartItem: { id: number; }) => cartItem.id === item.id).length}
                     </Text>
                 ))}
             </View>
