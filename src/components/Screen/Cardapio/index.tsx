@@ -38,11 +38,13 @@ const menuItems = [
 ];
 
 
+
 const CardapioScreen = () => {
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (item: React.SetStateAction<never[]>) => {
         setCartItems([...cartItems, item]); // Adiciona o item ao array de itens do carrinho
+        
     }
 
     return (
@@ -87,6 +89,7 @@ const CardapioScreen = () => {
                 {menuItems.map((item) => (
                     <Text key={item.id}>
                         {cartItems.filter((cartItem) => cartItem.id === item.id).length}
+                        
                     </Text>
                 ))}
             </View>
