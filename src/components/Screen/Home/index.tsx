@@ -6,12 +6,16 @@ import { IHomeProps } from "./types";
 
 
 const HomeScreen = (props: IHomeProps) => {
+    //===================================================== State's ===========================================================
+    const { colors } = useTheme(); // Esquema de Cores
+    const [ThemeMode, setThemeMode] = useState('light'); // Modo de cor da aplicação
 
-    //================================================================
-    //STATES
-    //================================================================
-    const { colors } = useTheme();
-    const [ThemeMode, setThemeMode] = useState('light'); // State do modo de cor da aplicação
+    
+    //===================================================== useEffect's =======================================================
+
+
+    //===================================================== HandleChange's ====================================================
+
 
 
     return (

@@ -17,10 +17,17 @@ const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
-  const [mode, setMode] = useState<ColorMode>('light');
+
+    //===================================================== State's ===========================================================
+    const [mode, setMode] = useState<ColorMode>('light');
+
+    
+    //===================================================== useEffect's =======================================================
 
 
-  const colorModeManager = {
+    
+    //===================================================== HandleChange's ====================================================
+  const handleColorMode = {
     get: () => Promise.resolve(mode),
     set: (value: ColorMode) => setMode(value),
   };
