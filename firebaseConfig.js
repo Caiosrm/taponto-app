@@ -21,13 +21,13 @@ export async function pegarProduto() {
     const db = getFirestore(app)
     try {
         const querySnapshot = await getDocs(collection(db, "produtos"));
-        let produtolista = []
+        let produtoLista = []
         querySnapshot.forEach((doc) => {
             console.log(doc.id, " => ", doc.data());
             let produto = { id: doc.id, ...doc.data }
-            produtolista.push(produto)
+            produtoLista.push(produto)
         });
-        return produtolista
+        return produtoLista
 
     } catch (error) {
         console.log(error)
