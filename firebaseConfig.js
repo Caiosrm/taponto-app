@@ -15,23 +15,8 @@ const firebaseConfig = {
   appId: "1:166968148425:web:ab2df075160fb59a5ee818"
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
-export async function pegarProduto() {
-  const db = getFirestore(app)
-  try {
-    const querySnapshot = await getDocs(collection(db, "produtos"));
-    let produtoLista = []
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-      let produto = { id: doc.id, ...doc.data }
-      produtoLista.push(produto)
-    });
-    return produtoLista
-  } catch (error) {
-    console.log(error)
-    return []
-  }
-};
+
 
 
