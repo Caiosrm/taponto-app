@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "native-base";
 import React from "react";
 
-const SacolaScreen = () => {
+const Sacola = () => {
 
     //================================================================
     //STATES
@@ -15,5 +15,5 @@ const SacolaScreen = () => {
     );
 };
 
-export default SacolaScreen;
+export default Sacola;
 ;

@@ -2,10 +2,10 @@ import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { menuItems } from "../../../utils/cardapioData";
+import { ICardapioProps } from "./types";
 
 
-const CardapioScreen = () => {
-
+const CardapioScreen = (props: ICardapioProps) => {
     //================================================================
     //STATES
     //================================================================

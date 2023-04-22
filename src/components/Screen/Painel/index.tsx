@@ -1,12 +1,13 @@
 import { View, Text } from "native-base";
 import React from "react";
+import { IPainelProps } from "./types";
 
 //================================================================
 //STATES
 //================================================================
 
 
-const PainelScreen = () => {
+const Painel = (props: IPainelProps) => {
 
     return (
         <View>
@@ -17,4 +18,4 @@ const PainelScreen = () => {
 
 };
 
-export default PainelScreen;
+export default Painel;

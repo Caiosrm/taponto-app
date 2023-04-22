@@ -29,6 +29,7 @@ function AppNavigator() {
     set: (value: ColorMode) => setMode(value),
   };
 
+  
   return (
     <NativeBaseProvider theme={theme} >
       <Tab.Navigator screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>

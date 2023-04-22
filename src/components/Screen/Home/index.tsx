@@ -2,9 +2,10 @@ import { View, useTheme } from "native-base";
 import AppBar from "../../Common/AppBar";
 import React, { useState } from 'react';
 import CardapioScreen from "../Cardapio";
+import { IHomeProps } from "./types";
 
 
-const HomeScreen = () => {
+const HomeScreen = (props: IHomeProps) => {
 
     //================================================================
     //STATES
@@ -16,9 +17,7 @@ const HomeScreen = () => {
 
     return (
         <View>
-            <AppBar title='inicio' />
-
-
+            <AppBar pageTitle={props.pageTitle} />
         </View>
 
     );

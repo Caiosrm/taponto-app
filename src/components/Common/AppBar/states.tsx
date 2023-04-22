@@ -9,4 +9,3 @@ export const useTitle = (): [any, React.Dispatch<React.SetStateAction<any>>] => 
     const [title, setTitle] = React.useState<any>('');
     return [title, setTitle];
 };
-

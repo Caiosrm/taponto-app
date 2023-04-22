@@ -12,7 +12,7 @@ export default function AppBar(props: AppBarProps) {
                 barStyle={useColorMode()[0] === "light" ? "dark-content" : "light-content"} />
             <HStack bg="red.600" px="1" py="3" justifyContent="space-between" alignItems="center" w="100%" >
                 <HStack alignItems="center">
-                    <Text color="white" fontSize="20" fontWeight="bold">{props.title}</Text>
+                    <Text color="white" fontSize="20" fontWeight="bold">{props.pageTitle}</Text>
                 </HStack>
                 <HStack>
                     <IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} />
