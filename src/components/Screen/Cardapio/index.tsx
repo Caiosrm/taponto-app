@@ -12,13 +12,13 @@ import { pegarProduto } from "../../../../firebaseConfig";
 
 
 const CardapioScreen = () => {
-    const [produtos, setProdutos]= useState([])
+    const [produtos, setProdutos]= useState<any[]>([])
     useEffect(() => {
        
 
         async function carregarDados () {
-            const produtosdoFiresote = await pegarProduto()
-            setProdutos(produtosdoFiresote)
+            const produtosdoFirestore = await pegarProduto()
+            setProdutos(produtosdoFirestore)
             console.log(produtos)
         }
         carregarDados()
@@ -68,9 +68,6 @@ const CardapioScreen = () => {
                 </View>
             </ScrollView>
             <View>
-            
-                
-                
             </View>
 
         </>
