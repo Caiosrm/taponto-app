@@ -1,3 +1,3 @@
 export interface AppBarProps {
-    pageTitle: 'cardapio' | 'home' | 'sacola' | 'carteira' | 'perfil' | 'login'
+    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil"
 }

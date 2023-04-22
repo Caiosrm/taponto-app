@@ -29,44 +29,50 @@ function AppNavigator() {
     set: (value: ColorMode) => setMode(value),
   };
 
-  
+
   return (
     <NativeBaseProvider theme={theme} >
       <Tab.Navigator screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
-        <Tab.Screen name="Home" component={Home} options={{
-          headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-            if (focused) { return <Ionicons name='home' size={size} color={color} /> }
-            else return (<Ionicons name='home-outline' size={size} color={color} />);
-          }
-        }} />
+        <Tab.Screen name="Home"
+          component={() => <Home pageTitle="Home" />} options={{
+            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+              if (focused) { return <Ionicons name='home' size={size} color={color} /> }
+              else return (<Ionicons name='home-outline' size={size} color={color} />);
+            }
+          }} />
 
-        <Tab.Screen name="Cardapio" component={Cardapio} options={{
-          headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-            if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
-            else return (<Ionicons name='reader' size={size} color={color} />);
-          }
-        }} />
+        <Tab.Screen name="Cardapio"
+          component={() => <Cardapio pageTitle="Cardapio" />}
+          options={{
+            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+              if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
+              else return (<Ionicons name='reader' size={size} color={color} />);
+            },
+          }} />
 
-        <Tab.Screen name="Sacola" component={Sacola} options={{
-          headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-            if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
-            else return (<Entypo name='shopping-bag' size={size} color={color} />);
-          }
-        }} />
+        <Tab.Screen name="Sacola"
+          component={() => <Sacola pageTitle="Sacola" />} options={{
+            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+              if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
+              else return (<Entypo name='shopping-bag' size={size} color={color} />);
+            },
+          }} />
 
-        <Tab.Screen name="Perfil" component={Perfil} options={{
-          headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-            if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
-            else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
-          }
-        }} />
+        <Tab.Screen name="Perfil"
+          component={() => <Perfil pageTitle="Perfil" />} options={{
+            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+              if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
+              else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
+            }
+          }} initialParams={{ pageTitle: 'perfil' }} />
 
-        <Tab.Screen name="Login" component={Login} options={{
-          headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-            if (focused) { return <Ionicons name='person' size={size} color={color} /> }
-            else return (<Ionicons name='person' size={size} color={color} />);
-          }
-        }} />
+        <Tab.Screen name="Login"
+          component={() => <Login pageTitle="Login" />} options={{
+            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+              if (focused) { return <Ionicons name='person' size={size} color={color} /> }
+              else return (<Ionicons name='person' size={size} color={color} />);
+            }
+          }} />
       </Tab.Navigator>
     </NativeBaseProvider>
   );

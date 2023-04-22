@@ -14,16 +14,13 @@ const HomeScreen = (props: IHomeProps) => {
     const [ThemeMode, setThemeMode] = useState('light'); // State do modo de cor da aplicação
 
 
-
     return (
         <View>
-            <AppBar pageTitle={props.pageTitle} />
+            <AppBar pageTitle={"Home"} />
         </View>
-
     );
 };
 
+
+
 export default HomeScreen;
-
-
-

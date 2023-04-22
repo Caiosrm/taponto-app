@@ -1,3 +1,3 @@
 export interface IHomeProps {
-    pageTitle: "home" | "login" | "cardapio" | "sacola" | "carteira" | "perfil"
+    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil"
 }

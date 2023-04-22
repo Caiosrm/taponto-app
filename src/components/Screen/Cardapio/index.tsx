@@ -1,27 +1,35 @@
 import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView } from "native-base";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { menuItems } from "../../../utils/cardapioData";
 import { ICardapioProps } from "./types";
+import AppBar from "../../Common/AppBar";
+import { pegarProduto } from "../../../../firebaseConfig";
 
 
 const CardapioScreen = (props: ICardapioProps) => {
     //================================================================
     //STATES
     //================================================================
-    const [cartItems, setCartItems] = useState<any>([]);
+    const [produtos, setProdutos] = useState<any[]>([])
 
-    const addToCart = (item: any) => {
-        setCartItems([...cartItems, item]); // Adiciona o item ao array de itens do carrinho
-    }
+
+    useEffect(() => {
+        async function carregarDados() {
+            const produtosdoFirestore = await pegarProduto()
+            setProdutos(produtosdoFirestore)
+            console.log(produtos)
+        }
+        carregarDados()
+    }, []);
+
     return (
         <>
             <ScrollView>
                 <View alignItems='flex-start'>
                     <HStack flexWrap='wrap'>
-                        {menuItems.map((item) => (
+                    
                             <Box
-                                key={item.id}
                                 maxWidth={80}
                                 margin={2}
                                 flexBasis='30%'
@@ -31,33 +39,28 @@ const CardapioScreen = (props: ICardapioProps) => {
                                 borderWidth='1'
                                 flex={1}
                             >
-                                <TouchableOpacity onPress={() => addToCart(item)}>
+                                <TouchableOpacity>
                                     <Box>
                                         <AspectRatio w="100%" ratio={16 / 9}>
-                                            <Image source={{ uri: item.image }} alt={item.description} />
+                                            {/* <Image source={'Imgsalgado'} alt='teste' /> */}
                                         </AspectRatio>
                                     </Box>
                                     <Stack p="4" space={3}>
                                         <Stack space={2} maxHeight={32} overflow="hidden">
                                             <Heading size="xs" ml="1">
-                                                {item.description}
+                                                teste
                                             </Heading>
+
                                         </Stack>
-                                        <Text fontWeight="400">{item.price}</Text>
+                                        <Text fontWeight="400">teste</Text>
                                     </Stack>
                                 </TouchableOpacity>
                             </Box>
-                        ))}
+                            
                     </HStack>
                 </View>
             </ScrollView>
             <View>
-                {menuItems.map((item) => (
-                    <Text key={item.id}>
-                        {cartItems.filter((cartItem: { id: number; }) => cartItem.id === item.id).length}
-                        {cartItems.filter((cartItem: { id: number; }) => cartItem.id === item.id).length}
-                    </Text>
-                ))}
             </View>
 
         </>

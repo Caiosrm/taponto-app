@@ -9,9 +9,9 @@ export default function Login(props: ILoginProps) {
     //STATES
     //================================================================
 
+
+
     
-
-
     return (
         <VStack flex={1} alignItems='center' p={5} justifyContent='center'>
             <Image source={Logo} alt="Alternate Text" size='xl' resizeMode='contain' />
