@@ -1,9 +1,9 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import { useState } from "react";
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth/react-native'
+import { collection, getDocs } from "firebase/firestore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDz7CM4oQhdCMlEOWjHYcuF2auh-AHRH7M",
@@ -16,6 +16,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage)
+})
 
 export async function pegarProduto() {
   const db = getFirestore(app)
@@ -33,4 +37,5 @@ export async function pegarProduto() {
     return []
   }
 }
+export { auth }
 
