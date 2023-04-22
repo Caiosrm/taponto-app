@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView } from "native-base";
 import React, { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
@@ -23,6 +24,39 @@ const CardapioScreen = (props: ICardapioProps) => {
         carregarDados()
     }, []);
 
+=======
+import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView, Icon, IconButton } from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
+import Imgsalgado from '../Cardapio/salgado.jpg'
+import React, { useEffect, useState } from "react";
+
+import theme from "../../../themes/Theme";
+import { TouchableOpacity } from "react-native";
+import { pegarProduto } from "../../../../firebaseConfig";
+
+
+
+
+
+const CardapioScreen = () => {
+    const [produtos, setProdutos]= useState<any[]>([])
+    useEffect(() => {
+       
+
+        async function carregarDados () {
+            const produtosdoFirestore = await pegarProduto()
+            setProdutos(produtosdoFirestore)
+            console.log(produtos)
+        }
+        carregarDados()
+    }, []);
+    
+
+    pegarProduto()
+
+   
+
+>>>>>>> b9b83f1fc5088d72b4fd9b2cb5f1166854b56703
     return (
         <>
             <ScrollView>
@@ -30,6 +64,10 @@ const CardapioScreen = (props: ICardapioProps) => {
                     <HStack flexWrap='wrap'>
                     
                             <Box
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> b9b83f1fc5088d72b4fd9b2cb5f1166854b56703
                                 maxWidth={80}
                                 margin={2}
                                 flexBasis='30%'
@@ -42,7 +80,11 @@ const CardapioScreen = (props: ICardapioProps) => {
                                 <TouchableOpacity>
                                     <Box>
                                         <AspectRatio w="100%" ratio={16 / 9}>
+<<<<<<< HEAD
                                             {/* <Image source={'Imgsalgado'} alt='teste' /> */}
+=======
+                                            <Image source={Imgsalgado} alt='teste' />
+>>>>>>> b9b83f1fc5088d72b4fd9b2cb5f1166854b56703
                                         </AspectRatio>
                                     </Box>
                                     <Stack p="4" space={3}>
