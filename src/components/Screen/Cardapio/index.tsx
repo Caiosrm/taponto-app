@@ -6,21 +6,28 @@ import React, { useEffect, useState } from "react";
 import theme from "../../../themes/Theme";
 import { TouchableOpacity } from "react-native";
 import { pegarProduto } from "../../../../firebaseConfig";
+import { ICardapioScreenProps } from "./types";
 
-const CardapioScreen = () => {
-    const [produtos, setProdutos]= useState<any[]>([])
+    
+const CardapioScreen = (props: ICardapioScreenProps) => {
+
+    const [produtos, setProdutos]= React.useState<any[]>(props.produtos); 
+
+
     useEffect(() => {
-
         async function carregarDados () {
             const produtosdoFirestore = await pegarProduto()
             setProdutos(produtosdoFirestore)
             console.log(produtos)
         }
         carregarDados()
+
+        setProdutos([]);
+        
     }, []);
 
-    pegarProduto()
 
+    pegarProduto()
 
     return (
         <>

@@ -17,10 +17,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage)
-})
-
 export async function pegarProduto() {
   const db = getFirestore(app)
   try {
@@ -36,6 +32,6 @@ export async function pegarProduto() {
     console.log(error)
     return []
   }
-}
-export { auth }
+};
+
 

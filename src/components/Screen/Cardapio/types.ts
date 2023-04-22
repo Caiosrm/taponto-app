@@ -1,4 +1,6 @@
-export interface ICardapioProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil"
+export interface ICardapioScreenProps {
+    pageTitle: string,
+    produtos: any[],
+    
     
 }

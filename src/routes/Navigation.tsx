@@ -38,7 +38,7 @@ function AppNavigator() {
           }} />
 
         <Tab.Screen name="Cardapio"
-          component={() => <Cardapio pageTitle="Cardapio" />}
+          component={() => <Cardapio pageTitle="Cardapio" produtos={[]} />}
           options={{
             headerShown: false, tabBarIcon: ({ color, size, focused }) => {
               if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
