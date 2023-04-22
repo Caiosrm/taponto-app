@@ -1,22 +1,19 @@
-import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView, Icon, IconButton } from "native-base";
-import { MaterialIcons } from "@expo/vector-icons";
-
+import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView } from "native-base";
 import React, { useState } from "react";
-
-import theme from "../../../themes/Theme";
 import { TouchableOpacity } from "react-native";
-import { menuItems } from "./cardapioData";
+import { menuItems } from "../../../utils/cardapioData";
 
 
 const CardapioScreen = () => {
 
+    //================================================================
+    //STATES
+    //================================================================
     const [cartItems, setCartItems] = useState<any>([]);
 
     const addToCart = (item: any) => {
         setCartItems([...cartItems, item]); // Adiciona o item ao array de itens do carrinho
-
     }
-
     return (
         <>
             <ScrollView>

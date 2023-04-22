@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import { Entypo } from '@expo/vector-icons';
 
-import Home from '../Screen/Home';
-import Cardapio from '../Screen/Cardapio';
-import Carteira from '../Screen/Carteira';
-import Perfil from '../Screen/Perfil';
-import Sacola from '../Screen/Sacola';
-import ConfigPerfil from '../Screen/Painel';
-import theme from '../../themes/Theme';
+import Home from '../components/Screen/Home';
+import Cardapio from '../components/Screen/Cardapio';
+import Perfil from '../components/Screen/Perfil';
+import Sacola from '../components/Screen/Sacola';
+import theme from '../themes/Theme';
 import { ColorMode, NativeBaseProvider } from 'native-base';
 import { RootStackParamList } from './types';
-import Login from '../Screen/Login';
+import Login from '../components/Screen/Login';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
+
+  //================================================================
+  //STATES
+  //================================================================
   const [mode, setMode] = useState<ColorMode>('light');
+
+
   const colorModeManager = {
     get: () => Promise.resolve(mode),
     set: (value: ColorMode) => setMode(value),

@@ -4,6 +4,12 @@ import Logo from '../../Screen/Login/Logotipo.png'
 
 export default function Login() {
 
+    //================================================================
+    //STATES
+    //================================================================
+
+    
+
 
     return (
         <VStack flex={1} alignItems='center' p={5} justifyContent='center'>
