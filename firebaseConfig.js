@@ -1,15 +1,60 @@
-import firebase from 'firebase';
+
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { useState } from "react";
 
 const firebaseConfig = {
-    databaseURL: "",
-    apiKey: "",
-    authDomain: "",
-    projectID: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
+  apiKey: "AIzaSyDz7CM4oQhdCMlEOWjHYcuF2auh-AHRH7M",
+  authDomain: "testeenviardados.firebaseapp.com",
+  databaseURL: "https://testeenviardados-default-rtdb.firebaseio.com",
+  projectId: "testeenviardados",
+  storageBucket: "testeenviardados.appspot.com",
+  messagingSenderId: "166968148425",
+  appId: "1:166968148425:web:ab2df075160fb59a5ee818"
+};
+
+const app = initializeApp(firebaseConfig);
+
+
+
+export async function pegarProduto() {
+
+  const db = getFirestore(app)
+  
+
+  try {
+    const querySnapshot = await getDocs(collection(db, "produtos"));
+    let produtolista= []
+    querySnapshot.forEach((doc) => {
+
+      console.log(doc.id, " => ", doc.data());
+      let produto = {id: doc.id, ...doc.data}
+      produtolista.push(produto)
+    });
+    return produtolista
+
+
+
+
+
+  } catch (error) {
+    console.log(error)
+    return []
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
-firebase.initializeApp(firebaseConfig)
-
-export default firebase;

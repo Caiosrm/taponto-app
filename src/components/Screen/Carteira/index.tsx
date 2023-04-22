@@ -5,11 +5,13 @@ import React from "react";
 
 
 
+
+
 const CarteiraScreen = () => {
     return (
 
         <View>
-            <Text> teste </Text>
+            
         </View>
         
     );
