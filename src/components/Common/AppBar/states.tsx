@@ -5,7 +5,7 @@ export const useColorMode = (): [any, React.Dispatch<React.SetStateAction<any>>]
     return [colorMode, setColorMode];
 };
 
-export const useTitle = (): [any, React.Dispatch<React.SetStateAction<any>>] => {
-    const [title, setTitle] = React.useState<any>('');
+export const useTitle = (): [string, React.Dispatch<React.SetStateAction<any>>] => {
+    const [title, setTitle] = React.useState<string>('');
     return [title, setTitle];
 };

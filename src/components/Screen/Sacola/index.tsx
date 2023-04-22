@@ -1,16 +1,13 @@
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "native-base";
-import React from "react";
+import { ISacolaProps } from "./types";
 
-const Sacola = () => {
-
-    //================================================================
-    //STATES
-    //================================================================
+const Sacola = (props: ISacolaProps) => {
 
     return (
         <View>
-            <Text> teste </Text>
+            <Text>teste</Text>
         </View>
     );
 };
