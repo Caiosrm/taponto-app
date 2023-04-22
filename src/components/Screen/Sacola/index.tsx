@@ -6,8 +6,16 @@ import { View, Text } from "native-base";
 
 
 
+<<<<<<< HEAD
 const SacolaScreen = () => {
    
+=======
+const Sacola = () => {
+
+    //================================================================
+    //STATES
+    //================================================================
+>>>>>>> 99d8cf082466fbd12a29fe4dbb1fce0c76ef87e2
 
     return (
         <View>
@@ -17,5 +25,5 @@ const SacolaScreen = () => {
     );
 };
 
-export default SacolaScreen;
+export default Sacola;
 ;

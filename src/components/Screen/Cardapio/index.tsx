@@ -1,33 +1,21 @@
 import { View, Text, HStack, Stack, Box, Heading, AspectRatio, Image, ScrollView, Icon, IconButton } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
-import Imgsalgado from '../Cardapio/salgado.jpg'
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
+
 
 import theme from "../../../themes/Theme";
 import { TouchableOpacity } from "react-native";
-import { pegarProduto } from "../../../../firebaseConfig";
+import { ICardapioProps } from "./types";
 
+const CardapioScreen = (props: ICardapioProps) => {
 
+    const [cartItems, setCartItems] = useState<any>([]);
 
-
-
-const CardapioScreen = () => {
-    const [produtos, setProdutos]= useState<any[]>([])
-    useEffect(() => {
-       
-
-        async function carregarDados () {
-            const produtosdoFirestore = await pegarProduto()
-            setProdutos(produtosdoFirestore)
-            console.log(produtos)
-        }
-        carregarDados()
-    }, []);
-    
-
-    pegarProduto()
-
-   
+    const addToCart = (item: any) => {
+        setCartItems([...cartItems, item]); // Adiciona o item ao array de itens do carrinho
+        
+    }
 
     return (
         <>
@@ -57,7 +45,6 @@ const CardapioScreen = () => {
                                             <Heading size="xs" ml="1">
                                                 teste
                                             </Heading>
-
                                         </Stack>
                                         <Text fontWeight="400">teste</Text>
                                     </Stack>

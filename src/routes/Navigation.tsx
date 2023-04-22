@@ -17,8 +17,6 @@ const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
-
-
   const [mode, setMode] = useState<ColorMode>('light');
 
 
