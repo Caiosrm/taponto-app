@@ -1,6 +1,6 @@
 import { View, Button, Text, VStack, Image, Input, Box, Link, FormControl, Center } from 'native-base'
 import { GestureResponderEvent, TouchableOpacity } from 'react-native'
-import Logo from '../../Screen/Login/Logotipo.png'
+import Logo from '../../../../assets/Logotipo.png'
 import { ILoginScreenProps } from './types'
 
 export default function Login(props: ILoginScreenProps) {
