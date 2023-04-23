@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "native-base";
-import { ISacolaProps } from "./types";
+import { ISacolaScreenProps } from "./types";
 
-const Sacola = (props: ISacolaProps) => {
+const SacolaScreen = (props: ISacolaScreenProps) => {
 
     //===================================================== State's ===========================================================
 
@@ -23,5 +23,5 @@ const Sacola = (props: ISacolaProps) => {
     );
 };
 
-export default Sacola;
+export default SacolaScreen;
 ;

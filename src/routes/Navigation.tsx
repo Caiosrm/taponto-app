@@ -18,18 +18,19 @@ const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
 
-    //===================================================== State's ===========================================================
-    const [mode, setMode] = useState<ColorMode>('light');
-
-    
-    //===================================================== useEffect's =======================================================
+  //===================================================== State's ===========================================================
+  const [mode, setMode] = useState<ColorMode>('light');
 
 
-    
-    //===================================================== HandleChange's ====================================================
+  //===================================================== useEffect's =======================================================
+
+
+
+  //===================================================== HandleChange's ====================================================
   const handleColorMode = {
+
     get: () => Promise.resolve(mode),
-    set: (value: ColorMode) => setMode(value),
+    set: (value: ColorMode) => setMode(value)
   };
 
 
@@ -37,7 +38,11 @@ function AppNavigator() {
     <NativeBaseProvider theme={theme} >
       <Tab.Navigator screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
         <Tab.Screen name="Home"
-          component={() => <Home pageTitle="Home" />} options={{
+          component={() => <Home
+            // props 
+            pageTitle="Home" />}
+
+          options={{
             headerShown: false, tabBarIcon: ({ color, size, focused }) => {
               if (focused) { return <Ionicons name='home' size={size} color={color} /> }
               else return (<Ionicons name='home-outline' size={size} color={color} />);
@@ -45,7 +50,11 @@ function AppNavigator() {
           }} />
 
         <Tab.Screen name="Cardapio"
-          component={() => <Cardapio pageTitle="Cardapio" produtos={[]} />}
+          component={() => <Cardapio
+            // props 
+            pageTitle="Cardapio"
+            produtosNoCardapio={[]} />}
+
           options={{
             headerShown: false, tabBarIcon: ({ color, size, focused }) => {
               if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
@@ -54,28 +63,44 @@ function AppNavigator() {
           }} />
 
         <Tab.Screen name="Sacola"
-          component={() => <Sacola pageTitle="Sacola" />} options={{
+          component={() => <Sacola
+            // props 
+            pageTitle="Sacola"
+            produtosNaSacola={[]} />}
+
+          options={{
             headerShown: false, tabBarIcon: ({ color, size, focused }) => {
               if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
               else return (<Entypo name='shopping-bag' size={size} color={color} />);
             },
-          }} />
+          }}
+        />
 
         <Tab.Screen name="Perfil"
-          component={() => <Perfil pageTitle="Perfil" />} options={{
+          component={() => <Perfil
+            // props 
+            pageTitle="Perfil" />}
+
+          options={{
             headerShown: false, tabBarIcon: ({ color, size, focused }) => {
               if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
               else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
             }
-          }} initialParams={{ pageTitle: 'perfil' }} />
+          }} initialParams={{ pageTitle: 'perfil' }}
+        />
 
         <Tab.Screen name="Login"
-          component={() => <Login pageTitle="Login" />} options={{
+          component={() => <Login
+            // props 
+            pageTitle="Login" />}
+
+          options={{
             headerShown: false, tabBarIcon: ({ color, size, focused }) => {
               if (focused) { return <Ionicons name='person' size={size} color={color} /> }
               else return (<Ionicons name='person' size={size} color={color} />);
             }
-          }} />
+          }}
+        />
       </Tab.Navigator>
     </NativeBaseProvider>
   );

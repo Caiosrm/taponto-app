@@ -1,6 +1,6 @@
 export interface ICardapioScreenProps {
-    pageTitle: string,
-    produtos: any[],
+    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil",
+    produtosNoCardapio: any[],
     
     
 }

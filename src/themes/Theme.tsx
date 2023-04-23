@@ -1,4 +1,4 @@
-import { extendTheme, ColorMode } from 'native-base';
+import { extendTheme, ColorMode, useColorMode } from 'native-base';
 import { IThemeProps } from './IThemeProps';
 import { useState } from 'react';
 

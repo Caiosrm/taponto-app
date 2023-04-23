@@ -2,10 +2,10 @@ import { View, useTheme } from "native-base";
 import AppBar from "../../Common/AppBar";
 import React, { useState } from 'react';
 import CardapioScreen from "../Cardapio";
-import { IHomeProps } from "./types";
+import { IHomeScreenProps } from "./types";
 
 
-const HomeScreen = (props: IHomeProps) => {
+const HomeScreen = (props: IHomeScreenProps) => {
     //===================================================== State's ===========================================================
     const { colors } = useTheme(); // Esquema de Cores
     const [ThemeMode, setThemeMode] = useState('light'); // Modo de cor da aplicação

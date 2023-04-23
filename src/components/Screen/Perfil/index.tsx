@@ -1,8 +1,8 @@
 import { View, Text } from "native-base";
 import React from "react";
-import { IPerfilProps } from "./types";
+import { IPerfilScreenProps } from "./types";
 
-const PerfilScreen = (props: IPerfilProps) => {
+const PerfilScreen = (props: IPerfilScreenProps) => {
 
     //===================================================== State's ===========================================================
 

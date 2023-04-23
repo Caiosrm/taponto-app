@@ -9,7 +9,7 @@ import { getProdutos } from "../../../api";
 const CardapioScreen = (props: ICardapioScreenProps) => {
 
     //===================================================== State's ===========================================================
-    const [produtos, setProdutos] = React.useState<any[]>(props.produtos);
+    const [produtos, setProdutos] = React.useState<any[]>(props.produtosNoCardapio.produtos);
 
 
 
@@ -44,6 +44,7 @@ const CardapioScreen = (props: ICardapioScreenProps) => {
 
 
     getProdutos()
+
 
     return (
         <>
