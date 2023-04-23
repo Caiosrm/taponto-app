@@ -1,16 +1,25 @@
 import { View, Text } from "native-base";
 import React from "react";
-import { IPerfilProps } from "./types";
+import { IPerfilScreenProps } from "./types";
 
-const PerfilScreen = (props: IPerfilProps) => {
-    
-    return(
+const PerfilScreen = (props: IPerfilScreenProps) => {
+
+    //===================================================== State's ===========================================================
+
+
+    //===================================================== useEffect's =======================================================
+
+
+    //===================================================== HandleChange's ====================================================
+
+
+    return (
         <View>
             <Text> teste </Text>
         </View>
 
     );
-}; 
+};
 
 export default PerfilScreen;
 ;

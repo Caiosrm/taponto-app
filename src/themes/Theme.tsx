@@ -1,14 +1,14 @@
-import { extendTheme, ColorMode } from 'native-base';
+import { extendTheme, ColorMode, useColorMode } from 'native-base';
 import { IThemeProps } from './IThemeProps';
 import { useState } from 'react';
 
-export const [themeMode, setThemeMode] = useState<ColorMode>("light"); // State do modo de cor da aplicação
+// export const [themeMode, setThemeMode] = useState<ColorMode>("light"); // State do modo de cor da aplicação
 
 
-const toggleColorMode = () => {
-    const newMode = themeMode === 'light' ? 'dark' : 'light'; // Alterna entre os modos de cor
-    setThemeMode(newMode); // Define o novo modo de cor
-};
+// const toggleColorMode = () => {
+//     const newMode = themeMode === 'light' ? 'dark' : 'light'; // Alterna entre os modos de cor
+//     setThemeMode(newMode); // Define o novo modo de cor
+// };
 
 
 export const colors: IThemeProps["colors"] = { //Esquema de Cores

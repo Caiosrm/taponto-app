@@ -1,4 +1,4 @@
-export interface ISacolaProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil"
-
+export interface ISacolaScreenProps {
+    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil";
+    produtosNaSacola: any[];
 }
