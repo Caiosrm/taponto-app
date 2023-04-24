@@ -2,25 +2,26 @@ import { extendTheme, ColorMode, useColorMode } from 'native-base';
 import { IThemeProps } from './IThemeProps';
 import { useState } from 'react';
 
-// export const [themeMode, setThemeMode] = useState<ColorMode>("light"); // State do modo de cor da aplicação
-
-
-// const toggleColorMode = () => {
-//     const newMode = themeMode === 'light' ? 'dark' : 'light'; // Alterna entre os modos de cor
-//     setThemeMode(newMode); // Define o novo modo de cor
-// };
 
 
 export const colors: IThemeProps["colors"] = { //Esquema de Cores
     light: {
-        brancoFumaca: '#F1F5F4',
-        azulCiano: '#5CC6BA',
-        cinza: '#A0A0A0',
-        cinzaEscuro: '#717F7F',
+        brancoPuro: '#FFFFFF',
+        background: '#F5F5F5',
+        azulMarinho: '#0c3a4c',
+        azulPetroleo: '#2a627e',
+        azulTurquesa: '#0094d3',
+        pretoPuro: '#000000'
     },
+
     dark: {
-        azulDark: '#142c29',
-        brancoFumaca: '#F1F5F4',
+        pretoPuro: '#000000',
+        background: '#292d2e',
+        azulMarinho: '#0c3a4c',
+        azulPetroleo: '#2a627e',
+        azulTurquesa: '#0094d3',
+        brancoPuro: '#FFFFFF',
+
     },
 };
 
@@ -30,6 +31,7 @@ const theme = extendTheme<IThemeProps>({ //Configurações do tema
         initialColorMode: 'light', // Cor padrão do tema
         useSystemColorMode: false, // Usar tema padrão de sistema?
         colorModeTypes: ['light', 'dark'], //Tipos de modo de cor
+
     },
 });
 

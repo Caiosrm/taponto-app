@@ -18,7 +18,7 @@ export default function Login(props: ILoginScreenProps) {
     
     return (
         <VStack flex={1} alignItems='center' p={5} justifyContent='center'>
-            <Image source={Logo} alt="Alternate Text" size='xl' resizeMode='contain' />
+            <Image source={Logo} alt="Logo" size='xl' resizeMode='contain' />
             <Text fontSize='2xl' fontWeight='bold' color='gray.500' mt={5}>
                 Faça login em sua conta
             </Text>
