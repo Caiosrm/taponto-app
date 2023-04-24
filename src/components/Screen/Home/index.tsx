@@ -1,4 +1,5 @@
 import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar } from "native-base";
+
 import AppBar from "../../Common/AppBar";
 import React, { useContext, useState } from 'react';
 import CardapioScreen from "../Cardapio";
@@ -8,12 +9,12 @@ import theme, { colors } from "../../../themes/Theme";
 import { useColorMode } from "../../Common/AppBar/states";
 import { ThemeContext, ThemeProvider } from "../../../themes/ThemeContext";
 
+
 const HomeScreen = (props: IHomeScreenProps) => {
 
     //===================================================== State's ===========================================================
     const { theme } = useContext(ThemeContext);
     const { toggleTheme } = useContext(ThemeContext);
-
 
 
     return (
@@ -81,10 +82,11 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 {item.nomerestaurante}
                             </Text>
                         </HStack>
-                    </Box>} />
+                    </Box>
+                    }
+                />
             </Box>
         </ThemeProvider>
-
     );
 };
 
