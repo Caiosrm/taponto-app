@@ -19,74 +19,81 @@ const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
   return (
-    <ThemeProvider>
-      <Tab.Navigator screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
-        <Tab.Screen name="Home"
-          component={() => <Home
-            // props 
-            pageTitle="Home" />}
+    <NativeBaseProvider>
+      <ThemeProvider>
+        <Tab.Navigator screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
+          <Tab.Screen name="Home"
+            component={() => <Home
+              // props 
+              pageTitle="Home"
+              cantina={{
+                id: '',
+                nome: ''
+              }}
+              cantinas={[]} />}
 
-          options={{
-            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-              if (focused) { return <Ionicons name='home' size={size} color={color} /> }
-              else return (<Ionicons name='home-outline' size={size} color={color} />);
-            }
-          }} />
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Ionicons name='home' size={size} color={color} /> }
+                else return (<Ionicons name='home-outline' size={size} color={color} />);
+              }
+            }} />
 
-        <Tab.Screen name="Cardapio"
-          component={() => <Cardapio
-            // props 
-            pageTitle="Cardapio"
-            produtosNoCardapio={[]} />}
+          <Tab.Screen name="Cardapio"
+            component={() => <Cardapio
+              // props 
+              pageTitle="Cardapio"
+              produtosNoCardapio={[]} />}
 
-          options={{
-            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-              if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
-              else return (<Ionicons name='reader' size={size} color={color} />);
-            },
-          }} />
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
+                else return (<Ionicons name='reader' size={size} color={color} />);
+              },
+            }} />
 
-        <Tab.Screen name="Sacola"
-          component={() => <Sacola
-            // props 
-            pageTitle="Sacola"
-            produtosNaSacola={[]} />}
+          <Tab.Screen name="Sacola"
+            component={() => <Sacola
+              // props 
+              pageTitle="Sacola"
+              produtosNaSacola={[]} />}
 
-          options={{
-            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-              if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
-              else return (<Entypo name='shopping-bag' size={size} color={color} />);
-            },
-          }}
-        />
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
+                else return (<Entypo name='shopping-bag' size={size} color={color} />);
+              },
+            }}
+          />
 
-        <Tab.Screen name="Perfil"
-          component={() => <Perfil
-            // props 
-            pageTitle="Perfil" />}
+          <Tab.Screen name="Perfil"
+            component={() => <Perfil
+              // props 
+              pageTitle="Perfil" />}
 
-          options={{
-            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-              if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
-              else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
-            }
-          }} initialParams={{ pageTitle: 'perfil' }}
-        />
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
+                else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
+              }
+            }} initialParams={{ pageTitle: 'perfil' }}
+          />
 
-        <Tab.Screen name="Login"
-          component={() => <Login
-            // props 
-            pageTitle="Login" />}
+          <Tab.Screen name="Login"
+            component={() => <Login
+              // props 
+              pageTitle="Login" />}
 
-          options={{
-            headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-              if (focused) { return <Ionicons name='person' size={size} color={color} /> }
-              else return (<Ionicons name='person' size={size} color={color} />);
-            }
-          }}
-        />
-      </Tab.Navigator>
-    </ThemeProvider>
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Ionicons name='person' size={size} color={color} /> }
+                else return (<Ionicons name='person' size={size} color={color} />);
+              }
+            }}
+          />
+        </Tab.Navigator>
+      </ThemeProvider>
+    </NativeBaseProvider>
   );
 }
 
