@@ -1,22 +1,27 @@
 import { MaterialIcons, AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
-import { StatusBar, Box, HStack, IconButton, Icon, Text } from "native-base";
+import { StatusBar, Box, HStack, IconButton, Icon, Text, ColorMode } from "native-base";
 import { useState } from "react";
 import { AppBarProps } from "./types";
 import React from "react";
-import { useColorMode } from "./states";
 import { colors } from "../../../themes/Theme";
+import { useColorMode } from "../../../themes/ThemeContext";
 
 export default function AppBar(props: AppBarProps) {
 
-	const [colorMode, toggleColorMode] = useColorMode();
+    const [colorMode, toggleColorMode] = useColorMode();
 
-	function handleToggleTheme() {
-		if (colorMode === "light") {
-			toggleColorMode("dark");
-		} else {
-			toggleColorMode("light");
-		}
-	}
+
+    function handleToggleTheme() {
+        if (colorMode === "light") {
+            toggleColorMode("dark");
+			console.log(colorMode)
+
+        } else {
+            toggleColorMode("light");
+			console.log(colorMode)
+        }
+    }
+
 
 	return (
 		<>
