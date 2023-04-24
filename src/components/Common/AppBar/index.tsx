@@ -1,22 +1,90 @@
-import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { StatusBar, Box, HStack, IconButton, Icon, Text } from "native-base";
 import { useState } from "react";
 import { AppBarProps } from "./types";
 import React from "react";
 import { useColorMode } from "./states";
+import { colors } from "../../../themes/Theme";
 
 export default function AppBar(props: AppBarProps) {
+
+	const [colorMode, toggleColorMode] = useColorMode();
+
+	function handleToggleTheme() {
+		if (colorMode === "light") {
+			toggleColorMode("dark");
+		} else {
+			toggleColorMode("light");
+		}
+	}
+
 	return (
 		<>
-			<StatusBar backgroundColor={useColorMode()[0] === "light" ? "white" : "black"} barStyle={useColorMode()[0] === "light" ? "dark-content" : "light-content"} />
-			<HStack bg="red.600" px="1" py="3" justifyContent="space-between" alignItems="center" w="100%" >
+			<StatusBar
+				backgroundColor={
+					colorMode === "light"
+						? colors.light.background
+						: colors.dark.background
+				}
+				barStyle={
+					colorMode === "light" ? "dark-content" : "light-content"
+				}
+			/>
+			<HStack
+				bg={colors.light.azulTurquesa}
+				px="1"
+				py="3"
+				justifyContent="space-between"
+				alignItems="center"
+				w="100%"
+			>
 				<HStack alignItems="center">
-					<Text color="white" fontSize="20" fontWeight="bold">{props.pageTitle}</Text>
+					<Text
+						color={
+							colorMode === "light"
+								? colors.light.brancoPuro
+								: colors.dark.pretoPuro
+						}
+						fontSize="20"
+						fontWeight="bold"
+					>
+						{props.pageTitle}
+					</Text>
 				</HStack>
 				<HStack>
-					<IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} />
+					<IconButton
+						icon={
+							<Icon
+								as={MaterialCommunityIcons}
+								name="theme-light-dark"
+								size="sm"
+								color={
+									colorMode === "light"
+										? colors.light.brancoPuro
+										: colors.dark.pretoPuro
+								}
+								onPress={handleToggleTheme}
+							/>
+						}
+					/>
+
+					<IconButton
+						icon={
+							<Icon
+								as={MaterialIcons}
+								name="search"
+								size="sm"
+								color={
+									colorMode === "light"
+										? colors.light.brancoPuro
+										: colors.dark.pretoPuro
+								}
+							/>
+						}
+					/>
 				</HStack>
 			</HStack>
 		</>
 	);
 }
+

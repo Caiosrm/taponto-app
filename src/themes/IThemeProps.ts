@@ -4,16 +4,25 @@ export interface IThemeProps {
 
     colors: {
         light: {
-            brancoFumaca: string;
-            azulCiano: string;
-            cinza: string;
-            cinzaEscuro: string;
+            background: string;
+            azulPetroleo: string;
+            azulTurquesa: string;
+            azulMarinho: string;
+            brancoPuro: string;
+            pretoPuro: string;
+
         };
         dark: {
-            azulDark: string;
-            brancoFumaca: string;
+            background: string;
+            azulPetroleo: string;
+            azulTurquesa: string;
+            azulMarinho: string;
+            brancoPuro: string;
+            pretoPuro: string;
+
         };
     };
+
     config: {
         initialColorMode: ColorMode;
         useSystemColorMode: boolean;
