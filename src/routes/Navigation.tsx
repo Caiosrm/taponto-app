@@ -19,20 +19,14 @@ const Tab = createBottomTabNavigator();
 function AppNavigator() {
 
   //===================================================== State's ===========================================================
-  const [mode, setMode] = useState<ColorMode>('light');
 
 
+  
   //===================================================== useEffect's =======================================================
 
 
 
   //===================================================== HandleChange's ====================================================
-  const handleColorMode = {
-
-    get: () => Promise.resolve(mode),
-    set: (value: ColorMode) => setMode(value)
-  };
-
 
   return (
     <NativeBaseProvider theme={theme} >
