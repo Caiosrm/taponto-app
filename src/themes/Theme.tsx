@@ -35,5 +35,7 @@ const theme = extendTheme<IThemeProps>({ //Configurações do tema
     },
 });
 
+
+
 export default theme;
 

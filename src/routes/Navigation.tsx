@@ -12,24 +12,14 @@ import theme from '../themes/Theme';
 import { ColorMode, NativeBaseProvider } from 'native-base';
 import { RootStackParamList } from './types';
 import Login from '../components/Screen/Login';
+import { ThemeContext, ThemeProvider } from '../themes/ThemeContext';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
-
-  //===================================================== State's ===========================================================
-
-
-  
-  //===================================================== useEffect's =======================================================
-
-
-
-  //===================================================== HandleChange's ====================================================
-
   return (
-    <NativeBaseProvider theme={theme} >
+    <ThemeProvider>
       <Tab.Navigator screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
         <Tab.Screen name="Home"
           component={() => <Home
@@ -96,7 +86,7 @@ function AppNavigator() {
           }}
         />
       </Tab.Navigator>
-    </NativeBaseProvider>
+    </ThemeProvider>
   );
 }
 

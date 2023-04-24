@@ -1,27 +1,23 @@
 import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar } from "native-base";
 import AppBar from "../../Common/AppBar";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import CardapioScreen from "../Cardapio";
 import { IHomeScreenProps } from "./types";
 import { data } from "../../../__mocks__/data";
 import theme, { colors } from "../../../themes/Theme";
 import { useColorMode } from "../../Common/AppBar/states";
+import { ThemeContext, ThemeProvider } from "../../../themes/ThemeContext";
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
     //===================================================== State's ===========================================================
-    const [colorMode, toggleColorMode] = useColorMode();
+    const { theme } = useContext(ThemeContext);
+    const { toggleTheme } = useContext(ThemeContext);
 
-    function handleToggleTheme() {
-        if (colorMode === "light") {
-            toggleColorMode("dark");
-        } else {
-            toggleColorMode("light");
-        }
-    }
+
 
     return (
-        <NativeBaseProvider theme={theme}>
+        <ThemeProvider>
             <StatusBar />
             <AppBar pageTitle={"Home"} />
             <Heading marginTop={5} fontSize="lg" paddingX={4}>Ultimas Lojas</Heading>
@@ -29,7 +25,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 w='100%'
                 paddingY={4}
                 borderRadius={4}
-                >
+            >
                 <FlatList
                     horizontal={true}
                     data={data}
@@ -87,7 +83,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         </HStack>
                     </Box>} />
             </Box>
-        </NativeBaseProvider>
+        </ThemeProvider>
 
     );
 };
