@@ -1,15 +1,16 @@
-import { View, Text, HStack, Stack, Box, Heading, AspectRatio, ScrollView } from "native-base";
+import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme } from "native-base";
 import React, { useEffect } from "react";
 
-import { TouchableOpacity } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioScreenProps } from "./types";
 import { getProdutos } from "../../../api";
+import { colors } from "../../../themes/Theme";
 
 
 const CardapioScreen = (props: ICardapioScreenProps) => {
 
     //===================================================== State's ===========================================================
-    const [produtos, setProdutos] = React.useState<any[]>(props.produtosNoCardapio);
+    const [produtos, setProdutos] = React.useState<any>(props.produtosNoCardapio);
 
 
 
@@ -37,7 +38,7 @@ const CardapioScreen = (props: ICardapioScreenProps) => {
 
     //===================================================== HandleChange's ====================================================
 
-
+    
 
 
 
@@ -47,33 +48,52 @@ const CardapioScreen = (props: ICardapioScreenProps) => {
 
 
     return (
-        <>
-            <ScrollView>
-                <View alignItems='flex-start'>
-                    <HStack flexWrap='wrap'>
-                        <Box maxWidth={80} margin={2} flexBasis='30%' rounded='lg' overflow='hidden' borderColor='coolGray.200' borderWidth='1' flex={1}>
+        <Box padding={2} flex={1} backgroundColor={colors.light.background}>
+            <Image marginBottom={3} resizeMode="contain"  w='100%' h={100} source={{uri: "https://static.ifood-static.com.br/image/upload//capa/2e948cfa-911a-4e78-80aa-9cc66c04aeb8/202210281613_em0g_i@2x.jpg"}} alt="Alternate Text"  />
+            
+
+            
+
+            <FlatList data={produtos} renderItem={({
+                item
+            }) => <Box shadow={2} justifyContent='center' padding={5} h={120} borderRadius={5} marginBottom={3} backgroundColor={colors.light.brancoPuro} py="2">
+                    <HStack alignItems='center' space={[2, 3]} justifyContent="space-between">
+                        <Avatar size="90px" source={{
+                            uri: item.avatarUrl
+                        }} />
+                        <VStack>
+                            <Text _dark={{
+                                color: "warmGray.50"
+                            }} color="coolGray.800" bold>
+                                Nome do pedido
+                            </Text>
+                            <Text color="coolGray.600" _dark={{
+                                color: "warmGray.200"
+                            }}>
+                                gfdgfdgdgd
+                            </Text>
+                        </VStack>
+                        <Spacer />
+                        <Box    alignItems='center'>
+                            <Box flexDirection='row' alignItems='center' justifyContent='center'>
+
                             <TouchableOpacity>
-                                <Box>
-                                    <AspectRatio w="100%" ratio={16 / 9}>
-                                        {/* <Image source={'Imgsalgado'} alt='teste' /> */}
-                                    </AspectRatio>
-                                </Box>
-                                <Stack p="4" space={3}>
-                                    <Stack space={2} maxHeight={32} overflow="hidden">
-                                        <Heading size="xs" ml="1">
-                                            teste
-                                        </Heading>
-                                    </Stack>
-                                    <Text fontWeight="400">teste</Text>
-                                </Stack>
+                            <Button backgroundColor='none' ><Text color='red.600' fontSize='4xl'>+</Text></Button>
                             </TouchableOpacity>
+                            <Text>1</Text>
+                            <TouchableOpacity>
+                            <Button backgroundColor='none' ><Text color='red.600' fontSize='5xl'>-</Text></Button>
+                            </TouchableOpacity>
+                            </Box>
+
+                            
+                            <Text  >12,00</Text>
+
+                           
                         </Box>
                     </HStack>
-                </View>
-            </ScrollView>
-            <View>
-            </View>
-        </>
+                </Box>} keyExtractor={item => item.id} />
+        </Box>
     );
 };
 

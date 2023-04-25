@@ -16,19 +16,13 @@ export const useColorMode = (): [string, React.Dispatch<React.SetStateAction<str
     return [colorMode, setColorMode];
 }
 
-
-
 export function ThemeProvider(props: ThemeProviderProps) {
     const [colorMode, toggleColorMode] = useColorMode();
-
-
-
-
-
     return (
         <ThemeContext.Provider value={{ colorMode, toggleColorMode }}>
             {props.children}
         </ThemeContext.Provider>
+        
     );
 }
 

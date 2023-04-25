@@ -8,6 +8,7 @@ import theme, { colors } from "../../../themes/Theme";
 import { useColorMode } from "../../../themes/ThemeContext";
 import { ThemeContext, ThemeProvider } from "../../../themes/ThemeContext";
 
+
 const HomeScreen = (props: IHomeScreenProps) => {
 
     //===================================================== State's ==========================================================
@@ -53,13 +54,14 @@ const HomeScreen = (props: IHomeScreenProps) => {
                     <Box padding={3}   backgroundColor={colors.light.background}>
                     <Heading fontSize="lg" paddingX={4}>Cantinas</Heading>
                     <FlatList
+                    
                         data={data}
                         renderItem={({ item }) => <Box
                             _dark={{ borderColor: "muted.50" }}
                             borderColor="muted.800"
                             
                             py="2">
-                            <HStack alignItems='center'>
+                            <HStack>
                                 <Avatar
                                     marginLeft={3}
                                     height={16}
@@ -67,14 +69,26 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     size="48px"
                                     source={{ uri: item.avatarUrl }}
                                 />
+                                <Box>
                                 <Text
                                     marginLeft={3}
-                                    textAlign='center'
+                                
                                     fontSize="md"
                                     _dark={{ color: "warmGray.50" }}
                                     color="coolGray.800">
                                     {item.nomerestaurante}
                                 </Text>
+
+                                <Text
+                                    marginLeft={3}
+                                
+                                    fontSize="md"
+                                    >
+                                    jhjy
+                                </Text>
+
+                                </Box>
+                                
                             </HStack>
                         </Box>} />
                         
@@ -88,7 +102,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 
             
         </ThemeProvider>
-
     );
 };
 
