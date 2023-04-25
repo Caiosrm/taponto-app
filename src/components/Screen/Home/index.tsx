@@ -1,4 +1,4 @@
-import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar } from "native-base";
+import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar, Container, ScrollView } from "native-base";
 import AppBar from "../../Common/AppBar";
 import React, { useContext, useState } from 'react';
 import CardapioScreen from "../Cardapio";
@@ -12,37 +12,24 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
     //===================================================== State's ==========================================================
     const [colorMode] = useColorMode();
-
+    
 
     return (
         <ThemeProvider>
             <StatusBar />
             <AppBar pageTitle={"Home"} />
-            <Heading marginTop={5} fontSize="lg" paddingX={4}>Ultimas Lojas</Heading>
-            <Box color={colorMode === "light"
-                ? colors.light.background
-                : colors.dark.background
-            }> {console.log(colorMode)
-                }
-                <Box
 
-                    color={colorMode === "light"
-                        ? colors.light.background
-                        : colors.dark.background}
-
-                    w='100%'
-                    paddingY={4}
-                    borderRadius={4}
-                >
-                    <FlatList
+            
+            
+                
+                <Box background='#782e0a'  >
+            <Heading color='white' marginTop={5} fontSize="lg" marginBottom={6} paddingX={4}>Ultimas Cantinas</Heading>
+                    <FlatList marginBottom={6}
                         horizontal={true}
                         data={data}
                         renderItem={({ item }) => <Box
-                            _dark={{ borderColor: "muted.50" }}
-                            borderColor="muted.800"
-                            pl={["0", "4"]}
-                            pr={["0", "5"]}
-                            py="2">
+                           
+                            >
                             <HStack flexDirection='column' alignItems='center'>
                                 <Avatar
                                     marginLeft={3}
@@ -55,30 +42,22 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     marginLeft={3}
                                     textAlign='center'
                                     fontSize="xs"
-                                    _dark={{ color: "warmGray.50" }}
-                                    color="coolGray.800">
+                                    color="white">
                                     {item.nomerestaurante}
                                 </Text>
                             </HStack>
                         </Box>} />
-                </Box>
+               
 
-                <Box
-                    backgroundColor={colors.light.background}
-                    flex={1}
-                    w='100%'
-                    paddingY={4}
-                    marginBottom={6}
-                    borderRadius={4}
-                >
-                    <Heading fontSize="lg" paddingX={4}>Lojas</Heading>
+                        
+                    <Box padding={3}   backgroundColor={colors.light.background}>
+                    <Heading fontSize="lg" paddingX={4}>Cantinas</Heading>
                     <FlatList
                         data={data}
                         renderItem={({ item }) => <Box
                             _dark={{ borderColor: "muted.50" }}
                             borderColor="muted.800"
-                            pl={["0", "4"]}
-                            pr={["0", "5"]}
+                            
                             py="2">
                             <HStack alignItems='center'>
                                 <Avatar
@@ -98,8 +77,16 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 </Text>
                             </HStack>
                         </Box>} />
-                </Box>
-            </Box>
+                        
+                        </Box>
+                        </Box>
+                        
+                        
+                
+                
+                
+                
+            
         </ThemeProvider>
 
     );
