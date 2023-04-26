@@ -1,6 +1,7 @@
-import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme } from "native-base";
+import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon } from "native-base";
 import React, { useEffect } from "react";
 
+import { Ionicons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioScreenProps } from "./types";
 import { getAllProdutos } from "../../../api/getAllProdutos";
@@ -29,7 +30,11 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
 
     //===================================================== HandleChange's ====================================================
     return (
-        <Box padding={2} flex={1} backgroundColor={colors.light.background}>
+        <Box
+            padding={2}
+            flex={1}
+            backgroundColor={colors.light.background}
+        >
             <AppBar pageTitle={props.pageTitle} />
             <Image
                 marginBottom={3}
@@ -46,47 +51,61 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
                     backgroundColor={colors.light.brancoPuro}
                     py="2"
                 >
-                    <HStack alignItems='center' space={[2, 3]} justifyContent="space-between">
-                        <Avatar size="90px" source={{
-                            uri: ""
-                        }} />
+                    <HStack
+                        alignItems='center'
+                        space={[2, 3]}
+                        justifyContent="space-between"
+                    >
+                        <Avatar
+                            size="90px"
+                            source={{ uri: "" }}
+                        />
                         <VStack>
-                            <Text _dark={{
-                                color: "warmGray.50"
-                            }} color="coolGray.800" bold>
-                                {item.nome}
+                            <Text
+                                _dark={{ color: "warmGray.50" }}
+                                color="#000000"
+                                bold
+                            >{item.nome}
                             </Text>
-                            <Text _dark={{
-                                color: "warmGray.50"
-                            }} color="coolGray.800" >
-                                {item.lanchonete}
+                            <Text
+                                _dark={{ color: "warmGray.50" }}
+                                color="#000000"
+                            >{item.lanchonete}
                             </Text>
-                            <Text color="coolGray.600" _dark={{
-                                color: "warmGray.200"
-                            }}>
-                                R${item.valor}
+                            <Text
+                                _dark={{ color: "coolGray.800" }}
+                                color="#000000"
+                            >R${item.valor}
                             </Text>
                         </VStack>
                         <Spacer />
                         <Box alignItems='center'>
-                            <Box flexDirection='row' alignItems='center' justifyContent='center'>
-
+                            <Box
+                                flexDirection='row'
+                                alignItems='center'
+                                justifyContent='center'
+                            >
                                 <TouchableOpacity>
-                                    <Button 
-   
-                                    backgroundColor='none'>
-
+                                    <Button
+                                        backgroundColor='none'>
+                                        <Icon as={Ionicons}
+                                            name="ios-add"
+                                            size="sm"
+                                            color="green.300"
+                                        />
                                     </Button>
                                 </TouchableOpacity>
                                 <Text>{item.quantidade}</Text>
                                 <TouchableOpacity>
-                                    <Button backgroundColor='none' >
-
+                                    <Button backgroundColor='none'>
+                                        <Icon as={Ionicons}
+                                            name="ios-remove"
+                                            size="sm"
+                                            color="red.300"
+                                        />
                                     </Button>
                                 </TouchableOpacity>
                             </Box>
-
-
                         </Box>
                     </HStack>
                 </Box>} keyExtractor={item => item.id} />
