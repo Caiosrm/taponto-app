@@ -23,7 +23,6 @@ export default function AppBar(props: AppBarProps) {
 		}
 	}
 
-
 	return (
 		<Box padding={5}>
 			<Box marginBottom={6} flexDirection='row' justifyContent='space-between'>

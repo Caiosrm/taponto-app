@@ -1,6 +1,7 @@
 import { View, Text } from "native-base";
 import React from "react";
 import { IPerfilScreenProps } from "./types";
+import AppBar from "../../Common/AppBar";
 
 const PerfilScreen = (props: IPerfilScreenProps) => {
 
@@ -15,6 +16,8 @@ const PerfilScreen = (props: IPerfilScreenProps) => {
 
     return (
         <View>
+            <AppBar pageTitle={"Home"} />
+
             <Text> teste </Text>
         </View>
 
