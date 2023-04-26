@@ -7,8 +7,16 @@ export interface ICardapioScreenProps {
 }
 
 export interface IProduto {
-    id: any;
-    price: any;
-    description: any;
-    image: any;
-};
+    id?: any;
+    nome: string;
+    lanchonete: string;
+    valor: number;
+    descricao: string;
+    tipoDeAlimento: string;
+    calorias: number;
+    quantidade: number;
+    ingredientes: string;
+    imagem: string;
+    avaliacao: number;
+    review: string;
+}

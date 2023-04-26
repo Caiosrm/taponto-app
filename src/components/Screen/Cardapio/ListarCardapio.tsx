@@ -3,9 +3,11 @@ import React, { useEffect } from "react";
 
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioScreenProps } from "./types";
-import { getProdutos } from "../../../api";
+import { getAllProdutos } from "../../../api/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import { IProduto } from "./types";
+import { lerJSONEnviarFirebase } from "../../../api/postProduto";
+import AppBar from "../../Common/AppBar";
 
 const ListarCardapio = (props: ICardapioScreenProps) => {
     //===================================================== State's ===========================================================
@@ -14,19 +16,21 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         const fetchData = async () => {
-            const produtos = await getProdutos();
+            const produtos = await getAllProdutos();
             setProdutos(produtos);
         };
-        console.log("Produtos", produtos);
+        console.log("ListarCardapio => Produtos => ", produtos);
         fetchData();
     }, []);
 
+    const handleQuantidade = () => {
+
+    }
 
     //===================================================== HandleChange's ====================================================
-
-
     return (
         <Box padding={2} flex={1} backgroundColor={colors.light.background}>
+            <AppBar pageTitle={props.pageTitle} />
             <Image
                 marginBottom={3}
                 resizeMode="contain"
@@ -44,18 +48,23 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
                 >
                     <HStack alignItems='center' space={[2, 3]} justifyContent="space-between">
                         <Avatar size="90px" source={{
-                            uri: item.image
+                            uri: ""
                         }} />
                         <VStack>
                             <Text _dark={{
                                 color: "warmGray.50"
                             }} color="coolGray.800" bold>
-                                {item.description}
+                                {item.nome}
+                            </Text>
+                            <Text _dark={{
+                                color: "warmGray.50"
+                            }} color="coolGray.800" >
+                                {item.lanchonete}
                             </Text>
                             <Text color="coolGray.600" _dark={{
                                 color: "warmGray.200"
                             }}>
-                                {item.price}
+                                R${item.valor}
                             </Text>
                         </VStack>
                         <Spacer />
@@ -63,11 +72,17 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
                             <Box flexDirection='row' alignItems='center' justifyContent='center'>
 
                                 <TouchableOpacity>
-                                    <Button backgroundColor='none' ><Text color='red.600' fontSize='4xl'>+</Text></Button>
+                                    <Button 
+   
+                                    backgroundColor='none'>
+
+                                    </Button>
                                 </TouchableOpacity>
-                                <Text>1</Text>
+                                <Text>{item.quantidade}</Text>
                                 <TouchableOpacity>
-                                    <Button backgroundColor='none' ><Text color='red.600' fontSize='5xl'>-</Text></Button>
+                                    <Button backgroundColor='none' >
+
+                                    </Button>
                                 </TouchableOpacity>
                             </Box>
 

@@ -43,13 +43,18 @@ function AppNavigator() {
             component={() => <ListarCardapio
               // props 
               pageTitle="Cardapio"
-              produto={{
-                id: 0,
+              produto={{    
                 nome: '',
-                descricao: '',
+                lanchonete: '',
                 valor: 0,
-                estoque: 0,
-                tempoDeEspera: 0
+                descricao: '',
+                tipoDeAlimento: '',
+                calorias: 0,
+                quantidade: 0,
+                ingredientes: '',
+                imagem: '',
+                avaliacao: 0,
+                review: ''
               }} 
               produtos={[]} />}
             options={{
