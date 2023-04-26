@@ -6,11 +6,9 @@ export interface ICardapioScreenProps {
     produtos: IProduto[]; //array de produtos
 }
 
-interface IProduto {
-    id: number;
-    nome: string;
-    descricao: string;
-    valor: number;
-    estoque: number;
-    tempoDeEspera: number;
+export interface IProduto {
+    id: any;
+    price: any;
+    description: any;
+    image: any;
 };
