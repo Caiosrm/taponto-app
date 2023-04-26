@@ -10,18 +10,15 @@ export default function AppBar(props: AppBarProps) {
 
     const [colorMode, toggleColorMode] = useColorMode();
 
-
     function handleToggleTheme() {
         if (colorMode === "light") {
             toggleColorMode("dark");
 			console.log(colorMode)
-
         } else {
             toggleColorMode("light");
 			console.log(colorMode)
         }
     }
-
 
 	return (
 		<>
@@ -72,7 +69,6 @@ export default function AppBar(props: AppBarProps) {
 							/>
 						}
 					/>
-
 					<IconButton
 						icon={
 							<Icon
