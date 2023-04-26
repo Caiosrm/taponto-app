@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { Entypo } from '@expo/vector-icons';
 
 import Home from '../components/Screen/Home';
-import Cardapio from '../components/Screen/Cardapio';
+import Cardapio from '../components/Screen/Cardapio/ListarCardapio';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
 import theme from '../themes/Theme';

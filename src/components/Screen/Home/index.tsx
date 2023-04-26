@@ -1,7 +1,7 @@
 import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar, Container, ScrollView } from "native-base";
 import AppBar from "../../Common/AppBar";
 import React, { useContext, useState } from 'react';
-import CardapioScreen from "../Cardapio";
+import CardapioScreen from "../Cardapio/ListarCardapio";
 import { IHomeScreenProps } from "./types";
 import { data } from "../../../__mocks__/data";
 import theme, { colors } from "../../../themes/Theme";
@@ -23,8 +23,8 @@ const HomeScreen = (props: IHomeScreenProps) => {
             
             
                 
-                <Box background='#782e0a'  >
-            <Heading color='white' marginTop={5} fontSize="lg" marginBottom={6} paddingX={4}>Ultimas Cantinas</Heading>
+                <Box  >
+            <Heading color='black' marginTop={5} fontSize="lg" marginBottom={6} paddingX={4}>Ultimas Cantinas</Heading>
                     <FlatList marginBottom={6}
                         horizontal={true}
                         data={data}
