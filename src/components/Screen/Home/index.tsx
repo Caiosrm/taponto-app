@@ -1,4 +1,4 @@
-import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar, Container } from "native-base";
+import { Avatar, Box, HStack, Heading, Spacer, VStack, View, useTheme, Text, FlatList, NativeBaseProvider, StatusBar, Container, ScrollView } from "native-base";
 import AppBar from "../../Common/AppBar";
 import React, { useContext, useState } from 'react';
 import CardapioScreen from "../Cardapio/ListarCardapio";
@@ -14,29 +14,54 @@ const HomeScreen = (props: IHomeScreenProps) => {
     const [colorMode] = useColorMode();
 
 
+
     return (
         <ThemeProvider>
             <StatusBar />
             <AppBar pageTitle={"Home"} />
-            <Heading marginTop={5} fontSize="lg" paddingX={4}>Ultimas Lojas</Heading>
 
-            <Container>
-                <Box color={colorMode === "light"
-                    ? colors.light.background
-                    : colors.dark.background
-                }> {console.log(colorMode)
-                    }
 
+
+
+            <Box background='#782e0a'  >
+                <Heading color='white' marginTop={5} fontSize="lg" marginBottom={6} paddingX={4}>Ultimas Cantinas</Heading>
+                <FlatList marginBottom={6}
+                    horizontal={true}
+                    data={data}
+                    renderItem={({ item }) => <Box
+
+                    >
+                        <HStack flexDirection='column' alignItems='center'>
+                            <Avatar
+                                marginLeft={3}
+                                height={16}
+                                width={16}
+                                size="48px"
+                                source={{ uri: item.avatarUrl }}
+                            />
+                            <Text
+                                marginLeft={3}
+                                textAlign='center'
+                                fontSize="xs"
+                                color="white">
+                                {item.nomerestaurante}
+                            </Text>
+                        </HStack>
+                    </Box>} />
+
+
+
+                <Box padding={3} backgroundColor={colors.light.background}>
+                    <Heading fontSize="lg" paddingX={4}>Cantinas</Heading>
                     <FlatList
-                        horizontal={true}
+
                         data={data}
                         renderItem={({ item }) => <Box
                             _dark={{ borderColor: "muted.50" }}
                             borderColor="muted.800"
-                            pl={["0", "4"]}
-                            pr={["0", "5"]}
+
                             py="2">
-                            <HStack flexDirection='column' alignItems='center'>
+                            <HStack>
                                 <Avatar
                                     marginLeft={3}
                                     height={16}
@@ -44,56 +69,36 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     size="48px"
                                     source={{ uri: item.avatarUrl }}
                                 />
-                                <Text
-                                    marginLeft={3}
-                                    textAlign='center'
-                                    fontSize="xs"
-                                    _dark={{ color: "warmGray.50" }}
-                                    color="coolGray.800">
-                                    {item.nomerestaurante}
-                                </Text>
+                                <Box>
+                                    <Text
+                                        marginLeft={3}
+
+                                        fontSize="md"
+                                        _dark={{ color: "warmGray.50" }}
+                                        color="coolGray.800">
+                                        {item.nomerestaurante}
+                                    </Text>
+
+                                    <Text
+                                        marginLeft={3}
+
+                                        fontSize="md"
+                                    >
+                                        jhjy
+                                    </Text>
+
+                                </Box>
+
                             </HStack>
                         </Box>} />
-                </Box>
 
-                <Box
-                    backgroundColor={colors.light.background}
-                    flex={1}
-                    w='100%'
-                    paddingY={4}
-                    marginBottom={6}
-                    borderRadius={6}
-
-                >
-                    <Heading fontSize="lg" paddingX={4}>Lojas</Heading>
-                    <FlatList
-                        data={data}
-                        renderItem={({ item }) => <Box
-                            _dark={{ borderColor: "muted.50" }}
-                            borderColor="muted.800"
-                            pl={["0", "4"]}
-                            pr={["0", "5"]}
-                            py="2">
-                            <HStack alignItems='center'>
-                                <Avatar
-                                    marginLeft={3}
-                                    height={16}
-                                    width={16}
-                                    size="48px"
-                                    source={{ uri: item.avatarUrl }}
-                                />
-                                <Text
-                                    marginLeft={3}
-                                    textAlign='center'
-                                    fontSize="md"
-                                    _dark={{ color: "warmGray.50" }}
-                                    color="coolGray.800">
-                                    {item.nomerestaurante}
-                                </Text>
-                            </HStack>
-                        </Box>} />
                 </Box>
-            </Container>
+            </Box>
+
+
+
+
+
 
 
         </ThemeProvider>
