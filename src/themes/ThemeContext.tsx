@@ -1,25 +1,35 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 
-export type ThemeContextType = {
-    theme: string;
-    toggleTheme: () => void;
+type ThemeContextType = {
+    colorMode: string;
+    toggleColorMode: React.Dispatch<React.SetStateAction<any>>;
 };
 
-export const ThemeContext = createContext<ThemeContextType>({
-    theme: 'light',
-    toggleTheme: () => {},
-});
+export const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState('light');
+type ThemeProviderProps = {
+    children: React.ReactNode;
+};
 
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+export const useColorMode = (): [string, React.Dispatch<React.SetStateAction<string>>] => {
+    const [colorMode, setColorMode] = React.useState<string>('light');
+    return [colorMode, setColorMode];
+}
 
+export function ThemeProvider(props: ThemeProviderProps) {
+    const [colorMode, toggleColorMode] = useColorMode();
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            {children}
+        <ThemeContext.Provider value={{ colorMode, toggleColorMode }}>
+            {props.children}
         </ThemeContext.Provider>
+        
     );
-};
+}
+
+export function useTheme() {
+    const context = React.useContext(ThemeContext);
+    if (context === undefined) {
+        throw new Error('useTheme must be used within a ThemeProvider');
+    }
+    return context;
+}

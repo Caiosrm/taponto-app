@@ -2,12 +2,13 @@ import { View, Button, Text, VStack, Image, Input, Box, Link, FormControl, Cente
 import { GestureResponderEvent, TouchableOpacity } from 'react-native'
 import Logo from '../../../../assets/Logotipo.png'
 import { ILoginScreenProps } from './types'
+import AppBar from '../../Common/AppBar'
 
 export default function Login(props: ILoginScreenProps) {
 
     //===================================================== State's ===========================================================
 
-    
+
     //===================================================== useEffect's =======================================================
 
 
@@ -15,9 +16,10 @@ export default function Login(props: ILoginScreenProps) {
 
 
 
-    
+
     return (
         <VStack flex={1} alignItems='center' p={5} justifyContent='center'>
+
             <Image source={Logo} alt="Logo" size='xl' resizeMode='contain' />
             <Text fontSize='2xl' fontWeight='bold' color='gray.500' mt={5}>
                 Faça login em sua conta
