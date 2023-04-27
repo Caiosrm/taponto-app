@@ -1,7 +1,7 @@
 import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon } from "native-base";
 import React, { useEffect } from "react";
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioScreenProps } from "./types";
 import { getAllProdutos } from "../../../api/getAllProdutos";
@@ -13,20 +13,16 @@ import AppBar from "../../Common/AppBar";
 const ListarCardapio = (props: ICardapioScreenProps) => {
     //===================================================== State's ===========================================================
     const [produtos, setProdutos] = React.useState<IProduto[]>([]);
-
+    const [produto, setProduto] = React.useState<IProduto>(props.produto);
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         const fetchData = async () => {
             const produtos = await getAllProdutos();
             setProdutos(produtos);
         };
-        console.log("ListarCardapio => Produtos => ", produtos);
         fetchData();
     }, []);
 
-    const handleQuantidade = () => {
-
-    }
 
     //===================================================== HandleChange's ====================================================
     return (
@@ -36,12 +32,10 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
             backgroundColor={colors.light.background}
         >
             <AppBar pageTitle={props.pageTitle} />
-            <Image
-                marginBottom={3}
-                resizeMode="contain"
-                w='100%' h={100}
-                source={{ uri: "https://static.ifood-static.com.br/image/upload//capa/2e948cfa-911a-4e78-80aa-9cc66c04aeb8/202210281613_em0g_i@2x.jpg" }} alt="Alternate Text" />
-            <FlatList data={produtos} renderItem={({ item }) =>
+
+            <FlatList 
+            data={produtos} 
+            renderItem={({ item }) =>
                 <Box
                     shadow={2}
                     justifyContent='center'
@@ -58,7 +52,7 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
                     >
                         <Avatar
                             size="90px"
-                            source={{ uri: "" }}
+                            source={{ uri: item.imagem }}
                         />
                         <VStack>
                             <Text
@@ -78,37 +72,26 @@ const ListarCardapio = (props: ICardapioScreenProps) => {
                             >R${item.valor}
                             </Text>
                         </VStack>
-                        <Spacer />
-                        <Box alignItems='center'>
+                        <Spacer/>
+                        <Box
+                        alignItems='flex-start'>
                             <Box
-                                flexDirection='row'
+                                flexDirection='column'
                                 alignItems='center'
                                 justifyContent='center'
                             >
                                 <TouchableOpacity>
-                                    <Button
-                                        backgroundColor='none'>
-                                        <Icon as={Ionicons}
-                                            name="ios-add"
-                                            size="sm"
-                                            color="green.300"
-                                        />
+                                    <Button backgroundColor='green.400' >
+                                        Adicionar à Sacola
                                     </Button>
                                 </TouchableOpacity>
-                                <Text>{item.quantidade}</Text>
-                                <TouchableOpacity>
-                                    <Button backgroundColor='none'>
-                                        <Icon as={Ionicons}
-                                            name="ios-remove"
-                                            size="sm"
-                                            color="red.300"
-                                        />
-                                    </Button>
-                                </TouchableOpacity>
+                                <Text> Disponíveis: {item.quantidade}</Text>
                             </Box>
                         </Box>
                     </HStack>
-                </Box>} keyExtractor={item => item.id} />
+                </Box>
+            } keyExtractor={item => item.id}
+            />
         </Box>
     );
 };

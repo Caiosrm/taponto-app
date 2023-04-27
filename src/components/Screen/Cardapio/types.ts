@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
 export interface ICardapioScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil",
+    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil" | "Pedidos",
     produto: IProduto; //um produto
     produtos: IProduto[]; //array de produtos
 }

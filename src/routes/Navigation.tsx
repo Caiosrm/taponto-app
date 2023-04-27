@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { ColorMode, NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider } from 'native-base';
 
+import { RootStackParamList } from './types';
+import { ThemeProvider } from '../themes/ThemeContext';
 import Home from '../components/Screen/Home';
-import Cardapio from '../components/Screen/Cardapio/ListarCardapio';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
-import theme from '../themes/Theme';
-import { RootStackParamList } from './types';
+import PedidosScreen from '../components/Screen/Pedidos';
 import Login from '../components/Screen/Login';
-import { ThemeContext, ThemeProvider } from '../themes/ThemeContext';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
+import PerfilScreen from '../components/Screen/Perfil';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -31,7 +31,8 @@ function AppNavigator() {
                 id: '',
                 nome: ''
               }}
-              cantinas={[]} />}
+              cantinas={[]} />
+            }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='home' size={size} color={color} /> }
@@ -43,7 +44,7 @@ function AppNavigator() {
             component={() => <ListarCardapio
               // props 
               pageTitle="Cardapio"
-              produto={{    
+              produto={{
                 nome: '',
                 lanchonete: '',
                 valor: 0,
@@ -55,8 +56,9 @@ function AppNavigator() {
                 imagem: '',
                 avaliacao: 0,
                 review: ''
-              }} 
-              produtos={[]} />}
+              }}
+              produtos={[]} />
+            }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
@@ -68,7 +70,22 @@ function AppNavigator() {
             component={() => <Sacola
               // props 
               pageTitle="Sacola"
-              produtosNaSacola={[]} />}
+              produto={{
+                nome: '',
+                lanchonete: '',
+                valor: 0,
+                descricao: '',
+                tipoDeAlimento: '',
+                calorias: 0,
+                quantidade: 0,
+                ingredientes: '',
+                imagem: '',
+                avaliacao: 0,
+                review: ''
+              }}
+              produtos={[]}
+              produtosNaSacola={[]} />
+            }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
@@ -80,7 +97,8 @@ function AppNavigator() {
           <Tab.Screen name="Perfil"
             component={() => <Perfil
               // props 
-              pageTitle="Perfil" />}
+              pageTitle="Perfil" />
+            }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
@@ -92,7 +110,8 @@ function AppNavigator() {
           <Tab.Screen name="Login"
             component={() => <Login
               // props 
-              pageTitle="Login" />}
+              pageTitle="Login" />
+            }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person' size={size} color={color} /> }
@@ -100,6 +119,21 @@ function AppNavigator() {
               }
             }}
           />
+
+          <Tab.Screen name="Pedidos"
+            component={() => <PedidosScreen
+              // props 
+              pageTitle="Pedidos" />
+
+            }
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Octicons name='checklist' size={size} color={color} /> }
+                else return (<Octicons name='checklist' size={size} color={color} />);
+              }
+            }}
+          />
+
         </Tab.Navigator>
       </ThemeProvider>
     </NativeBaseProvider>

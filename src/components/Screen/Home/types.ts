@@ -1,5 +1,5 @@
 export interface IHomeScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil",
+    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil" | "Pedidos",
 
     cantina: ICantina;
     cantinas: ICantina[];

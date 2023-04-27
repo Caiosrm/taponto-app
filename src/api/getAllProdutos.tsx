@@ -28,7 +28,7 @@ export async function getAllProdutos() {
 				review: data.review
 			}
 			produtos.push(produto);
-			console.log("getAllProdutos => Produtos => ", produtos)
+			//console.log("getAllProdutos => Produtos => ", produtos)
 		});
 		return produtos;
 	} catch (error) {

@@ -5,5 +5,6 @@ export type RootStackParamList = {
     Carteira: undefined;
     ConfigPerfil: undefined;
     Perfil: undefined;
+    Pedidos: undefined;
     Sacola: undefined;
 };
