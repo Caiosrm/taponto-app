@@ -18,7 +18,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
     return (
         <ThemeProvider>
             <StatusBar />
-            <AppBar pageTitle={"Home"} />
+            <AppBar pageTitle={props.pageTitle} />
 
 
 

@@ -1,103 +1,99 @@
-import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme } from "native-base";
+import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon } from "native-base";
 import React, { useEffect } from "react";
 
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioScreenProps } from "./types";
-import { getProdutos } from "../../../api";
+import { getAllProdutos } from "../../../api/getAllProdutos";
 import { colors } from "../../../themes/Theme";
-
+import { IProduto } from "./types";
+import { lerJSONEnviarFirebase } from "../../../api/postProduto";
+import AppBar from "../../Common/AppBar";
 
 const ListarCardapio = (props: ICardapioScreenProps) => {
-
     //===================================================== State's ===========================================================
-    const [produtos, setProdutos] = React.useState<any>(props.produtosNoCardapio);
-
-
-
+    const [produtos, setProdutos] = React.useState<IProduto[]>([]);
+    const [produto, setProduto] = React.useState<IProduto>(props.produto);
     //===================================================== useEffect's =======================================================
-
-    useEffect(() => { //Carrega inicialmente
-        async function carregarDados() {
-            const data = await getProdutos()
-            if (data) {
-                setProdutos(data);
-            }
-        }
-
-        carregarDados();
-
-        setProdutos([]);
-
+    useEffect(() => {
+        const fetchData = async () => {
+            const produtos = await getAllProdutos();
+            setProdutos(produtos);
+        };
+        fetchData();
     }, []);
-
-    useEffect(() => { //Recarrega quando algo muda no componente principal
-
-
-    }, [ListarCardapio]);
 
 
     //===================================================== HandleChange's ====================================================
-
-    
-
-
-
-
-
-    getProdutos()
-
-
     return (
-        <Box padding={2} flex={1} backgroundColor={colors.light.background}>
-            <Image marginBottom={3} resizeMode="contain"  w='100%' h={100} source={{uri: "https://static.ifood-static.com.br/image/upload//capa/2e948cfa-911a-4e78-80aa-9cc66c04aeb8/202210281613_em0g_i@2x.jpg"}} alt="Alternate Text"  />
-            
+        <Box
+            padding={2}
+            flex={1}
+            backgroundColor={colors.light.background}
+        >
+            <AppBar pageTitle={props.pageTitle} />
 
-            
-
-            <FlatList data={produtos} renderItem={({
-                item
-            }) => <Box shadow={2} justifyContent='center' padding={5} h={120} borderRadius={5} marginBottom={3} backgroundColor={colors.light.brancoPuro} py="2">
-                    <HStack alignItems='center' space={[2, 3]} justifyContent="space-between">
-                        <Avatar size="90px" source={{
-                            uri: item.avatarUrl
-                        }} />
+            <FlatList 
+            data={produtos} 
+            renderItem={({ item }) =>
+                <Box
+                    shadow={2}
+                    justifyContent='center'
+                    padding={5} h={120}
+                    borderRadius={5}
+                    marginBottom={3}
+                    backgroundColor={colors.light.brancoPuro}
+                    py="2"
+                >
+                    <HStack
+                        alignItems='center'
+                        space={[2, 3]}
+                        justifyContent="space-between"
+                    >
+                        <Avatar
+                            size="90px"
+                            source={{ uri: item.imagem }}
+                        />
                         <VStack>
-                            <Text _dark={{
-                                color: "warmGray.50"
-                            }} color="coolGray.800" bold>
-                                Nome do pedido
+                            <Text
+                                _dark={{ color: "warmGray.50" }}
+                                color="#000000"
+                                bold
+                            >{item.nome}
                             </Text>
-                            <Text color="coolGray.600" _dark={{
-                                color: "warmGray.200"
-                            }}>
-                                gfdgfdgdgd
+                            <Text
+                                _dark={{ color: "warmGray.50" }}
+                                color="#000000"
+                            >{item.lanchonete}
+                            </Text>
+                            <Text
+                                _dark={{ color: "coolGray.800" }}
+                                color="#000000"
+                            >R${item.valor}
                             </Text>
                         </VStack>
-                        <Spacer />
-                        <Box    alignItems='center'>
-                            <Box flexDirection='row' alignItems='center' justifyContent='center'>
-
-                            <TouchableOpacity>
-                            <Button backgroundColor='none' ><Text color='red.600' fontSize='4xl'>+</Text></Button>
-                            </TouchableOpacity>
-                            <Text>1</Text>
-                            <TouchableOpacity>
-                            <Button backgroundColor='none' ><Text color='red.600' fontSize='5xl'>-</Text></Button>
-                            </TouchableOpacity>
+                        <Spacer/>
+                        <Box
+                        alignItems='flex-start'>
+                            <Box
+                                flexDirection='column'
+                                alignItems='center'
+                                justifyContent='center'
+                            >
+                                <TouchableOpacity>
+                                    <Button backgroundColor='green.400' >
+                                        Adicionar à Sacola
+                                    </Button>
+                                </TouchableOpacity>
+                                <Text> Disponíveis: {item.quantidade}</Text>
                             </Box>
-
-                            
-                            <Text  >12,00</Text>
-
-                           
                         </Box>
                     </HStack>
-                </Box>} keyExtractor={item => item.id} />
+                </Box>
+            } keyExtractor={item => item.id}
+            />
         </Box>
     );
 };
 
 export default ListarCardapio;
-
-
-

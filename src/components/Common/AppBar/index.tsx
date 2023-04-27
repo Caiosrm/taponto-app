@@ -1,4 +1,4 @@
-import { MaterialIcons, AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { StatusBar, Box, HStack, IconButton, Icon, Text, ColorMode } from "native-base";
 import { useState } from "react";
 import { AppBarProps } from "./types";
@@ -8,25 +8,23 @@ import { useColorMode } from "../../../themes/ThemeContext";
 
 export default function AppBar(props: AppBarProps) {
 
-    const [colorMode, toggleColorMode] = useColorMode();
+	const [colorMode, toggleColorMode] = useColorMode();
 
-    function handleToggleTheme() {
-        if (colorMode === "light") {
-            toggleColorMode("dark");
+	function handleToggleTheme() {
+		if (colorMode === "light") {
+			toggleColorMode("dark");
 			console.log(colorMode)
-        } else {
-            toggleColorMode("light");
+		} else {
+			toggleColorMode("light");
 			console.log(colorMode)
-        }
-    }
+		}
+	}
 
 	return (
 		<>
 			<StatusBar
 				backgroundColor={
-					colorMode === "light"
-						? colors.light.background
-						: colors.dark.background
+					colorMode === "light" ? colors.light.background : colors.dark.background
 				}
 				barStyle={
 					colorMode === "light" ? "dark-content" : "light-content"
@@ -41,12 +39,23 @@ export default function AppBar(props: AppBarProps) {
 				w="100%"
 			>
 				<HStack alignItems="center">
-					<Text
-						color={
-							colorMode === "light"
-								? colors.light.brancoPuro
-								: colors.dark.pretoPuro
+					<IconButton
+						icon={
+							<Icon
+								as={Ionicons}
+								name="home-outline"
+								size="sm"
+								color={
+									colorMode === "light"
+										? colors.light.brancoPuro
+										: colors.dark.pretoPuro
+								}
+
+							/>
 						}
+					/>
+					<Text
+						color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 						fontSize="20"
 						fontWeight="bold"
 					>
