@@ -38,7 +38,8 @@ function AppNavigator() {
                 if (focused) { return <Ionicons name='home' size={size} color={color} /> }
                 else return (<Ionicons name='home-outline' size={size} color={color} />);
               }
-            }} />
+            }}
+          />
 
           <Tab.Screen name="Cardapio"
             component={() => <ListarCardapio
