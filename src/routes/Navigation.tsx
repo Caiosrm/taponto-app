@@ -10,10 +10,10 @@ import { ThemeProvider } from '../themes/ThemeContext';
 import Home from '../components/Screen/Home';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
-import PedidosScreen from '../components/Screen/Pedidos';
 import Login from '../components/Screen/Login';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
 import PerfilScreen from '../components/Screen/Perfil';
+import PedidosScreen from '../components/Screen/Pedidos';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
