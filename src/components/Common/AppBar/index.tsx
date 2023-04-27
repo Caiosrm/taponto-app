@@ -39,6 +39,11 @@ export default function AppBar(props: AppBarProps) {
 
 
 			</Box>
+				<Box alignItems='center'  marginBottom={5} flexDirection={'row'}>
+			<Ionicons  name='location' size={24} color='red' />
+					<Text marginX={1}>Av. brasilia 279</Text>
+					<Ionicons  name='caret-down' size={15} color='red' />
+					</Box>
 
 
 			<Input
