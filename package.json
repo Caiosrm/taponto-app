@@ -25,8 +25,10 @@
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-native": "^0.71.6",
+    "react-native-app-intro-slider": "^4.0.4",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "13.4.0",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.18.10",
@@ -39,6 +41,7 @@
     "@types/firebase": "^3.2.1",
     "@types/react": "^18.0.35",
     "@types/react-native": "^0.71.5",
+    "@types/react-native-snap-carousel": "^3.8.5",
     "body-parser": "^1.20.2",
     "eslint": "^8.38.0",
     "ts-node-dev": "^2.0.0"
