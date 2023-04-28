@@ -1,24 +1,22 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Box, Text, Avatar, Input, Heading, View } from "native-base";
-import { useRef, useState } from "react";
+
 import { AppBarProps } from "./types";
 import React from "react";
 import { colors } from "../../../themes/Theme";
 import { useColorMode } from "../../../themes/ThemeContext";
 import { Header } from "@react-navigation/stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { TouchableOpacity } from "react-native";
-import { Modalize } from "react-native-modalize";
+import { StatusBar, TouchableOpacity } from "react-native";
+
 
 export default function AppBar(props: AppBarProps) {
 
 	const [colorMode, toggleColorMode] = useColorMode();
 
-	const modalizeRef = useRef<Modalize>(null);
 
-	const onOpen = () => {
-		modalizeRef.current?.open();
-	};
+
+	
 
 
 	function handleToggleTheme() {
@@ -33,7 +31,8 @@ export default function AppBar(props: AppBarProps) {
 	}
 
 	return (
-		<>
+		
+		 
 
 
 
@@ -53,14 +52,7 @@ export default function AppBar(props: AppBarProps) {
 
 
 				</Box>
-				<Box alignItems='center' marginBottom={5} flexDirection={'row'}>
-					<Ionicons name='location' size={24} color='red' />
-					<Text marginX={1}>Av. brasilia 279</Text>
-					<TouchableOpacity onPress={onOpen}>
-
-						<Ionicons name='caret-down' size={15} color='red' />
-					</TouchableOpacity>
-				</Box>
+				
 
 
 				<Input
@@ -82,36 +74,12 @@ export default function AppBar(props: AppBarProps) {
 					}
 				/>
 
-				<Modalize
-
-
-					ref={modalizeRef}
-					snapPoint={600}
-					
-
-
-				>
-					<View flex={1} h={180} flexDirection='row' justifyContent='center' alignItems='center'>
-						<TouchableOpacity>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-							<Text>hrjgkrngjk</Text>
-
-
-						</TouchableOpacity>
-					</View>
-				</Modalize>
+				
 
 
 			</Box>
 
-		</>
+		
 
 
 	);
