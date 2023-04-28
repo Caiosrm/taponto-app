@@ -64,7 +64,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     source={{ uri: item.avatarUrl }}
                                 />
                                 <Text
-                                    marginLeft={3}
+                                    
                                     textAlign='center'
                                     fontSize="xs"
                                     color="black">
