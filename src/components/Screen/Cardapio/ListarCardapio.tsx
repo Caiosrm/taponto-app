@@ -7,7 +7,6 @@ import { ICardapioScreenProps } from "./types";
 import { getAllProdutos } from "../../../api/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import { IProduto } from "./types";
-import { lerJSONEnviarFirebase } from "../../../api/postProduto";
 import AppBar from "../../Common/AppBar";
 
 const ListarCardapio = (props: ICardapioScreenProps) => {

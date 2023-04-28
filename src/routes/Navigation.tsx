@@ -14,11 +14,13 @@ import PedidosScreen from '../components/Screen/Pedidos';
 import Login from '../components/Screen/Login';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
 import PerfilScreen from '../components/Screen/Perfil';
+import { initialState } from '../components/Screen/Cardapio/types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
+
   return (
     <NativeBaseProvider>
       <ThemeProvider>
@@ -44,19 +46,7 @@ function AppNavigator() {
             component={() => <ListarCardapio
               // props 
               pageTitle="Cardapio"
-              produto={{
-                nome: '',
-                lanchonete: '',
-                valor: 0,
-                descricao: '',
-                tipoDeAlimento: '',
-                calorias: 0,
-                quantidade: 0,
-                ingredientes: '',
-                imagem: '',
-                avaliacao: 0,
-                review: ''
-              }}
+              produto={initialState}
               produtos={[]} />
             }
             options={{
@@ -86,8 +76,7 @@ function AppNavigator() {
               produtos={[]}
               produtosNaSacola={[]} />
             }
-            options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+            options={{ headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
                 else return (<Entypo name='shopping-bag' size={size} color={color} />);
               },
@@ -95,15 +84,11 @@ function AppNavigator() {
           />
 
           <Tab.Screen name="Perfil"
-            component={() => <Perfil
-              // props 
-              pageTitle="Perfil" />
-            }
-            options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+            component={Perfil}
+            options={{ headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
                 else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
-              }
+              },
             }} initialParams={{ pageTitle: 'perfil' }}
           />
 
@@ -135,6 +120,28 @@ function AppNavigator() {
           />
 
         </Tab.Navigator>
+        <Stack.Screen
+          name="Cardapio"
+          component={() => <Sacola
+            // props 
+            pageTitle="Sacola"
+            produto={{
+              nome: '',
+              lanchonete: '',
+              valor: 0,
+              descricao: '',
+              tipoDeAlimento: '',
+              calorias: 0,
+              quantidade: 0,
+              ingredientes: '',
+              imagem: '',
+              avaliacao: 0,
+              review: ''
+            }}
+            produtos={[]}
+            produtosNaSacola={[]} />
+          }
+        />
       </ThemeProvider>
     </NativeBaseProvider>
   );
