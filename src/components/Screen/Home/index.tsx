@@ -1,4 +1,4 @@
-import { Avatar, Box, HStack, Heading, useTheme, Text, FlatList, StatusBar, Image, ScrollView, Input,  Sacer } from "native-base";
+import { Avatar, Box, HStack, Heading, useTheme, Text, FlatList, StatusBar, Image, ScrollView, Input } from "native-base";
 import AppBar from "../../Common/AppBar";
 import { StyleSheet, TouchableOpacity, View, } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -71,21 +71,21 @@ const HomeScreen = (props: IHomeScreenProps) => {
             <GestureHandlerRootView style={{ flex: 1 }}>
                 <AppBar pageTitle={"Home"} />
 
-                    <TouchableOpacity onPress={onOpen}>
-                <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
-                    <Ionicons name='location' size={24} color='red' />
-                    <Text marginX={1}>Polo Via Corpvs</Text>
+                <TouchableOpacity onPress={onOpen}>
+                    <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
+                        <Ionicons name='location' size={24} color='red' />
+                        <Text marginX={1}>Polo Via Corpvs</Text>
 
-                       <Ionicons name='caret-down' size={15} color='red' />
-                </Box>
-                    </TouchableOpacity>
+                        <Ionicons name='caret-down' size={15} color='red' />
+                    </Box>
+                </TouchableOpacity>
 
 
                 <Modalize
                     ref={modalizeRef}
                     snapPoint={600}
                     overlayStyle={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
-                    >
+                >
                     <Box h={600} backgroundColor={colors.light.background} padding={5}>
                         <Input
                             fontSize={16}
@@ -124,7 +124,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             />
                         </Box>
                     </Box>
-               
+
                 </Modalize>
 
 
@@ -207,7 +207,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                         >
                                             Aberto
                                         </Text>
-                       
+
                                         <Box alignItems='center' flexDirection='row' >
                                             <Ionicons name='ios-star' size={15} color='#fcbb01' />
                                             <Text marginLeft={2}>4,9</Text>
@@ -220,9 +220,9 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             )}
                         />
                     </Box>
-                    </ScrollView>
+                </ScrollView>
             </GestureHandlerRootView>
-        
+
 
         </ThemeProvider >
 
