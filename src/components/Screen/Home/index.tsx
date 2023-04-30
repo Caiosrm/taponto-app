@@ -47,11 +47,23 @@ const HomeScreen = (props: IHomeScreenProps) => {
     //===================================================== State's ==========================================================
     const [colorMode] = useColorMode();
 
-    const caroselitem = ['#e78eea', '#7cdacb', '#6f31fe', '#784e8a', '#ef1541', '#b37784']
+    const caroselitem = [
 
+        '#e78eea',
+        '#7cdacb',
+        '#6f31fe',
+        '#784e8a',
+        '#ef1541',
+        '#b37784',
+
+
+
+
+    ]
     const { width } = Dimensions.get('window')
 
     return (
+
         <ThemeProvider>
 
             <StatusBar />
@@ -68,14 +80,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                     </Box>
                 </TouchableOpacity>
 
-                <Heading
-                    color='white'
-                    marginTop={5}
-                    fontSize="sm"
-                    marginBottom={6}
-                    paddingX={4}
-                >Últimas Cantinas que você visitou
-                </Heading>
 
                 <Modalize
                     ref={modalizeRef}
@@ -123,11 +127,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
                 </Modalize>
 
-                    <Heading
-                        fontSize="lg"
-                        paddingX={4}
-                    >Cantinas
-                    </Heading>
 
                 <ScrollView marginBottom={12}>
                     <Box backgroundColor={colors.light.brancoPuro} marginBottom={5}>
@@ -228,7 +227,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
         </ThemeProvider >
 
     );
-}
+};
 
 export default HomeScreen;
 
