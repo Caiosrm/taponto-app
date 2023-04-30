@@ -6,6 +6,9 @@ import React from "react";
 import { colors } from "../../../themes/Theme";
 import { useColorMode } from "../../../themes/ThemeContext";
 import { Header } from "@react-navigation/stack";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
+
 
 export default function AppBar(props: AppBarProps) {
 
@@ -38,6 +41,7 @@ export default function AppBar(props: AppBarProps) {
 				<Ionicons name='caret-down' size={15} color='red' />
 			</Box>
 
+		
 
 			<Input
 				fontSize={16}

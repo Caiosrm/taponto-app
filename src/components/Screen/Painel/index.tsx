@@ -23,3 +23,7 @@ const PainelScreen = (props: IPainelScreenProps) => {
 };
 
 export default PainelScreen;
+
+
+
+
