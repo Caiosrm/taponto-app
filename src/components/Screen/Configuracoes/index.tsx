@@ -1,6 +1,6 @@
 import { View, Text } from "native-base";
 import React from "react";
-import { IConfiguracoesScreenProps } from "./types";
+import { IConfiguracoesProps } from "./types";
 
     //===================================================== State's ===========================================================
 
@@ -11,7 +11,7 @@ import { IConfiguracoesScreenProps } from "./types";
     //===================================================== HandleChange's ====================================================
 
 
-const ConfiguracoesScreen = (props: IConfiguracoesScreenProps) => {
+const ConfiguracoesScreen = (props: IConfiguracoesProps) => {
 
 
 

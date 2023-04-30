@@ -13,19 +13,26 @@ const HomeScreen = (props: IHomeScreenProps) => {
     //===================================================== State's ==========================================================
     const [colorMode] = useColorMode();
 
-
-
     return (
         <ThemeProvider>
             <StatusBar />
             <AppBar pageTitle={props.pageTitle} />
-            <Box background='#782e0a'  >
-                <Heading color='white' marginTop={5} fontSize="lg" marginBottom={6} paddingX={4}>Ultimas Cantinas</Heading>
-                <FlatList marginBottom={6}
+            <Box background={colors.light.azulTurquesa}>
+
+                <Heading
+                    color='white'
+                    marginTop={5}
+                    fontSize="sm"
+                    marginBottom={6}
+                    paddingX={4}
+                >Últimas Cantinas que você visitou
+                </Heading>
+
+                <FlatList
+                    marginBottom={6}
                     horizontal={true}
                     data={data}
                     renderItem={({ item }) => <Box
-
                     >
                         <HStack flexDirection='column' alignItems='center'>
                             <Avatar
@@ -43,20 +50,27 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 {item.nomerestaurante}
                             </Text>
                         </HStack>
-                    </Box>} />
+                    </Box>
+                    }
+                />
+                <Box
+                    padding={3}
+                    backgroundColor={colors.light.background}
+                >
 
+                    <Heading
+                        fontSize="lg"
+                        paddingX={4}
+                    >Cantinas
+                    </Heading>
 
-
-                <Box padding={3} backgroundColor={colors.light.background}>
-                    <Heading fontSize="lg" paddingX={4}>Cantinas</Heading>
                     <FlatList
-
                         data={data}
                         renderItem={({ item }) => <Box
                             _dark={{ borderColor: "muted.50" }}
                             borderColor="muted.800"
-
-                            py="2">
+                            py="2"
+                        >
                             <HStack>
                                 <Avatar
                                     marginLeft={3}
@@ -68,23 +82,17 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 <Box>
                                     <Text
                                         marginLeft={3}
-
                                         fontSize="md"
                                         _dark={{ color: "warmGray.50" }}
                                         color="coolGray.800">
                                         {item.nomerestaurante}
                                     </Text>
-
                                     <Text
                                         marginLeft={3}
-
                                         fontSize="md"
-                                    >
-                                        jhjy
+                                    >teste
                                     </Text>
-
                                 </Box>
-
                             </HStack>
                         </Box>} />
 
