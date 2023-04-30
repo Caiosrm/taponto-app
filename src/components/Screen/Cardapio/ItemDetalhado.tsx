@@ -1,10 +1,10 @@
 import { ScrollView } from "native-base";
-import { ICardapioScreenProps } from "./types"
+import { ICardapioProps } from "./types"
 import AppBar from "../../Common/AppBar";
 
 
 
-const ItemDetalhado = (props: ICardapioScreenProps) => {
+const ItemDetalhado = (props: ICardapioProps) => {
 
 
     return (

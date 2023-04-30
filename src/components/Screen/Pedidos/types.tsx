@@ -1,4 +1,7 @@
-export interface IPedidosScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil" | "Pedidos",
+export interface IPedidosProps {
+    pageTitle: "Pedidos"
+}
 
+export const initialStatePedidos: IPedidosProps = {
+    pageTitle: "Pedidos"
 }

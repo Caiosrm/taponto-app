@@ -16,7 +16,7 @@ const PerfilScreen = (props: IPerfilScreenProps) => {
 
     return (
         <View>
-            <AppBar pageTitle={"Home"} />
+            <AppBar pageTitle={props.pageTitle} />
 
             <Text> teste </Text>
         </View>

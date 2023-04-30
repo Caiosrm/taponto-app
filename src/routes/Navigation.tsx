@@ -14,9 +14,11 @@ import PedidosScreen from '../components/Screen/Pedidos';
 import Login from '../components/Screen/Login';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
 import PerfilScreen from '../components/Screen/Perfil';
-import { initialStateProduto } from '../components/Screen/Cardapio/types';
 import { initialStateSacola } from '../components/Screen/Sacola/types';
 import { initialStateHome } from '../components/Screen/Home/types';
+import { initialStatePerfil } from '../components/Screen/Perfil/types';
+import { initialStateLogin } from '../components/Screen/Login/types';
+import { initialStateProduto } from '../components/Screen/Cardapio/types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -50,20 +52,18 @@ function AppNavigator() {
 
           <Tab.Screen name="Perfil"
             component={Perfil}
+            initialParams={initialStatePerfil}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
                 else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
               },
             }}
-            initialParams={{ pageTitle: 'perfil' }}
           />
 
           <Tab.Screen name="Login"
-            component={() => <Login
-              // props dddddddddddddddddddd
-              pageTitle="Login" />
-            }
+            component={Login}
+            initialParams={initialStateLogin}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person' size={size} color={color} /> }
@@ -90,10 +90,10 @@ function AppNavigator() {
 
 
         <Stack.Screen
-          name="Cardapio"
+          name="ListarCardapio"
           component={() => <ListarCardapio
             // props 
-            pageTitle="Sacola"
+            pageTitle="Cardapio"
             produto={initialStateProduto}
             produtos={[]}
           />

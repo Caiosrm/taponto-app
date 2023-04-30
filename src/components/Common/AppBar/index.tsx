@@ -44,7 +44,6 @@ export default function AppBar(props: AppBarProps) {
 								name="home-outline"
 								size="sm"
 								color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-
 							/>
 						}
 					/>

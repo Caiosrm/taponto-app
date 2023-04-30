@@ -1,8 +1,8 @@
 import { View } from "native-base";
 import AppBar from "../../Common/AppBar";
-import { IPedidosScreenProps } from "./types";
+import { IPedidosProps } from "./types";
 
-const PedidosScreen = (props: IPedidosScreenProps) => {
+const Pedidos = (props: IPedidosProps) => {
 
 
     return (
@@ -14,4 +14,4 @@ const PedidosScreen = (props: IPedidosScreenProps) => {
     );
 }
 
-export default PedidosScreen;
+export default Pedidos;

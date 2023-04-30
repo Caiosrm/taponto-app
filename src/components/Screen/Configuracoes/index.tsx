@@ -1,6 +1,6 @@
 import { View, Text } from "native-base";
 import React from "react";
-import { IPainelScreenProps } from "./types";
+import { IConfiguracoesScreenProps } from "./types";
 
     //===================================================== State's ===========================================================
 
@@ -11,8 +11,11 @@ import { IPainelScreenProps } from "./types";
     //===================================================== HandleChange's ====================================================
 
 
-const PainelScreen = (props: IPainelScreenProps) => {
+const ConfiguracoesScreen = (props: IConfiguracoesScreenProps) => {
 
+
+
+    
     return (
         <View>
             <Text> teste </Text>
@@ -22,4 +25,4 @@ const PainelScreen = (props: IPainelScreenProps) => {
 
 };
 
-export default PainelScreen;
+export default ConfiguracoesScreen;
