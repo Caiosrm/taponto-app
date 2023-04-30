@@ -1,13 +1,12 @@
-import { Timestamp } from "firebase/firestore";
 
-export interface ICardapioScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil" | "Pedidos",
+export interface ICardapioProps {
+    pageTitle: "Cardapio",
     produto: IProduto; //um produto
     produtos: IProduto[]; //array de produtos
+    
 }
-
 export interface IProduto {
-    id?: any;
+    id: string;
     nome: string;
     lanchonete: string;
     valor: number;
@@ -19,4 +18,21 @@ export interface IProduto {
     imagem: string;
     avaliacao: number;
     review: string;
-}
+};
+
+export const initialStateProduto: IProduto = {
+    id: '',
+    nome: '',
+    lanchonete: '',
+    valor: 0,
+    descricao: '',
+    tipoDeAlimento: '',
+    calorias: 0,
+    quantidade: 0,
+    ingredientes: '',
+    imagem: '',
+    avaliacao: 0,
+    review: '',
+};
+
+export const initialStateProdutos: IProduto[] = [];

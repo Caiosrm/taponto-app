@@ -1,7 +1,9 @@
+import { ICardapioProps } from "../components/Screen/Cardapio/types";
+
 export type RootStackParamList = {
     Home: undefined;
     Login: undefined;
-    Cardapio: undefined;
+    ListarCardapio: ICardapioProps;
     Carteira: undefined;
     ConfigPerfil: undefined;
     Perfil: undefined;

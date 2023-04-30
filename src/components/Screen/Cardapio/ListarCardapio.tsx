@@ -3,17 +3,15 @@ import React, { useEffect } from "react";
 
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
-import { ICardapioScreenProps } from "./types";
+import { ICardapioProps, IProduto, initialStateProduto } from "./types";
 import { getAllProdutos } from "../../../api/getAllProdutos";
 import { colors } from "../../../themes/Theme";
-import { IProduto } from "./types";
-import { lerJSONEnviarFirebase } from "../../../api/postProduto";
 import AppBar from "../../Common/AppBar";
 
-const ListarCardapio = (props: ICardapioScreenProps) => {
+const ListarCardapio = (props: ICardapioProps) => {
     //===================================================== State's ===========================================================
     const [produtos, setProdutos] = React.useState<IProduto[]>([]);
-    const [produto, setProduto] = React.useState<IProduto>(props.produto);
+    const [produto, setProduto] = React.useState<IProduto>(initialStateProduto);
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         const fetchData = async () => {

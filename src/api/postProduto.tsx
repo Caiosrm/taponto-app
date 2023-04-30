@@ -12,10 +12,8 @@ export async function postProduto(produto: any) {
 }
 
 // Método para cadastrar um array de produtos
-export async function lerJSONEnviarFirebase() {
+async function lerJSONEnviarFirebase() {
     for (const produto of dados) {
       await postProduto(produto);
     }
   }
-  
-

@@ -1,10 +1,6 @@
-import { View, Text, extendTheme } from "native-base";
-import { NativeBaseConfigProvider } from "native-base/lib/typescript/core/NativeBaseContext";
+import { View, Text } from "native-base";
 import React from "react";
-import { ICarteiraProps } from "./types";
-
-
-const CarteiraScreen = (props: ICarteiraProps) => {
+import { IConfiguracoesProps } from "./types";
 
     //===================================================== State's ===========================================================
 
@@ -14,10 +10,19 @@ const CarteiraScreen = (props: ICarteiraProps) => {
 
     //===================================================== HandleChange's ====================================================
 
+
+const ConfiguracoesScreen = (props: IConfiguracoesProps) => {
+
+
+
+    
     return (
         <View>
-            
+            <Text> teste </Text>
         </View>
+
     );
+
 };
-export default CarteiraScreen;
+
+export default ConfiguracoesScreen;

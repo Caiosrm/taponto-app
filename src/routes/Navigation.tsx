@@ -13,26 +13,25 @@ import Sacola from '../components/Screen/Sacola';
 import Login from '../components/Screen/Login';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
 import PerfilScreen from '../components/Screen/Perfil';
-import PedidosScreen from '../components/Screen/Pedidos';
+import { initialStateSacola } from '../components/Screen/Sacola/types';
+import { initialStateHome } from '../components/Screen/Home/types';
+import { initialStatePerfil } from '../components/Screen/Perfil/types';
+import { initialStateLogin } from '../components/Screen/Login/types';
+import { initialStateProduto } from '../components/Screen/Cardapio/types';
+import Pedidos from '../components/Screen/Pedidos';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 function AppNavigator() {
+
   return (
     <NativeBaseProvider>
       <ThemeProvider>
         <Tab.Navigator initialRouteName='Cardapio' screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
           <Tab.Screen name="Home"
-            component={() => <Home
-              // props 
-              pageTitle="Home"
-              cantina={{
-                id: '',
-                nome: ''
-              }}
-              cantinas={[]} />
-            }
+            component={Home}
+            initialParams={initialStateHome}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='home' size={size} color={color} /> }
@@ -41,52 +40,9 @@ function AppNavigator() {
             }}
           />
 
-          <Tab.Screen name="Cardapio"
-            component={() => <ListarCardapio
-              // props 
-              pageTitle="Cardapio"
-              produto={{
-                nome: '',
-                lanchonete: '',
-                valor: 0,
-                descricao: '',
-                tipoDeAlimento: '',
-                calorias: 0,
-                quantidade: 0,
-                ingredientes: '',
-                imagem: '',
-                avaliacao: 0,
-                review: ''
-              }}
-              produtos={[]} />
-            }
-            options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Ionicons name='reader' size={size} color={color} /> }
-                else return (<Ionicons name='reader' size={size} color={color} />);
-              },
-            }} />
-
           <Tab.Screen name="Sacola"
-            component={() => <Sacola
-              // props 
-              pageTitle="Sacola"
-              produto={{
-                nome: '',
-                lanchonete: '',
-                valor: 0,
-                descricao: '',
-                tipoDeAlimento: '',
-                calorias: 0,
-                quantidade: 0,
-                ingredientes: '',
-                imagem: '',
-                avaliacao: 0,
-                review: ''
-              }}
-              produtos={[]}
-              produtosNaSacola={[]} />
-            }
+            component={Sacola}
+            initialParams={initialStateSacola}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
@@ -96,23 +52,19 @@ function AppNavigator() {
           />
 
           <Tab.Screen name="Perfil"
-            component={() => <Perfil
-              // props 
-              pageTitle="Perfil" />
-            }
+            component={Perfil}
+            initialParams={initialStatePerfil}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
                 else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
-              }
-            }} initialParams={{ pageTitle: 'perfil' }}
+              },
+            }}
           />
 
           <Tab.Screen name="Login"
-            component={() => <Login
-              // props 
-              pageTitle="Login" />
-            }
+            component={Login}
+            initialParams={initialStateLogin}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person' size={size} color={color} /> }
@@ -122,10 +74,9 @@ function AppNavigator() {
           />
 
           <Tab.Screen name="Pedidos"
-            component={() => <PedidosScreen
+            component={() => <Pedidos
               // props 
               pageTitle="Pedidos" />
-
             }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
@@ -135,7 +86,20 @@ function AppNavigator() {
             }}
           />
 
+
         </Tab.Navigator>
+
+
+        <Stack.Screen
+          name="ListarCardapio"
+          component={() => <ListarCardapio
+            // props 
+            pageTitle="Cardapio"
+            produto={initialStateProduto}
+            produtos={[]}
+          />
+          }
+        />
       </ThemeProvider>
     </NativeBaseProvider>
   );

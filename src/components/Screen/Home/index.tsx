@@ -68,6 +68,14 @@ const HomeScreen = (props: IHomeScreenProps) => {
                     </Box>
                 </TouchableOpacity>
 
+                <Heading
+                    color='white'
+                    marginTop={5}
+                    fontSize="sm"
+                    marginBottom={6}
+                    paddingX={4}
+                >Últimas Cantinas que você visitou
+                </Heading>
 
                 <Modalize
                     ref={modalizeRef}
@@ -115,6 +123,11 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
                 </Modalize>
 
+                    <Heading
+                        fontSize="lg"
+                        paddingX={4}
+                    >Cantinas
+                    </Heading>
 
                 <ScrollView marginBottom={12}>
                     <Box backgroundColor={colors.light.brancoPuro} marginBottom={5}>

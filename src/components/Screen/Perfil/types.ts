@@ -1,4 +1,10 @@
 export interface IPerfilScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil" | "Pedidos",
+    
+    pageTitle?: "Perfil",
+    userId?: string;
+}
 
+export const initialStatePerfil: IPerfilScreenProps = {
+    pageTitle: "Perfil",
+    userId: '',
 }
