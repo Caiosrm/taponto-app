@@ -19,10 +19,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
         <ThemeProvider>
             <StatusBar />
             <AppBar pageTitle={props.pageTitle} />
-
-
-
-
             <Box background='#782e0a'  >
                 <Heading color='white' marginTop={5} fontSize="lg" marginBottom={6} paddingX={4}>Ultimas Cantinas</Heading>
                 <FlatList marginBottom={6}

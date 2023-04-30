@@ -1,12 +1,17 @@
 export interface IHomeScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil" | "Pedidos",
-
-    cantina: ICantina;
-    cantinas: ICantina[];
+    pageTitle?: "Home",
+    cantina?: any;
+    cantinas?: any[];
 }
 
 interface ICantina {
     id: string;
     nome: string;
     
+}
+
+export const initialStateHome: IHomeScreenProps = {
+    pageTitle: "Home",
+    cantina: undefined,
+    cantinas: []
 }

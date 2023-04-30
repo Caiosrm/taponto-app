@@ -1,8 +1,14 @@
-import { IProduto } from "../Cardapio/types";
-
+import { IProduto, initialStateProduto } from "../Cardapio/types";
 export interface ISacolaScreenProps {
-    pageTitle: "Home" | "Login" | "Cardapio" | "Sacola" | "Carteira" | "Perfil";
-    produtosNaSacola: any[];
-    produto: IProduto; //um produto
-    produtos: IProduto[]; //array de produtos
+        pageTitle?: "Sacola";
+        produtosNaSacola?: any[];
+        produto?: IProduto;
+}
+
+export const initialStateSacola: ISacolaScreenProps = {
+    pageTitle: "Sacola",
+    produtosNaSacola: [],
+    produto: initialStateProduto
+    
+
 }

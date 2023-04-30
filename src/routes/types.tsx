@@ -1,10 +1,16 @@
 export type RootStackParamList = {
     Home: undefined;
     Login: undefined;
-    Cardapio: undefined;
+    Cardapio: {
+        cantinaId: string
+    };
     Carteira: undefined;
-    ConfigPerfil: undefined;
-    Perfil: undefined;
+    ConfigPerfil: {
+        userId: string
+    };
+    Perfil: {
+        userId: string
+    };
     Pedidos: undefined;
     Sacola: undefined;
 };

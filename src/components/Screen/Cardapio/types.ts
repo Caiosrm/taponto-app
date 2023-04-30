@@ -21,7 +21,7 @@ export interface IProduto {
     review: string;
 }
 
-export const initialState: IProduto = {
+export const initialStateProduto: IProduto = {
     nome: '',
     lanchonete: '',
     valor: 0,
@@ -33,4 +33,4 @@ export const initialState: IProduto = {
     imagem: '',
     avaliacao: 0,
     review: ''
-  };
+};

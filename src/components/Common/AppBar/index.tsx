@@ -26,9 +26,7 @@ export default function AppBar(props: AppBarProps) {
 				backgroundColor={
 					colorMode === "light" ? colors.light.background : colors.dark.background
 				}
-				barStyle={
-					colorMode === "light" ? "dark-content" : "light-content"
-				}
+				barStyle={colorMode === "light" ? "dark-content" : "light-content"}
 			/>
 			<HStack
 				bg={colors.light.azulTurquesa}
@@ -45,11 +43,7 @@ export default function AppBar(props: AppBarProps) {
 								as={Ionicons}
 								name="home-outline"
 								size="sm"
-								color={
-									colorMode === "light"
-										? colors.light.brancoPuro
-										: colors.dark.pretoPuro
-								}
+								color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 
 							/>
 						}
@@ -70,10 +64,7 @@ export default function AppBar(props: AppBarProps) {
 								name="theme-light-dark"
 								size="sm"
 								color={
-									colorMode === "light"
-										? colors.light.brancoPuro
-										: colors.dark.pretoPuro
-								}
+									colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 								onPress={handleToggleTheme}
 							/>
 						}
@@ -85,10 +76,7 @@ export default function AppBar(props: AppBarProps) {
 								name="search"
 								size="sm"
 								color={
-									colorMode === "light"
-										? colors.light.brancoPuro
-										: colors.dark.pretoPuro
-								}
+									colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 							/>
 						}
 					/>
