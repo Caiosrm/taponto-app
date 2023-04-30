@@ -39,8 +39,7 @@ export default function AppBar(props: AppBarProps) {
 				<HStack alignItems="center">
 					<IconButton
 						icon={
-							<Icon
-								as={Ionicons}
+							<Icon as={Ionicons}
 								name="home-outline"
 								size="sm"
 								color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
@@ -58,12 +57,10 @@ export default function AppBar(props: AppBarProps) {
 				<HStack>
 					<IconButton
 						icon={
-							<Icon
-								as={MaterialCommunityIcons}
+							<Icon as={MaterialCommunityIcons}
 								name="theme-light-dark"
 								size="sm"
-								color={
-									colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
+								color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 								onPress={handleToggleTheme}
 							/>
 						}
