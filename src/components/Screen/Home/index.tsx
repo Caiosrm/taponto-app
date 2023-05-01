@@ -74,10 +74,12 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 O que você quer pedir agora?
                             </Text>
                         </Box>
+
                         <Box>
                             <Avatar></Avatar>
                         </Box>
                     </Box>
+
                     <Input
                         fontSize={16}
                         bg='#e6e6e6'
@@ -85,10 +87,12 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         borderRadius={10}
                         padding={2}
                         placeholder="Prato ou cantina"
-                        InputLeftElement={<Box marginLeft={2}>
+                        InputLeftElement={
+                        <Box marginLeft={2}>
                             <Ionicons name='search' size={24} color='red' />
                         </Box>}
-                        InputRightElement={<Box marginRight={2}>
+                        InputRightElement={
+                        <Box marginRight={2}>
                             <Ionicons name="filter" size={24} color="red" />
                         </Box>} />
                 </Box>
