@@ -185,7 +185,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             fontSize="xs"
                                             color="black"
                                         >
-                                            {item.nomerestaurante}
+                                            {item.nome}
                                         </Text>
                                     </Box>
                                 </Box>
@@ -240,7 +240,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             _dark={{ color: "warmGray.50" }}
                                             color="coolGray.800"
                                         >
-                                            {item.nomerestaurante}
+                                            {item.nome}
                                         </Text>
                                         <Text
                                             fontSize="sm"

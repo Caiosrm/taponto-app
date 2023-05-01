@@ -5,6 +5,7 @@ import React from "react";
 import { getFirestore, getDocs, collection, Firestore } from "firebase/firestore";
 import firebase from 'firebase/app';
 
+
 //Método para retornar os produtos cadastrados
 export async function getAllProdutos() {
 	const db = getFirestore(app);
@@ -35,5 +36,15 @@ export async function getAllProdutos() {
 		console.log(error);
 		return [];
 	}
+}
+
+
+export async function getAllClientes() {
+
+}
+
+
+export async function getAllCantinas() {
+
 }
 
