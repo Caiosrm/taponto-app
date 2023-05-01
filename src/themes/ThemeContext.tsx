@@ -2,29 +2,31 @@ import React from 'react';
 
 type ThemeContextType = {
     colorMode: string;
-    toggleColorMode: React.Dispatch<React.SetStateAction<any>>;
+    toggleColorMode: () => void;
 };
 
-export const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = React.createContext<ThemeContextType>({
+    colorMode: 'light',
+    toggleColorMode: () => {},
+});
 
 type ThemeProviderProps = {
     children: React.ReactNode;
 };
 
-export const useColorMode = (): [string, React.Dispatch<React.SetStateAction<string>>] => {
+export const ThemeProvider = (props: ThemeProviderProps) => {
     const [colorMode, setColorMode] = React.useState<string>('light');
-    return [colorMode, setColorMode];
-}
+    
+    const toggleColorMode = () => {
+        setColorMode(colorMode === 'light' ? 'dark' : 'light');
+    };
 
-export function ThemeProvider(props: ThemeProviderProps) {
-    const [colorMode, toggleColorMode] = useColorMode();
     return (
         <ThemeContext.Provider value={{ colorMode, toggleColorMode }}>
             {props.children}
         </ThemeContext.Provider>
-        
     );
-}
+};
 
 export function useTheme() {
     const context = React.useContext(ThemeContext);

@@ -10,6 +10,12 @@ interface ICantina {
     id: string;
     nome: string;
     status: "Aberto" | "Fechado";
+}
+
+interface ICliente {
+    id: string;
+    nome: string;
+    matricula: string;
     
 }
 
