@@ -1,27 +1,15 @@
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { Box, Text, Avatar, Input, Heading, View, HStack, Icon, IconButton, ScrollView } from "native-base";
+import { Text, View, HStack, Icon, IconButton } from "native-base";
 import { AppBarProps } from "./types";
 import React from "react";
 import { colors } from "../../../themes/Theme";
-import { useColorMode } from "../../../themes/ThemeContext";
-import { Header } from "@react-navigation/stack";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { StatusBar, TouchableOpacity } from "react-native";
+import { useTheme } from "../../../themes/ThemeContext";
+import { StatusBar } from "react-native";
 
 
 export default function AppBar(props: AppBarProps) {
 
-	const [colorMode, toggleColorMode] = useColorMode();
-
-	function handleToggleTheme() {
-		if (colorMode === "light") {
-			toggleColorMode("dark");
-			console.log(colorMode)
-		} else {
-			toggleColorMode("light");
-			console.log(colorMode)
-		}
-	}
+	const { colorMode, toggleColorMode } = useTheme();
 
 
 	return (
@@ -30,7 +18,7 @@ export default function AppBar(props: AppBarProps) {
 				backgroundColor={colorMode === "light" ? colors.light.background : colors.dark.background}
 				barStyle={colorMode === "light" ? "dark-content" : "light-content"} />
 			<HStack
-				bg={colors.light.azulTurquesa}
+				bg={colorMode === "light" ? colors.light.azulTurquesa : colors.dark.azulPetroleo}
 				px="1"
 				py="3"
 				justifyContent="space-between"
@@ -57,7 +45,7 @@ export default function AppBar(props: AppBarProps) {
 							name="theme-light-dark"
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-							onPress={handleToggleTheme} />} />
+							onPress={toggleColorMode} />} />
 					<IconButton
 						icon={<Icon
 							as={MaterialIcons}
@@ -66,7 +54,6 @@ export default function AppBar(props: AppBarProps) {
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
 				</HStack>
 			</HStack>
-			
 		</View>
 	);
 }

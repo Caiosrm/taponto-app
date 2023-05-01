@@ -1,29 +1,28 @@
-import { Avatar, Box, HStack, Heading, useTheme, Text, FlatList, StatusBar, Image, ScrollView, Input } from "native-base";
+import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Input, Badge } from "native-base";
 import AppBar from "../../Common/AppBar";
-import { StyleSheet, TouchableOpacity, View, } from 'react-native'
+import { TouchableOpacity, } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import React, { useContext, useRef, useState, } from 'react';
-import CardapioScreen from "../Cardapio/ListarCardapio";
+import React, { useRef, } from 'react';
 import { IHomeScreenProps } from "./types";
 import { data } from "../../../__mocks__/data";
-import theme, { colors } from "../../../themes/Theme";
-import { useColorMode } from "../../../themes/ThemeContext";
-import { ThemeContext, ThemeProvider } from "../../../themes/ThemeContext";
+import { colors } from "../../../themes/Theme";
+import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Modalize } from "react-native-modalize";
 
+const caroselitem = [
+    '#e78eea',
+    '#7cdacb',
+    '#6f31fe',
+    '#784e8a',
+    '#ef1541',
+    '#b37784',
+]
 
-const HomeScreen = (props: IHomeScreenProps) => {
-
-    const modalizeRef = useRef<Modalize>(null);
-
-    const onOpen = () => {
-        modalizeRef.current?.open();
-    };
-
-    const polosdata = [{
+const Polos = [
+    {
         id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
         nomepolo: "Polo Via Corpvs",
         nomerua: 'Rua Eliseu Uchôa Becco ',
@@ -38,36 +37,36 @@ const HomeScreen = (props: IHomeScreenProps) => {
     }, {
         id: "58694a0f-3da1-471f-bd96-145571e29d72",
         nomepolo: "Polo Centro",
-        nomerua: 'Rua Artur Ramos ',
+        nomerua: 'Rua Artur Ramos',
         numerorua: '243'
-
     }
 
-    ];
-    //===================================================== State's ==========================================================
-    const [colorMode] = useColorMode();
+];
 
-    const caroselitem = [
-        '#e78eea',
-        '#7cdacb',
-        '#6f31fe',
-        '#784e8a',
-        '#ef1541',
-        '#b37784',
-    ]
+const HomeScreen = (props: IHomeScreenProps) => {
+
+    const onOpen = () => { modalizeRef.current?.open() };
+
+    const { colorMode, toggleColorMode } = useTheme();
+
+    //===================================================== State's ==========================================================
+
+    const modalizeRef = useRef<Modalize>(null);
+
     const { width } = Dimensions.get('window')
 
     return (
 
         <ThemeProvider>
+
             <StatusBar />
 
             <GestureHandlerRootView style={{ flex: 1 }}>
-                <AppBar pageTitle={"Home"} />
+                <AppBar pageTitle={props.pageTitle} />
                 <Box bg={colors.light.azulTurquesa} padding={5}>
                     <Box marginBottom={6} flexDirection='row' justifyContent='space-between'>
                         <Box>
-                            <Heading color={colors.light.brancoPuro}>
+                            <Heading color={colorMode === 'light' ? colors.light.brancoPuro : colors.light.pretoPuro}>
                                 Olá, Alisson.
                             </Heading>
                             <Text color={colors.light.brancoPuro}>
@@ -78,29 +77,29 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             <Avatar></Avatar>
                         </Box>
                     </Box>
-                    <Input
+                    <Input placeholder="Prato ou cantina"
                         fontSize={16}
                         bg='#e6e6e6'
                         borderWidth={0}
                         borderRadius={10}
                         padding={2}
-                        placeholder="Prato ou cantina"
-                        InputLeftElement={<Box marginLeft={2}>
-                            <Ionicons name='search' size={24} color='red' />
-                        </Box>}
-                        InputRightElement={<Box marginRight={2}>
-                            <Ionicons name="filter" size={24} color="red" />
-                        </Box>} />
+                        InputLeftElement={
+                            <Box marginLeft={2}>
+                                <Ionicons name='search' size={24} color='red' />
+                            </Box>}
+                        InputRightElement={
+                            <Box marginRight={2}>
+                                <Ionicons name="filter" size={24} color="red" />
+                            </Box>} />
                 </Box>
 
                 <Box bg={colors.light.azulTurquesa}>
                     <TouchableOpacity onPress={onOpen}>
-                        <Box marginLeft={5}
-                            alignItems='center'
-                            marginBottom={5}
-                            flexDirection={'row'}>
+                        <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
                             <Ionicons name='location' size={24} color='red' />
-                            <Text color={colors.light.brancoPuro} marginX={1} >Polo Via Corpvs</Text>
+                            <Text color={colors.light.brancoPuro} marginX={1}>
+                                Polo Via Corpvs
+                            </Text>
                             <Ionicons name='caret-down' size={15} color='red' />
                         </Box>
                     </TouchableOpacity>
@@ -128,17 +127,17 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 </Box>
                             }
                         />
-                        <Box >
+                        <Box>
                             <FlatList
-                                data={polosdata}
+                                data={Polos}
                                 renderItem={({ item }) => (
                                     <Box
+                                        backgroundColor={colors.light.brancoPuro}
+                                        alignItems='center'
+                                        flexDirection='row'
                                         borderRadius={5}
                                         marginBottom={3}
                                         shadow={2}
-                                        backgroundColor={colors.light.brancoPuro}
-                                        flexDirection='row'
-                                        alignItems='center'
                                         h={20}
                                         py="2"
                                     >
@@ -160,20 +159,15 @@ const HomeScreen = (props: IHomeScreenProps) => {
                     </Box>
                 </Modalize>
 
-
                 <ScrollView marginBottom={12}>
                     <Box backgroundColor={colors.light.brancoPuro} marginBottom={5}>
-                        <Heading
-                            marginTop={5}
-                            fontSize="sm"
-                            paddingX={4}
-                        >
+                        <Heading marginTop={5} fontSize="sm" paddingX={4}>
                             Cantinas abertas agora
                         </Heading>
                         <FlatList
                             showsHorizontalScrollIndicator={false}
-                            pagingEnabled
                             keyExtractor={(item) => String(item)}
+                            pagingEnabled
                             horizontal
                             data={data}
                             renderItem={({ item }) =>
@@ -219,6 +213,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             </Box>
                         )}
                     />
+
                     <Box
                         justifyContent='space-between'
                         padding={3}
@@ -228,9 +223,9 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         <Heading marginBottom={5} fontSize="lg">
                             Cantinas
                         </Heading>
-                        <FlatList
-                            data={data}
-                            renderItem={({ item }) => (
+
+                        <Box>
+                            <FlatList data={data} renderItem={({ item }) => (
                                 <Box alignItems='center' flexDirection='row' py="2">
                                     <Avatar
                                         height={16}
@@ -251,7 +246,9 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             _dark={{ color: "warmGray.50" }}
                                             color="coolGray.600"
                                         >
-                                            Aberto
+                                            <Badge colorScheme="success" size={"sm"} alignSelf="center" variant={"outline"}>
+                                                ABERTO
+                                            </Badge>
                                         </Text>
                                         <Box alignItems='center' flexDirection='row' >
                                             <Ionicons name='ios-star' size={15} color='#fcbb01' />
@@ -263,12 +260,11 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     </Box>
                                 </Box>
                             )}
-                        />
+                            />
+                        </Box>
                     </Box>
                 </ScrollView>
             </GestureHandlerRootView>
-
-
         </ThemeProvider >
 
     );
