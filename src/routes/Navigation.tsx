@@ -85,21 +85,22 @@ function AppNavigator() {
             }}
           />
 
+          <Stack.Screen
+            name="ListarCardapio"
+            component={() => <ListarCardapio
+              // props 
+              pageTitle="Cardapio"
+              idProduto={''}
+              produto={initialStateProduto}
+              idProdutos={''}
+              produtos={[]}
+            />}
+          />
 
         </Tab.Navigator>
 
 
-        <Stack.Screen
-          name="ListarCardapio"
-          component={() => <ListarCardapio
-            // props 
-            pageTitle="Cardapio"
-            idProduto={''}
-            produto={initialStateProduto}
-            idProdutos={''}
-            produtos={[]}
-          />}
-        />
+
       </ThemeProvider>
     </NativeBaseProvider>
   );
