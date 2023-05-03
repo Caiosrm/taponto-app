@@ -77,16 +77,18 @@ const ListarCardapio = (props: ICardapioProps) => {
                         <Box
                         alignItems='flex-start'>
                             <Box
-                                flexDirection='column'
-                                alignItems='center'
-                                justifyContent='center'
+                               
                             >
                                 <TouchableOpacity>
-                                    <Button backgroundColor='green.400' >
-                                        Adicionar à Sacola
+                                    <Button  >
+                                       +
+                                    </Button>
+                                    <Text>1</Text>
+                                    <Button  >
+                                       -
                                     </Button>
                                 </TouchableOpacity>
-                                <Text> Disponíveis: {item.quantidade}</Text>
+                                
                             </Box>
                         </Box>
                     </HStack>

@@ -19,6 +19,7 @@ import { initialStateHome } from '../components/Screen/Home/types';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
 import { initialStateLogin } from '../components/Screen/Login/types';
 import { initialStateProduto } from '../components/Screen/Cardapio/types';
+import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -87,10 +88,12 @@ function AppNavigator() {
           />
 
           <Stack.Screen
+          
             name="ListarCardapio"
-            component={() => <ListarCardapio
+            component={() => <ItemDetalhado
               // props 
               pageTitle="Cardapio"
+              
               idProduto={''}
               produto={initialStateProduto}
               idProdutos={''}
