@@ -29,7 +29,7 @@ function AppNavigator() {
     <NativeBaseProvider>
       <ThemeProvider>
         <Tab.Navigator initialRouteName='ListarCardapio' screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
-          
+
           <Tab.Screen name="Home"
             component={Home}
             initialParams={initialStateHome}
@@ -86,21 +86,25 @@ function AppNavigator() {
             }}
           />
 
+          <Stack.Screen
+            name="ListarCardapio"
+            component={() => <ListarCardapio
+              // props 
+              pageTitle="Cardapio"
+              idProduto={''}
+              produto={initialStateProduto}
+              idProdutos={''}
+              produtos={[]}
+            />}
+          />
 
         </Tab.Navigator>
 
 
-        <Stack.Screen
-          name="ListarCardapio"
-          component={() => <ListarCardapio
-            // props 
-            pageTitle="Cardapio"
-            idProduto={''}
-            produto={initialStateProduto}
-            idProdutos={''}
-            produtos={[]}
-          />}
-        />
+
+
+
+
       </ThemeProvider>
     </NativeBaseProvider>
   );
