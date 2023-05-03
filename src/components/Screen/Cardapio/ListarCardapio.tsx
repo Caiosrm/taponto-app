@@ -4,10 +4,9 @@ import React, { useEffect } from "react";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioProps, IProduto, initialStateProduto } from "./types";
-import { getAllProdutos } from "../../../api/getAllProdutos";
+import { getAllProdutos } from "../../../api/requests/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
-import { lerJSONEnviarFirebase } from "../../../api/postProduto";
 
 const ListarCardapio = (props: ICardapioProps) => {
     //===================================================== State's ===========================================================

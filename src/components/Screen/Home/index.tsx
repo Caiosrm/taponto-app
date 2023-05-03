@@ -11,8 +11,8 @@ import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Modalize } from "react-native-modalize";
-import { getAllCantinas } from "../../../api/getAllProdutos";
 import { ICantinaProps } from "../Cantina/types";
+import { getAllCantinas } from "../../../api/requests/getAllCantinas";
 
 
 

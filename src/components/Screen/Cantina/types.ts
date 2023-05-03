@@ -17,6 +17,3 @@ export interface ICantinaProps {
         pedidos: IPedidoProps[];
     }
 }
-
-
-

@@ -75,7 +75,10 @@ function AppNavigator() {
           <Tab.Screen name="Pedidos"
             component={() => <PedidosScreen
               // props 
-              pageTitle="Pedidos" />
+              pageTitle="Pedidos"
+              produto={initialStateProduto}
+              produtos={[]}
+            />
             }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {

@@ -2,7 +2,7 @@ import { View, Text } from "native-base";
 import React, { useEffect } from "react";
 import { IPerfilScreenProps } from "./types";
 import AppBar from "../../Common/AppBar";
-import { lerJSONEnviarFirebase } from "../../../api/postProduto";
+import { lerJSONEnviarFirebase } from "../../../api/requests/postProduto";
 
 const PerfilScreen = (props: IPerfilScreenProps) => {
 
