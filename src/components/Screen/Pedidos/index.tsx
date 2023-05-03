@@ -1,8 +1,8 @@
 import { View } from "native-base";
 import AppBar from "../../Common/AppBar";
-import { IPedidosProps } from "./types";
+import { IPedidoProps } from "./types";
 
-const Pedidos = (props: IPedidosProps) => {
+const Pedidos = (props: IPedidoProps) => {
 
 
     return (

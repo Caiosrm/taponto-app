@@ -7,6 +7,7 @@ import { ICardapioProps, IProduto, initialStateProduto } from "./types";
 import { getAllProdutos } from "../../../api/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
+import { lerJSONEnviarFirebase } from "../../../api/postProduto";
 
 const ListarCardapio = (props: ICardapioProps) => {
     //===================================================== State's ===========================================================
@@ -19,6 +20,8 @@ const ListarCardapio = (props: ICardapioProps) => {
             setProdutos(produtos);
         };
         fetchData();
+
+        
     }, []);
 
 

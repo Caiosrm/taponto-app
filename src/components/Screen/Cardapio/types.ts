@@ -1,7 +1,9 @@
 
 export interface ICardapioProps {
     pageTitle: "Cardapio",
+    idProduto:string;
     produto: IProduto; //um produto
+    idProdutos:string;
     produtos: IProduto[]; //array de produtos
     
 }

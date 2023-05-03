@@ -94,10 +94,11 @@ function AppNavigator() {
           component={() => <ListarCardapio
             // props 
             pageTitle="Cardapio"
+            idProduto={''}
             produto={initialStateProduto}
+            idProdutos={''}
             produtos={[]}
-          />
-          }
+          />}
         />
       </ThemeProvider>
     </NativeBaseProvider>

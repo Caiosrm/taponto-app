@@ -1,8 +1,13 @@
 import React from 'react'
-import { ICantinaScreenProps } from './types'
+import { ICantinaProps } from './types'
 
-export default function CantinaScreen(props: ICantinaScreenProps) {
+
+
+
+export default function CantinaScreen(props: ICantinaProps) {
+
   return (
-    <div>index</div>
+    <div></div>
   )
+
 }

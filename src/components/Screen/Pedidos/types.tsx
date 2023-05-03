@@ -1,7 +1,15 @@
-export interface IPedidosProps {
-    pageTitle: "Pedidos"
+import { IProduto, initialStateProduto } from "../Cardapio/types";
+
+export interface IPedidoProps {
+    pageTitle: "Pedidos";
+    status?: string;
+    produto: IProduto;
+    produtos: IProduto[];
 }
 
-export const initialStatePedidos: IPedidosProps = {
-    pageTitle: "Pedidos"
+
+export const initialStatePedido: IPedidoProps = {
+    pageTitle: "Pedidos",
+    produto: initialStateProduto,
+    produtos: []
 }
