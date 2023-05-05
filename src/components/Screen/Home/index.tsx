@@ -49,16 +49,12 @@ const Polos = [
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
-    const [cantinas, setCantinas] = React.useState<ICantinaProps[]>();
-
-    const onOpen = () => { modalizeRef.current?.open() };
-
-    const { colorMode, toggleColorMode } = useTheme();
-
     //===================================================== State's ==========================================================
 
+    const [cantinas, setCantinas] = React.useState<ICantinaProps[]>();
+    const onOpen = () => { modalizeRef.current?.open() };
+    const { colorMode, toggleColorMode } = useTheme();
     const modalizeRef = useRef<Modalize>(null);
-
     const { width } = Dimensions.get('window')
 
 
@@ -81,8 +77,8 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 <AppBar pageTitle={props.pageTitle} />
                 <ScrollView marginBottom={12}>
 
-                    <Box //HEADER "BEM-VINDO" 
-                        bg={colors.light.azulTurquesa} padding={5}>
+                    <Box //HEADER "BEM-VINDO"  
+                    bg={colors.light.azulTurquesa} padding={5}>
                         <Box marginBottom={6} flexDirection='row' justifyContent='space-between'>
                             <Box>
                                 <Heading color={colorMode === 'light' ? colors.light.brancoPuro : colors.light.pretoPuro}>

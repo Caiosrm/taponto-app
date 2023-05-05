@@ -11,7 +11,7 @@ export interface IProduto {
     id: string;
     nome: string;
     lanchonete: string;
-    valor: number;
+    valorUnitario: number;
     descricao: string;
     tipoDeAlimento: string;
     calorias: number;
@@ -26,7 +26,7 @@ export const initialStateProduto: IProduto = {
     id: '',
     nome: '',
     lanchonete: '',
-    valor: 0,
+    valorUnitario: 0,
     descricao: '',
     tipoDeAlimento: '',
     calorias: 0,

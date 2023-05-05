@@ -3,6 +3,8 @@ export interface ISacolaScreenProps {
         pageTitle?: "Sacola";
         produtosNaSacola?: any[];
         produto?: IProduto;
+        valorTotal?: number;
+
 }
 
 export const initialStateSacola: ISacolaScreenProps = {

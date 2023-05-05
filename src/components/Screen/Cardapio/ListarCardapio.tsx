@@ -20,7 +20,7 @@ const ListarCardapio = (props: ICardapioProps) => {
         };
         fetchData();
 
-        
+
     }, []);
 
 
@@ -31,66 +31,68 @@ const ListarCardapio = (props: ICardapioProps) => {
             flex={1}
             backgroundColor={colors.light.background}
         >
-            <AppBar pageTitle={props.pageTitle} />
+            <AppBar/>
 
-            <FlatList 
-            data={produtos} 
-            renderItem={({ item }) =>
-                <Box
-                    shadow={2}
-                    justifyContent='center'
-                    padding={5} h={120}
-                    borderRadius={5}
-                    marginBottom={3}
-                    backgroundColor={colors.light.brancoPuro}
-                    py="2"
-                >
-                    <HStack
-                        alignItems='center'
-                        space={[2, 3]}
-                        justifyContent="space-between"
+            <FlatList
+                data={produtos}
+                renderItem={({ item }) =>
+                    <Box
+                        shadow={2}
+                        justifyContent='center'
+                        padding={5} h={120}
+                        borderRadius={5}
+                        marginBottom={3}
+                        backgroundColor={colors.light.brancoPuro}
+                        py="2"
                     >
-                        <Avatar
-                            size="90px"
-                            source={{ uri: item.imagem }}
-                        />
-                        <VStack>
-                            <Text
-                                _dark={{ color: "warmGray.50" }}
-                                color="#000000"
-                                bold
-                            >{item.nome}
-                            </Text>
-                            <Text
-                                _dark={{ color: "warmGray.50" }}
-                                color="#000000"
-                            >{item.lanchonete}
-                            </Text>
-                            <Text
-                                _dark={{ color: "coolGray.800" }}
-                                color="#000000"
-                            >R${item.valor}
-                            </Text>
-                        </VStack>
-                        <Spacer/>
-                        <Box
-                        alignItems='flex-start'>
+                        <HStack
+                            alignItems='center'
+                            space={[2, 3]}
+                            justifyContent="space-between"
+                        >
+                            <Avatar
+                                size="90px"
+                                source={{ uri: item.imagem }}
+                            />
+                            <VStack>
+                                <Text
+                                    _dark={{ color: "warmGray.50" }}
+                                    color="#000000"
+                                    bold
+                                >{item.nome}
+                                </Text>
+                                <Text
+                                    _dark={{ color: "warmGray.50" }}
+                                    color="#000000"
+                                >{item.lanchonete}
+                                </Text>
+                                <Text
+                                    _dark={{ color: "coolGray.800" }}
+                                    color="#000000"
+                                >R${item.valorUnitario}
+                                </Text>
+                            </VStack>
+                            <Spacer />
                             <Box
-                                flexDirection='column'
-                                alignItems='center'
-                                justifyContent='center'
-                            >
-                                <TouchableOpacity>
-                                    <Button backgroundColor='green.400' >
-                                        Adicionar à Sacola
-                                    </Button>
-                                </TouchableOpacity>
-                                <Text> Disponíveis: {item.quantidade}</Text>
+                                alignItems='flex-start'>
+                                <Box
+
+                                >
+                                    <TouchableOpacity>
+                                        <Button  >
+                                            +
+                                        </Button>
+                                        <Text>1</Text>
+                                        <Button  >
+                                            -
+                                        </Button>
+                                    </TouchableOpacity>
+
+                                </Box>
                             </Box>
-                        </Box>
-                    </HStack>
-                </Box>
-            } keyExtractor={item => item.id}
+                        </HStack>
+                    </Box>
+                } keyExtractor={item => item.id}
             />
         </Box>
     );

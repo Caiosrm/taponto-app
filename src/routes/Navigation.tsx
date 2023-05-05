@@ -19,6 +19,7 @@ import { initialStateHome } from '../components/Screen/Home/types';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
 import { initialStateLogin } from '../components/Screen/Login/types';
 import { initialStateProduto } from '../components/Screen/Cardapio/types';
+import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -28,7 +29,8 @@ function AppNavigator() {
   return (
     <NativeBaseProvider>
       <ThemeProvider>
-        <Tab.Navigator initialRouteName='Cardapio' screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
+        <Tab.Navigator initialRouteName='ListarCardapio' screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
+
           <Tab.Screen name="Home"
             component={Home}
             initialParams={initialStateHome}
@@ -75,10 +77,7 @@ function AppNavigator() {
           <Tab.Screen name="Pedidos"
             component={() => <PedidosScreen
               // props 
-              pageTitle="Pedidos"
-              produto={initialStateProduto}
-              produtos={[]}
-            />
+              pageTitle="Pedidos" produto={initialStateProduto} produtos={[]} />
             }
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
@@ -89,10 +88,12 @@ function AppNavigator() {
           />
 
           <Stack.Screen
+          
             name="ListarCardapio"
-            component={() => <ListarCardapio
+            component={() => <ItemDetalhado
               // props 
               pageTitle="Cardapio"
+              
               idProduto={''}
               produto={initialStateProduto}
               idProdutos={''}
@@ -101,6 +102,9 @@ function AppNavigator() {
           />
 
         </Tab.Navigator>
+
+
+
 
 
 
