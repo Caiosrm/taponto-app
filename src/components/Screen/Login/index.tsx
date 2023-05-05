@@ -1,18 +1,52 @@
 import { View, Button, Text, VStack, Image, Input, Box, Link, FormControl, Center } from 'native-base'
 import { GestureResponderEvent, TouchableOpacity } from 'react-native'
 import Logo from '../../../../assets/Logotipo.png'
+import { useNavigation } from '@react-navigation/native';
 import { ILoginScreenProps } from './types'
 import AppBar from '../../Common/AppBar'
+import { useState } from 'react'
+import { auth } from "../../../../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type RootStackParamList = {
+    Home: undefined;
+    Sacola: undefined;
+    Perfil: undefined;
+    Login: undefined;
+    Cadastro: undefined;
+    Pedidos: undefined;
+    ListarCardapio: undefined;
+  };
+  
+  type ILoginScreenProps = {
+    navigation: StackNavigationProp<RootStackParamList, 'Login'>;
+  };
 
 export default function Login(props: ILoginScreenProps) {
 
-    //===================================================== State's ===========================================================
+    
 
 
-    //===================================================== useEffect's =======================================================
+    async function logar() {
+        
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((dadosdousuario) => {
+                console.log(dadosdousuario);
+                props.navigation.navigate('Home');
+            })
+            .catch((error) => {
+                console.log(error);
+                alert(error)
+            
+                
+            });
 
-
-    //===================================================== HandleChange's ====================================================
+        setEmail('');
+        setSenha('');
+    }
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
 
 
 
@@ -30,6 +64,8 @@ export default function Login(props: ILoginScreenProps) {
                     <Input placeholder='Insira seu endereço de email'
                         size="lg"
                         w="100%"
+                        value={email}
+                        onChangeText={texto => setEmail(texto)}
                         borderRadius="lg"
                         bgColor="gray.100"
                         shadow={3} />
@@ -38,6 +74,8 @@ export default function Login(props: ILoginScreenProps) {
                     <FormControl.Label>Senha</FormControl.Label>
                     <Input placeholder='Insira sua senha'
                         size="lg"
+                        value={senha}
+                        onChangeText={texto => setSenha(texto)}
                         w="100%"
                         borderRadius="lg"
                         bgColor="gray.100"
@@ -45,7 +83,7 @@ export default function Login(props: ILoginScreenProps) {
                     />
                 </FormControl>
             </Box>
-            <Button bg={'red.700'} w='100%' mt={10} borderRadius={'lg'}>
+            <Button onPress={() => logar()} bg={'red.700'} w='100%' mt={10} borderRadius={'lg'}>
                 Entrar
             </Button>
             <Link href='#' mt={2}>

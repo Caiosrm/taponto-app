@@ -11,6 +11,7 @@ import Home from '../components/Screen/Home';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
 import PedidosScreen from '../components/Screen/Pedidos';
+
 import Login from '../components/Screen/Login';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
 import PerfilScreen from '../components/Screen/Perfil';
@@ -20,6 +21,7 @@ import { initialStatePerfil } from '../components/Screen/Perfil/types';
 import { initialStateLogin } from '../components/Screen/Login/types';
 import { initialStateProduto } from '../components/Screen/Cardapio/types';
 import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
+import CadastroScreen from '../components/Screen/Cadastro';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -29,7 +31,7 @@ function AppNavigator() {
   return (
     <NativeBaseProvider>
       <ThemeProvider>
-        <Tab.Navigator initialRouteName='ListarCardapio' screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
+        <Tab.Navigator initialRouteName='Login' screenOptions={{ tabBarStyle: { position: 'absolute', backgroundColor: '#fff', height: 60 } }}>
 
           <Tab.Screen name="Home"
             component={Home}
@@ -74,6 +76,12 @@ function AppNavigator() {
             }}
           />
 
+          <Tab.Screen name="Cadastro"
+            component={CadastroScreen}
+            initialParams={initialStateLogin}
+
+          />
+
           <Tab.Screen name="Pedidos"
             component={() => <PedidosScreen
               // props 
@@ -88,12 +96,12 @@ function AppNavigator() {
           />
 
           <Stack.Screen
-          
-            name="ListarCardapio"
+
+            name="Carrinho"
             component={() => <ItemDetalhado
               // props 
               pageTitle="Cardapio"
-              
+
               idProduto={''}
               produto={initialStateProduto}
               idProdutos={''}

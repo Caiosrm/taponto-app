@@ -9,4 +9,5 @@ export type RootStackParamList = {
     Perfil: undefined;
     Pedidos: undefined;
     Sacola: undefined;
+    Carrinho: undefined;
 };
