@@ -20,7 +20,6 @@ export async function getAllProdutos() {
 				id: doc.id,
 				nome: data.nome,
 				lanchonete: data.lanchonete,
-				valor: data.valor,
 				descricao: data.descricao,
 				tipoDeAlimento: data.tipoDeAlimento,
 				quantidade: data.quantidade,
@@ -28,7 +27,8 @@ export async function getAllProdutos() {
 				ingredientes: data.ingredientes,
 				imagem: data.imagem,
 				avaliacao: data.avaliacao,
-				review: data.review
+				review: data.review,
+				valorUnitario: 0
 			}
 			produtos.push(produto);
 
