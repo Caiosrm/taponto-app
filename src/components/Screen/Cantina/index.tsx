@@ -1,13 +1,19 @@
 import React from 'react'
-import { ICantinaProps } from './types'
+
+import { useNavigation } from '@react-navigation/native';
+import { Button, HStack } from 'native-base';
 
 
 
 
-export default function CantinaScreen(props: ICantinaProps) {
 
+export default function CantinaScreen() {
+
+  const navigation = useNavigation();
+  
   return (
-    <div></div>
-  )
-
+    <HStack>
+      
+    </HStack>
+  );
 }

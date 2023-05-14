@@ -7,10 +7,11 @@ export interface ICantinaProps {
         nome: string;
         idCardapio: string;
         cardapio: ICardapioProps;
+        descricao: string;
         avaliacao: {
-            review: number;
-            descricao: string;
+            comentario: string;
             matricula: string;
+            review: number;
         };
         status: string;
         pedido: IPedidoProps;

@@ -1,73 +1,49 @@
-import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Input, Badge } from "native-base";
+import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Input, Badge, Button } from "native-base";
 import AppBar from "../../Common/AppBar";
 import { TouchableOpacity, } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect, useRef, } from 'react';
 import { IHomeScreenProps } from "./types";
-import { data } from "../../../__mocks__/data";
+import { Polos, caroselitem, data } from "../../../__mocks__/data";
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Modalize } from "react-native-modalize";
 import { ICantinaProps } from "../Cantina/types";
-import { getAllCantinas } from "../../../api/requests/getAllCantinas";
+import { getAllCantinas } from "../../../api/utils/getAllCantinas";
+import { NavigationContainerRef, useNavigation } from "@react-navigation/native";
+import ListarCardapio from "../Cardapio/ListarCardapio";
+import { RootStackParamList } from "../../../routes/types";
 
-
-
-const caroselitem = [
-    '#e78eea',
-    '#7cdacb',
-    '#6f31fe',
-    '#784e8a',
-    '#ef1541',
-    '#b37784',
-]
-
-const Polos = [
-    {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        nomepolo: "Polo Via Corpvs",
-        nomerua: 'Rua Eliseu Uchôa Becco ',
-        numerorua: '600'
-
-    }, {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        nomepolo: "Polo Papicu",
-        nomerua: 'Rua Professor Sila Ribeiro',
-        numerorua: '209'
-
-    }, {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        nomepolo: "Polo Centro",
-        nomerua: 'Rua Artur Ramos',
-        numerorua: '243'
-    }
-
-];
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
-    //===================================================== State's ==========================================================
+    const navigation = useNavigation<RootStackParamList>();
 
     const [cantinas, setCantinas] = React.useState<ICantinaProps[]>();
-    const onOpen = () => { modalizeRef.current?.open() };
+
     const { colorMode, toggleColorMode } = useTheme();
+
+    const onOpenModal = () => { modalizeRef.current?.open() };
+
     const modalizeRef = useRef<Modalize>(null);
+
     const { width } = Dimensions.get('window')
 
 
-    useEffect(() => {
+
+
+
+    useEffect(() => { //USE EFFECT INICIAL
         const fetchData = async () => {
             const data = await getAllCantinas();
             setCantinas(data);
-            //console.log(data)
         };
         fetchData();
-
-
     }, []);
+
 
     return (
 
@@ -77,8 +53,12 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 <AppBar pageTitle={props.pageTitle} />
                 <ScrollView marginBottom={12}>
 
+                <Button                  
+                        onPress={() => navigation.navigate('ListarCardapio')}
+                >teste</Button>
+
                     <Box //HEADER "BEM-VINDO"  
-                    bg={colors.light.azulTurquesa} padding={5}>
+                        bg={colors.light.azulTurquesa} padding={5}>
                         <Box marginBottom={6} flexDirection='row' justifyContent='space-between'>
                             <Box>
                                 <Heading color={colorMode === 'light' ? colors.light.brancoPuro : colors.light.pretoPuro}>
@@ -88,7 +68,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     O que você quer pedir agora?
                                 </Text>
                             </Box>
-
                             <Box>
                                 <Avatar></Avatar>
                             </Box>
@@ -109,9 +88,10 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 </Box>} />
                     </Box>
 
+
                     <Box //POLO ATUAL
                         bg={colors.light.azulTurquesa}>
-                        <TouchableOpacity onPress={onOpen}>
+                        <TouchableOpacity onPress={onOpenModal}>
                             <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
                                 <Ionicons name='location' size={24} color='red' />
                                 <Text color={colors.light.brancoPuro} marginX={1}>
@@ -121,6 +101,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             </Box>
                         </TouchableOpacity>
                     </Box>
+
 
                     <Modalize //MODAL DE ESCOLHER O POLO
                         overlayStyle={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
@@ -176,6 +157,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         </Box>
                     </Modalize>
 
+
                     <Box //CANTINAS ABERTAS AGORA
                         backgroundColor={colors.light.brancoPuro} marginBottom={5}>
                         <Heading marginTop={5} fontSize="sm" paddingX={4}>
@@ -204,6 +186,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         />
                     </Box>
 
+
                     <FlatList //CARROSSEL DE PRODUTOS
                         marginBottom={6}
                         showsHorizontalScrollIndicator={false}
@@ -225,6 +208,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             </Box>
                         )}
                     />
+
 
                     <Box //CANTINAS
                         justifyContent='space-between'
@@ -274,6 +258,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         </Box>
                     </Box>
 
+
                 </ScrollView>
             </GestureHandlerRootView>
         </ThemeProvider >
@@ -282,4 +267,3 @@ const HomeScreen = (props: IHomeScreenProps) => {
 };
 
 export default HomeScreen;
-

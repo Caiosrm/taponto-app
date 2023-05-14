@@ -5,11 +5,14 @@ import React from "react";
 import { colors } from "../../../themes/Theme";
 import { useTheme } from "../../../themes/ThemeContext";
 import { StatusBar } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function AppBar(props: AppBarProps) {
 
 	const { colorMode, toggleColorMode } = useTheme();
+
+	const navigation = useNavigation();
 
 
 	return (
@@ -28,6 +31,7 @@ export default function AppBar(props: AppBarProps) {
 				<HStack alignItems="center">
 					<IconButton
 						icon={<Icon as={Ionicons}
+
 							name="home-outline"
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
