@@ -1,10 +1,10 @@
 import { app } from "../../firebaseConfig";
-import { IProduto } from "../components/Screen/Cardapio/types";
+import { IProduto } from "../../components/Screen/Cardapio/types";
 import React from "react";
 
 import { getFirestore, getDocs, collection, Firestore } from "firebase/firestore";
 import firebase from 'firebase/app';
-import { ICantinaProps } from "../components/Screen/Cantina/types";
+import { ICantinaProps } from "../../components/Screen/Cantina/types";
 
 
 //Método para retornar os produtos cadastrados

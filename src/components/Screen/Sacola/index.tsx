@@ -7,7 +7,7 @@ import { colors } from "../../../themes/Theme";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { IProduto } from "../Cardapio/types";
-import { getAllProdutos } from "../../../api/getAllProdutos";
+import { getAllProdutos } from "../../../api/utils/getAllProdutos";
 
 const SacolaScreen = (props: ISacolaScreenProps) => {
 

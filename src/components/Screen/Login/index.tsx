@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ILoginScreenProps } from './types'
 import AppBar from '../../Common/AppBar'
 import { useState } from 'react'
-import { auth } from "../../../../firebaseConfig";
+import { auth } from "../../../api/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
 

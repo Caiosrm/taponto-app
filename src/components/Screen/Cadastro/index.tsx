@@ -2,8 +2,8 @@ import { View, Text, Box, FormControl, Input, Button, Stack, Icon, Pressable, Wa
 import React, { useEffect, useState } from "react";
 import { ICadastroScreenProps } from "./types";
 import AppBar from "../../Common/AppBar";
-import { lerJSONEnviarFirebase } from "../../../api/postProduto";
-import { auth } from "../../../../firebaseConfig";
+import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
+import { auth } from "../../../api/firebaseConfig";
 import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TextInput } from "react-native-paper";
