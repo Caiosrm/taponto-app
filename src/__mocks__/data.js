@@ -1,16 +1,16 @@
 export const data = [{
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    nomerestaurante: "Habib's",
+    nomerestaurante: "Trade Lounge",
     
     avatarUrl: "https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/8fd4ee58-1354-4399-9bbc-85ee4eb6a020/202302141950_GEqO_i.jpg"
 }, {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    nomerestaurante: "Chickens Mequi",
+    nomerestaurante: "Madrugão Lanches",
     
     avatarUrl: "https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/6650ca18-c838-4dd3-9ac0-011eb89e46a8/202206011938_zDwi_i.jpg"
 }, {
     id: "68694a0f-3da1-431f-bd56-142371e29d72",
-    nomerestaurante: "Harng burguer",
+    nomerestaurante: "Nostra Gula",
    
     avatarUrl: "https://static.ifood-static.com.br/image/upload/t_medium/logosgde/fdd109c2-e963-4e47-88f2-238cd8b399d6/202304162209_Jox3_i.jpg?imwidth=128"
 }, {
