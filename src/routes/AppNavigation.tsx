@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { NativeBaseProvider } from 'native-base';
+
 
 import { RootStackParamList } from './types';
-import { ThemeProvider } from '../themes/ThemeContext';
 import Home from '../components/Screen/Home';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
@@ -19,36 +18,41 @@ import { initialStatePerfil } from '../components/Screen/Perfil/types';
 import { initialStateLogin } from '../components/Screen/Login/types';
 import { initialStateProduto } from '../components/Screen/Cardapio/types';
 import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
+import HomeScreen from '../components/Screen/Home';
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-function AppNavigator() {
-
+export const StackNavigator = () => {
   return (
-    <NativeBaseProvider>
-      <ThemeProvider>
-        <Tab.Navigator
-          initialRouteName='Home'
-          screenOptions={{
-            tabBarStyle: {
-              position: 'absolute',
-              backgroundColor: '#fff',
-              height: 60
-            }
-          }}>
+    <Stack.Navigator>
+      <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{ headerShown: false }} />
+      <Stack.Screen name="ItemDetalhado" component={ItemDetalhado} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  )
+}
 
-          <Tab.Screen name="Home"
-            component={Home}
-            initialParams={initialStateHome}
-            options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Ionicons name='home' size={size} color={color} /> }
-                else return (<Ionicons name='home-outline' size={size} color={color} />);
-              }
-            }} />
 
-          <Tab.Screen name="Sacola"
+export const TabNavigator = () => {
+  const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          position: 'absolute',
+          backgroundColor: '#fff',
+          height: 60
+        }
+      }}>
+
+      {usuarioLogado === true ? (
+
+        <Tab.Group>
+
+          <Tab.Screen
+            name="Sacola"
             component={Sacola}
             initialParams={initialStateSacola}
             options={{
@@ -59,7 +63,8 @@ function AppNavigator() {
             }}
           />
 
-          <Tab.Screen name="Perfil"
+          <Tab.Screen
+            name="Perfil"
             component={Perfil}
             initialParams={initialStatePerfil}
             options={{
@@ -69,18 +74,6 @@ function AppNavigator() {
               },
             }}
           />
-
-          <Tab.Screen name="Login"
-            component={Login}
-            initialParams={initialStateLogin}
-            options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Ionicons name='person' size={size} color={color} /> }
-                else return (<Ionicons name='person' size={size} color={color} />);
-              }
-            }}
-          />
-
           <Tab.Screen name="Pedidos"
             component={() => <PedidosScreen
               // props 
@@ -95,13 +88,21 @@ function AppNavigator() {
               }
             }}
           />
-          
-          <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{headerShown: false}} />
-          <Stack.Screen name="ItemDetalhado" component={ItemDetalhado} options={{headerShown: false}} />
+        </Tab.Group>
+      ) : (
+        <Tab.Group>
+          <Tab.Screen name="Login" component={Login} initialParams={initialStateLogin}
+            options={{
+              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                if (focused) { return <Ionicons name='person' size={size} color={color} /> }
+                else return (<Ionicons name='person' size={size} color={color} />);
+              }
+            }}
+          />
+      </Tab.Group>
+      )}
         </Tab.Navigator>
-      </ThemeProvider>
-    </NativeBaseProvider>
   );
 }
 
-export default AppNavigator;
+export default TabNavigator;

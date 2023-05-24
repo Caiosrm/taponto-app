@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, Box, FlatList, Avatar, Button, HStack, Icon, Spacer, VStack } from "native-base";
-import { ISacolaScreenProps } from "./types";
+import { View, Text, Box, FlatList, Avatar, Button, HStack, Icon, Spacer, VStack, Center, ScrollView } from "native-base";
+import { ISacola } from "./types";
 import AppBar from "../../Common/AppBar";
 import { colors } from "../../../themes/Theme";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,36 +9,46 @@ import { TouchableOpacity } from "react-native";
 import { IProduto } from "../Cardapio/types";
 import { getAllProdutos } from "../../../api/utils/getAllProdutos";
 
-const SacolaScreen = (props: ISacolaScreenProps) => {
 
+
+const SacolaScreen = (props: ISacola) => {
     //===================================================== State's ===========================================================
-    const [produtos, setProdutos] = React.useState<IProduto[]>([]);
+    const [sacola, setSacola] = React.useState<IProduto[]>([]);
     const [valorTotal, setValorTotal] = React.useState<number>();
+
 
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         const fetchData = async () => {
-            const produtos = await getAllProdutos();
-            setProdutos(produtos);
+            const sacola = await getAllProdutos();
+            setSacola(sacola);
         };
         fetchData();
     }, []);
 
     //===================================================== HandleChange's ====================================================
+    const handleQuantityChange = (index: number, value: string) => {
+        const novosItens = [...sacola];
+        novosItens[index] = { ...novosItens[index], quantidade: parseInt(value, 10) };
+        setSacola(novosItens);
+    };
 
+    //=========================================================================================================================
 
+    const calculaTotal = () => {
+        return sacola.reduce(
+            (total, item) => total + item.valor * item.quantidade,
+            0
+        );
+    };
 
 
     return (
-        <View>
-            <AppBar pageTitle={props.pageTitle} />
-            <Box
-                padding={2}
-                flex={1}
-                backgroundColor={colors.light.background}
-            >
-                <FlatList data={produtos} renderItem={({ item }) =>
+        <ScrollView>
+            <AppBar />
+            <Box padding={2} flex={1} backgroundColor={colors.light.background}>
+                <FlatList data={sacola} renderItem={({ item }) =>
                     <Box
                         shadow={2}
                         justifyContent='center'
@@ -77,11 +87,7 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
                             </VStack>
                             <Spacer />
                             <Box alignItems='center'>
-                                <Box
-                                    flexDirection='row'
-                                    alignItems='center'
-                                    justifyContent='center'
-                                >
+                                <Box flexDirection='row' alignItems='center' justifyContent='center'>
                                     <TouchableOpacity>
                                         <Button
                                             backgroundColor='none'
@@ -93,7 +99,9 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
                                             />
                                         </Button>
                                     </TouchableOpacity>
-                                    <Text>{item.quantidade}</Text>
+                                    <Text>
+                                        {item.quantidade}
+                                    </Text>
                                     <TouchableOpacity>
                                         <Button
                                             backgroundColor='none'
@@ -112,7 +120,17 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
                 } keyExtractor={item => item.id}
                 />
             </Box>
-        </View>
+
+
+            <Box>
+                <Center my={4}>
+                    <Text fontWeight="bold" fontSize="lg">
+                        Total: ${calculaTotal().toFixed(2)}
+                    </Text>
+                </Center>
+            </Box>
+        </ScrollView>
+
     );
 };
 

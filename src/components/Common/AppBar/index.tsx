@@ -6,13 +6,17 @@ import { colors } from "../../../themes/Theme";
 import { useTheme } from "../../../themes/ThemeContext";
 import { StatusBar } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import HomeScreen from "../../Screen/Home";
+import { initialStateHome } from "../../Screen/Home/types";
+import { RootStackParamList } from "../../../routes/types";
 
 
 export default function AppBar(props: AppBarProps) {
 
 	const { colorMode, toggleColorMode } = useTheme();
 
-	const navigation = useNavigation();
+    const navigation = useNavigation<RootStackParamList>();
+
 
 
 	return (
@@ -30,8 +34,8 @@ export default function AppBar(props: AppBarProps) {
 			>
 				<HStack alignItems="center">
 					<IconButton
+						onPress={() => navigation.navigate('Home')}
 						icon={<Icon as={Ionicons}
-
 							name="home-outline"
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />

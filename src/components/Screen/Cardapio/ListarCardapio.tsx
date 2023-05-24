@@ -7,12 +7,13 @@ import { ICardapioProps, IProduto, initialStateProduto } from "./types";
 import { getAllProdutos } from "../../../api/utils/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
+import { ISacola } from "../Sacola/types";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
     const [produtos, setProdutos] = React.useState<IProduto[]>([]);
-    const [produto, setProduto] = React.useState<IProduto>(initialStateProduto);
-    const [sacola, setSacola] = React.useState<IProduto[]>([]); //STATE INICIAL DO ARRAY DE PRODUTOS NA SACOLA
+
+    
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         const fetchData = async () => {
@@ -79,17 +80,19 @@ const ListarCardapio = () => {
                                 <Box>
                                     <TouchableOpacity>
                                         <Button size={'xs'}>
-                                            +
+                                            -
                                         </Button>
                                     </TouchableOpacity>
                                 </Box>
                                 <Box margin={1}>
-                                    {item.quantidade}
+                                    <Text>
+                                        {item.quantidade}
+                                    </Text>
                                 </Box>
                                 <Box>
                                     <TouchableOpacity>
                                         <Button size={'xs'}>
-                                            -
+                                            +
                                         </Button>
                                     </TouchableOpacity>
                                 </Box>

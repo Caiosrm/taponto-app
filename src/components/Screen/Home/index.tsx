@@ -16,6 +16,7 @@ import { getAllCantinas } from "../../../api/utils/getAllCantinas";
 import { NavigationContainerRef, useNavigation } from "@react-navigation/native";
 import ListarCardapio from "../Cardapio/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
+import TabNavigator from "../../../routes/AppNavigation";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
@@ -53,9 +54,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 <AppBar pageTitle={props.pageTitle} />
                 <ScrollView marginBottom={12}>
 
-                <Button                  
-                        onPress={() => navigation.navigate('ListarCardapio')}
-                >teste</Button>
 
                     <Box //HEADER "BEM-VINDO"  
                         bg={colors.light.azulTurquesa} padding={5}>
@@ -161,7 +159,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                     <Box //CANTINAS ABERTAS AGORA
                         backgroundColor={colors.light.brancoPuro} marginBottom={5}>
                         <Heading marginTop={5} fontSize="sm" paddingX={4}>
-                            Cantinas abertas agora
+                            Aberto agora
                         </Heading>
                         <FlatList
                             showsHorizontalScrollIndicator={false}
@@ -170,13 +168,17 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             horizontal
                             data={cantinas}
                             renderItem={({ item }) =>
-                                <Box padding={5}>
-                                    <Box flexDirection='column' alignItems='center' >
+                                <Box padding={5} >
+                                    <Box 
+                                    flexDirection='column' 
+                                    alignItems='center' 
+                                    >
                                         <Avatar />
                                         <Text
                                             textAlign='center'
                                             fontSize="xs"
                                             color="black"
+                                            onPress={() => navigation.navigate(ListarCardapio)}
                                         >
                                             {item.lanchonete.nome}
                                         </Text>
@@ -186,7 +188,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         />
                     </Box>
 
-
+{/* 
                     <FlatList //CARROSSEL DE PRODUTOS
                         marginBottom={6}
                         showsHorizontalScrollIndicator={false}
@@ -207,7 +209,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 <Text textAlign='center' >Aqui vai a imagem</Text>
                             </Box>
                         )}
-                    />
+                    /> */}
 
 
                     <Box //CANTINAS
@@ -261,8 +263,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
                 </ScrollView>
             </GestureHandlerRootView>
-        </ThemeProvider >
-
+        </ThemeProvider>
     );
 };
 
