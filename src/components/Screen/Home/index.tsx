@@ -1,22 +1,21 @@
-import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Input, Badge, Button } from "native-base";
+import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Badge } from "native-base";
 import AppBar from "../../Common/AppBar";
-import { TouchableOpacity, } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import React, { useEffect, useRef, } from 'react';
+import React, { useEffect, } from 'react';
 import { IHomeScreenProps } from "./types";
-import { Polos, caroselitem, data } from "../../../__mocks__/data";
+import { caroselitem } from "../../../__mocks__/data";
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Modalize } from "react-native-modalize";
 import { ICantinaProps } from "../Cantina/types";
 import { getAllCantinas } from "../../../api/utils/getAllCantinas";
-import { NavigationContainerRef, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import ListarCardapio from "../Cardapio/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
-import TabNavigator from "../../../routes/AppNavigation";
+import { HeaderBemVindo } from "./components/HeaderBemVindo";
+import { PoloAtual } from "./components/PoloAtual";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
@@ -27,9 +26,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
     const { colorMode, toggleColorMode } = useTheme();
 
-    const onOpenModal = () => { modalizeRef.current?.open() };
 
-    const modalizeRef = useRef<Modalize>(null);
 
     const { width } = Dimensions.get('window')
 
@@ -55,106 +52,9 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 <ScrollView marginBottom={12}>
 
 
-                    <Box //HEADER "BEM-VINDO"  
-                        bg={colors.light.azulTurquesa} padding={5}>
-                        <Box marginBottom={6} flexDirection='row' justifyContent='space-between'>
-                            <Box>
-                                <Heading color={colorMode === 'light' ? colors.light.brancoPuro : colors.light.pretoPuro}>
-                                    Olá, Alisson.
-                                </Heading>
-                                <Text color={colors.light.brancoPuro}>
-                                    O que você quer pedir agora?
-                                </Text>
-                            </Box>
-                            <Box>
-                                <Avatar></Avatar>
-                            </Box>
-                        </Box>
-                        <Input placeholder="Prato ou cantina"
-                            fontSize={16}
-                            bg='#e6e6e6'
-                            borderWidth={0}
-                            borderRadius={10}
-                            padding={2}
-                            InputLeftElement={
-                                <Box marginLeft={2}>
-                                    <Ionicons name='search' size={24} color='red' />
-                                </Box>}
-                            InputRightElement={
-                                <Box marginRight={2}>
-                                    <Ionicons name="filter" size={24} color="red" />
-                                </Box>} />
-                    </Box>
+                    <HeaderBemVindo/>
 
-
-                    <Box //POLO ATUAL
-                        bg={colors.light.azulTurquesa}>
-                        <TouchableOpacity onPress={onOpenModal}>
-                            <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
-                                <Ionicons name='location' size={24} color='red' />
-                                <Text color={colors.light.brancoPuro} marginX={1}>
-                                    Polo Via Corpvs
-                                </Text>
-                                <Ionicons name='caret-down' size={15} color='red' />
-                            </Box>
-                        </TouchableOpacity>
-                    </Box>
-
-
-                    <Modalize //MODAL DE ESCOLHER O POLO
-                        overlayStyle={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
-                        ref={modalizeRef}
-                        snapPoint={600}
-                    >
-                        <Box
-                            backgroundColor={colors.light.background}
-                            h={600}
-                        >
-                            <Input placeholder="Localize a sua unidade"
-                                fontSize={16}
-                                bg='#e6e6e6'
-                                borderWidth={0}
-                                borderRadius={10}
-                                padding={2}
-                                marginBottom={5}
-                                InputLeftElement={
-                                    <Box marginLeft={2}>
-                                        <Ionicons name='search' size={24} color='red' />
-                                    </Box>
-                                }
-                            />
-                            <Box>
-                                <FlatList
-                                    data={Polos}
-                                    renderItem={({ item }) => (
-                                        <Box
-                                            backgroundColor={colors.light.brancoPuro}
-                                            alignItems='center'
-                                            flexDirection='row'
-                                            borderRadius={5}
-                                            marginBottom={3}
-                                            shadow={2}
-                                            h={20}
-                                            py="2"
-                                        >
-                                            <Box>
-                                                <Ionicons name='ios-location-outline' size={24} color='black' />
-                                            </Box>
-                                            <Box marginLeft={3} flexDirection='column' flex={1}>
-                                                <Text>{item.nomepolo}</Text>
-                                                <Text>{item.nomerua}</Text>
-                                            </Box>
-                                            <Box alignItems='flex-end'>
-                                                <Ionicons name='ellipsis-vertical-sharp' size={24} color='black' />
-                                            </Box>
-                                        </Box>
-                                    )}
-                                    keyExtractor={item => item.id}
-                                />
-                            </Box>
-                        </Box>
-                    </Modalize>
-
+                    <PoloAtual/>
 
                     <Box //CANTINAS ABERTAS AGORA
                         backgroundColor={colors.light.brancoPuro} marginBottom={5}>
@@ -169,9 +69,9 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             data={cantinas}
                             renderItem={({ item }) =>
                                 <Box padding={5} >
-                                    <Box 
-                                    flexDirection='column' 
-                                    alignItems='center' 
+                                    <Box
+                                        flexDirection='column'
+                                        alignItems='center'
                                     >
                                         <Avatar />
                                         <Text
@@ -188,7 +88,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         />
                     </Box>
 
-{/* 
                     <FlatList //CARROSSEL DE PRODUTOS
                         marginBottom={6}
                         showsHorizontalScrollIndicator={false}
@@ -209,7 +108,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 <Text textAlign='center' >Aqui vai a imagem</Text>
                             </Box>
                         )}
-                    /> */}
+                    />
 
 
                     <Box //CANTINAS
