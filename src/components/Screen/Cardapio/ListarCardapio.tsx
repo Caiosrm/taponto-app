@@ -7,7 +7,7 @@ import { ICardapioProps, IProduto, initialStateProduto } from "./types";
 import { getAllProdutos } from "../../../api/utils/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
-import { ISacola } from "../Sacola/types";
+import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================

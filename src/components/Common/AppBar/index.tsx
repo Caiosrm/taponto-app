@@ -43,10 +43,10 @@ export default function AppBar(props: AppBarProps) {
 						color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 						fontSize="20"
 						fontWeight="bold"
-					>
-						{props.pageTitle}
+					>{props.pageTitle}
 					</Text>
 				</HStack>
+
 				<HStack>
 					<IconButton
 						icon={<Icon as={MaterialCommunityIcons}
