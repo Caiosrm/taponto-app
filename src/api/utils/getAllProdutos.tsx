@@ -1,7 +1,11 @@
-import { app } from "../firebaseConfig";
 import { IProduto } from "../../components/Screen/Cardapio/types";
+import React from "react";
 
-import { getFirestore, getDocs, collection } from "firebase/firestore";
+import { getFirestore, getDocs, collection, Firestore } from "firebase/firestore";
+import firebase from 'firebase/app';
+import { ICantinaProps } from "../../components/Screen/Cantina/types";
+import { app } from "../firebaseConfig";
+
 
 //Método para retornar os produtos cadastrados
 export async function getAllProdutos() {
@@ -11,7 +15,7 @@ export async function getAllProdutos() {
 		let produtos: IProduto[] = [];
 		querySnapshot.forEach((doc) => {
 			const data = doc.data();
-			console.log(data)
+
 			const produto: IProduto = {
 				id: doc.id,
 				nome: data.nome,
@@ -22,7 +26,7 @@ export async function getAllProdutos() {
 				imagem: data.imagem,
 				avaliacao: data.avaliacao,
 				review: data.review,
-				valor: data.valor,
+				valor: 0
 			}
 			produtos.push(produto);
 
@@ -33,3 +37,31 @@ export async function getAllProdutos() {
 		return [];
 	}
 }
+
+
+export async function getAllClientes() {
+
+}
+
+
+export async function getAllCantinas() {
+	const db = getFirestore(app);
+	try {
+		const querySnapshot = await getDocs(collection(db, "cantinas"));
+		let cantinas: ICantinaProps[] = [];
+		querySnapshot.forEach((doc) => {
+			const data = doc.data();
+			console.log(data)
+			const cantina: ICantinaProps = {
+				lanchonete: data.lanchonete
+			}
+
+			cantinas.push(cantina);
+		});
+		return cantinas;
+	} catch (error) {
+		console.log(error);
+		return [];
+	}
+}
+

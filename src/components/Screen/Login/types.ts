@@ -3,6 +3,7 @@ import { SetStateAction } from "react";
 export interface ILoginScreenProps {
   pageTitle?: string;
   email?: string;
+  navigate?: string;
   setEmail?: React.Dispatch<React.SetStateAction<string>>;
   password?: string;
   setPassword?: React.Dispatch<React.SetStateAction<string>>;
