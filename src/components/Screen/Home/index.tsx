@@ -5,7 +5,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect, useRef, } from 'react';
 import { IHomeScreenProps } from "./types";
-import { data } from "../../../__mocks__/data";
+
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
@@ -25,27 +25,6 @@ const caroselitem = [
     '#b37784',
 ]
 
-const Polos = [
-    {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        nomepolo: "Polo Via Corpvs",
-        nomerua: 'Rua Eliseu Uchôa Becco ',
-        numerorua: '600'
-
-    }, {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        nomepolo: "Polo Papicu",
-        nomerua: 'Rua Professor Sila Ribeiro',
-        numerorua: '209'
-
-    }, {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        nomepolo: "Polo Centro",
-        nomerua: 'Rua Artur Ramos',
-        numerorua: '243'
-    }
-
-];
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
@@ -62,7 +41,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
         const fetchData = async () => {
             const data = await getAllCantinas();
             setCantinas(data);
-            //console.log(data)
+            
         };
         fetchData();
 
@@ -144,35 +123,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                     </Box>
                                 }
                             />
-                            <Box>
-                                <FlatList
-                                    data={Polos}
-                                    renderItem={({ item }) => (
-                                        <Box
-                                            backgroundColor={colors.light.brancoPuro}
-                                            alignItems='center'
-                                            flexDirection='row'
-                                            borderRadius={5}
-                                            marginBottom={3}
-                                            shadow={2}
-                                            h={20}
-                                            py="2"
-                                        >
-                                            <Box>
-                                                <Ionicons name='ios-location-outline' size={24} color='black' />
-                                            </Box>
-                                            <Box marginLeft={3} flexDirection='column' flex={1}>
-                                                <Text>{item.nomepolo}</Text>
-                                                <Text>{item.nomerua}</Text>
-                                            </Box>
-                                            <Box alignItems='flex-end'>
-                                                <Ionicons name='ellipsis-vertical-sharp' size={24} color='black' />
-                                            </Box>
-                                        </Box>
-                                    )}
-                                    keyExtractor={item => item.id}
-                                />
-                            </Box>
+                           
                         </Box>
                     </Modalize>
 

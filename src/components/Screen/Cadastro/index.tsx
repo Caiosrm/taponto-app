@@ -5,8 +5,8 @@ import AppBar from "../../Common/AppBar";
 import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 import { auth } from "../../../api/firebaseConfig";
 import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
-import { MaterialIcons } from "@expo/vector-icons";
-import { TextInput } from "react-native-paper";
+
+
 
 const CadastroScreen = (props: ICadastroScreenProps) => {
     const [email, setEmail] = useState('')
@@ -36,61 +36,56 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
         alert('Usuário cadastrado com sucesso')
 
 
-
-
-
-
     }
-
-
-
 
 
     return (
         <Box padding={5}>
             <FormControl>
-            <FormControl.Label>Email</FormControl.Label>
+                <FormControl.Label>Email</FormControl.Label>
 
-            <Input placeholder='Insira o email do estudante'
-                size="lg"
-                w="100%"
-                value={email}
-                onChangeText={texto => setEmail(texto)}
-                borderRadius="lg"
-                bgColor="gray.100"
-                shadow={3} />
+                <Input placeholder='Insira o email do estudante'
+                    size="lg"
+                    w="100%"
+                    value={email}
+                    onChangeText={texto => setEmail(texto)}
+                    borderRadius="lg"
+                    bgColor="gray.100"
+                    shadow={3} />
 
             </FormControl>
 
             <FormControl>
-            <FormControl.Label>Senha</FormControl.Label>
+                <FormControl.Label>Senha</FormControl.Label>
 
-            <Input placeholder='Crie sua senha com 6 caracteres'
-                size="lg"
-                w="100%"
-                value={senha}
-                onChangeText={texto => setSenha(texto)}
-                borderRadius="lg"
-                bgColor="gray.100"
-                shadow={3} />
+                <Input placeholder='Crie sua senha com 6 caracteres'
+                    type="password"
+                    size="lg"
+                    w="100%"
+                    value={senha}
+                    onChangeText={texto => setSenha(texto)}
+                    borderRadius="lg"
+                    bgColor="gray.100"
+                    shadow={3} />
 
             </FormControl>
             <FormControl>
-            <FormControl.Label>Confirmar senha</FormControl.Label>
+                <FormControl.Label>Confirmar senha</FormControl.Label>
 
-            <Input placeholder='Confirme sua senha'
-                size="lg"
-                w="100%"
-                value={confirmarSenha}
-                onChangeText={texto => setconfirmarSenha(texto)}
-                borderRadius="lg"
-                bgColor="gray.100"
-                shadow={3} />
+                <Input placeholder='Confirme sua senha'
+                    type="password"
+                    size="lg"
+                    w="100%"
+                    value={confirmarSenha}
+                    onChangeText={texto => setconfirmarSenha(texto)}
+                    borderRadius="lg"
+                    bgColor="gray.100"
+                    shadow={3} />
 
             </FormControl>
-            
 
-            
+
+
             <Button borderRadius={'lg'} mt={10} onPress={() => realizarCadastro()}>Cadastrar</Button>
         </Box>
 
