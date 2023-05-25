@@ -1,9 +1,7 @@
-import { app } from "../../firebaseConfig";
-import { IProduto } from "../components/Screen/Cardapio/types";
-import React from "react";
+import { app } from "../firebaseConfig";
+import { IProduto } from "../../components/Screen/Cardapio/types";
 
-import { getFirestore, getDocs, collection, Firestore } from "firebase/firestore";
-import firebase from 'firebase/app';
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 //Método para retornar os produtos cadastrados
 export async function getAllProdutos() {
@@ -13,22 +11,21 @@ export async function getAllProdutos() {
 		let produtos: IProduto[] = [];
 		querySnapshot.forEach((doc) => {
 			const data = doc.data();
+			console.log(data)
 			const produto: IProduto = {
 				id: doc.id,
 				nome: data.nome,
 				lanchonete: data.lanchonete,
-				valor: data.valor,
 				descricao: data.descricao,
 				tipoDeAlimento: data.tipoDeAlimento,
 				quantidade: data.quantidade,
-				calorias: data.calorias,
-				ingredientes: data.ingredientes,
 				imagem: data.imagem,
 				avaliacao: data.avaliacao,
-				review: data.review
+				review: data.review,
+				valor: data.valor,
 			}
 			produtos.push(produto);
-			//console.log("getAllProdutos => Produtos => ", produtos)
+
 		});
 		return produtos;
 	} catch (error) {
@@ -36,4 +33,3 @@ export async function getAllProdutos() {
 		return [];
 	}
 }
-

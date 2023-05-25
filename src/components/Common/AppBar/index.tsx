@@ -1,69 +1,31 @@
-import { MaterialIcons, AntDesign, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
-import { StatusBar, Box, HStack, IconButton, Icon, Text, ColorMode, Avatar, Heading, Input } from "native-base";
-import { useState } from "react";
+import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { Text, View, HStack, Icon, IconButton } from "native-base";
 import { AppBarProps } from "./types";
 import React from "react";
 import { colors } from "../../../themes/Theme";
-import { useColorMode } from "../../../themes/ThemeContext";
-import { Header } from "@react-navigation/stack";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { TouchableOpacity } from "react-native";
+import { useTheme } from "../../../themes/ThemeContext";
+import { StatusBar } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import HomeScreen from "../../Screen/Home";
+import { initialStateHome } from "../../Screen/Home/types";
+import { RootStackParamList } from "../../../routes/types";
 
 
 export default function AppBar(props: AppBarProps) {
 
-	const [colorMode, toggleColorMode] = useColorMode();
+	const { colorMode, toggleColorMode } = useTheme();
 
-	function handleToggleTheme() {
-		if (colorMode === "light") {
-			toggleColorMode("dark");
-			console.log(colorMode)
-		} else {
-			toggleColorMode("light");
-			console.log(colorMode)
-		}
-	}
+    const navigation = useNavigation<RootStackParamList>();
+
+
 
 	return (
-		<Box padding={5}>
-			<Box marginBottom={6} flexDirection='row' justifyContent='space-between'>
-				<Box>
-					<Heading color='black' >Olá, Alisson.</Heading>
-					<Text>O que você quer pedir agora?</Text>
-				</Box>
-				<Box>
-					<Avatar></Avatar>
-				</Box>
-			</Box>
-			<Box alignItems='center' marginBottom={5} flexDirection={'row'}>
-				<Ionicons name='location' size={24} color='red' />
-				<Text marginX={1}>Av. brasilia 279</Text>
-				<Ionicons name='caret-down' size={15} color='red' />
-			</Box>
-
-		
-
-			<Input
-				fontSize={16}
-				bg='#e6e6e6'
-				borderWidth={0}
-				borderRadius={10}
-				padding={2}
-				placeholder="Prato ou cantina"
-				InputLeftElement={
-					<Box marginLeft={2}>
-						<Ionicons name='search' size={24} color='red' />
-					</Box>
-				}
-				InputRightElement={
-					<Box marginRight={2}>
-						<Ionicons name="filter" size={24} color="red" />
-					</Box>
-				}
-				barStyle={colorMode === "light" ? "dark-content" : "light-content"}
-			/>
+		<View>
+			<StatusBar
+				backgroundColor={colorMode === "light" ? colors.light.background : colors.dark.background}
+				barStyle={colorMode === "light" ? "dark-content" : "light-content"} />
 			<HStack
-				bg={colors.light.azulTurquesa}
+				bg={colorMode === "light" ? colors.light.azulTurquesa : colors.dark.azulPetroleo}
 				px="1"
 				py="3"
 				justifyContent="space-between"
@@ -72,14 +34,11 @@ export default function AppBar(props: AppBarProps) {
 			>
 				<HStack alignItems="center">
 					<IconButton
+						onPress={() => navigation.navigate('Home')}
 						icon={<Icon as={Ionicons}
 							name="home-outline"
 							size="sm"
-							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-						/>
-					
-						}
-					/>
+							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
 					<Text
 						color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 						fontSize="20"
@@ -90,33 +49,19 @@ export default function AppBar(props: AppBarProps) {
 
 				<HStack>
 					<IconButton
-						icon={
-							<Icon
-								as={MaterialCommunityIcons}
-								name="theme-light-dark"
-								size="sm"
-								color={
-									colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-								onPress={handleToggleTheme}
-							/>
-						}
-					/>
-
+						icon={<Icon as={MaterialCommunityIcons}
+							name="theme-light-dark"
+							size="sm"
+							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
+							onPress={toggleColorMode} />} />
 					<IconButton
-						icon={
-							<Icon as={MaterialIcons}
-								name="search"
-								size="sm"
-								color={
-									colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-							/>
-						}
-					/>
-
+						icon={<Icon
+							as={MaterialIcons}
+							name="search"
+							size="sm"
+							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
 				</HStack>
 			</HStack>
-		</Box>
+		</View>
 	);
 }
-
-

@@ -1,14 +1,11 @@
 import { IProduto, initialStateProduto } from "../Cardapio/types";
-export interface ISacolaScreenProps {
-        pageTitle?: "Sacola";
-        produtosNaSacola?: any[];
-        produto?: IProduto;
+export interface ISacola {
+        id?: string;
+        produtosNaSacola?: IProduto[];
+        valorTotal?: number;
 }
 
-export const initialStateSacola: ISacolaScreenProps = {
-    pageTitle: "Sacola",
+export const initialStateSacola: ISacola = {
     produtosNaSacola: [],
-    produto: initialStateProduto
-    
-
+    valorTotal: 0
 }

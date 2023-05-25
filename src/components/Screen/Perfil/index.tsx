@@ -1,7 +1,8 @@
 import { View, Text } from "native-base";
-import React from "react";
+import React, { useEffect } from "react";
 import { IPerfilScreenProps } from "./types";
 import AppBar from "../../Common/AppBar";
+import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 
 const PerfilScreen = (props: IPerfilScreenProps) => {
 
@@ -12,7 +13,8 @@ const PerfilScreen = (props: IPerfilScreenProps) => {
 
 
     //===================================================== HandleChange's ====================================================
-
+    useEffect(() => {
+    }, [])
 
     return (
         <View>
