@@ -18,6 +18,7 @@ import { initialStateLogin } from '../components/Screen/Login/types';
 import { initialStateProduto } from '../components/Screen/Cardapio/types';
 import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
 import HomeScreen from '../components/Screen/Home';
+import Pedidos from '../components/Screen/Pedidos';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
