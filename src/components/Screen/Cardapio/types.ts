@@ -8,7 +8,6 @@ export interface ICardapioProps {
     
 }
 export interface IProduto {
-    valor: ReactNode;
     id: string;
     nome: string;
     lanchonete: string;
