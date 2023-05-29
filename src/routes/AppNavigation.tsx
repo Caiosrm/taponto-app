@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
-
-import { RootStackParamList } from './types';
-import Home from '../components/Screen/Home';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
 import Login from '../components/Screen/Login';
 import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
 import { initialStateSacola } from '../components/Screen/Sacola/types';
-import { initialStateHome } from '../components/Screen/Home/types';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
 import { initialStateLogin } from '../components/Screen/Login/types';
 import { initialStateProduto } from '../components/Screen/Cardapio/types';
@@ -36,7 +32,9 @@ export const StackNavigator = () => {
 
 
 export const TabNavigator = () => {
+
   const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
+  
   return (
     <Tab.Navigator
       screenOptions={{
