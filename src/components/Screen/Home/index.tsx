@@ -4,7 +4,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect, } from 'react';
 import { IHomeScreenProps } from "./types";
-import { caroselitem } from "../../../__mocks__/data";
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
@@ -16,6 +15,7 @@ import ListarCardapio from "../Cardapio/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
 import { HeaderBemVindo } from "./components/HeaderBemVindo";
 import { PoloAtual } from "./components/PoloAtual";
+import { caroselitem } from "../../../__mocks__/data";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
@@ -38,6 +38,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
         const fetchData = async () => {
             const data = await getAllCantinas();
             setCantinas(data);
+            
         };
         fetchData();
     }, []);

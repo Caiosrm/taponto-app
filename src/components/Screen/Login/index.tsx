@@ -1,5 +1,5 @@
-import { View, Button, Text, VStack, Image, Input, Box, Link, FormControl, Center } from 'native-base'
-import { GestureResponderEvent, TouchableOpacity } from 'react-native'
+import {  Button, Text, VStack, Image, Input, Box, Link, FormControl, Center, View } from 'native-base'
+import { TouchableOpacity } from 'react-native'
 import Logo from '../../../../assets/Logotipo.png'
 import { useNavigation } from '@react-navigation/native';
 import AppBar from '../../Common/AppBar'
@@ -26,7 +26,6 @@ export default function Login(props: ILoginScreenProps) {
 
 
 
-
     async function logar() {
 
         signInWithEmailAndPassword(auth, email, senha)
@@ -36,9 +35,8 @@ export default function Login(props: ILoginScreenProps) {
             })
             .catch((error) => {
                 console.log(error);
-                alert(error)
-
-
+                
+            
             });
 
         setEmail('');
