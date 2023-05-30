@@ -39,15 +39,13 @@ const data = [{
 
 ]
 
-const ItemDetalhado = (props: ICardapioProps) => {
-
-
+const ItemDetalhado = () => {
 
     return (
         <>
 
             <Box flex={1}>
-                <AppBar pageTitle={props.pageTitle} />
+                <AppBar />
                 <Box marginBottom={200} flex={2} padding={2}>
                     <ScrollView  >
 
@@ -79,22 +77,22 @@ const ItemDetalhado = (props: ICardapioProps) => {
                                     <Box alignContent='center' shadow={2} borderRadius={5} bg={colors.light.brancoPuro} alignItems='center' >
                                         <Box alignItems='center' flexDirection='row'>
                                             <Button
-                                            
-                                             variant="ghost"
-                                             colorScheme="success"
+
+                                                variant="ghost"
+                                                colorScheme="success"
                                             >
-                                            +
+                                                +
                                             </Button>
 
                                             <Text color='black'>1</Text>
 
                                             <Button
-                                             variant="ghost"
-                                             colorScheme="red"                                           
+                                                variant="ghost"
+                                                colorScheme="red"
                                             >
-                                            -  
+                                                -
                                             </Button>
-                                            
+
                                         </Box>
                                         <Box marginBottom={2} justifyContent='space-between' alignItems='center' flexDirection='row'>
                                             <Ionicons marginRight={10} name='md-trash-bin-outline' size={20} color='black' />

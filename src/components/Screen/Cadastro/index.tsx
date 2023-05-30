@@ -1,25 +1,16 @@
-import { View, Text, Box, FormControl, Input, Button, Stack, Icon, Pressable, WarningOutlineIcon } from "native-base";
-import React, { useEffect, useState } from "react";
+import { Box, FormControl, Input, Button } from "native-base";
+import React, { useState } from "react";
 import { ICadastroScreenProps } from "./types";
-import AppBar from "../../Common/AppBar";
-import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 import { auth } from "../../../api/firebaseConfig";
-import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
-
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const CadastroScreen = (props: ICadastroScreenProps) => {
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const [confirmarSenha, setconfirmarSenha] = useState('')
 
-
-
-
+    const [email, setEmail] = React.useState<string>('')
+    const [senha, setSenha] = React.useState<string>('')
+    const [confirmarSenha, setconfirmarSenha] = React.useState<string>('')
 
     async function realizarCadastro() {
-
-
         await createUserWithEmailAndPassword(auth, email, senha)
             .then((dadosdousuario) => {
                 console.log(dadosdousuario)
@@ -27,7 +18,6 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
             })
             .catch((error) => {
                 console.log(error)
-
             });
 
         setEmail('')
@@ -40,6 +30,7 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
 
 
     return (
+
         <Box padding={5}>
             <FormControl>
                 <FormControl.Label>Email</FormControl.Label>
@@ -53,6 +44,18 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                     bgColor="gray.100"
                     shadow={3} />
 
+                <FormControl.Label>
+                    Email
+                </FormControl.Label>
+                <Input
+                    placeholder='Insira o email do estudante'
+                    size="lg"
+                    w="100%"
+                    value={email}
+                    onChangeText={texto => setEmail(texto)}
+                    borderRadius="lg"
+                    bgColor="gray.100"
+                    shadow={3} />
             </FormControl>
 
             <FormControl>
@@ -82,7 +85,22 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                     bgColor="gray.100"
                     shadow={3} />
 
+                <FormControl>
+                    <FormControl.Label>
+                        Confirmar senha
+                    </FormControl.Label>
+                    <Input
+                        placeholder='Confirme sua senha'
+                        size="lg"
+                        w="100%"
+                        value={confirmarSenha}
+                        onChangeText={texto => setconfirmarSenha(texto)}
+                        borderRadius="lg"
+                        bgColor="gray.100"
+                        shadow={3} />
+                </FormControl>
             </FormControl>
+
 
 
 

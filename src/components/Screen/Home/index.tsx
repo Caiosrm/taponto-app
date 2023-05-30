@@ -1,52 +1,48 @@
-import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Input, Badge } from "native-base";
+import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Badge } from "native-base";
 import AppBar from "../../Common/AppBar";
-import { TouchableOpacity, } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import React, { useEffect, useRef, } from 'react';
+import React, { useEffect, } from 'react';
 import { IHomeScreenProps } from "./types";
-
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Modalize } from "react-native-modalize";
-import { getAllCantinas } from "../../../api/utils/getAllProdutos";
 import { ICantinaProps } from "../Cantina/types";
-
-
-
-const caroselitem = [
-    '#e78eea',
-    '#7cdacb',
-    '#6f31fe',
-    '#784e8a',
-    '#ef1541',
-    '#b37784',
-]
+import { getAllCantinas } from "../../../api/utils/getAllCantinas";
+import { useNavigation } from "@react-navigation/native";
+import ListarCardapio from "../Cardapio/ListarCardapio";
+import { RootStackParamList } from "../../../routes/types";
+import { HeaderBemVindo } from "./components/HeaderBemVindo";
+import { PoloAtual } from "./components/PoloAtual";
+import { caroselitem } from "../../../__mocks__/data";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
-    //===================================================== State's ==========================================================
+    const navigation = useNavigation<RootStackParamList>();
 
     const [cantinas, setCantinas] = React.useState<ICantinaProps[]>();
-    const onOpen = () => { modalizeRef.current?.open() };
+
     const { colorMode, toggleColorMode } = useTheme();
-    const modalizeRef = useRef<Modalize>(null);
+
+
+
     const { width } = Dimensions.get('window')
 
 
-    useEffect(() => {
+
+
+
+    useEffect(() => { //USE EFFECT INICIAL
         const fetchData = async () => {
             const data = await getAllCantinas();
             setCantinas(data);
             
         };
         fetchData();
-
-
     }, []);
+
 
     return (
 
@@ -56,81 +52,15 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 <AppBar pageTitle={props.pageTitle} />
                 <ScrollView marginBottom={12}>
 
-                    <Box //HEADER "BEM-VINDO"  
-                    bg={colors.light.azulTurquesa} padding={5}>
-                        <Box marginBottom={6} flexDirection='row' justifyContent='space-between'>
-                            <Box>
-                                <Heading color={colorMode === 'light' ? colors.light.brancoPuro : colors.light.pretoPuro}>
-                                    Olá, Alisson.
-                                </Heading>
-                                <Text color={colors.light.brancoPuro}>
-                                    O que você quer pedir agora?
-                                </Text>
-                            </Box>
 
-                            <Box>
-                                <Avatar></Avatar>
-                            </Box>
-                        </Box>
-                        <Input placeholder="Prato ou cantina"
-                            fontSize={16}
-                            bg='#e6e6e6'
-                            borderWidth={0}
-                            borderRadius={10}
-                            padding={2}
-                            InputLeftElement={
-                                <Box marginLeft={2}>
-                                    <Ionicons name='search' size={24} color='red' />
-                                </Box>}
-                            InputRightElement={
-                                <Box marginRight={2}>
-                                    <Ionicons name="filter" size={24} color="red" />
-                                </Box>} />
-                    </Box>
+                    <HeaderBemVindo/>
 
-                    <Box //POLO ATUAL
-                        bg={colors.light.azulTurquesa}>
-                        <TouchableOpacity onPress={onOpen}>
-                            <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
-                                <Ionicons name='location' size={24} color='red' />
-                                <Text color={colors.light.brancoPuro} marginX={1}>
-                                    Polo Via Corpvs
-                                </Text>
-                                <Ionicons name='caret-down' size={15} color='red' />
-                            </Box>
-                        </TouchableOpacity>
-                    </Box>
-
-                    <Modalize //MODAL DE ESCOLHER O POLO
-                        overlayStyle={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
-                        ref={modalizeRef}
-                        snapPoint={600}
-                    >
-                        <Box
-                            backgroundColor={colors.light.background}
-                            h={600}
-                        >
-                            <Input placeholder="Localize a sua unidade"
-                                fontSize={16}
-                                bg='#e6e6e6'
-                                borderWidth={0}
-                                borderRadius={10}
-                                padding={2}
-                                marginBottom={5}
-                                InputLeftElement={
-                                    <Box marginLeft={2}>
-                                        <Ionicons name='search' size={24} color='red' />
-                                    </Box>
-                                }
-                            />
-                           
-                        </Box>
-                    </Modalize>
+                    <PoloAtual/>
 
                     <Box //CANTINAS ABERTAS AGORA
                         backgroundColor={colors.light.brancoPuro} marginBottom={5}>
                         <Heading marginTop={5} fontSize="sm" paddingX={4}>
-                            Cantinas abertas agora
+                            Aberto agora
                         </Heading>
                         <FlatList
                             showsHorizontalScrollIndicator={false}
@@ -139,13 +69,17 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             horizontal
                             data={cantinas}
                             renderItem={({ item }) =>
-                                <Box padding={5}>
-                                    <Box flexDirection='column' alignItems='center' >
+                                <Box padding={5} >
+                                    <Box
+                                        flexDirection='column'
+                                        alignItems='center'
+                                    >
                                         <Avatar />
                                         <Text
                                             textAlign='center'
                                             fontSize="xs"
                                             color="black"
+                                            onPress={() => navigation.navigate(ListarCardapio)}
                                         >
                                             {item.lanchonete.nome}
                                         </Text>
@@ -176,6 +110,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             </Box>
                         )}
                     />
+
 
                     <Box //CANTINAS
                         justifyContent='space-between'
@@ -225,12 +160,11 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         </Box>
                     </Box>
 
+
                 </ScrollView>
             </GestureHandlerRootView>
-        </ThemeProvider >
-
+        </ThemeProvider>
     );
 };
 
 export default HomeScreen;
-

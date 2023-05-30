@@ -5,11 +5,15 @@ import React from "react";
 import { colors } from "../../../themes/Theme";
 import { useTheme } from "../../../themes/ThemeContext";
 import { StatusBar } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from "../../../routes/types";
 
 
 export default function AppBar(props: AppBarProps) {
 
 	const { colorMode, toggleColorMode } = useTheme();
+
+	const navigation = useNavigation<RootStackParamList>();
 
 
 	return (
@@ -17,6 +21,7 @@ export default function AppBar(props: AppBarProps) {
 			<StatusBar
 				backgroundColor={colorMode === "light" ? colors.light.background : colors.dark.background}
 				barStyle={colorMode === "light" ? "dark-content" : "light-content"} />
+
 			<HStack
 				bg={colorMode === "light" ? colors.light.azulTurquesa : colors.dark.azulPetroleo}
 				px="1"
@@ -27,6 +32,7 @@ export default function AppBar(props: AppBarProps) {
 			>
 				<HStack alignItems="center">
 					<IconButton
+						onPress={() => navigation.navigate('Home')}
 						icon={<Icon as={Ionicons}
 							name="home-outline"
 							size="sm"
@@ -35,10 +41,10 @@ export default function AppBar(props: AppBarProps) {
 						color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 						fontSize="20"
 						fontWeight="bold"
-					>
-						{props.pageTitle}
+					>{props.pageTitle}
 					</Text>
 				</HStack>
+
 				<HStack>
 					<IconButton
 						icon={<Icon as={MaterialCommunityIcons}
@@ -47,8 +53,7 @@ export default function AppBar(props: AppBarProps) {
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 							onPress={toggleColorMode} />} />
 					<IconButton
-						icon={<Icon
-							as={MaterialIcons}
+						icon={<Icon as={MaterialIcons}
 							name="search"
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />

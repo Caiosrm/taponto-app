@@ -15,7 +15,7 @@ export async function getAllProdutos() {
 		let produtos: IProduto[] = [];
 		querySnapshot.forEach((doc) => {
 			const data = doc.data();
-			
+
 			const produto: IProduto = {
 				id: doc.id,
 				nome: data.nome,
@@ -23,12 +23,10 @@ export async function getAllProdutos() {
 				descricao: data.descricao,
 				tipoDeAlimento: data.tipoDeAlimento,
 				quantidade: data.quantidade,
-				calorias: data.calorias,
-				ingredientes: data.ingredientes,
 				imagem: data.imagem,
 				avaliacao: data.avaliacao,
 				review: data.review,
-				valorUnitario: 0
+				valor: 0
 			}
 			produtos.push(produto);
 

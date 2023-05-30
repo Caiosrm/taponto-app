@@ -9,15 +9,17 @@ import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
 import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 
-const ListarCardapio = (props: ICardapioProps) => {
+const ListarCardapio = () => {
     //===================================================== State's ===========================================================
     const [produtos, setProdutos] = React.useState<IProduto[]>([]);
-    const [produto, setProduto] = React.useState<IProduto>(initialStateProduto);
+
+    
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         const fetchData = async () => {
             const produtos = await getAllProdutos();
             setProdutos(produtos);
+            console.log(produtos)
         };
         fetchData();
 
@@ -32,8 +34,7 @@ const ListarCardapio = (props: ICardapioProps) => {
             flex={1}
             backgroundColor={colors.light.background}
         >
-            <AppBar/>
-
+            <AppBar />
             <FlatList
                 data={produtos}
                 renderItem={({ item }) =>
@@ -70,32 +71,37 @@ const ListarCardapio = (props: ICardapioProps) => {
                                 <Text
                                     _dark={{ color: "coolGray.800" }}
                                     color="#000000"
-                                >R${item.valorUnitario}
+                                >R${item.valor}
                                 </Text>
                             </VStack>
                             <Spacer />
-                            <Box
-                                alignItems='flex-start'>
-                                <Box
 
-                                >
+                            <Box flexDirection='row' alignItems='flex-start'>
+                                <Box>
                                     <TouchableOpacity>
-                                        <Button  >
-                                            +
-                                        </Button>
-                                        <Text>1</Text>
-                                        <Button  >
+                                        <Button size={'xs'}>
                                             -
                                         </Button>
                                     </TouchableOpacity>
-
+                                </Box>
+                                <Box margin={1}>
+                                    <Text>
+                                        {item.quantidade}
+                                    </Text>
+                                </Box>
+                                <Box>
+                                    <TouchableOpacity>
+                                        <Button size={'xs'}>
+                                            +
+                                        </Button>
+                                    </TouchableOpacity>
                                 </Box>
                             </Box>
                         </HStack>
-                    </Box>
+                    </Box >
                 } keyExtractor={item => item.id}
             />
-        </Box>
+        </Box >
     );
 };
 
