@@ -1,5 +1,5 @@
 import { getFirestore, collection, addDoc } from "@firebase/firestore";
-import { app } from "../../firebaseConfig";
+import { app } from "../../config/firebaseConfig";
 
 const dados = require('../__mocks__/MOCK_DATA.json');
 

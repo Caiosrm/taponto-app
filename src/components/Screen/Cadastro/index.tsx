@@ -1,7 +1,7 @@
 import { Box, FormControl, Input, Button } from "native-base";
 import React, { useState } from "react";
 import { ICadastroScreenProps } from "./types";
-import { auth } from "../../../api/firebaseConfig";
+import { auth } from "../../../api/config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const CadastroScreen = (props: ICadastroScreenProps) => {
