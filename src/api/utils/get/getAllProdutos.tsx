@@ -1,7 +1,7 @@
-import { IProduto } from "../../components/Screen/Cardapio/types";
+import { IProduto } from "../../../components/Screen/Cardapio/types";
 
 import { getFirestore, getDocs, collection } from "firebase/firestore";
-import { app } from "../firebaseConfig";
+import { app } from "../../firebaseConfig";
 
 
 //Método para retornar os produtos cadastrados

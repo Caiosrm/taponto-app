@@ -9,7 +9,7 @@ import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ICantinaProps } from "../Cantina/types";
-import { getAllCantinas } from "../../../api/utils/getAllCantinas";
+import { getAllCantinas } from "../../../api/utils/get/getAllCantinas";
 import { useNavigation } from "@react-navigation/native";
 import ListarCardapio from "../Cardapio/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
