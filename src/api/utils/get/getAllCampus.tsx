@@ -13,6 +13,7 @@ export async function getPolos() {
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       const campus: CampusType = {
+        id: doc.id,
         nome: data.nome,
         rua: data.rua,
         numero: data.numero,
