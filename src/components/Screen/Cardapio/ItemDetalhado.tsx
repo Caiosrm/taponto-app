@@ -61,7 +61,6 @@ const ItemDetalhado = () => {
                                     padding={5}
                                     shadow={2}
                                     h={120}
-
                                     py="2"
                                 >
                                     <Box>

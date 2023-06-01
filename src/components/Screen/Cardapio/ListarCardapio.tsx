@@ -15,12 +15,12 @@ const ListarCardapio = () => {
     
     //===================================================== useEffect's =======================================================
     useEffect(() => {
-        const fetchData = async () => {
-            const produtos = await getAllProdutos();
-            setProdutos(produtos);
-            console.log(produtos)
-        };
-        fetchData();
+//        const fetchData = async () => {
+//            const produtos = await getAllProdutos();
+//           setProdutos(produtos);
+//            console.log(produtos)
+//        };
+//        fetchData();
 
 
     }, []);
