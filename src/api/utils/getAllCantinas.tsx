@@ -2,6 +2,7 @@ import { getFirestore, getDocs, collection } from "@firebase/firestore";
 import { app } from "../firebaseConfig";
 import { ICantinaProps } from "../../components/Screen/Cantina/types";
 
+//Método para retornar as cantinas cadastrados
 
 export async function getAllCantinas() {
 	const db = getFirestore(app);

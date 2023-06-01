@@ -7,7 +7,6 @@ import { ICardapioProps, IProduto, initialStateProduto } from "./types";
 import { getAllProdutos } from "../../../api/utils/getAllProdutos";
 import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
-import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
@@ -54,7 +53,6 @@ const ListarCardapio = () => {
                         >
                             <Avatar
                                 size="90px"
-                                source={{ uri: item.imagem }}
                             />
                             <VStack>
                                 <Text
@@ -66,7 +64,7 @@ const ListarCardapio = () => {
                                 <Text
                                     _dark={{ color: "warmGray.50" }}
                                     color="#000000"
-                                >{item.lanchonete}
+                                >{item.cantinaId}
                                 </Text>
                                 <Text
                                     _dark={{ color: "coolGray.800" }}

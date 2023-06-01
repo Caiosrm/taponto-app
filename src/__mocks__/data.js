@@ -58,5 +58,4 @@ export const Polos = [
         nomerua: 'Rua Artur Ramos',
         numerorua: '243'
     }
-
 ];

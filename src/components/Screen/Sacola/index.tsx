@@ -65,7 +65,6 @@ const SacolaScreen = (props: ISacola) => {
                         >
                             <Avatar
                                 size="90px"
-                                source={{ uri: item.imagem }}
                             />
                             <VStack>
                                 <Text
@@ -77,7 +76,7 @@ const SacolaScreen = (props: ISacola) => {
                                 <Text
                                     _dark={{ color: "warmGray.50" }}
                                     color="#000000"
-                                >{item.lanchonete}
+                                >{item.cantinaId}
                                 </Text>
                                 <Text
                                     _dark={{ color: "coolGray.800" }}

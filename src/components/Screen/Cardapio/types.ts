@@ -10,31 +10,29 @@ export interface ICardapioProps {
 export interface IProduto {
     id: string;
     nome: string;
-    lanchonete: string;
-    valor: number;
     descricao: string;
-    tipoDeAlimento: string;
+    cantinaId: string;
     quantidade: number;
-    imagem: string;
-    avaliacao: number;
-    review: string;
+    valor: number;
+    avaliacoes: {
+        comentario: string;
+        nota: number;
+        clienteId: string;
+    }
 };
-
-
-
-
 
 export const initialStateProduto: IProduto = {
     id: '',
     nome: '',
-    lanchonete: '',
-    valor: 0,
     descricao: '',
-    tipoDeAlimento: '',
+    cantinaId: '',
     quantidade: 0,
-    imagem: '',
-    avaliacao: 0,
-    review: '',
+    valor: 0,
+    avaliacoes: {
+        comentario: '',
+        nota: 0.0,
+        clienteId: ''
+    }
 };
 
 export const initialStateProdutos: IProduto[] = [];
