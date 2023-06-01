@@ -8,7 +8,6 @@ export async function deleteProduto(produtoId: string) {
     const db = getFirestore(app);
     const produtosRef = collection(db, "produtos");
     const produtoDocRef = doc(produtosRef, produtoId);
-
     try {
         await deleteDoc(produtoDocRef);
         console.log("Produto excluído com sucesso!");
@@ -16,4 +15,3 @@ export async function deleteProduto(produtoId: string) {
         console.log("Erro ao excluir o produto:", error);
     }
 }
-
