@@ -1,5 +1,5 @@
 import { IProduto } from "../../components/Screen/Cardapio/types";
-import { PedidoType } from "./PedidoType";
+import { PedidoType } from "./OrderType";
 
 export type CantinaType = {
  id: string;
