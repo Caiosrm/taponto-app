@@ -1,7 +1,7 @@
 import { ICardapioProps } from "../Cardapio/types";
 import { IPedidoProps } from "../Pedidos/types";
 
-export interface ICantinaProps {
+export interface ICantinaScreenProps {
     lanchonete: {
         id: string;
         nome: string;

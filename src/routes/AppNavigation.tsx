@@ -19,6 +19,10 @@ import HomeScreen from '../components/Screen/Home';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
+/*===================================================================================================*/
+/* Rotas fora da Barra de Navegação
+/*===================================================================================================*/
 export const StackNavigator = () => {
   return (
     <Stack.Navigator>
@@ -30,7 +34,9 @@ export const StackNavigator = () => {
   )
 }
 
-
+/*===================================================================================================*/
+/* Rotas da Barra de Navegação
+/*===================================================================================================*/
 export const TabNavigator = () => {
 
   const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
@@ -44,9 +50,7 @@ export const TabNavigator = () => {
           height: 60
         }
       }}>
-
       {usuarioLogado === true ? (
-
         <Tab.Group>
 
           <Tab.Screen

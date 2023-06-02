@@ -12,13 +12,18 @@ import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
 
 
 const SacolaScreen = (props: ISacola) => {
-    //===================================================== State's ===========================================================
+
+    /*===================================================================================================*/
+    /* States
+    /*===================================================================================================*/
     const [sacola, setSacola] = React.useState<IProduto[]>([]);
     const [valorTotal, setValorTotal] = React.useState<number>();
 
 
 
-    //===================================================== useEffect's =======================================================
+    /*===================================================================================================*/
+    /* useEffect's
+    /*===================================================================================================*/
     useEffect(() => {
         const fetchData = async () => {
             const sacola = await getAllProdutos();
@@ -27,20 +32,22 @@ const SacolaScreen = (props: ISacola) => {
         fetchData();
     }, []);
 
-    //===================================================== HandleChange's ====================================================
+    /*===================================================================================================*/
+    /* handleChange's
+    /*===================================================================================================*/
+
     const handleQuantityChange = (index: number, value: string) => {
         const novosItens = [...sacola];
-        novosItens[index] = { ...novosItens[index], quantidade: parseInt(value, 10) };
+        novosItens[index] = {
+            ...novosItens[index],
+            quantidade: parseInt(value, 10)
+        };
         setSacola(novosItens);
     };
 
-    //=========================================================================================================================
 
-    const calculaTotal = () => {
-        return sacola.reduce(
-            (total, item) => total + item.valor * item.quantidade,
-            0
-        );
+    const handleValorTotal = () => {
+        return sacola.reduce((total, item) => total + item.valor * item.quantidade, 0);
     };
 
 
@@ -124,7 +131,7 @@ const SacolaScreen = (props: ISacola) => {
             <Box>
                 <Center my={4}>
                     <Text fontWeight="bold" fontSize="lg">
-                        Total: ${calculaTotal().toFixed(2)}
+                        Total: ${handleValorTotal().toFixed(2)}
                     </Text>
                 </Center>
             </Box>
