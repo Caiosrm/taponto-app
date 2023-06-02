@@ -1,12 +1,8 @@
-import { Avatar, Box, Button, Input, ScrollView } from "native-base";
-import { ICardapioProps } from "./types"
+import { Avatar, Box, Button, ScrollView } from "native-base";
 import AppBar from "../../Common/AppBar";
 import { Text } from 'native-base'
-import { Modalize } from "react-native-modalize";
-import { useRef } from "react";
-import { Dimensions, FlatList, TouchableOpacity } from "react-native";
+import { FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { colors } from "../../../themes/Theme";
 import { people } from "../../../__mocks__/data";
 
