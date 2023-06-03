@@ -1,5 +1,5 @@
 import { Avatar, Box, Heading, Text, FlatList, StatusBar, ScrollView, Badge } from "native-base";
-import AppBar from "../../Common/AppBar";
+import TopBar from "../../Common/TopBar";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect, } from 'react';
@@ -8,21 +8,22 @@ import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { ICantinaProps } from "../Cantina/types";
-import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { useNavigation } from "@react-navigation/native";
 import ListarCardapio from "../Cardapio/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
 import { HeaderBemVindo } from "./components/HeaderBemVindo";
 import { PoloAtual } from "./components/PoloAtual";
 import { caroselitem } from "../../../__mocks__/data";
+import { getAllShop } from "../../../api/utils/get/getAllShop";
+import { CantinaType } from "../../../api/types/ShopType";
+import TabNavigator from "../../../routes/AppNavigation";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
     const navigation = useNavigation<RootStackParamList>();
 
-    const [cantinas, setCantinas] = React.useState<ICantinaProps[]>();
+    const [cantinas, setCantinas] = React.useState<CantinaType[]>();
 
     const { colorMode, toggleColorMode } = useTheme();
 
@@ -38,7 +39,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
         const fetchData = async () => {
             const data = await getAllShop();
             setCantinas(data);
-            
+
         };
         fetchData();
     }, []);
@@ -49,13 +50,15 @@ const HomeScreen = (props: IHomeScreenProps) => {
         <ThemeProvider>
             <StatusBar />
             <GestureHandlerRootView style={{ flex: 1 }}>
-                <AppBar pageTitle={props.pageTitle} />
+
+                <TopBar />
+
                 <ScrollView marginBottom={12}>
 
 
-                    <HeaderBemVindo/>
+                    <HeaderBemVindo />
 
-                    <PoloAtual/>
+                    <PoloAtual />
 
                     <Box //CANTINAS ABERTAS AGORA
                         backgroundColor={colors.light.brancoPuro} marginBottom={5}>
@@ -81,7 +84,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             color="black"
                                             onPress={() => navigation.navigate(ListarCardapio)}
                                         >
-                                            {item.lanchonete.nome}
+                                            {item.nome}
                                         </Text>
                                     </Box>
                                 </Box>
@@ -133,7 +136,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             _dark={{ color: "warmGray.50" }}
                                             color="coolGray.800"
                                         >
-                                            {item.lanchonete.nome}
+                                            {item.nome}
                                         </Text>
                                         <Text
                                             fontSize="sm"
@@ -141,13 +144,13 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             color="coolGray.600"
                                         >
                                             <Badge colorScheme="success" size={"sm"} alignSelf="center" variant={"outline"}>
-                                                {item.lanchonete.status}
+                                                {item.status}
                                             </Badge>
                                         </Text>
                                         <Box alignItems='center' flexDirection='row' >
                                             <Ionicons name='ios-star' size={15} color='#fcbb01' />
                                             <Text marginLeft={2}>
-                                                {item.lanchonete.avaliacao.review}
+                                                {item.avaliacoes.nota}
                                             </Text>
                                         </Box>
                                     </Box>
@@ -162,6 +165,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
 
                 </ScrollView>
+            <TabNavigator />
             </GestureHandlerRootView>
         </ThemeProvider>
     );

@@ -30,6 +30,9 @@ export const StackNavigator = () => {
       <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{ headerShown: false }} />
       <Stack.Screen name="ItemDetalhado" component={ItemDetalhado} options={{ headerShown: false }} />
+      <Stack.Screen name="Pedidos" component={Pedidos} options={{ headerShown: false }} />
+      <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
@@ -40,7 +43,7 @@ export const StackNavigator = () => {
 export const TabNavigator = () => {
 
   const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
-  
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -53,47 +56,50 @@ export const TabNavigator = () => {
       {usuarioLogado === true ? (
         <Tab.Group>
 
-          <Tab.Screen
-            name="Sacola"
+          <Tab.Screen name="Sacola"
             component={Sacola}
-            initialParams={initialStateSacola}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
-                else return (<Entypo name='shopping-bag' size={size} color={color} />);
+                if (focused) {
+                  return <Entypo name='shopping-bag' size={size} color={color} />
+                } else {
+                  return <Entypo name='shopping-bag' size={size} color={color} />
+                }
               },
             }}
           />
 
-          <Tab.Screen
-            name="Perfil"
+          <Tab.Screen name="Perfil"
             component={Perfil}
-            initialParams={initialStatePerfil}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
-                else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
+                if (focused) {
+                  return <Ionicons name='person-circle-sharp' size={size} color={color} />
+                } else {
+                  return <Ionicons name='person-circle-sharp' size={size} color={color} />
+                }
               },
             }}
           />
+
           <Tab.Screen name="Pedidos"
-            component={() => <Pedidos
-              // props 
-              pageTitle="Pedidos"
-              produto={initialStateProduto}
-              produtos={[]} />
-            }
+            component={Pedidos}
             options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Octicons name='checklist' size={size} color={color} /> }
-                else return (<Octicons name='checklist' size={size} color={color} />);
+              headerShown: false,
+              tabBarIcon: ({ color, size, focused }) => {
+                if (focused) {
+                  return <Octicons name='checklist' size={size} color={color} />;
+                } else {
+                  return <Octicons name='checklist' size={size} color={color} />;
+                }
               }
             }}
           />
         </Tab.Group>
       ) : (
         <Tab.Group>
-          <Tab.Screen name="Login" component={Login} initialParams={initialStateLogin}
+          <Tab.Screen name="Login"
+            component={Login}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person' size={size} color={color} /> }
@@ -101,9 +107,9 @@ export const TabNavigator = () => {
               }
             }}
           />
-      </Tab.Group>
+        </Tab.Group>
       )}
-        </Tab.Navigator>
+    </Tab.Navigator>
   );
 }
 

@@ -4,23 +4,24 @@ import React, { useEffect } from "react";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioProps, IProduto, initialStateProduto } from "./types";
-import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
 import { colors } from "../../../themes/Theme";
-import AppBar from "../../Common/AppBar";
+import AppBar from "../../Common/TopBar";
+import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
+import { ProdutoType } from "../../../api/types/ProductType";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
-    const [produtos, setProdutos] = React.useState<IProduto[]>([]);
+    const [produtos, setProdutos] = React.useState<ProdutoType[]>([]);
 
     
     //===================================================== useEffect's =======================================================
     useEffect(() => {
-//        const fetchData = async () => {
-//            const produtos = await getAllProdutos();
-//           setProdutos(produtos);
-//            console.log(produtos)
-//        };
-//        fetchData();
+       const fetchData = async () => {
+           const produtos = await getAllProdutos();
+          setProdutos(produtos);
+           console.log(produtos)
+       };
+       fetchData();
 
 
     }, []);

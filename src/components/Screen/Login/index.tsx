@@ -1,8 +1,8 @@
-import {  Button, Text, VStack, Image, Input, Box, Link, FormControl, Center, View } from 'native-base'
+import { Button, Text, VStack, Image, Input, Box, Link, FormControl, Center, View } from 'native-base'
 import { TouchableOpacity } from 'react-native'
 import Logo from '../../../../assets/Logotipo.png'
 import { useNavigation } from '@react-navigation/native';
-import AppBar from '../../Common/AppBar'
+import AppBar from '../../Common/TopBar'
 import { useState } from 'react'
 import { auth } from "../../../api/config/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -23,11 +23,14 @@ type ILoginScreenProps = {
 };
 
 export default function Login(props: ILoginScreenProps) {
-
+    /*===================================================================================================*/
+    /* state's
+    /*===================================================================================================*/
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
 
 
     async function logar() {
-
         signInWithEmailAndPassword(auth, email, senha)
             .then((dadosdousuario) => {
                 console.log(dadosdousuario);
@@ -35,18 +38,10 @@ export default function Login(props: ILoginScreenProps) {
             })
             .catch((error) => {
                 console.log(error);
-                
-            
             });
-
         setEmail('');
         setSenha('');
     }
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-
-
-
 
     return (
         <View>
@@ -88,7 +83,9 @@ export default function Login(props: ILoginScreenProps) {
                     Esqueceu sua senha?
                 </Link>
                 <Box w='100%' flexDirection='row' justifyContent='center' mt={8}>
-                    <Text>Ainda não tem cadastro? </Text>
+                    <Text>
+                        Ainda não tem cadastro?
+                    </Text>
                     <TouchableOpacity>
                         <Text color='blue.500'>
                             Faça seu cadastro!

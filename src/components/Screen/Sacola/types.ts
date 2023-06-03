@@ -1,11 +1,13 @@
+import { ProdutoType } from "../../../api/types/ProductType";
 import { IProduto, initialStateProduto } from "../Cardapio/types";
-export interface ISacola {
-        id?: string;
-        produtosNaSacola?: IProduto[];
-        valorTotal?: number;
+export interface ISacolaScreenProps {
+        idCliente: string;
+        produtosNaSacola: ProdutoType[];
+        valorTotal: number;
 }
 
-export const initialStateSacola: ISacola = {
+export const initialStateSacola: ISacolaScreenProps = {
+    idCliente: '',
     produtosNaSacola: [],
-    valorTotal: 0
+    valorTotal: 20
 }

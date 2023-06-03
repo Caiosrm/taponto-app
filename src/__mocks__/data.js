@@ -37,26 +37,7 @@ export const caroselitem = [
     '#ef1541',
     '#b37784',
 ];
-export const Polos = [
-    {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        nomepolo: "Polo Via Corpvs",
-        nomerua: 'Rua Eliseu Uchôa Becco ',
-        numerorua: '600'
 
-    }, {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        nomepolo: "Polo Papicu",
-        nomerua: 'Rua Professor Sila Ribeiro',
-        numerorua: '209'
-
-    }, {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        nomepolo: "Polo Centro",
-        nomerua: 'Rua Artur Ramos',
-        numerorua: '243'
-    }
-];
 export const people = [{
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     fullName: "Aafreen Khan",

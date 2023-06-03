@@ -1,15 +1,16 @@
-import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import { Text, View, HStack, Icon, IconButton } from "native-base";
-import { AppBarProps } from "./types";
+import { TopBarProps } from "./types";
 import React from "react";
 import { colors } from "../../../themes/Theme";
 import { useTheme } from "../../../themes/ThemeContext";
 import { StatusBar } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from "../../../routes/types";
+import TabNavigator from "../../../routes/AppNavigation";
 
 
-export default function AppBar(props: AppBarProps) {
+export default function TopBar(props: TopBarProps) {
 
 	const { colorMode, toggleColorMode } = useTheme();
 
@@ -37,12 +38,6 @@ export default function AppBar(props: AppBarProps) {
 							name="home-outline"
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
-					<Text
-						color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-						fontSize="20"
-						fontWeight="bold"
-					>{props.pageTitle}
-					</Text>
 				</HStack>
 
 				<HStack>
@@ -52,13 +47,9 @@ export default function AppBar(props: AppBarProps) {
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
 							onPress={toggleColorMode} />} />
-					<IconButton
-						icon={<Icon as={MaterialIcons}
-							name="search"
-							size="sm"
-							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
 				</HStack>
 			</HStack>
+			
 		</View>
 	);
 }

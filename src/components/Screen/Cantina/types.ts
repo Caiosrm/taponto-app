@@ -2,19 +2,15 @@ import { ICardapioProps } from "../Cardapio/types";
 import { IPedidoProps } from "../Pedidos/types";
 
 export interface ICantinaScreenProps {
-    lanchonete: {
-        id: string;
-        nome: string;
-        idCardapio: string;
-        cardapio: ICardapioProps;
-        descricao: string;
-        avaliacao: {
-            comentario: string;
-            matricula: string;
-            review: number;
-        };
-        status: string;
-        pedido: IPedidoProps;
-        pedidos: IPedidoProps[];
-    }
+  id: string;
+  nome: string;
+  cardapio: ICardapioProps;
+  descricao: string;
+  avaliacoes: {
+    comentario: string;
+    clienteId: string;
+    review: number;
+  };
+  status: string;
+  pedidos: IPedidoProps[];
 }

@@ -2,6 +2,7 @@ import { IProduto } from "../../../components/Screen/Cardapio/types";
 
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { app } from "../../config/firebaseConfig";
+import { ProdutoType } from "../../types/ProductType";
 
 
 //Método para retornar os produtos cadastrados
@@ -9,17 +10,21 @@ export async function getAllProdutos() {
 	const db = getFirestore(app);
 	try {
 		const querySnapshot = await getDocs(collection(db, "produtos"));
-		let produtos: IProduto[] = [];
+		let produtos: ProdutoType[] = [];
 		querySnapshot.forEach((doc) => {
-			const data = doc.data();
-			const produto: IProduto = {
+			const response = doc.data();
+			const produto: ProdutoType = {
 				id: doc.id,
-				nome: data.nome,
-				cantinaId: data.cantinaId,
-				descricao: data.descricao,
-				quantidade: data.quantidade,
-				avaliacoes: data.avaliacoes,
-				valor: data.valor
+				nome: response?.nome,
+				descricao: response?.descricao,
+				cantinaId: response?.cantinaId,
+				quantidade: response?.quantidade,
+				valor: response?.valor,
+                avaliacoes: {
+                    comentario: response?.avaliacoes.comentario,
+                    clienteId: response?.avaliacoes.clienteId,
+                    nota: response?.avaliacoes.nota,
+                }
 			}
 			produtos.push(produto);
 		});

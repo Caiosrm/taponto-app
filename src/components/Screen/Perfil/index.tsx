@@ -1,7 +1,7 @@
 import { View, Text } from "native-base";
 import React, { useEffect } from "react";
 import { IPerfilScreenProps } from "./types";
-import AppBar from "../../Common/AppBar";
+import TopBar from "../../Common/TopBar";
 
 const PerfilScreen = (props: IPerfilScreenProps) => {
 
@@ -17,7 +17,7 @@ const PerfilScreen = (props: IPerfilScreenProps) => {
 
     return (
         <View>
-            <AppBar pageTitle={props.pageTitle} />
+            <TopBar />
 
             <Text> teste </Text>
         </View>

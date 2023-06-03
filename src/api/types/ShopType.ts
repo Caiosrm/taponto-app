@@ -6,6 +6,12 @@ export type CantinaType = {
  idCampus: string;
  nome: string;
  descricao: string;
+ status: string;
  cardapio: IProduto[];
+ avaliacoes: {
+    comentario: string;
+    clienteId: string;
+    nota: number;
+ }
  pedidos: PedidoType[];
 }

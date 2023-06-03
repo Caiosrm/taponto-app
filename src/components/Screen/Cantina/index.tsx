@@ -3,9 +3,7 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { Button, HStack } from 'native-base';
 import { ICantinaScreenProps } from './types';
-
-
-
+import TopBar from '../../Common/TopBar';
 
 
 export default function CantinaScreen(props: ICantinaScreenProps) {
@@ -14,6 +12,7 @@ export default function CantinaScreen(props: ICantinaScreenProps) {
   
   return (
     <HStack>
+      <TopBar/>
       
     </HStack>
   );
