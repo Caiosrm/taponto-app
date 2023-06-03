@@ -1,9 +1,9 @@
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { app } from "../firebaseConfig";
+import { app } from "../../config/firebaseConfig";
 
 const dados = require('../__mocks__/MOCK_DATA.json');
 
-// Método para cadastrar um novo produto
+// Método para cadastrar um novo produto na coleção do Firebase
 export async function postProduto(produto: any) {
     const db = getFirestore(app);
     const produtosCollection = collection(db, "produtos");
@@ -12,8 +12,8 @@ export async function postProduto(produto: any) {
 }
 
 // Loop para cadastrar um array de produtos
-export async function lerJSONEnviarFirebase() {
-  for (const produto of dados) {
-      await postProduto(produto);
-  }
-}
+//export async function lerJSONEnviarFirebase() {
+//  for (const produto of dados) {
+//      await postProduto(produto);
+//  }
+//}

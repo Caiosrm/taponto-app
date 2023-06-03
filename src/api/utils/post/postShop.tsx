@@ -1,8 +1,9 @@
 import { getFirestore, collection, addDoc } from "@firebase/firestore";
-import { app } from "../firebaseConfig";
+import { app } from "../../config/firebaseConfig";
 
 const dados = require('../__mocks__/MOCK_DATA.json');
 
+//Método que cadastra uma Cantina na coleção do Firebase
 export async function postCantina(cantina: any) {
     const db = getFirestore(app);
     const cantinasCollection = collection(db, "cantinas");

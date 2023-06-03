@@ -4,10 +4,9 @@ import React, { useEffect } from "react";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { ICardapioProps, IProduto, initialStateProduto } from "./types";
-import { getAllProdutos } from "../../../api/utils/getAllProdutos";
+import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
 import { colors } from "../../../themes/Theme";
 import AppBar from "../../Common/AppBar";
-import { lerJSONEnviarFirebase } from "../../../api/utils/postProduto";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
@@ -16,12 +15,12 @@ const ListarCardapio = () => {
     
     //===================================================== useEffect's =======================================================
     useEffect(() => {
-        const fetchData = async () => {
-            const produtos = await getAllProdutos();
-            setProdutos(produtos);
-            console.log(produtos)
-        };
-        fetchData();
+//        const fetchData = async () => {
+//            const produtos = await getAllProdutos();
+//           setProdutos(produtos);
+//            console.log(produtos)
+//        };
+//        fetchData();
 
 
     }, []);
@@ -35,6 +34,7 @@ const ListarCardapio = () => {
             backgroundColor={colors.light.background}
         >
             <AppBar />
+            
             <FlatList
                 data={produtos}
                 renderItem={({ item }) =>
@@ -54,7 +54,6 @@ const ListarCardapio = () => {
                         >
                             <Avatar
                                 size="90px"
-                                source={{ uri: item.imagem }}
                             />
                             <VStack>
                                 <Text
@@ -66,7 +65,7 @@ const ListarCardapio = () => {
                                 <Text
                                     _dark={{ color: "warmGray.50" }}
                                     color="#000000"
-                                >{item.lanchonete}
+                                >{item.cantinaId}
                                 </Text>
                                 <Text
                                     _dark={{ color: "coolGray.800" }}

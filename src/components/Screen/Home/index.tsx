@@ -9,7 +9,7 @@ import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ICantinaProps } from "../Cantina/types";
-import { getAllCantinas } from "../../../api/utils/getAllCantinas";
+import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { useNavigation } from "@react-navigation/native";
 import ListarCardapio from "../Cardapio/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
@@ -36,7 +36,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
     useEffect(() => { //USE EFFECT INICIAL
         const fetchData = async () => {
-            const data = await getAllCantinas();
+            const data = await getAllShop();
             setCantinas(data);
             
         };

@@ -4,7 +4,7 @@ import Logo from '../../../../assets/Logotipo.png'
 import { useNavigation } from '@react-navigation/native';
 import AppBar from '../../Common/AppBar'
 import { useState } from 'react'
-import { auth } from "../../../api/firebaseConfig";
+import { auth } from "../../../api/config/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
 
