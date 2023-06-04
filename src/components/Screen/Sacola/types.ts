@@ -9,5 +9,5 @@ export interface ISacolaScreenProps {
 export const initialStateSacola: ISacolaScreenProps = {
     idCliente: '',
     produtosNaSacola: [],
-    valorTotal: 20
+    valorTotal: 0
 }

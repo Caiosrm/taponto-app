@@ -7,14 +7,12 @@ import { Entypo } from '@expo/vector-icons';
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
 import Login from '../components/Screen/Login';
-import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
-import { initialStateSacola } from '../components/Screen/Sacola/types';
+import ListarCardapio from '../components/Screen/Cantina/ListarCardapio';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
-import { initialStateLogin } from '../components/Screen/Login/types';
-import { initialStateProduto } from '../components/Screen/Cardapio/types';
 import Pedidos from '../components/Screen/Pedidos';
-import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
+import ItemDetalhado from '../components/Screen/Cantina/ItemDetalhado';
 import HomeScreen from '../components/Screen/Home';
+import CantinaScreen from '../components/Screen/Cantina';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -33,6 +31,7 @@ export const StackNavigator = () => {
       <Stack.Screen name="Pedidos" component={Pedidos} options={{ headerShown: false }} />
       <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
@@ -57,7 +56,10 @@ export const TabNavigator = () => {
         <Tab.Group>
 
           <Tab.Screen name="Sacola"
-            component={Sacola}
+            component={() => <Sacola
+              idCliente={''}
+              produtosNaSacola={[]}
+              valorTotal={0} />}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) {
@@ -71,6 +73,7 @@ export const TabNavigator = () => {
 
           <Tab.Screen name="Perfil"
             component={Perfil}
+            initialParams={initialStatePerfil}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) {
@@ -95,9 +98,11 @@ export const TabNavigator = () => {
               }
             }}
           />
+
         </Tab.Group>
       ) : (
         <Tab.Group>
+
           <Tab.Screen name="Login"
             component={Login}
             options={{

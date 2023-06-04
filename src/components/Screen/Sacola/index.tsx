@@ -12,14 +12,11 @@ import { ProdutoType } from "../../../api/types/ProductType";
 
 
 const SacolaScreen = (props: ISacolaScreenProps) => {
-
     /*===================================================================================================*/
     /* States
     /*===================================================================================================*/
-    const [sacola, setSacola] = React.useState<ProdutoType[]>(props.produtosNaSacola);
+    const [sacola, setSacola] = React.useState<ProdutoType[]>(props?.produtosNaSacola);
     const [valorTotal, setValorTotal] = React.useState<number>(props.valorTotal);
-
-
 
     /*===================================================================================================*/
     /* useEffect's
@@ -32,10 +29,6 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
         fetchData();
     }, []);
 
-    useEffect(() => {//Recalcula o valor total
-        const novoValorTotal = handleValorTotal();
-        setValorTotal(novoValorTotal);
-    }, [sacola]);
 
     /*===================================================================================================*/
     /* handleChange's
@@ -48,11 +41,6 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
         };
         setSacola(novosItens);
     };
-
-    const handleValorTotal = () => {
-        return sacola.reduce((total, item) => total + item.valor * item.quantidade, 0);
-    };
-
 
     return (
         <View>

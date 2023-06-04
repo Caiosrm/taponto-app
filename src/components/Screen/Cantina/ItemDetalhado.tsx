@@ -17,7 +17,7 @@ const ItemDetalhado = () => {
             <Box flex={1}>
                 <TopBar />
                 <Box marginBottom={200} flex={2} padding={2}>
-                    <ScrollView  >
+                    <ScrollView>
 
                         <FlatList
                             data={people}

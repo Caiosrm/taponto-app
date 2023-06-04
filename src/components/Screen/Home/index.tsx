@@ -9,7 +9,7 @@ import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import ListarCardapio from "../Cardapio/ListarCardapio";
+import ListarCardapio from "../Cantina/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
 import { HeaderBemVindo } from "./components/HeaderBemVindo";
 import { PoloAtual } from "./components/PoloAtual";
@@ -165,7 +165,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
 
 
                 </ScrollView>
-            <TabNavigator />
             </GestureHandlerRootView>
         </ThemeProvider>
     );

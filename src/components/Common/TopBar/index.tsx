@@ -33,20 +33,11 @@ export default function TopBar(props: TopBarProps) {
 			>
 				<HStack alignItems="center">
 					<IconButton
-						onPress={() => navigation.navigate('Home')}
+						onPress={() => navigation.navigate('CantinaScreen')}
 						icon={<Icon as={Ionicons}
 							name="home-outline"
 							size="sm"
 							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
-				</HStack>
-
-				<HStack>
-					<IconButton
-						icon={<Icon as={MaterialCommunityIcons}
-							name="theme-light-dark"
-							size="sm"
-							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro}
-							onPress={toggleColorMode} />} />
 				</HStack>
 			</HStack>
 			
