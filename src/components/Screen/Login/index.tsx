@@ -53,7 +53,9 @@ export default function Login(props: ILoginScreenProps) {
                 </Text>
                 <Box>
                     <FormControl mt={3}>
-                        <FormControl.Label>Email</FormControl.Label>
+                        <FormControl.Label>
+                            Email
+                        </FormControl.Label>
                         <Input placeholder='Insira seu endereço de email'
                             size="lg"
                             w="100%"
@@ -64,7 +66,9 @@ export default function Login(props: ILoginScreenProps) {
                             shadow={3} />
                     </FormControl>
                     <FormControl mt={3}>
-                        <FormControl.Label>Senha</FormControl.Label>
+                        <FormControl.Label>
+                            Senha
+                        </FormControl.Label>
                         <Input placeholder='Insira sua senha'
                             size="lg"
                             value={senha}

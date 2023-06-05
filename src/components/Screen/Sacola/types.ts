@@ -1,5 +1,4 @@
 import { ProdutoType } from "../../../api/types/ProductType";
-import { IProduto, initialStateProduto } from "../Cardapio/types";
 export interface ISacolaScreenProps {
         idCliente: string;
         produtosNaSacola: ProdutoType[];

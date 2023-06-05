@@ -1,5 +1,5 @@
-import { Ionicons, MaterialCommunityIcons, MaterialIcons, FontAwesome } from "@expo/vector-icons";
-import { Text, View, HStack, Icon, IconButton } from "native-base";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { View, HStack, Icon, IconButton } from "native-base";
 import { TopBarProps } from "./types";
 import React from "react";
 import { colors } from "../../../themes/Theme";
@@ -7,7 +7,6 @@ import { useTheme } from "../../../themes/ThemeContext";
 import { StatusBar } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from "../../../routes/types";
-import TabNavigator from "../../../routes/AppNavigation";
 
 
 export default function TopBar(props: TopBarProps) {
@@ -16,6 +15,9 @@ export default function TopBar(props: TopBarProps) {
 
 	const navigation = useNavigation<RootStackParamList>();
 
+	const handleGoBack = () => {
+		navigation.goBack();
+	};
 
 	return (
 		<View>
@@ -31,16 +33,16 @@ export default function TopBar(props: TopBarProps) {
 				alignItems="center"
 				w="100%"
 			>
-				<HStack alignItems="center">
+				{/* <HStack alignItems="center">
 					<IconButton
-						onPress={() => navigation.navigate('CantinaScreen')}
-						icon={<Icon as={Ionicons}
-							name="home-outline"
+						onPress={() => navigation.navigate('Home')}
+						icon={<Icon as={FontAwesome}
+							name="home"
 							size="sm"
-							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />} />
-				</HStack>
+							color={colorMode === "light" ? colors.light.brancoPuro : colors.dark.pretoPuro} />}
+					/>
+				</HStack> */}
 			</HStack>
-			
 		</View>
 	);
 }

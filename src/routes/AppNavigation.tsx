@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
@@ -13,6 +14,9 @@ import Pedidos from '../components/Screen/Pedidos';
 import ItemDetalhado from '../components/Screen/Cantina/ItemDetalhado';
 import HomeScreen from '../components/Screen/Home';
 import CantinaScreen from '../components/Screen/Cantina';
+import { initialStateSacola } from '../components/Screen/Sacola/types';
+import Home from '../components/Screen/Home';
+import HomeTabsNavigator from './utils/HomeTabsNavigator';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -23,9 +27,9 @@ const Stack = createStackNavigator();
 /*===================================================================================================*/
 export const StackNavigator = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+    <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen name="TabNavigator" component={AppNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={HomeTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{ headerShown: false }} />
       <Stack.Screen name="ItemDetalhado" component={ItemDetalhado} options={{ headerShown: false }} />
       <Stack.Screen name="Pedidos" component={Pedidos} options={{ headerShown: false }} />
@@ -39,7 +43,7 @@ export const StackNavigator = () => {
 /*===================================================================================================*/
 /* Rotas da Barra de Navegação
 /*===================================================================================================*/
-export const TabNavigator = () => {
+export const AppNavigator = () => {
 
   const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
 
@@ -55,11 +59,10 @@ export const TabNavigator = () => {
       {usuarioLogado === true ? (
         <Tab.Group>
 
-          <Tab.Screen name="Sacola"
-            component={() => <Sacola
-              idCliente={''}
-              produtosNaSacola={[]}
-              valorTotal={0} />}
+          <Tab.Screen name="Sacola" component={() => <Sacola
+            idCliente={initialStateSacola.idCliente}
+            produtosNaSacola={initialStateSacola.produtosNaSacola}
+            valorTotal={initialStateSacola.valorTotal} />}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) {
@@ -71,9 +74,7 @@ export const TabNavigator = () => {
             }}
           />
 
-          <Tab.Screen name="Perfil"
-            component={Perfil}
-            initialParams={initialStatePerfil}
+          <Tab.Screen name="Perfil" component={() => <Perfil />}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) {
@@ -86,7 +87,7 @@ export const TabNavigator = () => {
           />
 
           <Tab.Screen name="Pedidos"
-            component={Pedidos}
+            component={() => <Pedidos />}
             options={{
               headerShown: false,
               tabBarIcon: ({ color, size, focused }) => {
@@ -118,4 +119,4 @@ export const TabNavigator = () => {
   );
 }
 
-export default TabNavigator;
+export default AppNavigator;
