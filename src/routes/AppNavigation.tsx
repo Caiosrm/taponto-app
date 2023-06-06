@@ -3,38 +3,50 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons, Octicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Perfil from '../components/Screen/Perfil';
 import Sacola from '../components/Screen/Sacola';
 import Login from '../components/Screen/Login';
-import ListarCardapio from '../components/Screen/Cardapio/ListarCardapio';
-import { initialStateSacola } from '../components/Screen/Sacola/types';
+import ListarCardapio from '../components/Screen/Cantina/ListarCardapio';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
-import { initialStateLogin } from '../components/Screen/Login/types';
-import { initialStateProduto } from '../components/Screen/Cardapio/types';
 import Pedidos from '../components/Screen/Pedidos';
-import ItemDetalhado from '../components/Screen/Cardapio/ItemDetalhado';
+import ItemDetalhado from '../components/Screen/Cantina/ItemDetalhado';
 import HomeScreen from '../components/Screen/Home';
+import CantinaScreen from '../components/Screen/Cantina';
+import { initialStateSacola } from '../components/Screen/Sacola/types';
+import Home from '../components/Screen/Home';
+import HomeTabsNavigator from './utils/HomeTabsNavigator';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
+/*===================================================================================================*/
+/* Rotas fora da Barra de Navegação
+/*===================================================================================================*/
 export const StackNavigator = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+    <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen name="TabNavigator" component={AppNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={HomeTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{ headerShown: false }} />
       <Stack.Screen name="ItemDetalhado" component={ItemDetalhado} options={{ headerShown: false }} />
+      <Stack.Screen name="Pedidos" component={Pedidos} options={{ headerShown: false }} />
+      <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
 
-
-export const TabNavigator = () => {
+/*===================================================================================================*/
+/* Rotas da Barra de Navegação
+/*===================================================================================================*/
+export const AppNavigator = () => {
 
   const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
-  
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -44,52 +56,56 @@ export const TabNavigator = () => {
           height: 60
         }
       }}>
-
       {usuarioLogado === true ? (
-
         <Tab.Group>
 
-          <Tab.Screen
-            name="Sacola"
-            component={Sacola}
-            initialParams={initialStateSacola}
+          <Tab.Screen name="Sacola" component={() => <Sacola
+            idCliente={initialStateSacola.idCliente}
+            produtosNaSacola={initialStateSacola.produtosNaSacola}
+            valorTotal={initialStateSacola.valorTotal} />}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Entypo name='shopping-bag' size={size} color={color} /> }
-                else return (<Entypo name='shopping-bag' size={size} color={color} />);
+                if (focused) {
+                  return <Entypo name='shopping-bag' size={size} color={color} />
+                } else {
+                  return <Entypo name='shopping-bag' size={size} color={color} />
+                }
               },
             }}
           />
 
-          <Tab.Screen
-            name="Perfil"
-            component={Perfil}
-            initialParams={initialStatePerfil}
+          <Tab.Screen name="Perfil" component={() => <Perfil />}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Ionicons name='person-circle-sharp' size={size} color={color} /> }
-                else return (<Ionicons name='person-circle-sharp' size={size} color={color} />);
+                if (focused) {
+                  return <Ionicons name='person-circle-sharp' size={size} color={color} />
+                } else {
+                  return <Ionicons name='person-circle-sharp' size={size} color={color} />
+                }
               },
             }}
           />
+
           <Tab.Screen name="Pedidos"
-            component={() => <Pedidos
-              // props 
-              pageTitle="Pedidos"
-              produto={initialStateProduto}
-              produtos={[]} />
-            }
+            component={() => <Pedidos />}
             options={{
-              headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                if (focused) { return <Octicons name='checklist' size={size} color={color} /> }
-                else return (<Octicons name='checklist' size={size} color={color} />);
+              headerShown: false,
+              tabBarIcon: ({ color, size, focused }) => {
+                if (focused) {
+                  return <Octicons name='checklist' size={size} color={color} />;
+                } else {
+                  return <Octicons name='checklist' size={size} color={color} />;
+                }
               }
             }}
           />
+
         </Tab.Group>
       ) : (
         <Tab.Group>
-          <Tab.Screen name="Login" component={Login} initialParams={initialStateLogin}
+
+          <Tab.Screen name="Login"
+            component={Login}
             options={{
               headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                 if (focused) { return <Ionicons name='person' size={size} color={color} /> }
@@ -97,10 +113,10 @@ export const TabNavigator = () => {
               }
             }}
           />
-      </Tab.Group>
+        </Tab.Group>
       )}
-        </Tab.Navigator>
+    </Tab.Navigator>
   );
 }
 
-export default TabNavigator;
+export default AppNavigator;

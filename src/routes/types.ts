@@ -1,4 +1,5 @@
 export type RootStackParamList = {
+	goBack(): void;
     navigate: any;
     navigation: string;
     Home: undefined;

@@ -1,43 +1,13 @@
-import { Avatar, Box, Button, Input, ScrollView } from "native-base";
-import { ICardapioProps } from "./types"
-import AppBar from "../../Common/AppBar";
+import { Avatar, Box, Button, ScrollView } from "native-base";
+import AppBar from "../../Common/TopBar";
 import { Text } from 'native-base'
-import { Modalize } from "react-native-modalize";
-import { useRef } from "react";
-import { Dimensions, FlatList, TouchableOpacity } from "react-native";
+import { FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { colors } from "../../../themes/Theme";
-
-const data = [{
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    fullName: "Aafreen Khan",
-    timeStamp: "12:47 PM",
-    recentText: "Good Day!",
-    avatarUrl: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-}, {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    fullName: "Sujitha Mathur",
-    timeStamp: "11:11 PM",
-    recentText: "Cheer up, there!",
-    avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU"
-},
-{
-    id: "bd7acbea-c1b1-46c2-aed5-3adgfd53abb28ba",
-    fullName: "Aafreen Khan",
-    timeStamp: "12:47 PM",
-    recentText: "Good Day!",
-    avatarUrl: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-}, {
-    id: "3ac68afc-c605-48d3-a4gfdf8-fbd91aa97f63",
-    fullName: "Sujitha Mathur",
-    timeStamp: "11:11 PM",
-    recentText: "Cheer up, there!",
-    avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU"
-},
+import { people } from "../../../__mocks__/data";
+import TopBar from "../../Common/TopBar";
 
 
-]
 
 const ItemDetalhado = () => {
 
@@ -45,12 +15,12 @@ const ItemDetalhado = () => {
         <>
 
             <Box flex={1}>
-                <AppBar />
+                <TopBar />
                 <Box marginBottom={200} flex={2} padding={2}>
-                    <ScrollView  >
+                    <ScrollView>
 
                         <FlatList
-                            data={data}
+                            data={people}
                             renderItem={({ item }) => (
                                 <Box
                                     backgroundColor={colors.light.brancoPuro}
@@ -61,7 +31,6 @@ const ItemDetalhado = () => {
                                     padding={5}
                                     shadow={2}
                                     h={120}
-
                                     py="2"
                                 >
                                     <Box>
@@ -111,24 +80,7 @@ const ItemDetalhado = () => {
                 </Box>
 
             </Box>
-            <Box
-                position='absolute'
-                bottom={20}
-                left={0}
-                right={0}
 
-
-                shadow={2}
-
-                bg={colors.light.brancoPuro}
-                padding={5}
-            >
-                <Box marginBottom={5} justifyContent='space-between' flexDirection='row'>
-                    <Text>Total</Text>
-                    <Text>R$ 40,00</Text>
-                </Box>
-                <Button>Fechar pedido</Button>
-            </Box>
         </>
 
     );
