@@ -18,11 +18,7 @@ export async function getAllShop() {
 				descricao: response.descricao,
 				status: response.status,
 				pedidos: response.pedidos,
-				avaliacoes: {
-					comentario: response.avaliacao?.comentario,
-					clienteId: response.avaliacao?.matricula,
-					nota: response.avaliacao?.nota
-				},
+				avaliacoes: response.avaliacoes,
 				idCampus: response.idCampus
 			}
 			cantinas.push(cantina);

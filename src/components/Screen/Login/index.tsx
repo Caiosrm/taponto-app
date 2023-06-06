@@ -1,6 +1,6 @@
 import { Button, Text, VStack, Image, Input, Box, Link, FormControl, Center, View } from 'native-base'
 import { TouchableOpacity } from 'react-native'
-import Logo from '../../../../assets/Logotipo.png'
+import Logo from '../../../../assets/logo/Logotipo.png'
 import { useNavigation } from '@react-navigation/native';
 import AppBar from '../../Common/TopBar'
 import { useState } from 'react'
