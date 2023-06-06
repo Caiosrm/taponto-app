@@ -4,9 +4,9 @@ import Logo from '../../../../assets/logo/Logotipo.png'
 import { useNavigation } from '@react-navigation/native';
 import AppBar from '../../Common/TopBar'
 import { useState } from 'react'
-import { auth } from "../../../api/config/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
+import { auth } from '../../../api/config/firebaseConfig';
 
 type RootStackParamList = {
     Home: undefined;
