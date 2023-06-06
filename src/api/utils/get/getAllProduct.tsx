@@ -1,4 +1,3 @@
-import { IProduto } from "../../../components/Screen/Cardapio/types";
 
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { app } from "../../config/firebaseConfig";

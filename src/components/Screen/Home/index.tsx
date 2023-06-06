@@ -150,7 +150,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                         <Box alignItems='center' flexDirection='row' >
                                             <Ionicons name='ios-star' size={15} color='#fcbb01' />
                                             <Text marginLeft={2}>
-                                                {item.avaliacoes.nota}
+                                                {item.avaliacoes?.nota}
                                             </Text>
                                         </Box>
                                     </Box>
