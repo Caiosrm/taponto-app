@@ -1,3 +1,8 @@
+
+//===========================================================\\
+// @author: caduuv
+//===========================================================\\
+
 enum FirebaseResponseMessage {
     "auth/invalid-email" = "O endereço de e-mail fornecido não é válido.",
     "auth/user-disabled" = "Esta conta foi desativada por um administrador.",

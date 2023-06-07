@@ -11,12 +11,14 @@ export const colors: IThemeProps["colors"] = { //Esquema de Cores
         azulTurquesa: '#0094d3',
         azulPetroleo: '#2a627e',
         azulMarinho: '#0c3a4c',
+        azulRoyal: '#002060',
         pretoPuro: '#000000'
     },
 
     dark: {
         pretoPuro: '#000000',
         background: '#292d2e',
+        azulRoyal: '#002060',
         azulMarinho: '#0c3a4c',
         azulPetroleo: '#2a627e',
         azulTurquesa: '#0094d3',
