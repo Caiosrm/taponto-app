@@ -1,14 +1,16 @@
-import { View,  Alert, Button, Image } from "native-base";
-import React, {  useState } from "react";
+import { View, Alert, Button, Image } from "native-base";
+import React, { useState } from "react";
 import { IPerfilScreenProps } from "./types";
 import TopBar from "../../Common/TopBar";
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
-import {storage} from '../../../api/config/firebaseConfig'
+import { storage } from '../../../api/config/firebaseConfig'
 
 const PerfilScreen = (props: IPerfilScreenProps) => {
-    const [selecionarimagem, setSelecionarimagem] = useState(null);
+
+    const [image, setImage] = React.useState<any>(null);
+
 
     const selectImage = async () => {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -17,41 +19,38 @@ const PerfilScreen = (props: IPerfilScreenProps) => {
             return;
         }
 
+
         const resultado = await ImagePicker.launchImageLibraryAsync();
         if (!resultado.canceled) {
-            setSelecionarimagem(resultado.uri);
+            setImage(resultado.uri);
             console.log(resultado.uri)
         }
     };
 
     const uploadImage = async () => {
-        if (selecionarimagem) {
-          const storage = getStorage();
-          const response = await fetch(selecionarimagem);
-          const blob = await response.blob();
-    
-          const fileReferencia = ref(storage, 'images3');
-    
-          uploadBytes(fileReferencia, blob)
-            
-              console.log('Upload completo');
-              
-            
-        } 
-      };
+        if (image) {
+            const storage = getStorage();
+            const response = await fetch(image);
+            const blob = await response.blob();
+            const fileRef = ref(storage, 'images4');
+            uploadBytes(fileRef, blob)
+            console.log('Upload completo');
+        }
+    };
 
-    
 
     return (
-        <View >
+        <View>
+            {image && <Image 
+            source={{ uri: image }} 
+            style={{ width: 200, height: 200 }} />}
 
-
-
-            {selecionarimagem && <Image source={{ uri: selecionarimagem }} style={{ width: 200, height: 200 }} />}
-            <Button onPress={selectImage}>Selecionar imagem</Button>
-            <Button onPress={uploadImage}>Carregar imagem</Button>
-
-
+            <Button onPress={image}>
+                Selecionar imagem
+            </Button>
+            <Button onPress={uploadImage}>
+                Confirmar
+            </Button>
 
         </View>
 
