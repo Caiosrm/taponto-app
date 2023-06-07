@@ -5,8 +5,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { colors } from "../../../themes/Theme";
 import TopBar from "../../Common/TopBar";
-import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
-import { ProdutoType } from "../../../api/types/ProductType";
+import { ProdutoType } from "../../../api/types/ProdutoType";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
@@ -15,16 +14,14 @@ const ListarCardapio = () => {
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
-        const fetchData = async () => {
-            const produtos = await getAllProdutos();
-            setProdutos(produtos);
-            console.log(produtos)
-        };
         fetchData();
-
-
     }, []);
 
+    const fetchData = async () => {
+        const produtos = await getCardapio();
+        setProdutos(produtos);
+        console.log(produtos)
+    };
 
     return (
 
@@ -45,10 +42,8 @@ const ListarCardapio = () => {
                         space={[2, 3]}
                         justifyContent="space-between"
                     >
-                        <Avatar
-                            size="90px"
+                        <Avatar size="90px" />
 
-                        />
                         <VStack>
                             <Text
                                 _dark={{ color: "warmGray.50" }}
@@ -109,3 +104,7 @@ const ListarCardapio = () => {
 };
 
 export default ListarCardapio;
+
+function getCardapio() {
+    throw new Error("Function not implemented.");
+}

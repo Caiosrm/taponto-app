@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { View, Text, Box, FlatList, Avatar, Button, HStack, Icon, Spacer, VStack, Center, ScrollView } from "native-base";
 import { ISacolaScreenProps } from "./types";
 import TopBar from "../../Common/TopBar";
 import { colors } from "../../../themes/Theme";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
-import { ProdutoType } from "../../../api/types/ProductType";
+import { ProdutoType } from "../../../api/types/ProdutoType";
 
 
 
@@ -23,7 +21,7 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
     /*===================================================================================================*/
     useEffect(() => { //Request Inicial
         const fetchData = async () => {
-            const sacola = await getAllProdutos();
+            const sacola = await getCardapio();
             setSacola(sacola);
         };
         fetchData();
@@ -140,3 +138,7 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
 };
 
 export default SacolaScreen;
+
+function getCardapio() {
+    throw new Error("Function not implemented.");
+}
