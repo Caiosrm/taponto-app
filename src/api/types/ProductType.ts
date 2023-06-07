@@ -1,6 +1,8 @@
 export type ProdutoType = {
     id: string;
-    idCantina: string;
+    nome: string;
+    descricao: string;
+    cantinaId: string;
     quantidade: number;
     valor: number;
     avaliacoes?: {

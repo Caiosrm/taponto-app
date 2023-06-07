@@ -1,10 +1,11 @@
 import { Avatar, Box, Button, ScrollView } from "native-base";
-import AppBar from "../../Common/AppBar";
+import AppBar from "../../Common/TopBar";
 import { Text } from 'native-base'
 import { FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../themes/Theme";
 import { people } from "../../../__mocks__/data";
+import TopBar from "../../Common/TopBar";
 
 
 
@@ -14,9 +15,9 @@ const ItemDetalhado = () => {
         <>
 
             <Box flex={1}>
-                <AppBar />
+                <TopBar />
                 <Box marginBottom={200} flex={2} padding={2}>
-                    <ScrollView  >
+                    <ScrollView>
 
                         <FlatList
                             data={people}
@@ -79,24 +80,7 @@ const ItemDetalhado = () => {
                 </Box>
 
             </Box>
-            <Box
-                position='absolute'
-                bottom={20}
-                left={0}
-                right={0}
 
-
-                shadow={2}
-
-                bg={colors.light.brancoPuro}
-                padding={5}
-            >
-                <Box marginBottom={5} justifyContent='space-between' flexDirection='row'>
-                    <Text>Total</Text>
-                    <Text>R$ 40,00</Text>
-                </Box>
-                <Button>Fechar pedido</Button>
-            </Box>
         </>
 
     );

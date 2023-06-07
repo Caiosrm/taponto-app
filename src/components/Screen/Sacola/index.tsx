@@ -1,30 +1,27 @@
 import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Box, FlatList, Avatar, Button, HStack, Icon, Spacer, VStack, Center, ScrollView } from "native-base";
-import { ISacola } from "./types";
-import AppBar from "../../Common/AppBar";
+import { ISacolaScreenProps } from "./types";
+import TopBar from "../../Common/TopBar";
 import { colors } from "../../../themes/Theme";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-import { IProduto } from "../Cardapio/types";
 import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
+import { ProdutoType } from "../../../api/types/ProductType";
 
 
 
-const SacolaScreen = (props: ISacola) => {
-
+const SacolaScreen = (props: ISacolaScreenProps) => {
     /*===================================================================================================*/
     /* States
     /*===================================================================================================*/
-    const [sacola, setSacola] = React.useState<IProduto[]>([]);
-    const [valorTotal, setValorTotal] = React.useState<number>();
-
-
+    const [sacola, setSacola] = React.useState<ProdutoType[]>(props?.produtosNaSacola);
+    const [valorTotal, setValorTotal] = React.useState<number>(props.valorTotal);
 
     /*===================================================================================================*/
     /* useEffect's
     /*===================================================================================================*/
-    useEffect(() => {
+    useEffect(() => { //Request Inicial
         const fetchData = async () => {
             const sacola = await getAllProdutos();
             setSacola(sacola);
@@ -32,10 +29,10 @@ const SacolaScreen = (props: ISacola) => {
         fetchData();
     }, []);
 
+
     /*===================================================================================================*/
     /* handleChange's
     /*===================================================================================================*/
-
     const handleQuantityChange = (index: number, value: string) => {
         const novosItens = [...sacola];
         novosItens[index] = {
@@ -45,100 +42,101 @@ const SacolaScreen = (props: ISacola) => {
         setSacola(novosItens);
     };
 
-
-    const handleValorTotal = () => {
-        return sacola.reduce((total, item) => total + item.valor * item.quantidade, 0);
-    };
-
-
     return (
-        <ScrollView>
-            <AppBar />
-            <Box padding={2} flex={1} backgroundColor={colors.light.background}>
-                <FlatList data={sacola} renderItem={({ item }) =>
-                    <Box
-                        shadow={2}
-                        justifyContent='center'
-                        padding={5} h={120}
-                        borderRadius={5}
-                        marginBottom={3}
-                        backgroundColor={colors.light.brancoPuro}
-                        py="2"
-                    >
-                        <HStack
-                            alignItems='center'
-                            space={[2, 3]}
-                            justifyContent="space-between"
+        <View>
+            <ScrollView>
+
+                <TopBar />
+
+                <Box padding={2} flex={1} backgroundColor={colors.light.background}>
+
+                    <FlatList data={sacola} renderItem={({ item }) =>
+                        <Box
+                            shadow={2}
+                            justifyContent='center'
+                            padding={5} h={120}
+                            borderRadius={5}
+                            marginBottom={3}
+                            backgroundColor={colors.light.brancoPuro}
+                            py="2"
                         >
-                            <Avatar
-                                size="90px"
-                            />
-                            <VStack>
-                                <Text
-                                    _dark={{ color: "warmGray.50" }}
-                                    color="#000000"
-                                    bold
-                                >{item.nome}
-                                </Text>
-                                <Text
-                                    _dark={{ color: "warmGray.50" }}
-                                    color="#000000"
-                                >{item.cantinaId}
-                                </Text>
-                                <Text
-                                    _dark={{ color: "coolGray.800" }}
-                                    color="#000000"
-                                >R${item.valor}
-                                </Text>
-                            </VStack>
-                            <Spacer />
-                            <Box alignItems='center'>
-                                <Box flexDirection='row' alignItems='center' justifyContent='center'>
-                                    <TouchableOpacity>
-                                        <Button
-                                            backgroundColor='none'
-                                        >
-                                            <Icon as={Ionicons}
-                                                name="ios-add"
-                                                size="sm"
-                                                color="green.300"
-                                            />
-                                        </Button>
-                                    </TouchableOpacity>
-                                    <Text>
-                                        {item.quantidade}
+                            <HStack
+                                alignItems='center'
+                                space={[2, 3]}
+                                justifyContent="space-between"
+                            >
+
+                                <Avatar size="90px" />
+
+                                <VStack>
+                                    <Text
+                                        _dark={{ color: "warmGray.50" }}
+                                        color="#000000"
+                                        bold
+                                    >{item.nome}
                                     </Text>
-                                    <TouchableOpacity>
-                                        <Button
-                                            backgroundColor='none'
-                                        >
-                                            <Icon as={Ionicons}
-                                                name="ios-remove"
-                                                size="sm"
-                                                color="red.300"
-                                            />
-                                        </Button>
-                                    </TouchableOpacity>
+                                    <Text
+                                        _dark={{ color: "warmGray.50" }}
+                                        color="#000000"
+                                    >{item.cantinaId}
+                                    </Text>
+                                    <Text
+                                        _dark={{ color: "coolGray.800" }}
+                                        color="#000000"
+                                    >R${item.valor}
+                                    </Text>
+                                </VStack>
+
+                                <Spacer />
+
+                                <Box alignItems='center'>
+                                    <Box flexDirection='row' alignItems='center' justifyContent='center'>
+                                        <TouchableOpacity>
+                                            <Button
+                                                backgroundColor='none'
+                                            >
+                                                <Icon as={Ionicons}
+                                                    name="ios-add"
+                                                    size="sm"
+                                                    color="green.300"
+                                                />
+                                            </Button>
+                                        </TouchableOpacity>
+                                        <Text>
+                                            {item.quantidade}
+                                        </Text>
+                                        <TouchableOpacity>
+                                            <Button
+                                                backgroundColor='none'
+                                            >
+                                                <Icon as={Ionicons}
+                                                    name="ios-remove"
+                                                    size="sm"
+                                                    color="red.300"
+                                                />
+                                            </Button>
+                                        </TouchableOpacity>
+                                    </Box>
                                 </Box>
-                            </Box>
-                        </HStack>
-                    </Box>
-                } keyExtractor={item => item.id}
-                />
+                            </HStack>
+                        </Box>
+                    } keyExtractor={item => item.id}
+                    />
+                </Box>
+            </ScrollView>
+            <Box
+                shadow={2}
+                bg={colors.light.brancoPuro}
+                padding={5}
+            >
+                <Box marginBottom={5} justifyContent='space-between' flexDirection='row'>
+                    <Text>Total:</Text>
+                    <Text>R$ {props.valorTotal}</Text>
+                </Box>
+                <Button>Confirmar</Button>
             </Box>
-
-
-            <Box>
-                <Center my={4}>
-                    <Text fontWeight="bold" fontSize="lg">
-                        Total: ${handleValorTotal().toFixed(2)}
-                    </Text>
-                </Center>
-            </Box>
-        </ScrollView>
-
+        </View>
     );
 };
 
 export default SacolaScreen;
-;

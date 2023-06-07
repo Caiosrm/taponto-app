@@ -11,9 +11,9 @@ export async function postProduto(produto: any) {
     console.log("Documento adicionado com ID: ", docRef.id);
 }
 
-// Loop para cadastrar um array de produtos
-//export async function lerJSONEnviarFirebase() {
-//  for (const produto of dados) {
-//      await postProduto(produto);
-//  }
-//}
+// // Loop para cadastrar um array de produtos
+// //export async function lerJSONEnviarFirebase() {
+// //  for (const produto of dados) {
+// //      await postProduto(produto);
+// //  }
+// //}
