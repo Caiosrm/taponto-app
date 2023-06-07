@@ -1,5 +1,3 @@
-import { IProduto } from "../../../components/Screen/Cardapio/types";
-
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { app } from "../../config/firebaseConfig";
 import { ProdutoType } from "../../types/ProductType";
@@ -20,11 +18,7 @@ export async function getAllProdutos() {
 				cantinaId: response?.cantinaId,
 				quantidade: response?.quantidade,
 				valor: response?.valor,
-                avaliacoes: {
-                    comentario: response?.avaliacoes.comentario,
-                    clienteId: response?.avaliacoes.clienteId,
-                    nota: response?.avaliacoes.nota,
-                }
+                avaliacoes: response?.avaliacoes
 			}
 			produtos.push(produto);
 		});

@@ -16,7 +16,7 @@ import { PoloAtual } from "./components/PoloAtual";
 import { caroselitem } from "../../../__mocks__/data";
 import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { CantinaType } from "../../../api/types/ShopType";
-import TabNavigator from "../../../routes/AppNavigation";
+import BottomTabNavigator from "../../../routes/utils/BottomTabNavigator";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
@@ -150,7 +150,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                         <Box alignItems='center' flexDirection='row' >
                                             <Ionicons name='ios-star' size={15} color='#fcbb01' />
                                             <Text marginLeft={2}>
-                                                {item.avaliacoes.nota}
+                                                {item.avaliacoes?.nota}
                                             </Text>
                                         </Box>
                                     </Box>
