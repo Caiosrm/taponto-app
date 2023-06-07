@@ -7,15 +7,15 @@ import ListarCardapio from '../components/Screen/Cantina/ListarCardapio';
 import Pedidos from '../components/Screen/Pedidos';
 import ItemDetalhado from '../components/Screen/Cantina/ItemDetalhado';
 import CantinaScreen from '../components/Screen/Cantina';
-import HomeTabsNavigator from './utils/HomeTabsNavigator';
-import BottomTabNavigator from './utils/BottomTabNavigator';
+import HomeTabsNavigator from '../routes/navigation/HomeTabsNavigator';
+import BottomTabNavigator from '../routes/navigation/BottomTabNavigator';
 
 const Stack = createStackNavigator();
 
 /*===================================================================================================*/
-/* Pilha de rotas da aplicação
+/* Pilha de rotas da aplicação (Wrapper)
 /*===================================================================================================*/
-export const StackNavigator = () => {
+export const WrapperNavigation = () => {
   return (
     <Stack.Navigator initialRouteName='Home'>
       <Stack.Screen name="TabNavigator" component={BottomTabNavigator} options={{ headerShown: false }} />

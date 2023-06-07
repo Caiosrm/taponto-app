@@ -16,7 +16,7 @@ import { PoloAtual } from "./components/PoloAtual";
 import { caroselitem } from "../../../__mocks__/data";
 import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { CantinaType } from "../../../api/types/CantinaType";
-import BottomTabNavigator from "../../../routes/utils/BottomTabNavigator";
+import BottomTabNavigator from "../../../routes/navigation/BottomTabNavigator";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {

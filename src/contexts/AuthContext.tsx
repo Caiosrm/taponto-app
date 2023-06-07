@@ -44,17 +44,19 @@ export const AuthProvider = ({ children }: any) => {
         await signInWithEmailAndPassword(email, password);
     };
 
-    React.useEffect(() => {
-        onAuthStateChanged(auth, setCurrentUser);
-    }, [])
-
     const signOutApp = async () => {
         await signOut();
     };
 
     const sendPasswordReset = (email: string) => {
         return sendPasswordResetEmail(email);
-    }
+    };
+
+    React.useEffect(() => {
+        onAuthStateChanged(auth, setCurrentUser);
+    }, [])
+
+
 
     if (signOutLoading) {
         return <InitialLoading />
