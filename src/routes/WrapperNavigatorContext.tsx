@@ -9,8 +9,8 @@ import Pedidos from '../components/Screen/Pedidos';
 import ItemDetalhado from '../components/Screen/Cantina/ItemDetalhado';
 import CantinaScreen from '../components/Screen/Cantina';
 import CadastroScreen from '../components/Screen/Cadastro';
-import BottomTabNavigator from '../routes/navigation/BottomTabNavigator';
-import HomeTabsNavigator from '../routes/navigation/HomeTabsNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
+import HomeTabsNavigator from './navigation/HomeTabsNavigator';
 
 const Stack = createStackNavigator();
 

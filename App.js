@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider } from "native-base";
 import { ThemeProvider } from "./src/themes/ThemeContext";
-import { WrapperNavigation } from "./src/contexts/WrapperNavigatorContext";
+import { WrapperNavigation } from "./src/routes/WrapperNavigatorContext";
 
 const App = () => {
   return (
