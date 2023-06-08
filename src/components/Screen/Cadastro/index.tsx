@@ -1,4 +1,4 @@
-import { Box, FormControl, Input, Button, VStack, Text, Icon, Image } from "native-base";
+import { Box, FormControl, Input, Button, VStack, Text,  Image, ScrollView } from "native-base";
 import React, { useState } from "react";
 import { ICadastroScreenProps } from "./types";
 import { useNavigation } from '@react-navigation/native';
@@ -33,6 +33,8 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
         setEmail('')
         setSenha('')
         setconfirmarSenha('')
+        setnomeCompleto('')
+        setTelefone('')
         
         
     }
@@ -42,6 +44,7 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
 
 
     return (
+        <ScrollView>
 
         <VStack flex={1} alignItems='center' p={5}>
             <Image mt={5} size='xl' source={Logo} alt='logo tá pronto' />
@@ -120,6 +123,7 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
 
             </Box>
         </VStack>
+        </ScrollView>
 
     );
 };
