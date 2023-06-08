@@ -72,7 +72,9 @@ export default function Login(props: ILoginScreenProps) {
                             ml="2"
                             color="primary.900"
                         />}
-                        placeholder="Email" />
+                        placeholder="Email"
+                        value={email} 
+                        onChangeText={setEmail} />
                 </FormControl>
 
                 <FormControl mt={3} >
@@ -87,12 +89,14 @@ export default function Login(props: ILoginScreenProps) {
                             ml="2"
                             color="primary.900"
                         />}
+                        value={senha} 
+                        onChangeText={setSenha}
                         placeholder="Senha" />
                 </FormControl>
 
                 <Box mt={3}>
                     <Text>Esqueceu sua senha?</Text>
-                    <Button mt={5} bg='primary.900'>Entrar</Button>
+                    <Button onPress={logar} mt={5} bg='primary.900'>Entrar</Button>
                     
                 </Box>
 
