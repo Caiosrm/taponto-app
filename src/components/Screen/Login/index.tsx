@@ -81,7 +81,7 @@ export default function Login(props: ILoginScreenProps) {
                     <Input
                         borderRadius='lg'
                         borderColor='primary.900'
-
+                        type='password'
                         w={{ base: "100%" }}
                         InputLeftElement=
                         {<Icon as={<MaterialIcons name="lock-outline" />}
