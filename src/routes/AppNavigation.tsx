@@ -11,6 +11,7 @@ import CantinaScreen from '../components/Screen/Cantina';
 import HomeTabsNavigator from './utils/HomeTabsNavigator';
 import BottomTabNavigator from './utils/BottomTabNavigator';
 import CadastroScreen from '../components/Screen/Cadastro';
+import SacolaScreen from '../components/Screen/Sacola';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +20,7 @@ const Stack = createStackNavigator();
 /*===================================================================================================*/
 export const StackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName='Login'>
+    <Stack.Navigator initialRouteName='Sacola'>
       <Stack.Screen name="TabNavigator" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Home" component={HomeTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{ headerShown: false }} />
@@ -29,6 +30,7 @@ export const StackNavigator = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Sacola" component={SacolaScreen} options={{ headerShown: false }} />
       
     </Stack.Navigator>
   )
