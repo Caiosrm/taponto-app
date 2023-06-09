@@ -30,10 +30,6 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
         fetchData();
     }, []);
 
-
-    /*===================================================================================================*/
-    /* handleChange's
-    /*===================================================================================================*/
     const handleQuantityChange = (index: number, value: string) => {
         const novosItens = [...sacola];
         novosItens[index] = {
@@ -50,7 +46,7 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
                 <Ionicons name="arrow-back-circle-outline" size={24} color="black" />
                 <Text textAlign='center'>Minha Sacola</Text>
 
-                <Box position='absolute' left='5' top='75%' >
+                <Box position='absolute' left='5' top='20%' >
                     <Image size='lg' source={Logo} alt="logo restaurante" />
                 </Box>
 
