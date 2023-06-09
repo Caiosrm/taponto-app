@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
 import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import ImageWelcome from '../../../../assets/Welcome.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FirebaseError } from '@firebase/app';
@@ -63,20 +64,21 @@ export default function Login(props: ILoginScreenProps) {
             <Text fontSize='2xl'
                 fontWeight='bold'
                 textAlign='center'
+                color='#002060'
                 mt={5}
             >Faça login em sua conta</Text>
             <Box>
                 <FormControl mt={3}>
                     <Input
                         borderRadius='lg'
-                        borderColor='primary.900'
+                        borderColor='#002060'
 
                         w={{ base: "100%" }}
                         InputLeftElement=
                         {<Icon as={<MaterialIcons name="email" />}
                             size={5}
                             ml="2"
-                            color="primary.900"
+                            color="#002060"
                         />}
                         placeholder="Email"
                         value={email}
@@ -86,14 +88,14 @@ export default function Login(props: ILoginScreenProps) {
                 <FormControl mt={3} >
                     <Input
                         borderRadius='lg'
-                        borderColor='primary.900'
+                        borderColor='#002060'
                         type='password'
                         w={{ base: "100%" }}
                         InputLeftElement=
                         {<Icon as={<MaterialIcons name="lock-outline" />}
                             size={5}
                             ml="2"
-                            color="primary.900"
+                            color="#002060"
                         />}
                         value={senha}
                         onChangeText={setSenha}
@@ -101,18 +103,20 @@ export default function Login(props: ILoginScreenProps) {
                 </FormControl>
 
                 <Box mt={3}>
-                    <Text>Esqueceu sua senha?</Text>
-                    <Button onPress={logar} mt={5} bg='primary.900'>Entrar</Button>
+                    <Text color='#002060'>Esqueceu sua senha?</Text>
+                    <Button borderRadius={10}  onPress={logar} mt={5} bg='#0094D3'>Entrar</Button>
 
                 </Box>
 
 
                 <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
-                    <Text textAlign='center'>Não tem conta? </Text>
+                    <Text color='#002060' textAlign='center'>Não tem conta? </Text>
                     <TouchableOpacity onPress={handleCadastro}><Text>Cadastre-se</Text></TouchableOpacity>
                 </Box>
 
             </Box>
+            <Image source={ImageWelcome} alt='Imagem bem vindo'/>
+            <Button  w='138px' borderRadius='10' bg='#0094D3' mt={3}>Conectar</Button>
 
 
         </VStack>

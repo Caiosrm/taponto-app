@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, Box, FlatList, Avatar, Button, HStack, Icon, Spacer, VStack, Center, ScrollView } from "native-base";
+import { View, Text, Box, FlatList, Avatar, Button, HStack, Icon, Spacer, VStack, Center, ScrollView, Image } from "native-base";
 import { ISacolaScreenProps } from "./types";
 import TopBar from "../../Common/TopBar";
 import { colors } from "../../../themes/Theme";
