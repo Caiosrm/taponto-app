@@ -1,6 +1,6 @@
 import { getFirestore, getDocs, collection } from "@firebase/firestore";
 import { app } from "../../config/firebaseConfig";
-import { CantinaType } from "../../types/ShopType";
+import { CantinaType } from "../../types/CantinaType";
 
 
 //Método para retornar as cantinas cadastrados

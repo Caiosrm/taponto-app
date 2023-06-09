@@ -2,14 +2,14 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider } from "native-base";
 import { ThemeProvider } from "./src/themes/ThemeContext";
-import TabNavigator, { StackNavigator } from "./src/routes/AppNavigation";
+import { WrapperNavigation } from "./src/routes/WrapperNavigatorContext";
 
 const App = () => {
   return (
     <NativeBaseProvider>
       <ThemeProvider>
         <NavigationContainer>
-          <StackNavigator/>
+          <WrapperNavigation/>
         </NavigationContainer>
       </ThemeProvider>
     </NativeBaseProvider>

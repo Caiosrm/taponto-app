@@ -1,4 +1,4 @@
-import { SacolaType } from '../../types/CartType';
+import { SacolaType } from '../../types/SacolaType';
 
 import { collection, getDocs, getFirestore, query, updateDoc, where } from '@firebase/firestore';
 import { app } from '../../config/firebaseConfig';
