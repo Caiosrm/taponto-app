@@ -1,13 +1,12 @@
 import { Box, FormControl, Input, Button, VStack, Text, Image, ScrollView } from "native-base";
-import React, { useState } from "react";
+import React from "react";
 import { ICadastroScreenProps } from "./types";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Logo from '../../../../assets/logo/logo2.png'
-import { auth } from "../../../api/config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { TouchableOpacity } from "react-native";
-import Login from "../Login";
+import { auth } from "../../../api/config/firebaseConfig";
 import { RootStackParamList } from "../../../routes/types";
+import { TouchableOpacity } from "react-native";
 
 
 const CadastroScreen = (props: ICadastroScreenProps) => {
@@ -23,7 +22,8 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
         await createUserWithEmailAndPassword(auth, email, senha)
             .then((dadosdousuario) => {
                 console.log(dadosdousuario)
-                return "sucesso!"
+                return "sucesso"
+
             })
             .catch((error) => {
                 console.log(error)
@@ -108,28 +108,36 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                     </FormControl>
 
                     <FormControl mt={3} >
-                        <FormControl.Label>
-                            Confirmar senha
-                        </FormControl.Label>
+                        <FormControl.Label>Senha</FormControl.Label>
                         <Input
                             borderRadius='lg'
+                            type='password'
+                            borderColor='primary.900'
+                            w={{ base: "100%" }}
+                            placeholder="Senha"
+                            value={senha}
+                            onChangeText={setSenha} />
+                    </FormControl>
+
+                    <FormControl mt={3} >
+                        <FormControl.Label>Confirmar senha</FormControl.Label>
+                        <Input
+                            borderRadius='lg'
+                            type='password'
                             borderColor='primary.900'
                             w={{ base: "100%" }}
                             placeholder="Confirme sua senha"
                             value={confirmarSenha}
-                            onChangeText={setconfirmarSenha}
-                        />
+                            onChangeText={setconfirmarSenha} />
                     </FormControl>
 
                     <Box mt={3}>
-                        <Button onPress={realizarCadastro} mt={5} bg='primary.900'>
-                            Cadastrar
-                        </Button>
+                        <Button onPress={realizarCadastro} mt={5} bg='primary.900'>Cadastrar</Button>
                     </Box>
-
+                    
                     <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
                         <Text textAlign='center'>
-                            Já tem uma conta?
+                            Já tem uma conta? 
                             </Text>
                         <TouchableOpacity onPress={handleLogin}>
                             <Text>
@@ -137,7 +145,6 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                             </Text>
                         </TouchableOpacity>
                     </Box>
-
                 </Box>
             </VStack>
         </ScrollView>
