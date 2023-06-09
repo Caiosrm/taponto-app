@@ -10,7 +10,9 @@ import { initialStateSacola } from "../../components/Screen/Sacola/types";
 
 const Tab = createBottomTabNavigator();
 
-
+/*===================================================================================================*/
+/* Pilha de rotas da Barra de Navegação Inferior
+/*===================================================================================================*/
 const BottomTabNavigator = () => {
 
     const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);

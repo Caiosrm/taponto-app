@@ -1,17 +1,15 @@
+import React, { useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
 import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
-import Logo from '../../../../assets/logo/logo2.png'
 import { useNavigation } from '@react-navigation/native';
-import AppBar from '../../Common/TopBar'
-import { FirebaseError } from 'firebase/auth';
-import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
-
-
+import { FirebaseError } from '@firebase/app';
+import { getFirestore } from '@firebase/firestore';
+import Logo from '../../../../assets/logo/logo2.png'
+import AppBar from '../../Common/TopBar'
 import { auth } from '../../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
-
 
 type RootStackParamList = {
     Home: undefined;

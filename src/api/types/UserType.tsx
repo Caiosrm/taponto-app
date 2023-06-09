@@ -1,4 +1,4 @@
-import { PedidoType } from "./OrderType";
+import { PedidoType } from "./PedidoType";
 
 export type UserType = {
     id?: string;
