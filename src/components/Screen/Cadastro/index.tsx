@@ -1,11 +1,12 @@
 import { Box, FormControl, Input, Button, VStack, Text,  Image, ScrollView } from "native-base";
 import React, { useState } from "react";
 import { ICadastroScreenProps } from "./types";
+import { getFirestore } from "firebase/firestore";
 import { useNavigation } from '@react-navigation/native';
 import Logo from '../../../../assets/logo/logo2.png'
-import { auth } from "../../../api/config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { TouchableOpacity } from "react-native";
+import { auth } from "../../../api/config/firebaseConfig";
 
 
 const CadastroScreen = (props: ICadastroScreenProps) => {
@@ -20,12 +21,15 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
     
     async function realizarCadastro() {
         
+        
 
 
         await createUserWithEmailAndPassword(auth, email, senha)
+        
             .then((dadosdousuario) => {
                 console.log(dadosdousuario)
                 return "sucesso"
+                
             })
             .catch((error) => {
                 console.log(error)
@@ -35,6 +39,8 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
         setconfirmarSenha('')
         setnomeCompleto('')
         setTelefone('')
+
+      
         
         
     }
@@ -92,6 +98,7 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                     <FormControl.Label>Senha</FormControl.Label>
                     <Input
                         borderRadius='lg'
+                        type='password'
                         borderColor='primary.900'
                         w={{ base: "100%" }}
                         placeholder="Senha"
@@ -103,6 +110,7 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                     <FormControl.Label>Confirmar senha</FormControl.Label>
                     <Input
                         borderRadius='lg'
+                        type='password'
                         borderColor='primary.900'
                         w={{ base: "100%" }}
                         placeholder="Confirme sua senha"
@@ -111,7 +119,6 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                 </FormControl>
 
                 <Box mt={3}>
-
                     <Button onPress={realizarCadastro} mt={5} bg='primary.900'>Cadastrar</Button>
                 </Box>
                 

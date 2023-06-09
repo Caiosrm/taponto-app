@@ -1,11 +1,13 @@
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import Logo from '../../../../assets/logo/logo2.png'
 import { useNavigation } from '@react-navigation/native';
 import AppBar from '../../Common/TopBar'
+import { FirebaseError } from 'firebase/auth';
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
+
 
 import { auth } from '../../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -27,33 +29,39 @@ type ILoginScreenProps = {
 
 export default function Login(props: ILoginScreenProps) {
     const navigation = useNavigation();
-    /*===================================================================================================*/
-    /* state's
-    /*===================================================================================================*/
+   
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
 
     async function logar() {
-        signInWithEmailAndPassword(auth, email, senha)
-            .then((dadosdousuario) => {
-                console.log(dadosdousuario);
-                props.navigation.navigate('Home');
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        try {
+            const dadosdousuario = await signInWithEmailAndPassword(auth, email, senha);
+            console.log(dadosdousuario);
+            props.navigation.navigate('Home');
+        } catch (error) {
+            console.log(error);
+            // Trate o erro de autenticação aqui
+            if ((error as FirebaseError).code === 'auth/wrong-password') {
+                Alert.alert('Senha incorreta');
+            } else if ((error as FirebaseError).code === 'auth/user-not-found') {
+                alert('Email não existe');
+            } else {
+                Alert.alert('Preencha os campos');
+            }
+        }
+
         setEmail('');
         setSenha('');
     }
     const handleCadastro = () => {
         navigation.navigate('Cadastro');
-      };
+    };
 
 
     return (
-        <VStack flex={1} alignItems='center' p={5}>
-            <Image mt={5} size='2xl' source={Logo} alt='logo tá pronto' />
+        <VStack justifyContent='center' flex={1} alignItems='center' p={5}>
+            <Image mt={5} size='xl' source={Logo} alt='logo tá pronto' />
             <Text fontSize='2xl'
                 fontWeight='bold'
                 textAlign='center'
@@ -73,7 +81,7 @@ export default function Login(props: ILoginScreenProps) {
                             color="primary.900"
                         />}
                         placeholder="Email"
-                        value={email} 
+                        value={email}
                         onChangeText={setEmail} />
                 </FormControl>
 
@@ -89,7 +97,7 @@ export default function Login(props: ILoginScreenProps) {
                             ml="2"
                             color="primary.900"
                         />}
-                        value={senha} 
+                        value={senha}
                         onChangeText={setSenha}
                         placeholder="Senha" />
                 </FormControl>
@@ -97,18 +105,18 @@ export default function Login(props: ILoginScreenProps) {
                 <Box mt={3}>
                     <Text>Esqueceu sua senha?</Text>
                     <Button onPress={logar} mt={5} bg='primary.900'>Entrar</Button>
-                    
+
                 </Box>
 
 
                 <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
                     <Text textAlign='center'>Não tem conta? </Text>
                     <TouchableOpacity onPress={handleCadastro}><Text>Cadastre-se</Text></TouchableOpacity>
-                </Box>             
+                </Box>
 
             </Box>
-            
-           
+
+
         </VStack>
     )
 }
