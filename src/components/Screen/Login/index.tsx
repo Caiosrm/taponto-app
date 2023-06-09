@@ -1,15 +1,14 @@
+import React, { useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import Logo from '../../../../assets/logo/logo2.png'
-import { useNavigation } from '@react-navigation/native';
-import AppBar from '../../Common/TopBar'
-import React, { useState } from 'react'
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
 
+import AppBar from '../../Common/TopBar'
+import Logo from '../../../../assets/logo/logo2.png'
 import { auth } from '../../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
-
 
 type RootStackParamList = {
     Home: undefined;
@@ -26,7 +25,7 @@ type ILoginScreenProps = {
 };
 
 export default function Login(props: ILoginScreenProps) {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     /*===================================================================================================*/
     /* state's
     /*===================================================================================================*/
@@ -48,7 +47,7 @@ export default function Login(props: ILoginScreenProps) {
     }
     const handleCadastro = () => {
         navigation.navigate('Cadastro');
-      };
+    };
 
 
     return (
@@ -73,7 +72,7 @@ export default function Login(props: ILoginScreenProps) {
                             color="primary.900"
                         />}
                         placeholder="Email"
-                        value={email} 
+                        value={email}
                         onChangeText={setEmail} />
                 </FormControl>
 
@@ -89,7 +88,7 @@ export default function Login(props: ILoginScreenProps) {
                             ml="2"
                             color="primary.900"
                         />}
-                        value={senha} 
+                        value={senha}
                         onChangeText={setSenha}
                         placeholder="Senha" />
                 </FormControl>
@@ -97,18 +96,18 @@ export default function Login(props: ILoginScreenProps) {
                 <Box mt={3}>
                     <Text>Esqueceu sua senha?</Text>
                     <Button onPress={logar} mt={5} bg='primary.900'>Entrar</Button>
-                    
+
                 </Box>
 
 
                 <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
                     <Text textAlign='center'>Não tem conta? </Text>
                     <TouchableOpacity onPress={handleCadastro}><Text>Cadastre-se</Text></TouchableOpacity>
-                </Box>             
+                </Box>
 
             </Box>
-            
-           
+
+
         </VStack>
     )
 }

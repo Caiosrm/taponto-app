@@ -22,31 +22,21 @@ import BottomTabNavigator from "../../../routes/navigation/BottomTabNavigator";
 const HomeScreen = (props: IHomeScreenProps) => {
 
     const navigation = useNavigation<RootStackParamList>();
-
     const [cantinas, setCantinas] = React.useState<CantinaType[]>();
-
     const { colorMode, toggleColorMode } = useTheme();
-
-
-
-    const { width } = Dimensions.get('window')
-
-
-
-
+    const { width } = Dimensions.get('window');
+    const [idCantina, setIdCantina] = React.useState<string>('');
 
     useEffect(() => { //USE EFFECT INICIAL
         const fetchData = async () => {
             const data = await getAllShop();
             setCantinas(data);
-
         };
         fetchData();
     }, []);
 
 
     return (
-
         <ThemeProvider>
             <StatusBar />
             <GestureHandlerRootView style={{ flex: 1 }}>
@@ -82,7 +72,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             textAlign='center'
                                             fontSize="xs"
                                             color="black"
-                                            onPress={() => navigation.navigate(ListarCardapio)}
+                                            onPress={() => navigation.navigate('ListarCardapio', {idCantina})}
                                         >
                                             {item.nome}
                                         </Text>
@@ -113,7 +103,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             </Box>
                         )}
                     />
-
 
                     <Box //CANTINAS
                         justifyContent='space-between'
@@ -162,7 +151,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             />
                         </Box>
                     </Box>
-
 
                 </ScrollView>
             </GestureHandlerRootView>

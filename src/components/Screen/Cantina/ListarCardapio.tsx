@@ -6,11 +6,12 @@ import { FlatList, TouchableOpacity } from "react-native";
 import { colors } from "../../../themes/Theme";
 import TopBar from "../../Common/TopBar";
 import { ProdutoType } from "../../../api/types/ProdutoType";
+import { getCardapio } from "../../../api/utils/get/getCardapio";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
     const [produtos, setProdutos] = React.useState<ProdutoType[]>([]);
-
+    const [cantinaId, setCantinaId] = React.useState<string>('');
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
@@ -18,7 +19,7 @@ const ListarCardapio = () => {
     }, []);
 
     const fetchData = async () => {
-        const produtos = await getCardapio();
+        const produtos = await getCardapio(cantinaId);
         setProdutos(produtos);
         console.log(produtos)
     };
@@ -49,18 +50,21 @@ const ListarCardapio = () => {
                                 _dark={{ color: "warmGray.50" }}
                                 color="#000000"
                                 bold
-                            >{item.nome}
+                            >
+                                {item.nome}
                             </Text>
                             <Text
                                 _dark={{ color: "warmGray.50" }}
                                 fontSize={'xs'}
                                 color="#000000"
-                            >{item.quantidade} disponíveis
+                            >
+                                {item.quantidade} disponíveis
                             </Text>
                             <Text
                                 _dark={{ color: "coolGray.800" }}
                                 color="#000000"
-                            >R${item.valor}
+                            >
+                                R${item.valor}
                             </Text>
                         </VStack>
 
@@ -104,7 +108,3 @@ const ListarCardapio = () => {
 };
 
 export default ListarCardapio;
-
-function getCardapio() {
-    throw new Error("Function not implemented.");
-}

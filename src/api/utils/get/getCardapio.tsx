@@ -2,7 +2,7 @@ import { getFirestore, collectionGroup, getDocs, collection } from "firebase/fir
 import { ProdutoType } from "../../types/ProdutoType";
 
 // Função para consultar a coleção do cardápio em todas as cantinas
-async function getCardapio(cantinaId: string) {
+export async function getCardapio(cantinaId: string) {
   const db = getFirestore();
   const cardapioRef = collection(db, "cantinas", cantinaId, "cardapio");
   const querySnapshot = await getDocs(cardapioRef);

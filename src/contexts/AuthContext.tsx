@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }: any) => {
 
     // Retorne o contexto AuthContext com os valores atuais do usuário e as funções signIn e signOut
     return (
-        <AuthContext.Provider value={{ user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError }}>
+        <AuthContext.Provider value={{user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError}}>
             {children}
         </AuthContext.Provider>
     );
