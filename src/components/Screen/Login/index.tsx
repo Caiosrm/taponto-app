@@ -6,6 +6,7 @@ import AppBar from '../../Common/TopBar'
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
+
 import { auth } from '../../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -25,6 +26,7 @@ type ILoginScreenProps = {
 };
 
 export default function Login(props: ILoginScreenProps) {
+    const navigation = useNavigation();
     /*===================================================================================================*/
     /* state's
     /*===================================================================================================*/
@@ -44,6 +46,10 @@ export default function Login(props: ILoginScreenProps) {
         setEmail('');
         setSenha('');
     }
+    const handleCadastro = () => {
+        navigation.navigate('Cadastro');
+      };
+
 
     return (
         <VStack flex={1} alignItems='center' p={5}>
@@ -66,14 +72,16 @@ export default function Login(props: ILoginScreenProps) {
                             ml="2"
                             color="primary.900"
                         />}
-                        placeholder="Email" />
+                        placeholder="Email"
+                        value={email} 
+                        onChangeText={setEmail} />
                 </FormControl>
 
                 <FormControl mt={3} >
                     <Input
                         borderRadius='lg'
                         borderColor='primary.900'
-
+                        type='password'
                         w={{ base: "100%" }}
                         InputLeftElement=
                         {<Icon as={<MaterialIcons name="lock-outline" />}
@@ -81,21 +89,26 @@ export default function Login(props: ILoginScreenProps) {
                             ml="2"
                             color="primary.900"
                         />}
+                        value={senha} 
+                        onChangeText={setSenha}
                         placeholder="Senha" />
                 </FormControl>
 
                 <Box mt={3}>
                     <Text>Esqueceu sua senha?</Text>
-                    <Button mt={5} bg='primary.900'>Entrar</Button>
+                    <Button onPress={logar} mt={5} bg='primary.900'>Entrar</Button>
+                    
                 </Box>
 
 
                 <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
                     <Text textAlign='center'>Não tem conta? </Text>
-                    <TouchableOpacity><Text>Cadastre-se</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={handleCadastro}><Text>Cadastre-se</Text></TouchableOpacity>
                 </Box>             
 
             </Box>
+            
+           
         </VStack>
     )
 }
