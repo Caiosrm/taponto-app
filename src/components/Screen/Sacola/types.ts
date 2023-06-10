@@ -1,4 +1,4 @@
-import { ProdutoType } from "../../../api/types/ProductType";
+import { ProdutoType } from "../../../api/types/ProdutoType";
 export interface ISacolaScreenProps {
         idCliente: string;
         produtosNaSacola: ProdutoType[];

@@ -1,5 +1,5 @@
-import { PedidoType } from "./OrderType";
-import { ProdutoType } from "./ProductType";
+import { PedidoType } from "./PedidoType";
+import { ProdutoType } from "./ProdutoType";
 
 export type CantinaType = {
   id: string;

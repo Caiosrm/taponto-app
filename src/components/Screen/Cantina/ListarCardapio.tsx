@@ -1,30 +1,29 @@
 import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon } from "native-base";
 import React, { useEffect } from "react";
 
+import { getFirestore } from '@firebase/firestore';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { colors } from "../../../themes/Theme";
 import TopBar from "../../Common/TopBar";
-import { getAllProdutos } from "../../../api/utils/get/getAllProduct";
-import { ProdutoType } from "../../../api/types/ProductType";
+import { ProdutoType } from "../../../api/types/ProdutoType";
+import { getCardapio } from "../../../api/utils/get/getCardapio";
 
 const ListarCardapio = () => {
     //===================================================== State's ===========================================================
     const [produtos, setProdutos] = React.useState<ProdutoType[]>([]);
-
+    const [cantinaId, setCantinaId] = React.useState<string>('');
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
-        const fetchData = async () => {
-            const produtos = await getAllProdutos();
-            setProdutos(produtos);
-            console.log(produtos)
-        };
         fetchData();
-
-
     }, []);
 
+    const fetchData = async () => {
+        const produtos = await getCardapio(cantinaId);
+        setProdutos(produtos);
+        console.log(produtos)
+    };
 
     return (
 
@@ -45,16 +44,15 @@ const ListarCardapio = () => {
                         space={[2, 3]}
                         justifyContent="space-between"
                     >
-                        <Avatar
-                            size="90px"
+                        <Avatar size="90px" />
 
-                        />
                         <VStack>
                             <Text
                                 _dark={{ color: "warmGray.50" }}
                                 color="#000000"
                                 bold
-                            >{item.nome}
+                            >
+                                {item.nome}
                             </Text>
                             <Text
                                 _dark={{ color: "warmGray.50" }}

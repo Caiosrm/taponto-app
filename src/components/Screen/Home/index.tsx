@@ -9,44 +9,33 @@ import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import ListarCardapio from "../Cantina/ListarCardapio";
 import { RootStackParamList } from "../../../routes/types";
 import { HeaderBemVindo } from "./components/HeaderBemVindo";
 import { PoloAtual } from "./components/PoloAtual";
 import { caroselitem } from "../../../__mocks__/data";
 import { getAllShop } from "../../../api/utils/get/getAllShop";
-import { CantinaType } from "../../../api/types/ShopType";
-import TabNavigator from "../../../routes/AppNavigation";
+import { CantinaType } from "../../../api/types/CantinaType";
+import BottomTabNavigator from "../../../routes/navigation/BottomTabNavigator";
 
 
 const HomeScreen = (props: IHomeScreenProps) => {
 
     const navigation = useNavigation<RootStackParamList>();
-
     const [cantinas, setCantinas] = React.useState<CantinaType[]>();
-
     const { colorMode, toggleColorMode } = useTheme();
-
-
-
-    const { width } = Dimensions.get('window')
-
-
-
-
+    const { width } = Dimensions.get('window');
+    const [idCantina, setIdCantina] = React.useState<string>('');
 
     useEffect(() => { //USE EFFECT INICIAL
         const fetchData = async () => {
             const data = await getAllShop();
             setCantinas(data);
-
         };
         fetchData();
     }, []);
 
 
     return (
-
         <ThemeProvider>
             <StatusBar />
             <GestureHandlerRootView style={{ flex: 1 }}>
@@ -82,7 +71,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                             textAlign='center'
                                             fontSize="xs"
                                             color="black"
-                                            onPress={() => navigation.navigate(ListarCardapio)}
+                                            onPress={() => navigation.navigate('ListarCardapio', {idCantina})}
                                         >
                                             {item.nome}
                                         </Text>
@@ -113,7 +102,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             </Box>
                         )}
                     />
-
 
                     <Box //CANTINAS
                         justifyContent='space-between'
@@ -162,7 +150,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                             />
                         </Box>
                     </Box>
-
 
                 </ScrollView>
             </GestureHandlerRootView>
