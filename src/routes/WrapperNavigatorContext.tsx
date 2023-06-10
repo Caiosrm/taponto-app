@@ -12,7 +12,7 @@ import HomeTabsNavigator from './navigation/HomeTabsNavigator';
 import { PerfilScreen } from '../components/Screen/Perfil';
 import SacolaScreen from '../components/Screen/Sacola';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
-import CadastroProdutoScreen from '../components/Screen/PainelCantina/CadastroProdutoScreen';
+import BarcodeScanner from '../components/Screen/PainelCantina/ScanBarCode';
 import { ManterProdutosScreen } from '../components/Screen/PainelCantina/ManterProdutosScreen';
 
 
