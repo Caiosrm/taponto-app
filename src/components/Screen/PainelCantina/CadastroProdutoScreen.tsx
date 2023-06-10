@@ -36,27 +36,27 @@ const CadastroProdutoScreen = () => {
   };
 
   return (
-    <Box>
+    <Box flex={1}>
       <Box h={'150px'} bg={colors.light.azulTurquesa} alignItems='center' justifyContent='space-around' flexDirection='row'>
         <Ionicons name="arrow-back-circle-outline" size={40} color={colors.light.brancoPuro} />
         <Text color={colors.light.brancoPuro} fontSize='18px'>Cadastrar produto</Text>
         <Image source={Logocantina} alt='Logo da cantina' />
       </Box>
-      <Box mt={5} alignItems='center'>
+      <ScrollView>
+      <Box flex={1}    alignItems='center'>
 
-        <Box padding={5} w='363px' h='591px' borderRadius='24px' bg={colors.light.brancoPuro}  >
+        <Box  padding={5}  bg={colors.light.brancoPuro}  >
 
-          <ScrollView>
-            <FormControl>
-              <FormControl>
+            
+            
                 <FormControl.Label>Nome do produto</FormControl.Label>
-                <Input placeholder='Produto' >
-                </Input>
-              </FormControl>
+                <Input placeholder='Produto' />
+                
+             
 
               <FormControl.Label>Descrição</FormControl.Label>
               <Box alignItems="center" w="100%">
-                <TextArea h={20} placeholder="Text Area Placeholder" autoCompleteType={undefined} />
+                <TextArea h={20} placeholder="Descreva detalhes do produto" autoCompleteType={undefined} />
               </Box>
               <FormControl.Label>Valor de venda</FormControl.Label>
               <Input placeholder='R$ 0,00' />
@@ -66,7 +66,7 @@ const CadastroProdutoScreen = () => {
 
               <FormControl.Label>Código de barra</FormControl.Label>
               <Box alignItems='center' flexDirection='row'>
-                <Input mr={3} w="270px"/>
+                <Input mr={3} w="320px"/>
                 
                   <Icon as={Ionicons} name='ios-barcode-outline' size={10} />
 
@@ -77,9 +77,9 @@ const CadastroProdutoScreen = () => {
               <Input />
 
               <FormControl.Label>Valor de compra (Preço de custo)</FormControl.Label>
-              <Input placeholder='R$ 0,00' />
+              <Input  placeholder='R$ 0,00' />
 
-              <FormControl>
+              
                 <FormControl.Label>Exibir no catálogo</FormControl.Label>
                 <Select>
                   <Select.Item label="Sim" value="ux" /> {/*TODO: criar função de ocultar um item do cardápio*/}
@@ -89,7 +89,7 @@ const CadastroProdutoScreen = () => {
                 </Select>
 
 
-              </FormControl>
+              
               <Box>
                 <FormControl.Label>Imagem do produto</FormControl.Label>
                 <Box justifyContent='center' alignItems='center' borderRadius={10} h='100px' borderColor="coolGray.200" borderWidth="1" _dark={{
@@ -109,13 +109,13 @@ const CadastroProdutoScreen = () => {
 
 
 
-            </FormControl>
-            <Button mt={5}>Salvar</Button>
-          </ScrollView>
+            
 
 
+            <Button mb={20}  mt={5}>Salvar</Button>
         </Box>
       </Box>
+          </ScrollView>
 
     </Box>
   );
