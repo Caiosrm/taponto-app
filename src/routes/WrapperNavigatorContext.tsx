@@ -13,6 +13,7 @@ import { PerfilScreen } from '../components/Screen/Perfil';
 import SacolaScreen from '../components/Screen/Sacola';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
 import { ManterProdutosScreen } from '../components/Screen/PainelCantina/ManterProdutosScreen';
+import { initialStateSacola } from '../components/Screen/Sacola/types';
 
 
 const Stack = createStackNavigator();
@@ -32,15 +33,8 @@ export const WrapperNavigation = () => {
       <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ManterProdutosScreen" component={ManterProdutosScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Sacola"
-        options={{ headerShown: false }}
-        component={() => <SacolaScreen
-          idCliente={''}
-          produtosNaSacola={[]}
-          valorTotal={0} />}
+      <Stack.Screen name="Sacola" component={SacolaScreen} initialParams={initialStateSacola} options={{ headerShown: false }}
       />
-
-
     </Stack.Navigator>
   )
 }
