@@ -10,6 +10,7 @@ import { CardapioType } from '../../../api/types/CardapioType';
 import * as ImagePicker from 'expo-image-picker';
 import { storage } from '../../../api/config/firebaseConfig';
 import { getDownloadURL, uploadString, uploadBytes, UploadMetadata, ref } from 'firebase/storage';
+import { HeaderCantina } from '../../Common/Header';
 
 
 
@@ -63,27 +64,21 @@ const CadastroProdutoScreen = () => {
   }
   return (
     <Box>
-      <Box h={'150px'} bg={colors.light.azulTurquesa} alignItems='center' justifyContent='space-around' flexDirection='row'>
-        <Ionicons name="arrow-back-circle-outline" size={40} color={colors.light.brancoPuro} />
-        <Text color={colors.light.brancoPuro} fontSize='18px'>Cadastrar produto</Text>
-        <Image source={Logocantina} alt='Logo da cantina' />
-      </Box>
+
+      <HeaderCantina/>
       <ScrollView>
         <Box flex={1} alignItems='center'>
 
-          <Box padding={5} bg={colors.light.brancoPuro}  >
-
-
+          <Box padding={5} bg={colors.light.brancoPuro}>
 
             <FormControl.Label>Nome do produto</FormControl.Label>
             <Input placeholder='Produto' />
-
-
 
             <FormControl.Label>Descrição</FormControl.Label>
             <Box alignItems="center" w="100%">
               <TextArea h={20} placeholder="Descreva detalhes do produto" autoCompleteType={undefined} />
             </Box>
+
             <FormControl.Label>Valor de venda</FormControl.Label>
             <Input placeholder='R$ 0,00' />
 
@@ -93,7 +88,6 @@ const CadastroProdutoScreen = () => {
             <FormControl.Label>Código de barra</FormControl.Label>
             <Box alignItems='center' flexDirection='row'>
               <Input mr={3} w="320px" />
-
               <Icon as={Ionicons} name='ios-barcode-outline' size={10} />
 
 
