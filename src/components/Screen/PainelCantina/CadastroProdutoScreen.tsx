@@ -112,9 +112,9 @@ const CadastroProdutoScreen = () => {
 
 
             </Select>
-            <Box>
+            <Box mb='30px' >
               <FormControl.Label>Imagem do produto</FormControl.Label>
-              <Box alignItems='center' justifyContent='space-around' flexDirection='row' borderRadius={10} h='150px' borderColor="coolGray.200" borderWidth="1" _dark={{
+              <Box  alignItems='center' justifyContent='space-around' flexDirection='row' borderRadius={10} h='150px'  borderColor="coolGray.200" borderWidth="1" _dark={{
               }} _web={{
                 shadow: 5,
                 borderWidth: 0
@@ -140,16 +140,16 @@ const CadastroProdutoScreen = () => {
 
               </Box>
 
+            <Button
+              mb={30}
+              mt={20}
+              onPress={salvarTudo}
+            >Salvar
+            </Button>
             </Box>
 
 
 
-            <Button
-              mb={20}
-              mt={5}
-              onPress={salvarTudo}
-            >Salvar
-            </Button>
           </Box>
         </Box>
       </ScrollView>
