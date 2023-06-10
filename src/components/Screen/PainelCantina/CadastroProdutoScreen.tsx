@@ -41,7 +41,6 @@ const CadastroProdutoScreen = () => {
         <Ionicons name="arrow-back-circle-outline" size={40} color={colors.light.brancoPuro} />
         <Text color={colors.light.brancoPuro} fontSize='18px'>Cadastrar produto</Text>
         <Image source={Logocantina} alt='Logo da cantina' />
-
       </Box>
       <Box mt={5} alignItems='center'>
 

@@ -71,7 +71,7 @@ const BottomTabNavigator = () => {
               }}
             />
 
-<Tab.Screen name="CadastroProdutoScreen"
+<Tab.Screen name="Cadastrar Produto"
               component={() => <CadastroProdutoScreen />}
               options={{
                 headerShown: false,
