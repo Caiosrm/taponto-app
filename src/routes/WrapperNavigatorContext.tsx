@@ -31,9 +31,6 @@ export const WrapperNavigation = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="BarcodeScanner" component={() => <BarcodeScanner onToggleScanner={function (): void {
-        throw new Error('Function not implemented.');
-      } }/>} options={{ headerShown: false }} />
       <Stack.Screen name="Sacola" component={() => <SacolaScreen idCliente={''} produtosNaSacola={[]} valorTotal={0} />} options={{ headerShown: false }} />
 
 

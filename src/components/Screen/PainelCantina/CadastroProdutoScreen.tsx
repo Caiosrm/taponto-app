@@ -115,27 +115,33 @@ const CadastroProdutoScreen = () => {
             </Select>
             <Box>
               <FormControl.Label>Imagem do produto</FormControl.Label>
-              <Box justifyContent='center' alignItems='center' borderRadius={10} h='100px' borderColor="coolGray.200" borderWidth="1" _dark={{
+              <Box alignItems='center' justifyContent='space-around' flexDirection='row' borderRadius={10} h='150px' borderColor="coolGray.200" borderWidth="1" _dark={{
               }} _web={{
                 shadow: 5,
                 borderWidth: 0
               }} _light={{
                 backgroundColor: "gray.50"
               }}>
-                <MaterialIcons name="drive-folder-upload" size={50} color="black" />
-                <View>
-                  {imagem && <Image source={{ uri: imagem }} style={{ width: 200, height: 200 }} />}
+                <TouchableOpacity onPress={selectImageFromGallery}>
+                  <Box borderRightWidth={1}
+                    borderRightColor="coolGray.200" padding={4} alignItems='center' justifyContent='center'>
+
+                    <MaterialIcons name="drive-folder-upload" size={50} color="black" />
+
+                    <Text>Faça upload da imagem</Text>
+                  </Box>
+                </TouchableOpacity>
+                <Box>
+
+                </Box>
+                <View >
+                  {imagem && <Image source={{ uri: imagem }} style={{ width: 130, height: 130 }} />}
                 </View>
-                <Text>Faça upload da imagem</Text>
-                <Button onPress={selectImageFromGallery}>upload</Button>
+
 
               </Box>
 
             </Box>
-
-
-
-
 
 
 
