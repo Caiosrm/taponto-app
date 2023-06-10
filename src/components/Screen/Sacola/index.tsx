@@ -6,7 +6,7 @@ import { colors } from "../../../themes/Theme";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import Logo from '../../../../assets/logorestaurante.jpg'
-import { selectImageFromGallery } from "../../Common/ImageUpload/Upload";
+import { selectImageFromGallery } from "../../../api/utils";
 import { ProdutoType } from "../../../api/types/ProdutoType";
 import { SacolaType } from "../../../api/types/SacolaType";
 import { getCardapio } from "../../../api/utils/get/getCardapio";

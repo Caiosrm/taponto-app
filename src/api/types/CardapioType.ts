@@ -1,6 +1,11 @@
 import { ProdutoType } from "./ProdutoType";
 
 export type CardapioType = {
-    id: any;
+    cantinaId: string;
     itens: ProdutoType[];
+}
+
+export const initialStateCardapio: CardapioType = {
+    cantinaId: '',
+    itens: [],
 }

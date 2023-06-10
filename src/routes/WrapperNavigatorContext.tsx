@@ -12,7 +12,7 @@ import HomeTabsNavigator from './navigation/HomeTabsNavigator';
 import { PerfilScreen } from '../components/Screen/Perfil';
 import SacolaScreen from '../components/Screen/Sacola';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
-import BarcodeScanner from '../components/Screen/PainelCantina/ScanBarCode';
+import { ManterProdutosScreen } from '../components/Screen/PainelCantina/ManterProdutosScreen';
 
 
 const Stack = createStackNavigator();
@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 /*===================================================================================================*/
 export const WrapperNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName='CadastroProdutoScreen'>
+    <Stack.Navigator initialRouteName='ManterProdutosScreen'>
       <Stack.Screen name="TabNavigator" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Home" component={HomeTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="ListarCardapio" component={ListarCardapio} options={{ headerShown: false }} />
@@ -31,7 +31,14 @@ export const WrapperNavigation = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Sacola" component={() => <SacolaScreen idCliente={''} produtosNaSacola={[]} valorTotal={0} />} options={{ headerShown: false }} />
+      <Stack.Screen name="ManterProdutosScreen" component={ManterProdutosScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Sacola"
+        options={{ headerShown: false }}
+        component={() => <SacolaScreen
+          idCliente={''}
+          produtosNaSacola={[]}
+          valorTotal={0} />}
+      />
 
 
     </Stack.Navigator>
