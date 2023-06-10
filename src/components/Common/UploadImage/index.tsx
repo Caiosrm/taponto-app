@@ -1,8 +1,8 @@
 import React from 'react'
 import * as ImagePicker from 'expo-image-picker';
-import { storage } from '../../../api/config/firebaseConfig';
 import { getDownloadURL, uploadString, uploadBytes, UploadMetadata, ref } from 'firebase/storage';
 import { Button } from 'native-base';
+import { storage } from '../../../api/config/firebaseConfig';
 
 export const uploadImage = async (base64Uri: string) => {
     const storageRef = ref(storage, 'nome_da_pasta/no_meu_storage');
