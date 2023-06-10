@@ -12,6 +12,7 @@ import HomeTabsNavigator from './navigation/HomeTabsNavigator';
 import { PerfilScreen } from '../components/Screen/Perfil';
 import SacolaScreen from '../components/Screen/Sacola';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
+import BarcodeScanner from '../components/Screen/PainelCantina/ScanBarCode';
 
 
 const Stack = createStackNavigator();
@@ -30,6 +31,9 @@ export const WrapperNavigation = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="CantinaScreen" component={CantinaScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="BarcodeScanner" component={() => <BarcodeScanner onToggleScanner={function (): void {
+        throw new Error('Function not implemented.');
+      } }/>} options={{ headerShown: false }} />
       <Stack.Screen name="Sacola" component={() => <SacolaScreen idCliente={''} produtosNaSacola={[]} valorTotal={0} />} options={{ headerShown: false }} />
 
 

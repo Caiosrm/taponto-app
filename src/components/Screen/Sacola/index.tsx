@@ -24,13 +24,13 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
     /*===================================================================================================*/
     /* useEffect's
     /*===================================================================================================*/
-    useEffect(() => { //Request Inicial
-        const fetchData = async () => {
-            const sacola = await getCardapio(cantinaId);
-            setSacola(sacola);
-        };
-        fetchData();
-    }, []);
+    // useEffect(() => { //Request Inicial
+    //     const fetchData = async () => {
+    //         const sacola = await getCardapio(cantinaId);
+    //         setSacola(sacola);
+    //     };
+    //     fetchData();
+    // }, []);
 
     const handleQuantityChange = (index: number, value: string) => {
         const novosItens = [...sacola];
