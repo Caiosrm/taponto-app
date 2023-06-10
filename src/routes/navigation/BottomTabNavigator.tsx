@@ -30,10 +30,7 @@ const BottomTabNavigator = () => {
         {usuarioLogado === true ? (
           <Tab.Group>
   
-            <Tab.Screen name="Sacola" component={() => <Sacola
-              idCliente={initialStateSacola.idCliente}
-              produtosNaSacola={initialStateSacola.produtosNaSacola}
-              valorTotal={initialStateSacola.valorTotal} />}
+            <Tab.Screen name="Sacola" component={Sacola}
               options={{
                 headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                   if (focused) {
@@ -58,7 +55,7 @@ const BottomTabNavigator = () => {
             />
   
             <Tab.Screen name="Pedidos"
-              component={() => <Pedidos />}
+              component={Pedidos}
               options={{
                 headerShown: false,
                 tabBarIcon: ({ color, size, focused }) => {
