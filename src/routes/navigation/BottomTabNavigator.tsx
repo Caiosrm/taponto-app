@@ -3,9 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import Login from "../../components/Screen/Login";
 import Pedidos from "../../components/Screen/Pedidos";
-import Perfil from "../../components/Screen/Perfil";
 import Sacola from "../../components/Screen/Sacola";
 import { initialStateSacola } from "../../components/Screen/Sacola/types";
+import CadastroProdutoScreen from "../../components/Screen/PainelCantina/CadastroProdutoScreen";
+import { PerfilScreen } from "../../components/Screen/Perfil";
 
 
 const Tab = createBottomTabNavigator();
@@ -44,7 +45,7 @@ const BottomTabNavigator = () => {
               }}
             />
   
-            <Tab.Screen name="Perfil" component={() => <Perfil />}
+            <Tab.Screen name="Perfil" component={PerfilScreen}
               options={{
                 headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                   if (focused) {
@@ -69,7 +70,20 @@ const BottomTabNavigator = () => {
                 }
               }}
             />
-  
+
+<Tab.Screen name="CadastroProdutoScreen"
+              component={() => <CadastroProdutoScreen />}
+              options={{
+                headerShown: false,
+                tabBarIcon: ({ color, size, focused }) => {
+                  if (focused) {
+                    return <Octicons name='checklist' size={size} color={color} />;
+                  } else {
+                    return <Octicons name='checklist' size={size} color={color} />;
+                  }
+                }
+              }}
+            />
           </Tab.Group>
         ) : (
           <Tab.Group>

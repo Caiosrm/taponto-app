@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../../routes/types";
 import { HeaderBemVindo } from "./components/HeaderBemVindo";
 import { PoloAtual } from "./components/PoloAtual";
-import { caroselitem } from "../../../__mocks__/data";
+
 import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { CantinaType } from "../../../api/types/CantinaType";
 import BottomTabNavigator from "../../../routes/navigation/BottomTabNavigator";
@@ -81,7 +81,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         />
                     </Box>
 
-                    <FlatList //CARROSSEL DE PRODUTOS
+                    {/* <FlatList //CARROSSEL DE PRODUTOS
                         marginBottom={6}
                         showsHorizontalScrollIndicator={false}
                         snapToAlignment="start"
@@ -101,7 +101,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                 <Text textAlign='center' >Aqui vai a imagem</Text>
                             </Box>
                         )}
-                    />
+                    /> */}
 
                     <Box //CANTINAS
                         justifyContent='space-between'

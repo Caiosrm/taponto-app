@@ -1,10 +1,11 @@
 import { FontAwesome, Octicons, Ionicons, Entypo } from "@expo/vector-icons";
 import HomeScreen from "../../components/Screen/Home";
 import Pedidos from "../../components/Screen/Pedidos";
-import Perfil from "../../components/Screen/Perfil";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Sacola from "../../components/Screen/Sacola";
 import { initialStateSacola } from "../../components/Screen/Sacola/types";
+import { PerfilScreen } from "../../components/Screen/Perfil";
 
 const Tab = createBottomTabNavigator();
 
@@ -55,7 +56,7 @@ const HomeTabsNavigator = () => {
                         }
                     }}
                 />
-                <Tab.Screen name="Perfil" component={Perfil}
+                <Tab.Screen name="Perfil" component={PerfilScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {

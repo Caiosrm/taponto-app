@@ -1,7 +1,7 @@
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { app } from "../../config/firebaseConfig";
 
-const dados = require('../__mocks__/MOCK_DATA.json');
+
 
 // Método para cadastrar um novo produto na coleção do Firebase
 export async function postProduto(produto: any) {
