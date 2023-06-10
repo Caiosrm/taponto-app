@@ -43,6 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 export const ManterProdutosScreen = () => {
 
     const [cardapio, setCardapio] = React.useState<CardapioType[]>();
+    const [produto, setProduto] = React.useState<ProdutoType>();
 
     return (
         <ProductCard name={'Produto 1'} quantity={10} value={3} previewImage={''}/>
