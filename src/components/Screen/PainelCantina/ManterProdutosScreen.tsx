@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import { Box, View, Text, Image, Container } from 'native-base';
+import { Box, View, Text, Image, Container, ScrollView } from 'native-base';
 
 import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
 import { getCardapio } from '../../../api/utils/get/getCardapio';
 import { CardapioType, initialStateCardapio } from '../../../api/types/CardapioType'
+import { HeaderCantina } from '../../Common/Header';
 
 type ProductCardProps = {
     name?: string;
@@ -57,13 +58,19 @@ export const ManterProdutosScreen = () => {
     }, []);
 
     return (
-        <View>
-            <ProductCard
-                name={produto?.nome}
-                quantity={produto?.quantidade}
-                value={produto?.valor}
-                previewImage={produto?.imagem}
-            />
-        </View>
+        <ScrollView>
+
+            <View>
+
+                <HeaderCantina />
+                <ProductCard
+                    name={produto?.nome}
+                    quantity={produto?.quantidade}
+                    value={produto?.valor}
+                    previewImage={produto?.imagem}
+                />
+            </View>
+
+        </ScrollView>
     );
 }
