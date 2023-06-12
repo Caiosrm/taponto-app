@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 /*===================================================================================================*/
 const BottomTabNavigator = () => {
 
-    const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
+ const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
   
     return (
       <Tab.Navigator

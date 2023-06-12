@@ -1,4 +1,4 @@
-import { ProdutoType } from "../../../api/types/ProdutoType";
+import { ProdutoType, initialStateProduto } from "../../../api/types/ProdutoType";
 export interface ISacolaScreenProps {
         idCliente: string;
         produtosNaSacola: ProdutoType[];
@@ -7,6 +7,6 @@ export interface ISacolaScreenProps {
 
 export const initialStateSacola: ISacolaScreenProps = {
     idCliente: '',
-    produtosNaSacola: [],
+    produtosNaSacola: [initialStateProduto],
     valorTotal: 0
 }

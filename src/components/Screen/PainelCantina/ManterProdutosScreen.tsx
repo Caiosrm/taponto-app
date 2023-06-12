@@ -5,40 +5,14 @@ import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType
 import { getCardapio } from '../../../api/utils/get/getCardapio';
 import { CardapioType, initialStateCardapio } from '../../../api/types/CardapioType'
 import { HeaderCantina } from '../../Common/Header';
+import { ProductCard } from '../../Common/ProductCard';
 
-type ProductCardProps = {
-    name?: string;
-    quantity?: number;
-    value?: number;
-    previewImage?: string;
-};
+interface ManterProdutosProps {
+    pageTitle: string;
+}
 
-const ProductCard: React.FC<ProductCardProps> = ({ name, quantity, value, previewImage, }) => {
-    return (
-        <Container>
-            <Box
-                bg="white"
-                shadow={2}
-                rounded="md"
-                p={4}
-                mt={4}
-                borderWidth={1}
-                borderColor="gray.200"
-            >
-                <Image source={{ uri: previewImage }} height={200} mb={2} />
-                <Text fontSize="lg" fontWeight="bold" mb={2}>
-                    {name}
-                </Text>
-                <Text fontSize="md" mb={2}>
-                    Quantidade: {quantity}
-                </Text>
-                <Text fontSize="md">Valor: R${value.toFixed(2)}</Text>
-            </Box>
-        </Container>
-    );
-};
 
-export const ManterProdutosScreen = () => {
+export const ManterProdutosScreen = (props: ManterProdutosProps) => {
 
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
     const [produto, setProduto] = React.useState<ProdutoType>(initialStateProduto);
@@ -53,16 +27,15 @@ export const ManterProdutosScreen = () => {
                 console.log('Erro ao obter o cardápio:', error);
             }
         };
-
         fetchCardapio();
     }, []);
 
     return (
         <ScrollView>
 
-            <View>
+            <HeaderCantina pageTitle="Meu Cardápio"/>
 
-                <HeaderCantina />
+            <View>
                 <ProductCard
                     name={produto?.nome}
                     quantity={produto?.quantidade}

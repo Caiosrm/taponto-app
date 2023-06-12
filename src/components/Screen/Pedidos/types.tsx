@@ -1,13 +1,14 @@
-import { IProduto, initialStateProduto } from "../Cardapio/types";
+import { ProdutoType } from "../../../api/types/ProdutoType";
 
 export interface IPedidoProps {
+    pageTitle?: string;
     status?: string;
-    produto?: IProduto;
-    produtos?: IProduto[];
+    produto?: ProdutoType;
+    produtos?: ProdutoType[];
 }
 
 
-export const initialStatePedido: IPedidoProps = {
+export const initialStatePedido: ProdutoType = {
     status: "",
     produto: initialStateProduto,
     produtos: []
