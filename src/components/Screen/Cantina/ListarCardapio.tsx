@@ -19,16 +19,19 @@ interface ICardapioProps {
 
 const ListarCardapio = ({ navigation, route }: any) => {
     //===================================================== State's ===========================================================
-    const [cardapio, setCardapio] = React.useState<CardapioType>();
-    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cantinaId);
+    const [cardapio, setCardapio] = React.useState<CardapioType>(route.params.cardapio.itens);
+    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cardapio.id);
+
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         obterDados();
+        console.log(route.params)
     }, []);
 
     const obterDados = async () => {
         console.log("ListarCardapio: ", cantinaId)
+        console.log("route.params: ", route.params)
         const cardapio = await getCardapio(cantinaId);
         setCardapio(cardapio);
         console.log(cardapio)
@@ -36,9 +39,39 @@ const ListarCardapio = ({ navigation, route }: any) => {
 
     return (
 
-        <Box>
-      
-    </Box>
+        <Box //CANTINAS ABERTAS AGORA
+            backgroundColor={colors.light.brancoPuro} marginBottom={5}>
+            <Heading marginTop={5} fontSize="sm" paddingX={4}>
+            teste
+            </Heading>
+            <FlatList
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => String(item)}
+                pagingEnabled
+                horizontal
+                data={cardapio?.itens}
+                renderItem={({ item }) =>
+                    <Box padding={5} >
+                        <Box
+                            flexDirection='column'
+                            alignItems='center'
+                        >
+                            {console.log(item.id)}
+                            <TouchableOpacity >
+                                <Avatar />
+                                <Text
+                                    textAlign='center'
+                                    fontSize="xs"
+                                    color="black"
+                                >
+                                    {item.nome}
+                                </Text>
+                            </TouchableOpacity>
+                        </Box>
+                    </Box>
+                }
+            />
+        </Box>
 
     );
 };

@@ -15,3 +15,18 @@ export type CantinaType = {
   };
   pedidos: PedidoType[];
 };
+
+export const initialStateCantina: CantinaType = {
+  id: '',
+  idCampus: "",
+  nome: "",
+  descricao: "",
+  status: "",
+  cardapio: [],
+  avaliacoes: {
+    comentario: "",
+    clienteId: "",
+    nota: 0
+  },
+  pedidos: []
+}
