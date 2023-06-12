@@ -40,56 +40,49 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     return (
         <View>
             <Box>
-            <HeaderCantina pageTitle={cantinaId} />
-           
-
+                <HeaderCantina pageTitle={cantinaId} />
             </Box>
-            
-            
 
-            
             <Box justifyContent='center' alignItems='center' padding={7}>
                 <Text fontSize='26'>Cardápio</Text>
                 <Text textAlign='center'>Onde você encontra todos os produtos, ordenados ou filtrados</Text>
                 <Input placeholder="Pesquise pelo nome " mt={5} w='100%' />
             </Box>
-           
+
             <FlatList
                 showsHorizontalScrollIndicator={true}
                 keyExtractor={(item) => String(item)}
                 pagingEnabled
                 data={cardapio?.itens}
-
                 renderItem={({ item }) => (
                     <Box padding={2}>
                         <Box alignItems='center' borderWidth={1} borderColor={colors.light.brancoPuro} justifyContent='space-around' flex={1} flexDirection='row' mt={2} >
                             <Box justifyContent='center' h='150px' w='60%'>
-                                <Text color={colors.light.azulTurquesa}>{item.nome}</Text>
+                                <Text color={colors.light.azulTurquesa}>{item.nome + " " + item.tipo}</Text>
                                 <Text>{item.descricao}</Text>
                                 <Text>R${item.valor}</Text>
+
                                 <Box mt={2}>
                                     <TouchableOpacity>
-
-                                <Ionicons name="add-circle" size={24} color={colors.light.azulTurquesa} />
+                                        <Ionicons name="add-circle" size={24} color={colors.light.azulTurquesa} />
                                     </TouchableOpacity>
-                               
-
                                 </Box>
+
                             </Box>
+
                             <Box>
-                                
-                                 <Text>imagem</Text>
-                                
+                                <Text>imagem</Text>
                             </Box>
+
                         </Box>
                     </Box>
                 )}
-                />
+            />
 
-           
 
-                
-                
+
+
+
 
 
 
