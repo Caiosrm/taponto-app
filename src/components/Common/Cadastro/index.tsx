@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ICadastroScreenProps } from "./types";
 import { useNavigation } from '@react-navigation/native';
 import Logo from '../../../../assets/logo/logo2.png'
-import { auth } from "../../../../api/config/firebaseConfig";
+import { auth } from "../../../api/config/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { TouchableOpacity } from "react-native";
 
@@ -31,9 +31,7 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
         setconfirmarSenha('')
         alert('Usuário cadastrado com sucesso')
     }
-    const handleLogin = () => {
-        navigation.navigate('Login');
-      };
+
 
 
     return (

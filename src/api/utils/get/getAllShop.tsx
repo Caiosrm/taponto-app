@@ -10,7 +10,9 @@ export async function getAllShop() {
 		const querySnapshot = await getDocs(collection(db, "cantinas"));
 		let cantinas: CantinaType[] = [];
 		querySnapshot.forEach((doc) => {
+
 			const response = doc.data();
+			
 			const cantina: CantinaType = {
 				id: doc.id,
 				nome: response.nome,
