@@ -1,7 +1,6 @@
 import { Box, View, Text, Image } from 'native-base'
 import React from 'react'
 import { colors } from '../../../themes/Theme'
-import Logocantina from '../../../../assets/Rectangle229.png'
 import BotaoVoltar from '../Buttons/BotaoVoltar'
 
 type HeaderCantinaProps = {
@@ -9,7 +8,7 @@ type HeaderCantinaProps = {
 };
 
 
-export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
+export const Header: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
 
     return (
         <View>
@@ -18,7 +17,6 @@ export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                 <Text color={colors.light.brancoPuro} fontSize={'18px'}>
                     {pageTitle}
                 </Text>
-                <Image source={Logocantina} alt='Logo da cantina' />
             </Box>
         </View>
     );

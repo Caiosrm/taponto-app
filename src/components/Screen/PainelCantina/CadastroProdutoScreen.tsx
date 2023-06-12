@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Box, Image, FormControl, Input, TextArea, Select, ScrollView, Button, Icon } from 'native-base';
+import { View, Text, Box, Image, FormControl, Input, TextArea, Select, ScrollView, Button, Icon, NumberInput } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -9,6 +9,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { storage } from '../../../api/config/firebaseConfig';
 import { getDownloadURL, uploadString, UploadMetadata, ref } from 'firebase/storage';
 import { HeaderCantina } from '../../Common/Header';
+import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
 
 interface ICadastroProdutoScreen {
   pageTitle?: string;
@@ -16,13 +17,18 @@ interface ICadastroProdutoScreen {
 }
 
 
-const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
 
-  const [nome, setNome] = React.useState<string>('');
-  const [preco, setPreco] = React.useState<string>('');
-  const [cardapio, setCardapio] = React.useState<CardapioType[]>();
-  const [imagem, setImagem] = React.useState<any>();
-  const [visibilidade, setVisibilidade] = React.useState<boolean>(true);
+const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
+  /*===================================================================================================*/
+  /* state's
+  /*===================================================================================================*/
+  const [produto, setProduto] = React.useState<ProdutoType>(initialStateProduto);
+  const [visibilidade, setVisibilidade] = React.useState<boolean>(produto.visibilidade);
+  const [codigoDeBarras, setCodigoDeBarras] = React.useState<number>(produto?.codigoDeBarras);
+  const [valor, setValor] = React.useState<number>(produto.valor);
+  const [imagem, setImagem] = React.useState<any>(produto?.imagem);
+
+
   /*===================================================================================================*/
   /* handleChange's
   /*===================================================================================================*/
@@ -64,15 +70,24 @@ const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
     setImagem(pickerResult.uri);
   };
 
-  const handleSalvarTudo = () => {
+  const handleSaveAll = () => {
     handleUploadImage(imagem);
   };
+
+  const handleValorChange = (value: number) => {
+    setValor(value);
+  };
+
+const handleChange = (key: string, value: any) => {
+  setProduto((prevProduto) => ({
+    ...prevProduto,
+    [key]: value,
+  }));
+};
 
   /*===================================================================================================*/
   /* useEffect's
   /*===================================================================================================*/
-
-
 
 
   return (
@@ -85,7 +100,7 @@ const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
           <Box padding={5} bg={colors.light.brancoPuro}>
 
             <FormControl.Label>Nome do produto</FormControl.Label>
-            <Input placeholder='Produto' />
+            <Input placeholder='Produto' value={produto.nome} />
 
             <FormControl.Label>Descrição</FormControl.Label>
             <Box alignItems="center" w="100%">
@@ -93,20 +108,29 @@ const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
             </Box>
 
             <FormControl.Label>Valor de venda</FormControl.Label>
-            <Input placeholder='R$ 0,00' />
+            <Input placeholder='R$ 0,00'
+              keyboardType="numeric"
+              onChangeText={(text) => handleValorChange(parseInt(text, 10))}
+              value={!isNaN(valor) ? String(valor) : ""} />
 
-            <FormControl.Label>Categoria</FormControl.Label>
-            <Input placeholder='Selecione a categoria' />
+            <FormControl.Label>Tipo</FormControl.Label>
+            <Input placeholder='Selecione o Tipo' />
 
-            <FormControl.Label>Código de barra</FormControl.Label>
+            <FormControl.Label>Código de barras</FormControl.Label>
             <Box alignItems='center' flexDirection='row'>
-              <Input mr={3} w="320px" />
+              <Input mr={3} w="320px"
+                keyboardType="numeric"
+                onChangeText={(text) => handleValorChange(parseInt(text, 10))}
+                value={!isNaN(produto.codigoDeBarras) ? String(produto.codigoDeBarras) : ""} />
               <Icon as={Ionicons} name='ios-barcode-outline' size={10} />
 
 
             </Box>
             <FormControl.Label>Estoque atual</FormControl.Label>
-            <Input />
+            <Input
+              keyboardType="numeric"
+              onChangeText={(text) => handleValorChange(parseInt(text, 10))}
+              value={!isNaN(valor) ? String(valor) : ""} />
 
             <FormControl.Label>Valor de compra (Preço de custo)</FormControl.Label>
             <Input placeholder='R$ 0,00' />
@@ -148,7 +172,7 @@ const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
                 </View>
               </Box>
 
-              <Button mb={30} mt={20} onPress={handleSalvarTudo}>
+              <Button mb={30} mt={20} onPress={handleSaveAll}>
                 Salvar
               </Button>
 
@@ -165,12 +189,3 @@ const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
 };
 
 export default CadastroProdutoScreen;
-
-
-
-
-
-
-
-
-

@@ -7,6 +7,8 @@ export type ProdutoType = {
     tipo: string;
     valor: number;
     imagem?: string;
+    codigoDeBarras: number;
+    visibilidade: boolean;
 }
 
 export const initialStateProduto: ProdutoType = {
@@ -17,5 +19,7 @@ export const initialStateProduto: ProdutoType = {
     quantidade: 2,
     imagem: '',
     valor: 2,
-    tipo: ""
+    tipo: "",
+    codigoDeBarras: 0,
+    visibilidade: true,
 }

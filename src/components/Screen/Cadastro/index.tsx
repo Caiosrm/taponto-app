@@ -10,6 +10,9 @@ import { TouchableOpacity } from "react-native";
 
 
 const CadastroScreen = (props: ICadastroScreenProps) => {
+    /*===================================================================================================*/
+    /* state's
+    /*===================================================================================================*/
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const [nomeCompleto, setnomeCompleto] = React.useState<string>('')
     const [telefone, setTelefone] = React.useState<string>('')
@@ -36,6 +39,10 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
 
 
     }
+
+    /*===================================================================================================*/
+    /* handleChange's
+    /*===================================================================================================*/
     const handleLogin = () => {
         navigation.navigate('Login');
     };
@@ -134,11 +141,11 @@ const CadastroScreen = (props: ICadastroScreenProps) => {
                     <Box mt={3}>
                         <Button onPress={realizarCadastro} mt={5} bg='primary.900'>Cadastrar</Button>
                     </Box>
-                    
+
                     <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
                         <Text textAlign='center'>
-                            Já tem uma conta? 
-                            </Text>
+                            Já tem uma conta?
+                        </Text>
                         <TouchableOpacity onPress={handleLogin}>
                             <Text>
                                 Faça seu login
