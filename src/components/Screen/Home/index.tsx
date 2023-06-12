@@ -6,7 +6,7 @@ import React, { useEffect, } from 'react';
 import { IHomeScreenProps } from "./types";
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
-import { Dimensions } from "react-native";
+import { Dimensions, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../../routes/types";
@@ -24,7 +24,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
     const [cantinas, setCantinas] = React.useState<CantinaType[]>();
     const { colorMode, toggleColorMode } = useTheme();
     const { width } = Dimensions.get('window');
-    const [idCantina, setIdCantina] = React.useState<string>('');
+    const [idCantina, setIdCantina] = React.useState<string>();
 
     useEffect(() => { //USE EFFECT INICIAL
         const fetchData = async () => {
@@ -66,15 +66,17 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                         flexDirection='column'
                                         alignItems='center'
                                     >
-                                        <Avatar />
-                                        <Text
-                                            textAlign='center'
-                                            fontSize="xs"
-                                            color="black"
-                                            onPress={() => navigation.navigate('ListarCardapio', {idCantina})}
-                                        >
-                                            {item.nome}
-                                        </Text>
+                                        {console.log(item.id)}
+                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id})}>
+                                            <Avatar />
+                                            <Text
+                                                textAlign='center'
+                                                fontSize="xs"
+                                                color="black"
+                                            >
+                                                {item.nome}
+                                            </Text>
+                                        </TouchableOpacity>
                                     </Box>
                                 </Box>
                             }
@@ -117,34 +119,36 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         <Box>
                             <FlatList data={cantinas} renderItem={({ item }) => (
                                 <Box alignItems='center' flexDirection='row' py="2">
-                                    <Avatar />
-                                    <Box marginLeft="2">
-                                        <Text
-                                            fontSize="md"
-                                            _dark={{ color: "warmGray.50" }}
-                                            color="coolGray.800"
-                                        >
-                                            {item.nome}
-                                        </Text>
-                                        <Text
-                                            fontSize="sm"
-                                            _dark={{ color: "warmGray.50" }}
-                                            color="coolGray.600"
-                                        >
-                                            <Badge colorScheme="success" size={"sm"} alignSelf="center" variant={"outline"}>
-                                                {item.status}
-                                            </Badge>
-                                        </Text>
-                                        <Box alignItems='center' flexDirection='row' >
-                                            <Ionicons name='ios-star' size={15} color='#fcbb01' />
-                                            <Text marginLeft={2}>
-                                                {item.avaliacoes?.nota}
+                                    <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', item.id)}>
+                                        <Avatar />
+                                        <Box marginLeft="2">
+                                            <Text
+                                                fontSize="md"
+                                                _dark={{ color: "warmGray.50" }}
+                                                color="coolGray.800"
+                                            >
+                                                {item.nome}
                                             </Text>
+                                            <Text
+                                                fontSize="sm"
+                                                _dark={{ color: "warmGray.50" }}
+                                                color="coolGray.600"
+                                            >
+                                                <Badge colorScheme="success" size={"sm"} alignSelf="center" variant={"outline"}>
+                                                    {item.status}
+                                                </Badge>
+                                            </Text>
+                                            <Box alignItems='center' flexDirection='row' >
+                                                <Ionicons name='ios-star' size={15} color='#fcbb01' />
+                                                <Text marginLeft={2}>
+                                                    {item.avaliacoes?.nota}
+                                                </Text>
+                                            </Box>
                                         </Box>
-                                    </Box>
-                                    <Box marginLeft="auto">
-                                        <Ionicons name='heart-outline' size={15} color='red' />
-                                    </Box>
+                                        <Box marginLeft="auto">
+                                            <Ionicons name='heart-outline' size={15} color='red' />
+                                        </Box>
+                                    </TouchableOpacity>
                                 </Box>
                             )}
                             />

@@ -4,6 +4,7 @@ import { CardapioType } from "../../types/CardapioType";
 
 // Função para consultar a coleção do cardápio em todas as cantinas
 export async function getCardapio(cantinaId: string) {
+  console.log("FIREBASE GET ->", cantinaId)
   const db = getFirestore();
   const cardapioRef = collection(db, "cantinas", cantinaId, "cardapio");
   const querySnapshot = await getDocs(cardapioRef);
