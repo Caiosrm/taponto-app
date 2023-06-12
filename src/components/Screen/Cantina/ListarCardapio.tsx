@@ -48,7 +48,7 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                 <Text textAlign='center'>Onde você encontra todos os produtos, ordenados ou filtrados</Text>
                 <Input placeholder="Pesquise pelo nome " mt={5} w='100%' />
             </Box>
-
+ 
             <FlatList
                 showsHorizontalScrollIndicator={true}
                 keyExtractor={(item) => String(item)}

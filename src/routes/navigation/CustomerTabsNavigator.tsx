@@ -9,7 +9,7 @@ import { PerfilScreen } from "../../components/Screen/Perfil";
 
 const Tab = createBottomTabNavigator();
 
-const HomeTabsNavigator = () => {
+const CustomerTabsNavigator = () => {
     return (
         <Tab.Navigator initialRouteName="Home"
             screenOptions={{
@@ -69,4 +69,4 @@ const HomeTabsNavigator = () => {
     )
 }
 
-export default HomeTabsNavigator;
+export default CustomerTabsNavigator;
