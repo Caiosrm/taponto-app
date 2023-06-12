@@ -19,7 +19,7 @@ const BottomTabNavigator = () => {
  const [usuarioLogado, setUsuarioLogado] = React.useState<boolean>(true);
   
     return (
-      <Tab.Navigator
+      <Tab.Navigator initialRouteName="Home"
         screenOptions={{
           tabBarStyle: {
             position: 'absolute',
@@ -29,6 +29,7 @@ const BottomTabNavigator = () => {
         }}>
         {usuarioLogado === true ? (
           <Tab.Group>
+  
   
             <Tab.Screen name="Sacola" component={Sacola}
               options={{
