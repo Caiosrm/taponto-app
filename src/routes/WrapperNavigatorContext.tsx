@@ -24,7 +24,7 @@ const Stack = createStackNavigator();
 /*===================================================================================================*/
 export const WrapperNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='CantinaScreen'>
       <Stack.Screen name="TabNavigator" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="ShopTabsNavigator" component={ShopTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Home" component={HomeTabsNavigator} options={{ headerShown: false }} />
