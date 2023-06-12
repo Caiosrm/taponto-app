@@ -22,6 +22,7 @@ export async function getCardapio(cantinaId: string) {
       descricao: response.descricao,
       cantinaId: response.cantinaId,
       quantidade: response.quantidade,
+      tipo: response.tipo,
       valor: response.valor
     };
     cardapio.itens.push(produto);

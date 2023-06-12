@@ -8,7 +8,8 @@ import { colors } from "../../../themes/Theme";
 import TopBar from "../../Common/TopBar";
 import { ProdutoType } from "../../../api/types/ProdutoType";
 import { getCardapio } from "../../../api/utils/get/getCardapio";
-import { CardapioType } from "../../../api/types/CardapioType";
+import { CardapioType, initialStateCardapio } from "../../../api/types/CardapioType";
+import { HeaderCantina } from "../../Common/Header";
 
 
 interface ICardapioProps {
@@ -17,62 +18,46 @@ interface ICardapioProps {
     cardapio: CardapioType;
 }
 
-const ListarCardapio = ({ navigation, route }: any) => {
+const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     //===================================================== State's ===========================================================
-    const [cardapio, setCardapio] = React.useState<CardapioType>(route.params.cardapio.itens);
-    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cardapio.id);
+    const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
+    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cantinaId);
 
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
+        console.log("Route Params: ", route.params)
         obterDados();
-        console.log(route.params)
     }, []);
 
     const obterDados = async () => {
-        console.log("ListarCardapio: ", cantinaId)
-        console.log("route.params: ", route.params)
         const cardapio = await getCardapio(cantinaId);
         setCardapio(cardapio);
-        console.log(cardapio)
     };
 
     return (
-
-        <Box //CANTINAS ABERTAS AGORA
-            backgroundColor={colors.light.brancoPuro} marginBottom={5}>
-            <Heading marginTop={5} fontSize="sm" paddingX={4}>
-            teste
-            </Heading>
-            <FlatList
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => String(item)}
-                pagingEnabled
-                horizontal
-                data={cardapio?.itens}
-                renderItem={({ item }) =>
-                    <Box padding={5} >
-                        <Box
-                            flexDirection='column'
-                            alignItems='center'
-                        >
-                            {console.log(item.id)}
-                            <TouchableOpacity >
-                                <Avatar />
-                                <Text
-                                    textAlign='center'
-                                    fontSize="xs"
-                                    color="black"
-                                >
-                                    {item.nome}
-                                </Text>
-                            </TouchableOpacity>
+        <View>
+            <HeaderCantina pageTitle={"Cantina x "} />
+            <Box backgroundColor={colors.light.brancoPuro} marginBottom={5}>
+                <FlatList
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item) => String(item)}
+                    pagingEnabled
+                    data={cardapio?.itens}
+                    renderItem={({ item }) =>
+                        <Box padding={5}>
+                            <Box flexDirection='row' alignItems='left'>
+                                <TouchableOpacity>
+                                    <Text textAlign='center' fontSize="xs" color="black">
+                                        {item.nome + " " + item.tipo}
+                                    </Text>
+                                </TouchableOpacity>
+                            </Box>
                         </Box>
-                    </Box>
-                }
-            />
-        </Box>
-
+                    }
+                />
+            </Box>
+        </View>
     );
 };
 

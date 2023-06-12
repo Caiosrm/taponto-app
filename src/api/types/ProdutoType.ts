@@ -4,13 +4,9 @@ export type ProdutoType = {
     descricao: string;
     cantinaId: string;
     quantidade: number;
+    tipo: string;
     valor: number;
     imagem?: string;
-    avaliacoes?: {
-        comentario: string;
-        nota: string;
-        clienteId: string;
-    } 
 }
 
 export const initialStateProduto: ProdutoType = {
@@ -20,5 +16,6 @@ export const initialStateProduto: ProdutoType = {
     cantinaId: "",
     quantidade: 2,
     imagem: '',
-    valor: 2
+    valor: 2,
+    tipo: ""
 }

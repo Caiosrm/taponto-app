@@ -12,7 +12,6 @@ export async function getAllShop() {
 		querySnapshot.forEach((doc) => {
 
 			const response = doc.data();
-			
 			const cantina: CantinaType = {
 				id: doc.id,
 				nome: response.nome,
@@ -21,9 +20,11 @@ export async function getAllShop() {
 				status: response.status,
 				pedidos: response.pedidos,
 				avaliacoes: response.avaliacoes,
-				idCampus: response.idCampus
+				polo: response.polo
 			}
 			cantinas.push(cantina);
+
+
 		});
 		return cantinas;
 	} catch (error) {

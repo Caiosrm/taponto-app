@@ -37,7 +37,7 @@ const SacolaScreen = (props: ISacolaScreenProps) => {
 
         <View>
             <HStack>
-
+                
             </HStack>
         </View>
 

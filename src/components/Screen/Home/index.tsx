@@ -26,14 +26,22 @@ const HomeScreen = (props: IHomeScreenProps) => {
     const { width } = Dimensions.get('window');
     const [idCantina, setIdCantina] = React.useState<string>();
 
+
+    const obterDados = async () => {
+        const data = await getAllShop();
+        setCantinas(data);
+    };
+
+
     useEffect(() => { //USE EFFECT INICIAL
-        const fetchData = async () => {
-            const data = await getAllShop();
-            setCantinas(data);
-        };
-        fetchData();
+        obterDados();
+
     }, []);
 
+    useEffect (() => {
+        console.log(cantinas)
+
+    }, [cantinas])
 
     return (
         <ThemeProvider>
@@ -43,7 +51,6 @@ const HomeScreen = (props: IHomeScreenProps) => {
                 <TopBar />
 
                 <ScrollView marginBottom={12}>
-
 
                     <HeaderBemVindo />
 
@@ -66,8 +73,8 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                         flexDirection='column'
                                         alignItems='center'
                                     >
-                                        {console.log(item.id)}
-                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantina: item})}>
+                                        
+                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id, cantina: item})}>
                                             <Avatar />
                                             <Text
                                                 textAlign='center'
@@ -119,7 +126,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                         <Box>
                             <FlatList data={cantinas} renderItem={({ item }) => (
                                 <Box alignItems='center' flexDirection='row' py="2">
-                                    <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', item.id)}>
+                                    <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id})}>
                                         <Avatar />
                                         <Box marginLeft="2">
                                             <Text
