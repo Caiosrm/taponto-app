@@ -1,4 +1,4 @@
-import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon } from "native-base";
+import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon, View, Heading } from "native-base";
 import React, { useEffect } from "react";
 
 import { getFirestore } from '@firebase/firestore';
@@ -8,100 +8,37 @@ import { colors } from "../../../themes/Theme";
 import TopBar from "../../Common/TopBar";
 import { ProdutoType } from "../../../api/types/ProdutoType";
 import { getCardapio } from "../../../api/utils/get/getCardapio";
+import { CardapioType } from "../../../api/types/CardapioType";
 
-const ListarCardapio = () => {
+
+interface ICardapioProps {
+    pageTitle?: string;
+    cantinaId: string;
+    cardapio: CardapioType;
+}
+
+const ListarCardapio = ({ navigation, route }: any) => {
     //===================================================== State's ===========================================================
-    const [produtos, setProdutos] = React.useState<ProdutoType[]>([]);
-    const [cantinaId, setCantinaId] = React.useState<string>('');
+    const [cardapio, setCardapio] = React.useState<CardapioType>();
+    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cantinaId);
 
     //===================================================== useEffect's =======================================================
     useEffect(() => {
-        fetchData();
+        obterDados();
     }, []);
 
-    const fetchData = async () => {
-        const produtos = await getCardapio(cantinaId);
-        setProdutos(produtos);
-        console.log(produtos)
+    const obterDados = async () => {
+        console.log("ListarCardapio: ", cantinaId)
+        const cardapio = await getCardapio(cantinaId);
+        setCardapio(cardapio);
+        console.log(cardapio)
     };
 
     return (
 
-        <FlatList
-            data={produtos}
-            renderItem={({ item }) =>
-                <Box
-                    shadow={2}
-                    justifyContent='center'
-                    padding={5} h={120}
-                    borderRadius={5}
-                    marginBottom={3}
-                    backgroundColor={colors.light.brancoPuro}
-                    py="2"
-                >
-                    <HStack
-                        alignItems='center'
-                        space={[2, 3]}
-                        justifyContent="space-between"
-                    >
-                        <Avatar size="90px" />
-
-                        <VStack>
-                            <Text
-                                _dark={{ color: "warmGray.50" }}
-                                color="#000000"
-                                bold
-                            >
-                                {item.nome}
-                            </Text>
-                            <Text
-                                _dark={{ color: "warmGray.50" }}
-                                fontSize={'xs'}
-                                color="#000000"
-                            >{item.quantidade} disponíveis
-                            </Text>
-                            <Text
-                                _dark={{ color: "coolGray.800" }}
-                                color="#000000"
-                            >R${item.valor}
-                            </Text>
-                        </VStack>
-
-                        <Spacer />
-
-                        <Box alignItems='center'>
-                            <Box flexDirection='row' alignItems='center' justifyContent='center'>
-                                <TouchableOpacity>
-                                    <Button
-                                        backgroundColor='none'
-                                    >
-                                        <Icon as={Ionicons}
-                                            name="ios-add"
-                                            size="sm"
-                                            color="green.300"
-                                        />
-                                    </Button>
-                                </TouchableOpacity>
-                                <Text>
-                                    {item.quantidade}
-                                </Text>
-                                <TouchableOpacity>
-                                    <Button
-                                        backgroundColor='none'
-                                    >
-                                        <Icon as={Ionicons}
-                                            name="ios-remove"
-                                            size="sm"
-                                            color="red.300"
-                                        />
-                                    </Button>
-                                </TouchableOpacity>
-                            </Box>
-                        </Box>
-                    </HStack>
-                </Box >
-            } keyExtractor={item => item.id}
-        />
+        <Box>
+      
+    </Box>
 
     );
 };
