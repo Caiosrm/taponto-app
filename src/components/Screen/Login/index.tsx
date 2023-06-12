@@ -26,7 +26,7 @@ type ILoginScreenProps = {
     navigation: StackNavigationProp<RootStackParamList, 'Login'>;
 };
 
-export default function Login(props: ILoginScreenProps) {
+export default function LoginScreen(props: ILoginScreenProps) {
     const navigation = useNavigation();
    
     const [email, setEmail] = useState('')

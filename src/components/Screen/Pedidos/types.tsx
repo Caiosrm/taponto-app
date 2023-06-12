@@ -1,15 +1,14 @@
-import { ProdutoType } from "../../../api/types/ProdutoType";
+import { ProdutoType, initialStateProduto } from "../../../api/types/ProdutoType";
 
-export interface IPedidoProps {
+export interface IPedidosScreenProps {
     pageTitle?: string;
-    status?: string;
+    status?: "Aberto" | ".;/";
     produto?: ProdutoType;
     produtos?: ProdutoType[];
 }
 
 
-export const initialStatePedido: ProdutoType = {
-    status: "",
-    produto: initialStateProduto,
-    produtos: []
+export const initialStatePedidos: IPedidosScreenProps = {
+    pageTitle: "Meus Pedidos"
+
 }

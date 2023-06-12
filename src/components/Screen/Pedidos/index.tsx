@@ -1,8 +1,8 @@
 import { View } from "native-base";
 import TopBar from "../../Common/TopBar";
-import { IPedidoProps } from "./types";
+import { IPedidosScreenProps } from "./types";
 
-const Pedidos = (props: IPedidoProps) => {
+const PedidosScreen = (props: IPedidosScreenProps) => {
 /*===================================================================================================*/
 /* handleChange's
 /*===================================================================================================*/
@@ -27,4 +27,4 @@ const Pedidos = (props: IPedidoProps) => {
     );
 }
 
-export default Pedidos;
+export default PedidosScreen;
