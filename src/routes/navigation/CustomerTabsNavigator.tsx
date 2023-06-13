@@ -30,7 +30,7 @@ const CustomerTabsNavigator = () => {
                         }
                     },
                 }} />
-                <Tab.Screen name="Sacola" component={Sacola}
+                <Tab.Screen name="Sacola" component={() => <Sacola idCliente={""} produtosNaSacola={[]} valorTotal={0}/>}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {
