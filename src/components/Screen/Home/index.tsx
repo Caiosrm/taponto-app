@@ -74,7 +74,7 @@ const HomeScreen = (props: IHomeScreenProps) => {
                                         alignItems='center'
                                     >
                                         
-                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id, cantina: item})}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id})}>
                                             <Avatar />
                                             <Text
                                                 textAlign='center'

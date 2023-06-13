@@ -1,17 +1,13 @@
-import { Text, HStack, Box, Avatar, VStack, Spacer, Button, Image, useTheme, Icon, View, Heading, Stack, Center, AspectRatio, Row, Input } from "native-base";
+import { Text, Box, Image, View, Input } from "native-base";
 import React, { useEffect } from "react";
 
-import { getFirestore } from '@firebase/firestore';
-import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
 import { colors } from "../../../themes/Theme";
-import TopBar from "../../Common/TopBar";
-import { ProdutoType } from "../../../api/types/ProdutoType";
 import { getCardapio } from "../../../api/utils/get/getCardapio";
 import { CardapioType, initialStateCardapio } from "../../../api/types/CardapioType";
 import { HeaderCantina } from "../../Common/Header";
-import productFeaturedImage from '../../../../assets/product-featured.png';
-import { color } from "native-base/lib/typescript/theme/styled-system";
+import { Logo } from '../../../../assets/Rectangle229.png'
 
 
 interface ICardapioProps {
@@ -25,30 +21,56 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
     const [cantinaId, setCantinaId] = React.useState<string>(route.params.cantinaId);
 
-
     //===================================================== useEffect's =======================================================
     useEffect(() => {
+        const obterDados = async () => {
+            const cardapio = await getCardapio(cantinaId);
+            setCardapio(cardapio);
+        };
         console.log("Route Params: ", route.params)
         obterDados();
     }, []);
 
-    const obterDados = async () => {
-        const cardapio = await getCardapio(cantinaId);
-        setCardapio(cardapio);
-    };
+    const handleFormatCurrency = (value: number): string => {
+        const formattedValue = value.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        });
+        return formattedValue;
+      };
 
     return (
         <View>
             <Box>
+            <Box>
                 <HeaderCantina pageTitle={cantinaId} />
+            </Box>
+            
+            <Image position='absolute' top='110' left='5'  source={{uri: "https://wallpaperaccess.com/full/317501.jpg"}} alt="Imagem  da cantina" size='md' />
+            
+
             </Box>
 
             <Box justifyContent='center' alignItems='center' padding={7}>
                 <Text fontSize='26'>Cardápio</Text>
                 <Text textAlign='center'>Onde você encontra todos os produtos, ordenados ou filtrados</Text>
-                <Input placeholder="Pesquise pelo nome " mt={5} w='100%' />
+
             </Box>
- 
+            <Box padding={5}>
+
+                <Input placeholder="Pesquise pelo nome"
+                    fontSize={16}
+                    bg='#e6e6e6'
+                    borderWidth={0}
+                    borderRadius={10}
+                    padding={2}
+
+                    InputRightElement={
+                        <Box marginRight={2}>
+                            <Ionicons name="filter" size={24} color={colors.light.azulTurquesa} />
+                        </Box>} />
+            </Box>
+
             <FlatList
                 showsHorizontalScrollIndicator={true}
                 keyExtractor={(item) => String(item)}
@@ -57,10 +79,11 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                 renderItem={({ item }) => (
                     <Box padding={2}>
                         <Box alignItems='center' borderWidth={1} borderColor={colors.light.brancoPuro} justifyContent='space-around' flex={1} flexDirection='row' mt={2} >
+                            
                             <Box justifyContent='center' h='150px' w='60%'>
                                 <Text color={colors.light.azulTurquesa}>{item.nome + " " + item.tipo}</Text>
                                 <Text>{item.descricao}</Text>
-                                <Text>R${item.valor}</Text>
+                                <Text>{handleFormatCurrency(item.valor)}</Text>
 
                                 <Box mt={2}>
                                     <TouchableOpacity>
@@ -69,10 +92,10 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                                 </Box>
 
                             </Box>
-
-                            <Box>
-                                <Text>imagem</Text>
+                                <Box>
+                                <Image  source={{uri: "https://wallpaperaccess.com/full/317501.jpg"}} alt="Imagem  do Produto" size='lg' />
                             </Box>
+
 
                         </Box>
                     </Box>
