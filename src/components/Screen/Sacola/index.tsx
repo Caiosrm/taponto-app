@@ -7,7 +7,7 @@ import { getCardapio } from "../../../api/utils/get/getCardapio";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../themes/Theme";
-import { SacolaType } from "../../../api/types/SacolaType";
+import { SacolaType, initialStateSacola } from "../../../api/types/SacolaType";
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -16,7 +16,7 @@ const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }
     /*===================================================================================================*/
     /* States
     /*===================================================================================================*/
-    const [sacola, setSacola] = React.useState<ProdutoType[]>(props.itens);
+    const [sacola, setSacola] = React.useState<SacolaType>(initialStateSacola);
     const [cantinaId, setCantinaId] = React.useState<string>('Madrugao Lanches');
 
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);

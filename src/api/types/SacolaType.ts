@@ -6,3 +6,10 @@ export type SacolaType = {
   valorTotal: string;
   itens: ProdutoType[];
 };
+
+export const initialStateSacola: SacolaType = {
+  id: "",
+  idCliente: "",
+  valorTotal: "",
+  itens: []
+}
