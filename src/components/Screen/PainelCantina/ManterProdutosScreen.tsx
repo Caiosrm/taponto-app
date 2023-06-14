@@ -8,7 +8,7 @@ import { HeaderCantina } from '../../Common/Header';
 import { ProductCard } from '../../Common/ProductCard';
 
 interface ManterProdutosProps {
-    pageTitle: string;
+    pageTitle?: string;
 }
 
 

@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                 <Text color={colors.light.brancoPuro} fontSize={'18px'}>
                     {pageTitle}
                 </Text>
-              <BotaoSacola />
+              <BotaoSacola itensNaSacola={0} />
             </Box>
         </View>
     );

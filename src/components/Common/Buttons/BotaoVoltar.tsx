@@ -14,7 +14,13 @@ const BotaoVoltar: React.FC = () => {
     };
 
     return (
-            <Ionicons name="arrow-back-circle-outline" size={35} color={colors.light.brancoPuro} onPress={handleVoltar} />
+            <Ionicons 
+            name="arrow-back-circle-outline" 
+            key='arrow-back-circle-outline-icon'
+            size={35} 
+            color={colors.light.brancoPuro} 
+            onPress={handleVoltar} 
+            />
     );
 };
 

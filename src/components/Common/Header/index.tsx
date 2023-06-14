@@ -11,6 +11,7 @@ type HeaderCantinaProps = {
 
 
 export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
+    const [totalItens, setTotalItens] = React.useState<number>(0);
 
     return (
         <View>
@@ -20,7 +21,7 @@ export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                     {pageTitle}
                 </Text>
                 <Image source={Logocantina} alt='Logo da cantina' />
-                <BotaoSacola />
+                <BotaoSacola itensNaSacola={totalItens} /> 
             </Box>
         </View>
     );
