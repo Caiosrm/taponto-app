@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 const CustomerTabsNavigator = () => {
     return (
-        <Tab.Navigator initialRouteName="Home"
+        <Tab.Navigator initialRouteName="Sacola"
             screenOptions={{
                 tabBarStyle: {
                     position: 'absolute',

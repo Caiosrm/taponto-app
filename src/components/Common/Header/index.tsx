@@ -19,9 +19,10 @@ export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                 <Text color={colors.light.brancoPuro} fontSize={'18px'}>
                     {pageTitle}
                 </Text>
-                <Image source={Logocantina} alt='Logo da cantina' />
+                
                 <BotaoSacola />
             </Box>
+                <Text textAlign='center'>Nome da Cantina</Text>
         </View>
     );
 };
