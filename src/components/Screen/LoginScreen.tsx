@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
-import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { TouchableOpacity, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import ImageWelcome from '../../../../assets/Welcome.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -21,10 +21,9 @@ type ILoginScreenProps = {
 
 export default function LoginScreen(props: ILoginScreenProps) {
     const navigation = useNavigation();
-   
+
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-
 
     async function logar() {
         try {
