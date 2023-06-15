@@ -27,4 +27,4 @@ const PedidosClienteScreen = () => {
     );
 }
 
-export default PedidosScreen;
+export default PedidosClienteScreen;
