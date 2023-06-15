@@ -6,7 +6,7 @@ import { FlatList, TouchableOpacity } from "react-native";
 import { colors } from "../../../themes/Theme";
 import { getCardapio } from "../../../api/utils/get/getCardapio";
 import { CardapioType, initialStateCardapio } from "../../../api/types/CardapioType";
-import { HeaderCantina } from "../../Common/Header";
+import { HeaderCantina } from "../../Common/Header/HeaderCantina";
 import { Logo } from '../../../../assets/Rectangle229.png'
 import SacolaScreen from "../Cliente/SacolaScreen";
 import { SacolaType, initialStateSacola } from "../../../api/types/SacolaType";

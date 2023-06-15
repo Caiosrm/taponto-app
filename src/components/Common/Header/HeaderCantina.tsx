@@ -4,6 +4,8 @@ import { colors } from '../../../themes/Theme'
 import Logocantina from '../../../../assets/Rectangle229.png'
 import BotaoVoltar from '../Buttons/BotaoVoltar'
 import BotaoSacola from '../Buttons/BotaoSacola'
+import { RootStackParamList } from '../../../routes/types'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 type HeaderCantinaProps = {
     pageTitle: string;
@@ -11,7 +13,6 @@ type HeaderCantinaProps = {
 
 
 export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
-    const [totalItens, setTotalItens] = React.useState<number>(0);
 
     return (
         <View>
@@ -21,7 +22,6 @@ export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                     {pageTitle}
                 </Text>
                 <Image source={Logocantina} alt='Logo da cantina' />
-                <BotaoSacola itensNaSacola={totalItens} /> 
             </Box>
         </View>
     );

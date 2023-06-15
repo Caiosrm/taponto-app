@@ -4,7 +4,7 @@ import { Box, View, Text, Image, Container, ScrollView } from 'native-base';
 import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
 import { getCardapio } from '../../../api/utils/get/getCardapio';
 import { CardapioType, initialStateCardapio } from '../../../api/types/CardapioType'
-import { HeaderCantina } from '../../Common/Header';
+import { HeaderCantina } from '../../Common/Header/HeaderCantina';
 import { ProductCard } from '../../Common/ProductCard';
 
 interface ManterProdutosProps {

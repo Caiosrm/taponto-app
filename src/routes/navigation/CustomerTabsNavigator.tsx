@@ -6,7 +6,7 @@ import Pedidos from "../../components/Screen/Cliente/PedidosClienteScreen";
 import Sacola from "../../components/Screen/Cliente/SacolaScreen";
 import SacolaScreen from "../../components/Screen/Cliente/SacolaScreen";
 import PedidosClienteScreen from "../../components/Screen/Cliente/PedidosClienteScreen";
-import { PerfilClienteScreen } from "../../components/Screen/Cliente/PerfilScreen";
+import { PerfilClienteScreen } from "../../components/Screen/Cliente/PerfilClienteScreen";
 
 
 const Tab = createBottomTabNavigator();

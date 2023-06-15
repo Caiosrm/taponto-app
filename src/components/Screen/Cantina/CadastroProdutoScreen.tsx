@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { getDownloadURL, uploadString, UploadMetadata, ref } from 'firebase/storage';
 
-import { HeaderCantina } from '../../Common/Header';
+import { HeaderCantina } from '../../Common/Header/HeaderCantina';
 import { colors } from '../../../themes/Theme';
 import { storage } from '../../../api/config/firebaseConfig';
 import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
@@ -91,9 +91,8 @@ const CadastroProdutoScreen = () => {
 
 
   return (
-    <Box>
-
-      <ScrollView>
+    <ScrollView>
+      <Box>
         <HeaderCantina pageTitle="Cadastrar Produto" />
         <Box flex={1} alignItems='center'>
 
@@ -178,13 +177,11 @@ const CadastroProdutoScreen = () => {
 
             </Box>
 
-
-
           </Box>
         </Box>
-      </ScrollView>
+      </Box>
+    </ScrollView>
 
-    </Box>
   );
 };
 

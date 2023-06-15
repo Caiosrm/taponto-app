@@ -6,28 +6,30 @@ import SacolaScreen from '../../Screen/Cliente/SacolaScreen';
 import { ProdutoType } from '../../../api/types/ProdutoType';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../routes/types';
+
 interface BotaoSacolaProps {
   itensNaSacola: number;
-  navigation: StackNavigationProp<RootStackParamList, 'Login'>;
+  navigation?: StackNavigationProp<RootStackParamList, 'SacolaScreen'>;
 }
-
 
 
 const BotaoSacola: React.FC<BotaoSacolaProps> = ({ itensNaSacola }, props: BotaoSacolaProps) => {
   const navigation = useNavigation();
 
   const handleBotaoSacola = () => {
-    props.navigation.navigate('SacolaScreen');
+    if (props.navigation) { 
+      props.navigation.navigate('SacolaScreen'); 
+    }
   };
 
   return (
-<>
-      <Feather 
-      name='shopping-bag' 
-      key={'shopping-bag-icon'}
-      size={30} 
-      color={colors.light.brancoPuro} 
-      onPress={handleBotaoSacola} />
+    <>
+      <Feather
+        name='shopping-bag'
+        key={'shopping-bag-icon'}
+        size={30}
+        color={colors.light.brancoPuro}
+        onPress={handleBotaoSacola} />
       {itensNaSacola > 0 && (
         <Badge
           key='shopping-bag-badge'

@@ -1,10 +1,10 @@
 export type RootStackParamList = {
     navigate: any;
-    Login: undefined;
-    Cadastro: undefined;
-    Home: undefined;
+    LoginScreen: undefined;
+    CadastroScreen: undefined;
+    HomeScreen: undefined;
     SacolaScreen: undefined;
-    Perfil: undefined;
-    Pedidos: undefined;
+    PerfilClienteScreen: undefined;
+    PedidosClienteScreen: undefined;
     ListarCardapio: undefined;
 };

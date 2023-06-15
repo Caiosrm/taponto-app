@@ -46,7 +46,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
         setSenha('');
     }
     const handleCadastro = () => {
-        props.navigation.navigate('Cadastro');
+        props.navigation.navigate('CadastroScreen');
     };
 
 
