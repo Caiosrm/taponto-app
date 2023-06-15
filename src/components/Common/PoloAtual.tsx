@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Box, Text } from 'native-base'
 import React, { useRef } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { colors } from '../../../../themes/Theme';
+import { colors } from '../../themes/Theme';
 import { Modalize } from "react-native-modalize";
 
 

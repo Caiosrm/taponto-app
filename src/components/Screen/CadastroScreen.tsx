@@ -1,25 +1,24 @@
 import { Box, FormControl, Input, Button, VStack, Text, Image, ScrollView } from "native-base";
 import React from "react";
-import { ICadastroScreenProps } from "./types";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Logo from '../../../../assets/logo/logo2.png'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../api/config/firebaseConfig";
-import { RootStackParamList } from "../../../routes/types";
+import { auth } from "../../api/config/firebaseConfig";
+import { RootStackParamList } from "../../routes/types";
 import { TouchableOpacity } from "react-native";
 
 
-const CadastroScreen = (props: ICadastroScreenProps) => {
+export const CadastroScreen = () => {
     /*===================================================================================================*/
     /* state's
     /*===================================================================================================*/
+    const [userContext, setUserContext] = React.useState<any>();
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const [nomeCompleto, setnomeCompleto] = React.useState<string>('')
     const [telefone, setTelefone] = React.useState<string>('')
     const [email, setEmail] = React.useState<string>('')
     const [senha, setSenha] = React.useState<string>('')
     const [confirmarSenha, setconfirmarSenha] = React.useState<string>('')
-
 
     async function realizarCadastro() {
         await createUserWithEmailAndPassword(auth, email, senha)

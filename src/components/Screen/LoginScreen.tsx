@@ -8,19 +8,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { FirebaseError } from '@firebase/app';
 import { getFirestore } from '@firebase/firestore';
 import Logo from '../../../../assets/logo/logo2.png'
-import AppBar from '../../Common/TopBar'
-import { auth } from '../../../api/config/firebaseConfig';
+import AppBar from '../Common/TopBar'
+import { auth } from '../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
+import { RootStackParamList } from '../../routes/types';
 
-type RootStackParamList = {
-    Home: undefined;
-    Sacola: undefined;
-    Perfil: undefined;
-    Login: undefined;
-    Cadastro: undefined;
-    Pedidos: undefined;
-    ListarCardapio: undefined;
-};
+
 
 type ILoginScreenProps = {
     navigation: StackNavigationProp<RootStackParamList, 'Login'>;
@@ -54,7 +47,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
         setSenha('');
     }
     const handleCadastro = () => {
-        navigation.navigate('Cadastro');
+        props.navigation.navigate('Cadastro');
     };
 
 

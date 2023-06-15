@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
-import CadastroProdutoScreen from '../../components/Screen/PainelCantina/CadastroProdutoScreen';
-import { ManterProdutosScreen } from '../../components/Screen/PainelCantina/ManterProdutosScreen';
-import { PerfilScreen } from '../../components/Screen/Perfil';
-import { PainelCantinaScren } from '../../components/Screen/PainelCantina/PainelCantinaScren';
+import CadastroProdutoScreen from '../../components/Screen/Cantina/CadastroProdutoScreen';
+import { ManterProdutosScreen } from '../../components/Screen/Cantina/ManterProdutosScreen';
+import { PerfilScreen } from '../../components/Screen/Cliente/PerfilScreen';
+import { PainelCantinaScren } from '../../components/Screen/Cantina/PainelCantinaScren';
 
 const Tab = createBottomTabNavigator();
 

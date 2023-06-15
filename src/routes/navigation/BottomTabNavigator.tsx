@@ -1,12 +1,12 @@
 import { Entypo, Ionicons, Octicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import Login from "../../components/Screen/Login";
-import Pedidos from "../../components/Screen/Pedidos";
-import Sacola from "../../components/Screen/Sacola";
+import Login from "../../components/Screen/LoginScreen";
+import Pedidos from "../../components/Screen/Cliente/PedidosClienteScreen";
+import Sacola from "../../components/Screen/Cliente/SacolaScreen";
 import { initialStateSacola } from "../../components/Screen/Sacola/types";
-import CadastroProdutoScreen from "../../components/Screen/PainelCantina/CadastroProdutoScreen";
-import { PerfilScreen } from "../../components/Screen/Perfil";
+import CadastroProdutoScreen from "../../components/Screen/Cantina/CadastroProdutoScreen";
+import { PerfilScreen } from "../../components/Screen/Cliente/PerfilScreen";
 
 
 const Tab = createBottomTabNavigator();

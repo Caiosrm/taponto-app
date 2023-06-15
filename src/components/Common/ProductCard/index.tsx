@@ -16,7 +16,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ name, quantity, value,
                 borderRadius="5" 
                 borderColor="gray.200"
             >
-                <Image source={{ uri: previewImage }} height={200} mb={2} alt="Imagem do Produto" />
+                <Image 
+                source={{ uri: previewImage }} 
+                alt="Imagem do Produto"
+                height={200} 
+                mb={2} 
+                />
                 <Text fontSize="lg" fontWeight="bold" mb={2}>
                     {name}
                 </Text>

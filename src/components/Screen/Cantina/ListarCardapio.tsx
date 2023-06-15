@@ -8,7 +8,7 @@ import { getCardapio } from "../../../api/utils/get/getCardapio";
 import { CardapioType, initialStateCardapio } from "../../../api/types/CardapioType";
 import { HeaderCantina } from "../../Common/Header";
 import { Logo } from '../../../../assets/Rectangle229.png'
-import SacolaScreen from "../Sacola";
+import SacolaScreen from "../Cliente/SacolaScreen";
 import { SacolaType, initialStateSacola } from "../../../api/types/SacolaType";
 import { ProdutoType } from "../../../api/types/ProdutoType";
 import { handleFormatCurrency } from "../../../utils/handleFormatCurrency";

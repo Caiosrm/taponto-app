@@ -3,21 +3,21 @@ import TopBar from "../../Common/TopBar";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect, } from 'react';
-import { IHomeScreenProps } from "./types";
+import { IHomeScreenProps } from "./Home/types";
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../../routes/types";
-import { HeaderBemVindo } from "./components/HeaderBemVindo";
-import { PoloAtual } from "./components/PoloAtual";
+import { HeaderBemVindo } from "../../Common/Header/HeaderBemVindo";
+import { PoloAtual } from "../../Common/PoloAtual";
 
 import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { CantinaType } from "../../../api/types/CantinaType";
 
 
-const HomeScreen = (props: IHomeScreenProps) => {
+const HomeScreen = () => {
 
     const navigation = useNavigation<RootStackParamList>();
     const [cantinas, setCantinas] = React.useState<CantinaType[]>();

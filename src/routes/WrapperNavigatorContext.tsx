@@ -1,18 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import LoginScreen from '../components/Screen/Login';
+import LoginScreen from '../components/Screen/LoginScreen';
 import ListarCardapio from '../components/Screen/Cantina/ListarCardapio';
 
-import CadastroScreen from '../components/Screen/Cadastro';
+import CadastroScreen from '../components/Screen/CadastroScreen';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CustomerTabsNavigator from './navigation/CustomerTabsNavigator';
-import { PerfilScreen } from '../components/Screen/Perfil';
-import SacolaScreen from '../components/Screen/Sacola';
+import { PerfilScreen } from '../components/Screen/Cliente/PerfilScreen';
+import SacolaScreen from '../components/Screen/Cliente/SacolaScreen';
 import { initialStatePerfil } from '../components/Screen/Perfil/types';
-import { ManterProdutosScreen } from '../components/Screen/PainelCantina/ManterProdutosScreen';
+import { ManterProdutosScreen } from '../components/Screen/Cantina/ManterProdutosScreen';
 import ShopTabsNavigator from './navigation/ShopTabsNavigator';
-import PedidosScreen from '../components/Screen/Pedidos';
+import PedidosScreen from '../components/Screen/Cliente/PedidosClienteScreen';
 
 
 const Stack = createStackNavigator();

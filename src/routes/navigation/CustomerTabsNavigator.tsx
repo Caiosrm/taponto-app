@@ -1,11 +1,11 @@
 import { FontAwesome, Octicons, Ionicons, Entypo } from "@expo/vector-icons";
-import HomeScreen from "../../components/Screen/Home";
-import Pedidos from "../../components/Screen/Pedidos";
+import HomeScreen from "../../components/Screen/Cliente/HomeScreen";
+import Pedidos from "../../components/Screen/Cliente/PedidosClienteScreen";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Sacola from "../../components/Screen/Sacola";
+import Sacola from "../../components/Screen/Cliente/SacolaScreen";
 import { initialStateSacola } from "../../components/Screen/Sacola/types";
-import { PerfilScreen } from "../../components/Screen/Perfil";
+import { PerfilScreen } from "../../components/Screen/Cliente/PerfilScreen";
 
 const Tab = createBottomTabNavigator();
 

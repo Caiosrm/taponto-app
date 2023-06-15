@@ -3,7 +3,7 @@ export type RootStackParamList = {
     Login: undefined;
     Cadastro: undefined;
     Home: undefined;
-    Sacola: undefined;
+    SacolaScreen: undefined;
     Perfil: undefined;
     Pedidos: undefined;
     ListarCardapio: undefined;

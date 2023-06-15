@@ -2,17 +2,22 @@ import { Feather } from '@expo/vector-icons';
 import { Badge } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../../themes/Theme';
-import SacolaScreen from '../../Screen/Sacola';
+import SacolaScreen from '../../Screen/Cliente/SacolaScreen';
 import { ProdutoType } from '../../../api/types/ProdutoType';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../../routes/types';
 interface BotaoSacolaProps {
   itensNaSacola: number;
+  navigation: StackNavigationProp<RootStackParamList, 'Login'>;
 }
 
-const BotaoSacola: React.FC<BotaoSacolaProps> = ({ itensNaSacola }) => {
+
+
+const BotaoSacola: React.FC<BotaoSacolaProps> = ({ itensNaSacola }, props: BotaoSacolaProps) => {
   const navigation = useNavigation();
 
   const handleBotaoSacola = () => {
-    navigation.navigate('SacolaScreen');
+    props.navigation.navigate('SacolaScreen');
   };
 
   return (
