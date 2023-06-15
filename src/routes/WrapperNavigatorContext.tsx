@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 export const WrapperNavigation = () => {
   return (
-    <Stack.Navigator initialRouteName='ShopTabsNavigator'>
+    <Stack.Navigator initialRouteName='CustomerTabsNavigator'>
       <Stack.Screen name="ShopTabsNavigator" component={ShopTabsNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="CustomerTabsNavigator" component={CustomerTabsNavigator} options={{ headerShown: false }} />
     </Stack.Navigator>
