@@ -11,6 +11,7 @@ import { Logo } from '../../../../assets/Rectangle229.png'
 import SacolaScreen from "../Sacola";
 import { SacolaType, initialStateSacola } from "../../../api/types/SacolaType";
 import { ProdutoType } from "../../../api/types/ProdutoType";
+import { handleFormatCurrency } from "../../../utils/handleFormatCurrency";
 
 
 interface ICardapioProps {
@@ -34,8 +35,10 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     }, []);
 
     const countItems = (sacola: SacolaType) => {
-        const totalItems = sacola.itens.reduce((total, item) => total + item.quantidade, 0);
-        setTotalItens(totalItems);
+        if (sacola.itens) {
+            const totalItems = sacola.itens.reduce((total, item) => total + item.quantidade, 0);
+            setTotalItens(totalItems);
+        }
     };
 
     const obterCardapio = async () => {
@@ -44,30 +47,26 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     };
 
     const handleAddToCart = (product: ProdutoType) => {
-        setSacola({
-            ...sacola,
-            itens: [...sacola.itens, product],
-        });
-
-        countItems(sacola); // Atualiza a contagem de itens
+        if (sacola.itens) {
+            setSacola({
+                ...sacola,
+                itens: [...sacola.itens, product],
+            });
+            countItems(sacola); // Atualiza a contagem de itens
+        }
     };
 
     const handleRemoveFromCart = (productId: string) => {
-        setSacola({
-            ...sacola,
-            itens: sacola.itens.filter(item => item.id !== productId),
-        });
-
-        countItems(sacola); // Atualiza a contagem de itens
+        if (sacola.itens) {
+            setSacola({
+                ...sacola,
+                itens: sacola.itens.filter(item => item.id !== productId),
+            });
+            countItems(sacola); // Atualiza a contagem de itens
+        }
     };
 
-    const handleFormatCurrency = (value: number): string => {
-        const formattedValue = value.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-        });
-        return formattedValue;
-    };
+
 
     return (
         <View>
@@ -80,8 +79,12 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
             </Box>
 
             <Box justifyContent='center' alignItems='center' padding={7}>
-                <Text fontSize='22'>Cardápio</Text>
-                <Text textAlign='center'>Onde você encontra todos os produtos, ordenados ou filtrados</Text>
+                <Text fontSize='22'>
+                    Cardápio
+                </Text>
+                <Text textAlign='center'>
+                    Onde você encontra todos os produtos, ordenados ou filtrados
+                </Text>
 
             </Box>
             <Box padding={5}>
@@ -152,14 +155,6 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                     </Box>
                 )}
             />
-
-
-
-
-
-
-
-
 
         </View>
     );
