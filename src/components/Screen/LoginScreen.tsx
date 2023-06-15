@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
-import { StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import { TouchableOpacity, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import ImageWelcome from '../../../../assets/Welcome.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -8,19 +8,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { FirebaseError } from '@firebase/app';
 import { getFirestore } from '@firebase/firestore';
 import Logo from '../../../../assets/logo/logo2.png'
-import AppBar from '../../Common/TopBar'
-import { auth } from '../../../api/config/firebaseConfig';
+import AppBar from '../Common/TopBar'
+import { auth } from '../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
+import { RootStackParamList } from '../../routes/types';
 
-type RootStackParamList = {
-    Home: undefined;
-    Sacola: undefined;
-    Perfil: undefined;
-    Login: undefined;
-    Cadastro: undefined;
-    Pedidos: undefined;
-    ListarCardapio: undefined;
-};
+
 
 type ILoginScreenProps = {
     navigation: StackNavigationProp<RootStackParamList, 'Login'>;
@@ -28,10 +21,9 @@ type ILoginScreenProps = {
 
 export default function LoginScreen(props: ILoginScreenProps) {
     const navigation = useNavigation();
-   
+
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-
 
     async function logar() {
         try {
@@ -54,7 +46,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
         setSenha('');
     }
     const handleCadastro = () => {
-        navigation.navigate('Cadastro');
+        props.navigation.navigate('CadastroScreen');
     };
 
 

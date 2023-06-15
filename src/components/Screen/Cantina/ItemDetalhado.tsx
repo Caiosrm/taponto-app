@@ -10,16 +10,17 @@ import { ProdutoType } from "../../../api/types/ProdutoType";
 import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../../routes/types";
-import { Header } from "../../Common/Header/Header";
+import { Header } from "../../Common/Header/HeaderCliente";
+import { HeaderCantina } from "../../Common/Header/HeaderCantina";
 
 
 
-const ItemDetalhado = () => {
+const ItemDetalhado: React.FC = () => {
     /*===================================================================================================*/
     /* state's
     /*===================================================================================================*/
     const [produto, setProduto] = React.useState<ProdutoType>();
-    
+
     const navigation = useNavigation<RootStackParamList>();
 
 
@@ -41,7 +42,7 @@ const ItemDetalhado = () => {
     
     return (
         <ScrollView>
-
+            <HeaderCantina pageTitle=""/>
         </ScrollView>
     );
 }

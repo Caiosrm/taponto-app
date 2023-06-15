@@ -1,5 +1,6 @@
 import { Container, Box, Text, Image } from "native-base";
 import { ProductCardProps } from "./types";
+import { handleFormatCurrency } from "../../../utils/handleFormatCurrency";
 
 
 export const ProductCard: React.FC<ProductCardProps> = ({ name, quantity, value, previewImage, }) => {
@@ -12,16 +13,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ name, quantity, value,
                 p={4}
                 mt={4}
                 borderWidth={1}
+                borderRadius="5" 
                 borderColor="gray.200"
             >
-                <Image source={{ uri: previewImage }} height={200} mb={2} alt="Imagem do Produto" />
+                <Image 
+                source={{ uri: previewImage }} 
+                alt="Imagem do Produto"
+                height={200} 
+                mb={2} 
+                />
                 <Text fontSize="lg" fontWeight="bold" mb={2}>
                     {name}
                 </Text>
-                <Text fontSize="md" mb={2}>
-                    Quantidade: {quantity}
+                <Text fontSize="sm" mb={2}>
+                    Disponíveis: {quantity}
                 </Text>
-                <Text fontSize="md">Valor: R${value.toFixed(2)}</Text>
+                <Text fontSize="md">
+                    {handleFormatCurrency(value)}
+                </Text>
             </Box>
         </Container>
     );

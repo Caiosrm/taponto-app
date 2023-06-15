@@ -2,8 +2,8 @@ import { Ionicons } from '@expo/vector-icons'
 import { Box, Heading, Avatar, Input, Text } from 'native-base'
 import React from 'react'
 
-import { colors } from '../../../../themes/Theme';
-import { useTheme } from '../../../../themes/ThemeContext';
+import { colors } from '../../../themes/Theme';
+import { useTheme } from '../../../themes/ThemeContext';
 
 export const HeaderBemVindo = () => {
 

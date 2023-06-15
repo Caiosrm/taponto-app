@@ -4,6 +4,8 @@ import { colors } from '../../../themes/Theme'
 import Logocantina from '../../../../assets/Rectangle229.png'
 import BotaoVoltar from '../Buttons/BotaoVoltar'
 import BotaoSacola from '../Buttons/BotaoSacola'
+import { RootStackParamList } from '../../../routes/types'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 type HeaderCantinaProps = {
     pageTitle: string;
@@ -19,8 +21,7 @@ export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                 <Text color={colors.light.brancoPuro} fontSize={'18px'}>
                     {pageTitle}
                 </Text>
-                
-                <BotaoSacola />
+                <Image source={Logocantina} alt='Logo da cantina' />
             </Box>
                 <Text textAlign='center'>Nome da Cantina</Text>
         </View>

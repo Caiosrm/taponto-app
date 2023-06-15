@@ -3,45 +3,45 @@ import { View, Text, Box, Image, FormControl, Input, TextArea, Select, ScrollVie
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { colors } from '../../../themes/Theme';
-import { CardapioType } from '../../../api/types/CardapioType';
 import * as ImagePicker from 'expo-image-picker';
-import { storage } from '../../../api/config/firebaseConfig';
 import { getDownloadURL, uploadString, UploadMetadata, ref } from 'firebase/storage';
-import { HeaderCantina } from '../../Common/Header';
+
+import { HeaderCantina } from '../../Common/Header/HeaderCantina';
+import { colors } from '../../../themes/Theme';
+import { storage } from '../../../api/config/firebaseConfig';
 import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
-
-interface ICadastroProdutoScreen {
-  pageTitle?: string;
-  visibilidade: boolean;
-}
+import { CardapioType } from '../../../api/types/CardapioType';
+import { CantinaType, initialStateCantina } from '../../../api/types/CantinaType';
 
 
 
-const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
+
+const CadastroProdutoScreen = () => {
   /*===================================================================================================*/
   /* state's
   /*===================================================================================================*/
+  const [cantina, setCantina] = React.useState<CantinaType>(initialStateCantina);
   const [produto, setProduto] = React.useState<ProdutoType>(initialStateProduto);
   const [visibilidade, setVisibilidade] = React.useState<boolean>(produto.visibilidade);
   const [codigoDeBarras, setCodigoDeBarras] = React.useState<number>(produto?.codigoDeBarras);
   const [valor, setValor] = React.useState<number>(produto.valor);
   const [imagem, setImagem] = React.useState<any>(produto?.imagem);
-
-
   /*===================================================================================================*/
   /* handleChange's
   /*===================================================================================================*/
   const handleUploadImage = async (base64Uri: string) => {
-    const storageRef = ref(storage, 'nome_da_pasta/no_meu_storage');
+    const storageRef = ref(storage, 'images');
     const metadata: UploadMetadata = {
-      contentType: 'image/jpeg/png', // Defina o tipo de conteúdo correto da imagem
+      contentType: 'image/jpeg/png',
     };
 
     await uploadString(storageRef, base64Uri, 'data_url', metadata);
 
     const downloadURL = await getDownloadURL(storageRef);
     console.log('URL da imagem:', downloadURL);
+
+    const cantinaId = 'id-da-cantina';
+    const produtoId = 'id-do-produto';
   };
 
   const handleSelectImageFromGallery = async () => {
@@ -78,12 +78,12 @@ const CadastroProdutoScreen = (props: ICadastroProdutoScreen) => {
     setValor(value);
   };
 
-const handleChange = (key: string, value: any) => {
-  setProduto((prevProduto) => ({
-    ...prevProduto,
-    [key]: value,
-  }));
-};
+  const handleChange = (key: string, value: any) => {
+    setProduto((prevProduto) => ({
+      ...prevProduto,
+      [key]: value,
+    }));
+  };
 
   /*===================================================================================================*/
   /* useEffect's
@@ -91,9 +91,8 @@ const handleChange = (key: string, value: any) => {
 
 
   return (
-    <Box>
-
-      <ScrollView>
+    <ScrollView>
+      <Box>
         <HeaderCantina pageTitle="Cadastrar Produto" />
         <Box flex={1} alignItems='center'>
 
@@ -178,13 +177,11 @@ const handleChange = (key: string, value: any) => {
 
             </Box>
 
-
-
           </Box>
         </Box>
-      </ScrollView>
+      </Box>
+    </ScrollView>
 
-    </Box>
   );
 };
 

@@ -5,7 +5,7 @@ export type ProdutoType = {
     cantinaId: string;
     quantidade: number;
     tipo: string;
-    valor: number;
+    valor: any;
     imagem?: string;
     codigoDeBarras: number;
     visibilidade: boolean;

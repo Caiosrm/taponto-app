@@ -1,13 +1,16 @@
-import { FontAwesome, Octicons, Ionicons, Entypo } from "@expo/vector-icons";
-import HomeScreen from "../../components/Screen/Home";
-import Pedidos from "../../components/Screen/Pedidos";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Sacola from "../../components/Screen/Sacola";
-import { initialStateSacola } from "../../components/Screen/Sacola/types";
-import { PerfilScreen } from "../../components/Screen/Perfil";
+import { FontAwesome, Octicons, Ionicons, Entypo } from "@expo/vector-icons";
+
+import HomeScreen from "../../components/Screen/Cliente/HomeScreen";
+import Pedidos from "../../components/Screen/Cliente/PedidosClienteScreen";
+import Sacola from "../../components/Screen/Cliente/SacolaScreen";
+import SacolaScreen from "../../components/Screen/Cliente/SacolaScreen";
+import PedidosClienteScreen from "../../components/Screen/Cliente/PedidosClienteScreen";
+import { PerfilClienteScreen } from "../../components/Screen/Cliente/PerfilClienteScreen";
+
 
 const Tab = createBottomTabNavigator();
+
 
 const CustomerTabsNavigator = () => {
     return (
@@ -21,16 +24,18 @@ const CustomerTabsNavigator = () => {
             }}>
             <Tab.Group>
                 <Tab.Screen name="Home" component={HomeScreen}
-                options={{
-                    headerShown: false, tabBarIcon: ({ color, size, focused }) => {
-                        if (focused) {
-                            return <FontAwesome name='home' size={size} color={color} />
-                        } else {
-                            return <FontAwesome name='home' size={size} color={color} />
-                        }
-                    },
-                }} />
-                <Tab.Screen name="Sacola" component={() => <Sacola idCliente={""} produtosNaSacola={[]} valorTotal={0}/>}
+                    options={{
+                        headerShown: false, tabBarIcon: ({ color, size, focused }) => {
+                            if (focused) {
+                                return <FontAwesome name='home' size={size} color={color} />
+                            } else {
+                                return <FontAwesome name='home' size={size} color={color} />
+                            }
+                        },
+                    }}
+                />
+
+                <Tab.Screen name="Sacola" component={SacolaScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {
@@ -41,7 +46,8 @@ const CustomerTabsNavigator = () => {
                         },
                     }}
                 />
-                <Tab.Screen name="Pedidos" component={Pedidos} 
+
+                <Tab.Screen name="Pedidos" component={PedidosClienteScreen}
                     options={{
                         headerShown: false,
                         tabBarIcon: ({ color, size, focused }) => {
@@ -53,7 +59,8 @@ const CustomerTabsNavigator = () => {
                         }
                     }}
                 />
-                <Tab.Screen name="Perfil" component={PerfilScreen}
+
+                <Tab.Screen name="Perfil" component={PerfilClienteScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {
@@ -64,6 +71,7 @@ const CustomerTabsNavigator = () => {
                         },
                     }}
                 />
+
             </Tab.Group>
         </Tab.Navigator>
     )

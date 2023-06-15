@@ -4,11 +4,11 @@ import { Box, View, Text, Image, Container, ScrollView } from 'native-base';
 import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
 import { getCardapio } from '../../../api/utils/get/getCardapio';
 import { CardapioType, initialStateCardapio } from '../../../api/types/CardapioType'
-import { HeaderCantina } from '../../Common/Header';
+import { HeaderCantina } from '../../Common/Header/HeaderCantina';
 import { ProductCard } from '../../Common/ProductCard';
 
 interface ManterProdutosProps {
-    pageTitle: string;
+    pageTitle?: string;
 }
 
 
@@ -19,10 +19,11 @@ export const ManterProdutosScreen = (props: ManterProdutosProps) => {
 
     useEffect(() => {
         const fetchCardapio = async () => {
-            const cantinaId = cardapio.cantinaId;
+            const cantinaId = "Madrugao Lanches";
             try {
                 const apiResponse = await getCardapio(cantinaId); // Chame a função getCardapio para obter os dados do cardápio
                 setCardapio(apiResponse); // Atualize o estado do cardápio com os dados obtidos
+                console.log("API Response: ", apiResponse);
             } catch (error) {
                 console.log('Erro ao obter o cardápio:', error);
             }
@@ -30,20 +31,28 @@ export const ManterProdutosScreen = (props: ManterProdutosProps) => {
         fetchCardapio();
     }, []);
 
+
+
     return (
         <ScrollView>
+            <HeaderCantina pageTitle="Meu Cardápio" />
 
-            <HeaderCantina pageTitle="Meu Cardápio"/>
-
-            <View>
-                <ProductCard
-                    name={produto?.nome}
-                    quantity={produto?.quantidade}
-                    value={produto?.valor}
-                    previewImage={produto?.imagem}
-                />
-            </View>
-
+            {cardapio.itens?.length > 0 ? (
+                <View>
+                    {cardapio.itens.map((produto: ProdutoType) => (
+                        <ProductCard
+                            key={produto.id}
+                            name={produto.nome}
+                            quantity={produto.quantidade}
+                            value={produto.valor}
+                            previewImage={produto.imagem}
+                        />
+                    ))}
+                </View>
+            ) : (
+                <Text>Nenhum produto encontrado no cardápio</Text>
+            )}
         </ScrollView>
     );
-}
+
+};
