@@ -1,5 +1,5 @@
 import { Text, Box, Image, View, Input } from "native-base";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { FlatList, TouchableOpacity } from "react-native";
@@ -12,6 +12,8 @@ import SacolaScreen from "../Cliente/SacolaScreen";
 import { SacolaType, initialStateSacola } from "../../../api/types/SacolaType";
 import { ProdutoType } from "../../../api/types/ProdutoType";
 import { handleFormatCurrency } from "../../../utils/handleFormatCurrency";
+import { CantinaContext } from "../../../contexts/CantinaContext";
+import { ClienteContext } from "../../../contexts/ClienteContext";
 
 
 interface ICardapioProps {
@@ -19,6 +21,10 @@ interface ICardapioProps {
     cantinaId: string;
     cardapio: CardapioType;
 }
+
+const user = useContext(ClienteContext);
+const shop = useContext(CantinaContext);
+
 
 const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     //===================================================== State's ===========================================================

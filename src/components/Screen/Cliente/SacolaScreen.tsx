@@ -6,13 +6,19 @@ import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../themes/Theme";
 import { SacolaType } from "../../../api/types/SacolaType";
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { HeaderCantina } from "../../Common/Header/HeaderCantina";
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { CantinaContext } from '../../../contexts/CantinaContext';
+import { ClienteContext } from '../../../contexts/ClienteContext';
+import { RootStackParamList } from '../../../routes/types';
 
 
 
 const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }) => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const user = useContext(ClienteContext);
+    const shop = useContext(CantinaContext);
     /*===================================================================================================*/
     /* States
     /*===================================================================================================*/
@@ -20,8 +26,6 @@ const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }
     const [cantinaId, setCantinaId] = React.useState<string>('Madrugao Lanches');
 
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
-
-    const navigation = useNavigation();
 
     /*===================================================================================================*/
     /* useEffect's

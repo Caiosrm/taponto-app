@@ -3,13 +3,13 @@ import { ProdutoType, initialStateProduto } from "./ProdutoType";
 export type SacolaType = {
   id?: string;
   idCliente?: string;
-  valorTotal?: string;
+  valorTotal?: number;
   itens?: ProdutoType[];
 };
 
 export const initialStateSacola: SacolaType = {
   id: "",
   idCliente: "",
-  valorTotal: "",
+  valorTotal: 0,
   itens: [initialStateProduto, initialStateProduto]
 }

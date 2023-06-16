@@ -1,26 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
 import { TouchableOpacity, Alert } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import ImageWelcome from '../../../../assets/Welcome.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FirebaseError } from '@firebase/app';
 import { getFirestore } from '@firebase/firestore';
 import Logo from '../../../../assets/logo/logo2.png'
-import AppBar from '../Common/TopBar'
-import { auth } from '../../api/config/firebaseConfig';
+import AppBar from '../../Common/TopBar'
+import { auth } from '../../../api/config/firebaseConfig';
 import { MaterialIcons } from '@expo/vector-icons';
-import { RootStackParamList } from '../../routes/types';
-
+import { RootStackParamList } from '../../../routes/types';
+import { CantinaContext } from '../../../contexts/CantinaContext';
+import { ClienteContext } from '../../../contexts/ClienteContext';
 
 
 type ILoginScreenProps = {
-    navigation: StackNavigationProp<RootStackParamList, 'Login'>;
+    navigation: StackNavigationProp<RootStackParamList, 'LoginClienteScreen'>;
 };
 
 export default function LoginScreen(props: ILoginScreenProps) {
-    const navigation = useNavigation();
+    const user = useContext(ClienteContext);
+    const shop = useContext(CantinaContext);
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -29,7 +32,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
         try {
             const dadosdousuario = await signInWithEmailAndPassword(auth, email, senha);
             console.log(dadosdousuario);
-            props.navigation.navigate('Home');
+            props.navigation.navigate('HomeScreen');
         } catch (error) {
             console.log(error);
             // Trate o erro de autenticação aqui
@@ -46,7 +49,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
         setSenha('');
     }
     const handleCadastro = () => {
-        props.navigation.navigate('CadastroScreen');
+        props.navigation.navigate('CadastroClienteScreen');
     };
 
 

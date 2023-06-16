@@ -1,18 +1,27 @@
 import { View } from "native-base";
 import TopBar from "../../Common/TopBar";
-import { IPedidosScreenProps } from "./Pedidos/types";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { useContext } from "react";
+import { CantinaContext } from "../../../contexts/CantinaContext";
+import { ClienteContext } from "../../../contexts/ClienteContext";
+import { RootStackParamList } from "../../../routes/types";
+
+
 
 const PedidosClienteScreen = () => {
-/*===================================================================================================*/
-/* handleChange's
-/*===================================================================================================*/
+    const user = useContext(ClienteContext);
+    const shop = useContext(CantinaContext);
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    /*===================================================================================================*/
+    /* handleChange's
+    /*===================================================================================================*/
 
 
 
 
-/*===================================================================================================*/
-/* useEffect's
-/*===================================================================================================*/
+    /*===================================================================================================*/
+    /* useEffect's
+    /*===================================================================================================*/
 
 
 

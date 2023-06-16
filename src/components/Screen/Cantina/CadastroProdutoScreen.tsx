@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, Box, Image, FormControl, Input, TextArea, Select, ScrollView, Button, Icon, NumberInput } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -12,6 +12,8 @@ import { storage } from '../../../api/config/firebaseConfig';
 import { ProdutoType, initialStateProduto } from '../../../api/types/ProdutoType';
 import { CardapioType } from '../../../api/types/CardapioType';
 import { CantinaType, initialStateCantina } from '../../../api/types/CantinaType';
+import { CantinaContext } from '../../../contexts/CantinaContext';
+import { ClienteContext } from '../../../contexts/ClienteContext';
 
 
 
@@ -20,7 +22,6 @@ const CadastroProdutoScreen = () => {
   /*===================================================================================================*/
   /* state's
   /*===================================================================================================*/
-  const [cantina, setCantina] = React.useState<CantinaType>(initialStateCantina);
   const [produto, setProduto] = React.useState<ProdutoType>(initialStateProduto);
   const [visibilidade, setVisibilidade] = React.useState<boolean>(produto.visibilidade);
   const [codigoDeBarras, setCodigoDeBarras] = React.useState<number>(produto?.codigoDeBarras);

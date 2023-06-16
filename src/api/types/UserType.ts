@@ -11,3 +11,21 @@ export type ClienteType = {
     pedidos: PedidoType[];
     favoritos: string[];
 };
+
+export const initialStateCliente: ClienteType = {
+    id: "",
+    nome: "",
+    matricula: 0,
+    polo: "",
+    sacola: {
+        id: '',
+        idCliente: '',
+        valorTotal: 0,
+        itens: []
+    },
+    pedidos: [],
+    favoritos: []
+}
+
+
+  

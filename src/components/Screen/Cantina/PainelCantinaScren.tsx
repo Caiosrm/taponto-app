@@ -1,7 +1,12 @@
 import { ScrollView } from 'native-base'
-import React from 'react'
+import React, { useContext } from 'react'
 import { HeaderCantina } from '../../Common/Header/HeaderCantina'
 import { CantinaType } from '../../../api/types/CantinaType'
+import { CantinaContext } from '../../../contexts/CantinaContext';
+import { ClienteContext } from '../../../contexts/ClienteContext';
+
+
+
 
 export const PainelCantinaScren = () => {
 

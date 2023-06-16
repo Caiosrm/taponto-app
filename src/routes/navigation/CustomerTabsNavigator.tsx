@@ -13,6 +13,9 @@ const Tab = createBottomTabNavigator();
 
 
 const CustomerTabsNavigator = () => {
+
+    
+
     return (
         <Tab.Navigator initialRouteName="Sacola"
             screenOptions={{
