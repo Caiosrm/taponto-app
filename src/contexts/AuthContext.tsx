@@ -40,8 +40,7 @@ export const AuthContext = React.createContext<UserContextType>({
     clienteLogado: false,
     setClienteLogado: () => { },
     cantinaLogada: false,
-    setCantinaLogada: () => { },
-
+    setCantinaLogada: () => { }
 });
 
 export const AuthProvider = ({ children }: any) => {

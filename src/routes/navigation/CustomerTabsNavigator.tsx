@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 
 const CustomerTabsNavigator = () => {
 
-    
+
 
     return (
         <Tab.Navigator initialRouteName="Sacola"
@@ -26,7 +26,9 @@ const CustomerTabsNavigator = () => {
                 }
             }}>
             <Tab.Group>
-                <Tab.Screen name="Home" component={HomeScreen}
+                <Tab.Screen
+                    name="Home"
+                    component={HomeScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {
@@ -38,7 +40,9 @@ const CustomerTabsNavigator = () => {
                     }}
                 />
 
-                <Tab.Screen name="Sacola" component={SacolaScreen}
+                <Tab.Screen
+                    name="Sacola"
+                    component={SacolaScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {
@@ -50,7 +54,9 @@ const CustomerTabsNavigator = () => {
                     }}
                 />
 
-                <Tab.Screen name="Pedidos" component={PedidosClienteScreen}
+                <Tab.Screen
+                    name="Pedidos"
+                    component={PedidosClienteScreen}
                     options={{
                         headerShown: false,
                         tabBarIcon: ({ color, size, focused }) => {
@@ -63,7 +69,9 @@ const CustomerTabsNavigator = () => {
                     }}
                 />
 
-                <Tab.Screen name="Perfil" component={PerfilClienteScreen}
+                <Tab.Screen
+                    name="Perfil"
+                    component={PerfilClienteScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
                             if (focused) {

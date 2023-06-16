@@ -7,7 +7,7 @@ import { auth } from "../../../api/config/firebaseConfig";
 import { RootStackParamList } from "../../../routes/types";
 import { TouchableOpacity } from "react-native";
 import { ClienteContext } from "../../../contexts/ClienteContext";
-import { ClienteType } from "../../../api/types/UserType";
+import { ClienteType, initialStateCliente } from "../../../api/types/UserType";
 import { ErrorBadge } from "../../Common/ErrorBadge";
 import { CantinaContext } from "../../../contexts/CantinaContext";
 
@@ -17,7 +17,6 @@ export const CadastroClienteScreen: React.FC = () => {
     /* state's
     /*===================================================================================================*/
     const { cliente, atualizarCliente } = useContext(ClienteContext);
-    const shop = useContext(CantinaContext);
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const [nomeCompleto, setnomeCompleto] = React.useState<string>();
@@ -36,11 +35,16 @@ export const CadastroClienteScreen: React.FC = () => {
         await createUserWithEmailAndPassword(auth, email, senha)
             .then((dadosdousuario) => {
                 console.log(dadosdousuario)
+
+                const novoCliente: ClienteType = initialStateCliente;
+                atualizarCliente(novoCliente);
+
                 return "sucesso"
             })
             .catch((error) => {
                 console.log(error)
             });
+
         setEmail('')
         setSenha('')
         setconfirmarSenha('')
