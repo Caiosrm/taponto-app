@@ -8,12 +8,12 @@ import InitialLoading from '../components/Common/LoadingSpinner';
 export const useClienteLogado = () => {
     const { clienteLogado } = useAuth();
     return clienteLogado;
-  };
+};
 
 export const useCantinaLogada = () => {
     const { cantinaLogada } = useAuth();
     return cantinaLogada;
-  };
+};
 
 type UserContextType = {
     user: User | undefined | null;
@@ -38,9 +38,9 @@ export const AuthContext = React.createContext<UserContextType>({
     sendPasswordReset: () => { },
     sendPasswordResetEmailError: false,
     clienteLogado: false,
-    setClienteLogado: () => {},
+    setClienteLogado: () => { },
     cantinaLogada: false,
-    setCantinaLogada: () => {},
+    setCantinaLogada: () => { },
 
 });
 
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: any) => {
     }
 
     return (
-        <AuthContext.Provider value={{clienteLogado, setClienteLogado, cantinaLogada, setCantinaLogada, user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError}}>
+        <AuthContext.Provider value={{ clienteLogado, setClienteLogado, cantinaLogada, setCantinaLogada, user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError }}>
             {children}
         </AuthContext.Provider>
     );

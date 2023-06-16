@@ -6,6 +6,7 @@ import ShopTabsNavigator from './navigation/ShopTabsNavigator';
 import { ClienteContext } from '../contexts/ClienteContext';
 import { CantinaContext } from '../contexts/CantinaContext';
 import { CadastroClienteScreen } from '../components/Screen/Cliente/CadastroClienteScreen';
+import { useCantinaLogada, useClienteLogado } from '../contexts/AuthContext';
 
 const Stack = createStackNavigator();
 

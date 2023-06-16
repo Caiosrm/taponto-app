@@ -26,7 +26,7 @@ export const CadastroClienteScreen: React.FC = () => {
     const [senha, setSenha] = React.useState<string>('');
     const [confirmarSenha, setconfirmarSenha] = React.useState<string>('');
 
-    async function realizarCadastro() {
+    async function cadastrarCliente() {
 
         if (senha !== confirmarSenha) {
             console.log("Senhas não coincidem!");
@@ -47,7 +47,6 @@ export const CadastroClienteScreen: React.FC = () => {
         setnomeCompleto('')
         setTelefone('')
 
-
         console.log("Cadastro realizado com sucesso!");
     };
 
@@ -57,17 +56,17 @@ export const CadastroClienteScreen: React.FC = () => {
     const handleLogin = () => {
         navigation.navigate('LoginClienteScreen');
     };
- 
+
     const handleUpdateAttribute = (attribute: keyof ClienteType, value: any) => {
         if (!cliente) return;
-      
         const novoCliente = { ...cliente, [attribute]: value };
         atualizarCliente(novoCliente);
-      };
+    };
 
-
-
-      useEffect(() => { //USE EFFECT INICIAL
+    /*===================================================================================================*/
+    /* useEffect's
+    /*===================================================================================================*/
+    useEffect(() => { //USE EFFECT INICIAL
         console.log("CLIENTE: ", cliente)
     }, [cliente]);
 
@@ -127,7 +126,6 @@ export const CadastroClienteScreen: React.FC = () => {
                         />
                     </FormControl>
 
-
                     <FormControl mt={3} >
                         <FormControl.Label>Senha</FormControl.Label>
                         <Input
@@ -153,10 +151,21 @@ export const CadastroClienteScreen: React.FC = () => {
                     </FormControl>
 
                     <Box mt={3}>
-                        <Button onPress={realizarCadastro} mt={5} bg='primary.900'>Cadastrar</Button>
+                        <Button
+                            onPress={cadastrarCliente}
+                            mt={5}
+                            bg='primary.900'
+                        >
+                            Cadastrar
+                        </Button>
                     </Box>
 
-                    <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
+                    <Box
+                        justifyContent='center'
+                        alignItems='center'
+                        mt={5}
+                        flexDirection='row'
+                    >
                         <Text textAlign='center'>
                             Já tem uma conta?
                         </Text>
@@ -166,6 +175,7 @@ export const CadastroClienteScreen: React.FC = () => {
                             </Text>
                         </TouchableOpacity>
                     </Box>
+
                 </Box>
             </VStack>
         </ScrollView>
