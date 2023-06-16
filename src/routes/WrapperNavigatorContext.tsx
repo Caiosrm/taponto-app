@@ -9,13 +9,15 @@ import { CadastroClienteScreen } from '../components/Screen/Cliente/CadastroClie
 import { useCantinaLogada, useClienteLogado } from '../contexts/AuthContext';
 import { CadastroCantinaScreen } from '../components/Screen/Cantina/CadastroCantinaScreen';
 import LoginClienteScreen from '../components/Screen/Cliente/LoginClienteScreen';
-import { LoginCantinaScreen } from '../components/Screen/Cantina/LoginCantinaScreen';
+import LoginCantinaScreen from '../components/Screen/Cantina/LoginCantinaScreen';
+import ListarCardapio from '../components/Screen/Cliente/ListarCardapio';
+import CadastroProdutoScreen from '../components/Screen/Cantina/CadastroProdutoScreen';
 
 const Stack = createStackNavigator();
 
 
 
-export const WrapperNavigation = ({ isCliente }: { isCliente: boolean }) => {
+export const WrapperNavigation = ({ isCliente, isLogado }: { isCliente: boolean, isLogado: boolean }) => {
   const clienteLogado = useClienteLogado();
   const cantinaLogada = useCantinaLogada();
 
@@ -41,7 +43,7 @@ export const WrapperNavigation = ({ isCliente }: { isCliente: boolean }) => {
       }
     }
 
-    if (!isCliente) { 
+    if (!isCliente) {
       if (cantinaLogada) {
         return (
           <Stack.Screen
@@ -64,8 +66,41 @@ export const WrapperNavigation = ({ isCliente }: { isCliente: boolean }) => {
   };
 
   return (
-    <Stack.Navigator initialRouteName='CadastroClienteScreen'>
+    <Stack.Navigator>
       {renderizarRota()}
+
+      <Stack.Screen
+        name="ShopTabsNavigator"
+        component={ShopTabsNavigator}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="CustomerTabsNavigator"
+        component={CustomerTabsNavigator}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ListarCardapio"
+        component={ListarCardapio}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name='CadastroProdutoScreen'
+        component={CadastroProdutoScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name='CadastroCantinaScreen'
+        component={CadastroCantinaScreen}
+        options={{ headerShown: false }}
+      />
+
+
+
     </Stack.Navigator>
   );
 };

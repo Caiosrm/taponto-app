@@ -12,6 +12,7 @@ import { auth } from '../../../api/config/firebaseConfig';
 import { CantinaContext } from '../../../contexts/CantinaContext';
 import { ClienteContext } from '../../../contexts/ClienteContext';
 import { RootStackParamList } from '../../../routes/types';
+import Logo from '../../../../assets/logo/logo2.png'
 
 
 
@@ -36,7 +37,7 @@ export default function LoginScreen(props: ILoginCantinaScreen) {
             console.log(error);
             // Trate o erro de autenticação aqui
             if ((error as FirebaseError).code === 'auth/wrong-password') {
-              Alert.alert("Senha incorreta");
+                Alert.alert("Senha incorreta");
             } else if ((error as FirebaseError).code === 'auth/user-not-found') {
                 alert('Email não existe');
             } else {
@@ -47,7 +48,7 @@ export default function LoginScreen(props: ILoginCantinaScreen) {
         setEmail('');
         setSenha('');
     }
-    
+
     const handleCadastro = () => {
         props.navigation.navigate('CadastroCantinaScreen');
     };
@@ -97,25 +98,28 @@ export default function LoginScreen(props: ILoginCantinaScreen) {
                         placeholder="Senha" />
                 </FormControl>
 
-                <Box mt={3}>
-                    <Text color='#002060'>Esqueceu sua senha?</Text>
-                    <Button borderRadius={10}  onPress={logar} mt={5} bg='#0094D3'>Entrar</Button>
-
-                </Box>
-
-
                 <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
                     <Text color='#002060' textAlign='center'>Não tem conta? </Text>
                     <TouchableOpacity onPress={handleCadastro}>
-                      <Text>Cadastre-se</Text>
-                      </TouchableOpacity>
+                        <Text>Cadastre-se</Text>
+                    </TouchableOpacity>
                 </Box>
 
+                <Box alignSelf={'center'} mt={3}>
+                    <Text color='#002060'>Esqueceu sua senha?</Text>
+                    <Button borderRadius={10} onPress={logar} mt={5} bg='#0094D3'>Entrar</Button>
+                </Box>
+
+
+
+
             </Box>
-            <Image source={ImageWelcome} alt='Imagem bem vindo'/>
-            <Button  w='138px' borderRadius='10' bg='#0094D3' mt={3}>Conectar</Button>
-
-
+            <Box mt={3}>
+                <Image source={ImageWelcome} alt='Imagem bem vindo' />
+                <Button w='138px' borderRadius='10' bg='#0094D3' mt={3}>
+                    Conectar
+                </Button>
+            </Box>
         </VStack>
     )
 }

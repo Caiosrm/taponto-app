@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
 import CadastroProdutoScreen from '../../components/Screen/Cantina/CadastroProdutoScreen';
 import { ManterProdutosScreen } from '../../components/Screen/Cantina/ManterProdutosScreen';
-import { PainelCantinaScren } from '../../components/Screen/Cantina/PainelCantinaScreen';
+import { PainelCantinaScreen } from '../../components/Screen/Cantina/PainelCantinaScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,10 +13,10 @@ type ShopStackParamsList = {
 
 const ShopTabsNavigator = () => {
     return (
-        <Tab.Navigator initialRouteName='PainelCantinaScreen'>
+        <Tab.Navigator>
             <Tab.Screen
                 name='Perfil'
-                component={PainelCantinaScren}
+                component={PainelCantinaScreen}
                 options={{ headerShown: false }}
             />
             <Tab.Screen

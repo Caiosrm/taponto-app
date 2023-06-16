@@ -3,7 +3,6 @@ import TopBar from "../../Common/TopBar";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect, } from 'react';
-import { IHomeScreenProps } from "./Home/types";
 import { colors } from "../../../themes/Theme";
 import { ThemeProvider, useTheme } from "../../../themes/ThemeContext";
 import { Dimensions, TouchableOpacity } from "react-native";

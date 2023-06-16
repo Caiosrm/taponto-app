@@ -32,7 +32,7 @@ export default function LoginScreen(props: ILoginScreenProps) {
         try {
             const dadosdousuario = await signInWithEmailAndPassword(auth, email, senha);
             console.log(dadosdousuario);
-            props.navigation.navigate('HomeScreen');
+            props.navigation.navigate('CustomerTabsNavigator');
         } catch (error) {
             console.log(error);
             // Trate o erro de autenticação aqui
@@ -97,21 +97,27 @@ export default function LoginScreen(props: ILoginScreenProps) {
                         placeholder="Senha" />
                 </FormControl>
 
+
+
                 <Box mt={3}>
+
                     <Text color='#002060'>Esqueceu sua senha?</Text>
-                    <Button borderRadius={10}  onPress={logar} mt={5} bg='#0094D3'>Entrar</Button>
+                    <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
+                        <Text color='#002060' textAlign='center'>
+                            Não tem conta?
+                        </Text>
+                        <TouchableOpacity onPress={handleCadastro}>
+                            <Text>Cadastre-se</Text>
+                        </TouchableOpacity>
+                    </Box>
 
                 </Box>
+                <Button borderRadius={10} onPress={logar} mt={5} bg='#0094D3'>Entrar</Button>
 
-
-                <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
-                    <Text color='#002060' textAlign='center'>Não tem conta? </Text>
-                    <TouchableOpacity onPress={handleCadastro}><Text>Cadastre-se</Text></TouchableOpacity>
-                </Box>
 
             </Box>
-            <Image source={ImageWelcome} alt='Imagem bem vindo'/>
-            <Button  w='138px' borderRadius='10' bg='#0094D3' mt={3}>Conectar</Button>
+            <Image source={ImageWelcome} alt='Imagem bem vindo' />
+            <Button w='138px' borderRadius='10' bg='#0094D3' mt={3}>Conectar</Button>
 
 
         </VStack>

@@ -8,7 +8,7 @@ import { getCardapio } from "../../../api/utils/get/getCardapio";
 import { CardapioType, initialStateCardapio } from "../../../api/types/CardapioType";
 import { HeaderCantina } from "../../Common/Header/HeaderCantina";
 import { Logo } from '../../../../assets/Rectangle229.png'
-import SacolaScreen from "../Cliente/SacolaScreen";
+import SacolaScreen from "./SacolaScreen";
 import { SacolaType, initialStateSacola } from "../../../api/types/SacolaType";
 import { ProdutoType } from "../../../api/types/ProdutoType";
 import { handleFormatCurrency } from "../../../utils/handleFormatCurrency";
@@ -22,8 +22,7 @@ interface ICardapioProps {
     cardapio: CardapioType;
 }
 
-const user = useContext(ClienteContext);
-const shop = useContext(CantinaContext);
+
 
 
 const ListarCardapio: React.FC = ({ navigation, route }: any) => {
@@ -34,6 +33,8 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
     const [totalItens, setTotalItens] = React.useState<number>(0);
     const [imagem, setImagem] = React.useState<any>();
 
+    const cliete = useContext(ClienteContext);
+    const cantina = useContext(CantinaContext);
     //===================================================== useEffect's =======================================================
     useEffect(() => {
         console.log("Route Params: ", route.params)

@@ -17,7 +17,7 @@ const CustomerTabsNavigator = () => {
 
 
     return (
-        <Tab.Navigator initialRouteName="Sacola"
+        <Tab.Navigator 
             screenOptions={{
                 tabBarStyle: {
                     position: 'absolute',
@@ -27,7 +27,7 @@ const CustomerTabsNavigator = () => {
             }}>
             <Tab.Group>
                 <Tab.Screen
-                    name="Home"
+                    name="HomeScreen"
                     component={HomeScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
@@ -41,7 +41,7 @@ const CustomerTabsNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name="Sacola"
+                    name="SacolaScreen"
                     component={SacolaScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
@@ -55,7 +55,7 @@ const CustomerTabsNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name="Pedidos"
+                    name="PedidosClienteScreen"
                     component={PedidosClienteScreen}
                     options={{
                         headerShown: false,
@@ -70,7 +70,7 @@ const CustomerTabsNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name="Perfil"
+                    name="PerfilClienteScreen"
                     component={PerfilClienteScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
