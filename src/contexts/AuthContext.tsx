@@ -72,7 +72,6 @@ export const AuthProvider = ({ children }: any) => {
         return <InitialLoading />
     }
 
-    // Retorne o contexto AuthContext com os valores atuais do usuário e as funções signIn e signOut
     return (
         <AuthContext.Provider value={{clienteLogado, setClienteLogado, cantinaLogada, setCantinaLogada, user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError}}>
             {children}
