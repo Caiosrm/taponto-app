@@ -1,11 +1,13 @@
 import React, { createContext, useState } from 'react';
 
 import { ClienteType, initialStateCliente } from '../api/types/UserType';
+import { useAuth } from './AuthContext';
 
 type ClienteContextType = {
     cliente: ClienteType | null;
     atualizarCliente: (novoCliente: ClienteType) => void;
   };
+
 
   
   export const ClienteContext = createContext<ClienteContextType>({

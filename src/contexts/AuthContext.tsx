@@ -1,16 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthError, onAuthStateChanged, User } from '@firebase/auth';
 import { useSignInWithEmailAndPassword, useSignOut, useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import { auth } from '../api/config/firebaseConfig';
 import InitialLoading from '../components/Common/LoadingSpinner';
 
 
-//===========================================================\\
-// @author: caduuv
-//===========================================================\\
+export const useClienteLogado = () => {
+    const { clienteLogado } = useAuth();
+    return clienteLogado;
+  };
 
+export const useCantinaLogada = () => {
+    const { cantinaLogada } = useAuth();
+    return cantinaLogada;
+  };
 
-// Defina o tipo UserContextType para o contexto AuthContext
 type UserContextType = {
     user: User | undefined | null;
     signIn: (email: string, password: string) => Promise<void>;
@@ -19,9 +23,12 @@ type UserContextType = {
     error: AuthError | undefined;
     sendPasswordResetEmailError: boolean;
     sendPasswordReset: (email: string) => void;
+    clienteLogado: boolean;
+    setClienteLogado: (clienteLogado: boolean) => void;
+    cantinaLogada: boolean;
+    setCantinaLogada: (cantinaLogada: boolean) => void;
 };
 
-// Crie o contexto AuthContext
 export const AuthContext = React.createContext<UserContextType>({
     user: undefined,
     signIn: async () => { },
@@ -29,16 +36,21 @@ export const AuthContext = React.createContext<UserContextType>({
     loading: false,
     error: undefined,
     sendPasswordReset: () => { },
-    sendPasswordResetEmailError: false
+    sendPasswordResetEmailError: false,
+    clienteLogado: false,
+    setClienteLogado: () => {},
+    cantinaLogada: false,
+    setCantinaLogada: () => {},
+
 });
 
-// Crie o componente AuthProvider para envolver seus componentes filhos com o contexto AuthContext
 export const AuthProvider = ({ children }: any) => {
-
+    const [clienteLogado, setClienteLogado] = useState<boolean>(false);
+    const [cantinaLogada, setCantinaLogada] = useState<boolean>(false);
+    const [currentUser, setCurrentUser] = React.useState<User | null>();
     const [signInWithEmailAndPassword, credentials, loading, error] = useSignInWithEmailAndPassword(auth);
     const [signOut, signOutLoading, signOutError] = useSignOut(auth);
     const [sendPasswordResetEmail, sendPasswordResetEmailError] = useSendPasswordResetEmail(auth);
-    const [currentUser, setCurrentUser] = React.useState<User | null>();
 
     const signIn = async (email: string, password: string) => {
         await signInWithEmailAndPassword(email, password);
@@ -56,15 +68,13 @@ export const AuthProvider = ({ children }: any) => {
         onAuthStateChanged(auth, setCurrentUser);
     }, [])
 
-
-
     if (signOutLoading) {
         return <InitialLoading />
     }
 
     // Retorne o contexto AuthContext com os valores atuais do usuário e as funções signIn e signOut
     return (
-        <AuthContext.Provider value={{user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError}}>
+        <AuthContext.Provider value={{clienteLogado, setClienteLogado, cantinaLogada, setCantinaLogada, user: currentUser, signIn, signOut: signOutApp, loading, error, sendPasswordReset, sendPasswordResetEmailError}}>
             {children}
         </AuthContext.Provider>
     );

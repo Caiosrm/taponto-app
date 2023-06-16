@@ -9,17 +9,19 @@ import { ClienteProvider } from "./src/contexts/ClienteContext";
 
 const App = () => {
   return (
+    <AuthProvider>
     <NativeBaseProvider>
       <ThemeProvider>
         <NavigationContainer>
           <ClienteProvider>
             <CantinaProvider>
-              <WrapperNavigation />
+              <WrapperNavigation/>
             </CantinaProvider>
           </ClienteProvider>
         </NavigationContainer>
       </ThemeProvider>
     </NativeBaseProvider>
+    </AuthProvider>
   );
 };
 
