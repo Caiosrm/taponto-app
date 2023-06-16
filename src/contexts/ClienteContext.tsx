@@ -4,7 +4,7 @@ import { ClienteType, initialStateCliente } from '../api/types/UserType';
 import { useAuth } from './AuthContext';
 
 type ClienteContextType = {
-  cliente: ClienteType | null;
+  cliente: ClienteType;
   atualizarCliente: (novoCliente: ClienteType) => void;
 };
 
@@ -22,7 +22,7 @@ export const ClienteProvider: React.FC = ({ children }: React.PropsWithChildren<
   };
 
   const contexto: ClienteContextType = {
-    cliente,
+    cliente: initialStateCliente,
     atualizarCliente,
   };
 

@@ -8,44 +8,61 @@ import { CantinaContext } from '../contexts/CantinaContext';
 import { CadastroClienteScreen } from '../components/Screen/Cliente/CadastroClienteScreen';
 import { useCantinaLogada, useClienteLogado } from '../contexts/AuthContext';
 import { CadastroCantinaScreen } from '../components/Screen/Cantina/CadastroCantinaScreen';
+import LoginClienteScreen from '../components/Screen/Cliente/LoginClienteScreen';
+import { LoginCantinaScreen } from '../components/Screen/Cantina/LoginCantinaScreen';
 
 const Stack = createStackNavigator();
 
 
-export const WrapperNavigation = () => {
-  const clienteLogado = useClienteLogado(); // Retorna true se o cliente estiver logado
-  const cantinaLogada = useCantinaLogada(); // Retorna true se a cantina estiver logada
+
+export const WrapperNavigation = ({ isCliente }: { isCliente: boolean }) => {
+  const clienteLogado = useClienteLogado();
+  const cantinaLogada = useCantinaLogada();
+
+  const renderizarRota = () => {
+    if (!isCliente) { // Se não for cliente
+      if (cantinaLogada) {
+        return (
+          <Stack.Screen
+            name="ShopTabsNavigator"
+            component={ShopTabsNavigator}
+            options={{ headerShown: false }}
+          />
+        );
+      } else {
+        return (
+          <Stack.Screen
+            name="LoginCantinaScreen"
+            component={LoginCantinaScreen}
+            options={{ headerShown: false }}
+          />
+        );
+      }
+    }
+    if (isCliente) {
+      if (clienteLogado) {
+        return (
+          <Stack.Screen
+            name="CustomerTabsNavigator"
+            component={CustomerTabsNavigator}
+            options={{ headerShown: false }}
+          />
+        );
+      } else {
+        return (
+          <Stack.Screen
+            name="LoginClienteScreen"
+            component={LoginClienteScreen}
+            options={{ headerShown: false }}
+          />
+        );
+      }
+    }
+  };
 
   return (
     <Stack.Navigator>
-      {cantinaLogada ? (
-        <Stack.Screen
-          name="ShopTabsNavigator"
-          component={ShopTabsNavigator}
-          options={{ headerShown: false }}
-        />
-      ) : (
-        <Stack.Screen
-          name="CadastroCantinaScreen"
-          component={CadastroCantinaScreen}
-          options={{ headerShown: false }}
-        />
-      )}
-
-      {clienteLogado ? (
-        <Stack.Screen
-          name="CustomerTabsNavigator"
-          component={CustomerTabsNavigator}
-          options={{ headerShown: false }}
-        />
-      ) : (
-        <Stack.Screen
-          name="CadastroClienteScreen"
-          component={CadastroClienteScreen}
-          options={{ headerShown: false }}
-        />
-      )}
-
+      {renderizarRota()}
     </Stack.Navigator>
   );
-}
+};

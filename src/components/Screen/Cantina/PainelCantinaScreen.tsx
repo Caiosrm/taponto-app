@@ -8,7 +8,7 @@ import { ClienteContext } from '../../../contexts/ClienteContext';
 
 
 
-export const PainelCantinaScren = () => {
+export const PainelCantinaScreen = () => {
 
   const [cantina, setCantina] = React.useState<CantinaType>();
 

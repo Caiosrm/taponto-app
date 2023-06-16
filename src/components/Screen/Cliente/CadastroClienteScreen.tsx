@@ -10,6 +10,7 @@ import { ClienteContext } from "../../../contexts/ClienteContext";
 import { ClienteType, initialStateCliente } from "../../../api/types/UserType";
 import { ErrorBadge } from "../../Common/ErrorBadge";
 import { CantinaContext } from "../../../contexts/CantinaContext";
+import { CampusType, initialStateCampus } from "../../../api/types/CampusType";
 
 
 export const CadastroClienteScreen: React.FC = () => {
@@ -18,42 +19,40 @@ export const CadastroClienteScreen: React.FC = () => {
     /*===================================================================================================*/
     const { cliente, atualizarCliente } = useContext(ClienteContext);
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-
-    const [nomeCompleto, setnomeCompleto] = React.useState<string>();
-    const [telefone, setTelefone] = React.useState<string>();
-    const [email, setEmail] = React.useState<string>('');
-    const [senha, setSenha] = React.useState<string>('');
     const [confirmarSenha, setconfirmarSenha] = React.useState<string>('');
 
-    async function cadastrarCliente() {
-
-        if (senha !== confirmarSenha) {
+    const cadastrarCliente = async () => {
+        if (cliente.senha !== confirmarSenha) {
             console.log("Senhas não coincidem!");
             return (<ErrorBadge />);
         }
 
-        await createUserWithEmailAndPassword(auth, email, senha)
-            .then((dadosdousuario) => {
-                console.log(dadosdousuario)
 
-                const novoCliente: ClienteType = initialStateCliente;
-                atualizarCliente(novoCliente);
-
-                return "sucesso"
+        // Atualize o estado do cliente com os dados do novo cliente
+        await createUserWithEmailAndPassword(auth, cliente.email, cliente.senha)
+            .then((response) => {
+                console.log(response);
+                if (response) {
+                    atualizarCliente({
+                        ...cliente,
+                        id: response.user.uid,
+                        nome: cliente.nome,
+                        matricula: cliente.matricula,
+                        polo: cliente.polo,
+                        senha: cliente.senha,
+                        email: cliente.email,
+                        celular: cliente.celular
+                    })
+                }
+                return "sucesso";
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error);
             });
 
-        setEmail('')
-        setSenha('')
-        setconfirmarSenha('')
-        setnomeCompleto('')
-        setTelefone('')
-
         console.log("Cadastro realizado com sucesso!");
-    };
 
+    }
     /*===================================================================================================*/
     /* handleChange's
     /*===================================================================================================*/
@@ -94,7 +93,7 @@ export const CadastroClienteScreen: React.FC = () => {
                             Nome Completo
                         </FormControl.Label>
                         <Input
-                            value={nomeCompleto}
+                            value={cliente.nome}
                             borderRadius='lg'
                             borderColor='primary.900'
                             onChangeText={() => handleUpdateAttribute}
@@ -107,7 +106,7 @@ export const CadastroClienteScreen: React.FC = () => {
                             Celular
                         </FormControl.Label>
                         <Input
-                            value={telefone}
+                            value={cliente.celular}
                             borderRadius='lg'
                             borderColor='primary.900'
                             w={{ base: "100%" }}
@@ -121,7 +120,7 @@ export const CadastroClienteScreen: React.FC = () => {
                             Email
                         </FormControl.Label>
                         <Input
-                            value={email}
+                            value={cliente.email}
                             borderRadius='lg'
                             borderColor='primary.900'
                             w={{ base: "100%" }}
@@ -138,7 +137,7 @@ export const CadastroClienteScreen: React.FC = () => {
                             borderColor='primary.900'
                             w={{ base: "100%" }}
                             placeholder="Senha"
-                            value={senha}
+                            value={cliente.senha}
                             onChangeText={() => handleUpdateAttribute} />
                     </FormControl>
 

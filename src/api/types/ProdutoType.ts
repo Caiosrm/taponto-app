@@ -5,7 +5,7 @@ export type ProdutoType = {
     cantinaId: string;
     quantidade: number;
     tipo: string;
-    valor: any;
+    valor: number;
     imagem?: string;
     codigoDeBarras: number;
     visibilidade: boolean;
@@ -16,9 +16,9 @@ export const initialStateProduto: ProdutoType = {
     nome: "",
     descricao: "",
     cantinaId: "",
-    quantidade: 2,
+    quantidade: 0,
     imagem: '',
-    valor: 2,
+    valor: 0,
     tipo: "",
     codigoDeBarras: 0,
     visibilidade: true,

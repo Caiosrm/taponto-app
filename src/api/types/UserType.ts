@@ -1,31 +1,30 @@
+import { CampusType, initialStateCampus } from "./CampusType";
 import { PedidoType } from "./PedidoType";
-import { SacolaType } from "./SacolaType";
+import { SacolaType, initialStateSacola } from "./SacolaType";
 
 
 export type ClienteType = {
-    id: string;
+    id: any;
     nome: string;
     matricula: number;
-    polo: string;
+    polo: CampusType;
+    celular: string;
+    email: string;
+    senha: string;
     sacola: SacolaType;
-    pedidos: PedidoType[];
-    favoritos: string[];
+    pedidos?: PedidoType[];
+    favoritos?: string[];
 };
 
 export const initialStateCliente: ClienteType = {
     id: "",
     nome: "",
     matricula: 0,
-    polo: "",
-    sacola: {
-        id: '',
-        idCliente: '',
-        valorTotal: 0,
-        itens: []
-    },
+    polo: initialStateCampus,
+    sacola: initialStateSacola,
+    celular: "",
+    email: "",
+    senha: "",
     pedidos: [],
     favoritos: []
 }
-
-
-  
