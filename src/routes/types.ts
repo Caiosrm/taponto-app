@@ -1,6 +1,7 @@
 export type RootStackParamList = {
     navigate: any;
-
+    ShopTabsNavigator: undefined;
+    CustomerTabsNavigator: undefined;
     //CANTINA
     LoginCantinaScreen: undefined;
     CadastroCantinaScreen: undefined;

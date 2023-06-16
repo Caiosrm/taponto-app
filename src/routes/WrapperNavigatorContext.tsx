@@ -20,25 +20,7 @@ export const WrapperNavigation = ({ isCliente }: { isCliente: boolean }) => {
   const cantinaLogada = useCantinaLogada();
 
   const renderizarRota = () => {
-    if (!isCliente) { // Se não for cliente
-      if (cantinaLogada) {
-        return (
-          <Stack.Screen
-            name="ShopTabsNavigator"
-            component={ShopTabsNavigator}
-            options={{ headerShown: false }}
-          />
-        );
-      } else {
-        return (
-          <Stack.Screen
-            name="LoginCantinaScreen"
-            component={LoginCantinaScreen}
-            options={{ headerShown: false }}
-          />
-        );
-      }
-    }
+
     if (isCliente) {
       if (clienteLogado) {
         return (
@@ -58,10 +40,31 @@ export const WrapperNavigation = ({ isCliente }: { isCliente: boolean }) => {
         );
       }
     }
+
+    if (!isCliente) { 
+      if (cantinaLogada) {
+        return (
+          <Stack.Screen
+            name="ShopTabsNavigator"
+            component={ShopTabsNavigator}
+            options={{ headerShown: false }}
+          />
+        );
+      } else {
+        return (
+          <Stack.Screen
+            name="LoginCantinaScreen"
+            component={LoginCantinaScreen}
+            options={{ headerShown: false }}
+          />
+        );
+      }
+    }
+
   };
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='CadastroClienteScreen'>
       {renderizarRota()}
     </Stack.Navigator>
   );
