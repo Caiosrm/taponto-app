@@ -21,6 +21,9 @@ type ILoginCantinaScreen = {
 };
 
 export default function LoginScreen(props: ILoginCantinaScreen) {
+    /*===================================================================================================*/
+    /* state's
+    /*===================================================================================================*/
     const user = useContext(ClienteContext);
     const shop = useContext(CantinaContext);
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();

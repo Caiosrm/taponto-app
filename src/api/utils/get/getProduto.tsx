@@ -15,6 +15,7 @@ export async function getProduto(cantinaId: string, cardapioId: string, produtoI
     if (produtoSnapshot.exists()) {
       // O produto existe, retornar os dados
       const produtoData = produtoSnapshot.data();
+      console.log('GetProduto: ', produtoData)
       return {
         id: produtoSnapshot.id,
         ...produtoData

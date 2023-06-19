@@ -15,7 +15,9 @@ interface ManterProdutosProps {
 
 
 export const ManterProdutosScreen = (props: ManterProdutosProps) => {
-
+  /*===================================================================================================*/
+  /* state's
+  /*===================================================================================================*/
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
     const [produto, setProduto] = React.useState<ProdutoType>(initialStateProduto);
 
@@ -40,11 +42,11 @@ export const ManterProdutosScreen = (props: ManterProdutosProps) => {
             <HeaderCantina pageTitle="Meu Cardápio" />
 
             {cardapio.itens?.length > 0 ? (
-                <View>
+                <View width={'full'}>
                     {cardapio.itens.map((produto: ProdutoType) => (
                         <ProductCard
                             key={produto.id}
-                            name={produto.nome}
+                            name={produto.nome + " " + produto.tipo}
                             quantity={produto.quantidade}
                             value={produto.valor}
                             previewImage={produto.imagem}

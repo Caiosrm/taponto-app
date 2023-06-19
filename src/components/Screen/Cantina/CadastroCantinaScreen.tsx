@@ -9,6 +9,10 @@ import { RootStackParamList } from '../../../routes/types';
 
 
 export const CadastroCantinaScreen = () => {
+  /*===================================================================================================*/
+  /* state's
+  /*===================================================================================================*/
+
   return (
     <div>CadastroCantinaScreen</div>
   )

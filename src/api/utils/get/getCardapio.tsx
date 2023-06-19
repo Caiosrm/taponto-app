@@ -23,7 +23,10 @@ export async function getCardapio(cantinaId: string) {
       cantinaId: response.cantinaId,
       quantidade: response.quantidade,
       tipo: response.tipo,
-      valor: response.valor
+      valor: response.valor,
+      imagem: response?.imagem,
+      codigoDeBarras: response?.codigoDeBarras,
+      visibilidade: response?.visibilidade
     };
     cardapio.itens.push(produto);
   });
