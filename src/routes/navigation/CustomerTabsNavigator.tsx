@@ -15,9 +15,8 @@ const Tab = createBottomTabNavigator();
 const CustomerTabsNavigator = () => {
 
 
-
     return (
-        <Tab.Navigator 
+        <Tab.Navigator
             screenOptions={{
                 tabBarStyle: {
                     position: 'absolute',
@@ -25,7 +24,9 @@ const CustomerTabsNavigator = () => {
                     height: 60
                 }
             }}>
+
             <Tab.Group>
+
                 <Tab.Screen
                     name="HomeScreen"
                     component={HomeScreen}

@@ -3,6 +3,8 @@ import React from 'react'
 import CadastroProdutoScreen from '../../components/Screen/Cantina/CadastroProdutoScreen';
 import { ManterProdutosScreen } from '../../components/Screen/Cantina/ManterProdutosScreen';
 import { PainelCantinaScreen } from '../../components/Screen/Cantina/PainelCantinaScreen';
+import { PedidosCantinaScreen } from '../../components/Screen/Cantina/PedidosCantinaScreen';
+import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,17 +19,52 @@ const ShopTabsNavigator = () => {
             <Tab.Screen
                 name='Perfil'
                 component={PainelCantinaScreen}
-                options={{ headerShown: false }}
+                options={{
+                    headerShown: false,
+
+                }}
             />
             <Tab.Screen
                 name='Cadastrar Produto'
                 component={CadastroProdutoScreen}
-                options={{ headerShown: false }}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color, size, focused }) => {
+                        if (focused) {
+                            return <MaterialIcons name='post-add' size={size} color={color} />
+                        } else {
+                            return <MaterialIcons name='post-add' size={size} color={color} />
+                        }
+                    },
+                }}
             />
             <Tab.Screen
                 name='Meu Cardapio'
                 component={ManterProdutosScreen}
-                options={{ headerShown: false }}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color, size, focused }) => {
+                        if (focused) {
+                            return <Ionicons name='ios-newspaper-outline' size={size} color={color} />
+                        } else {
+                            return <Ionicons name='ios-newspaper-outline' size={size} color={color} />
+                        }
+                    },
+                }}
+            />
+            <Tab.Screen
+                name='Meus Pedidos'
+                component={PedidosCantinaScreen}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color, size, focused }) => {
+                        if (focused) {
+                            return <MaterialCommunityIcons name='order-bool-descending-variant' size={size} color={color} />
+                        } else {
+                            return <MaterialCommunityIcons name='order-bool-descending-variant' size={size} color={color} />
+                        }
+                    },
+                }}
             />
         </Tab.Navigator>
     )
