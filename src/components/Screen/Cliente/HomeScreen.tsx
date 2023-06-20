@@ -94,7 +94,13 @@ const HomeScreen = () => {
                                         alignItems='center'
                                     >
 
-                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', { cantinaId: item.id })}>
+                                        <TouchableOpacity onPress={() => {
+                                            if (item.status !== "Fechado") {
+                                                navigation.navigate("ListarCardapio", { cantinaId: item.id });
+                                            }
+                                        }}
+                                            disabled={item.status === "Fechado"}
+                                        >
                                             <Avatar source={item.imagem} />
                                             <Text
                                                 textAlign='center'
@@ -145,7 +151,14 @@ const HomeScreen = () => {
 
                         <Box>
                             <FlatList data={cantinas} renderItem={({ item }) => (
-                                <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', { cantinaId: item.id })}>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        if (item.status !== "Fechado") {
+                                            navigation.navigate("ListarCardapio", { cantinaId: item.id });
+                                        }
+                                    }}
+                                    disabled={item.status === "Fechado"}
+                                >
                                     <Box
                                         alignItems='center'
                                         flexDirection='row'
