@@ -52,10 +52,14 @@ export default function LoginScreen(props: ILoginScreenProps) {
         props.navigation.navigate('CadastroClienteScreen');
     };
 
+    const handleLoginCantina = () => {
+        props.navigation.navigate('LoginCantinaScreen');
+
+    }
 
     return (
         <VStack justifyContent='center' flex={1} alignItems='center' p={5}>
-            <Image mt={5} size='xl' source={Logo} alt='logo tá pronto' />
+            <Image mt={1} size='xl' source={Logo} alt='logo tá pronto' />
             <Text fontSize='2xl'
                 fontWeight='bold'
                 textAlign='center'
@@ -103,11 +107,9 @@ export default function LoginScreen(props: ILoginScreenProps) {
 
                     <Text color='#002060'>Esqueceu sua senha?</Text>
                     <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
-                        <Text color='#002060' textAlign='center'>
-                            Não tem conta?
-                        </Text>
+                        <Text color='#000000' textAlign='center'>Não tem conta?</Text>
                         <TouchableOpacity onPress={handleCadastro}>
-                            <Text>Cadastre-se</Text>
+                            <Text color='#002060'> Cadastre-se </Text>
                         </TouchableOpacity>
                     </Box>
 
@@ -116,8 +118,11 @@ export default function LoginScreen(props: ILoginScreenProps) {
 
 
             </Box>
-            <Image source={ImageWelcome} alt='Imagem bem vindo' />
-            <Button w='138px' borderRadius='10' bg='#0094D3' mt={3}>Conectar</Button>
+
+            <Box flexDirection='row' mt={'60px'}>
+                <Text>Cantina?</Text>
+                <Text color='#002060' onPress={handleLoginCantina}> Faça login </Text>
+            </Box>
 
 
         </VStack>

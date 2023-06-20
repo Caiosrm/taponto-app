@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { Text, Image, View, VStack, FormControl, Box, Input, Icon, Button } from 'native-base'
 import { TouchableOpacity, Alert } from 'react-native'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import ImageWelcome from '../../../../assets/Welcome.png'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FirebaseError } from '@firebase/app';
@@ -13,7 +12,8 @@ import { CantinaContext } from '../../../contexts/CantinaContext';
 import { ClienteContext } from '../../../contexts/ClienteContext';
 import { RootStackParamList } from '../../../routes/types';
 import Logo from '../../../../assets/logo/logo2.png'
-
+import { colors } from '../../../themes/Theme';
+import ImageLogin from '../../../../assets/Welcome.png';
 
 
 type ILoginCantinaScreen = {
@@ -52,26 +52,29 @@ export default function LoginScreen(props: ILoginCantinaScreen) {
         setSenha('');
     }
 
-    const handleCadastro = () => {
+    const handleCadastroCantina = () => {
         props.navigation.navigate('CadastroCantinaScreen');
     };
 
+    const handleLoginCliente = () => {
+        props.navigation.navigate('LoginClienteScreen');
+
+    }
 
     return (
         <VStack justifyContent='center' flex={1} alignItems='center' p={5}>
-            <Image mt={5} size='xl' source={Logo} alt='logo tá pronto' />
+            <Image mt={1} size='xl' source={Logo} alt='logo tá pronto' />
             <Text fontSize='2xl'
                 fontWeight='bold'
                 textAlign='center'
                 color='#002060'
                 mt={5}
-            >Faça login em sua conta</Text>
+            >Faça o login de sua loja para continuar</Text>
             <Box>
-                <FormControl mt={3}>
+                <FormControl mt={3} w={'full'}>
                     <Input
                         borderRadius='lg'
                         borderColor='#002060'
-
                         w={{ base: "100%" }}
                         InputLeftElement=
                         {<Icon as={<MaterialIcons name="email" />}
@@ -81,7 +84,8 @@ export default function LoginScreen(props: ILoginCantinaScreen) {
                         />}
                         placeholder="Email"
                         value={email}
-                        onChangeText={setEmail} />
+                        onChangeText={setEmail}
+                    />
                 </FormControl>
 
                 <FormControl mt={3} >
@@ -98,31 +102,29 @@ export default function LoginScreen(props: ILoginCantinaScreen) {
                         />}
                         value={senha}
                         onChangeText={setSenha}
-                        placeholder="Senha" />
+                        placeholder="Senha"
+                    />
                 </FormControl>
-
+                <Text color='#002060'>
+                    Esqueceu sua senha?
+                </Text>
                 <Box justifyContent='center' alignItems='center' mt={5} flexDirection='row'>
-                    <Text color='#002060' textAlign='center'>Não tem conta? </Text>
-                    <TouchableOpacity onPress={handleCadastro}>
-                        <Text>Cadastre-se</Text>
+                    <Text color={colors.light.pretoPuro} textAlign='center'>Não tem conta?</Text>
+                    <TouchableOpacity onPress={handleCadastroCantina}>
+                        <Text color='#002060'> Cadastre-se </Text>
                     </TouchableOpacity>
                 </Box>
 
-                <Box alignSelf={'center'} mt={3}>
-                    <Text color='#002060'>Esqueceu sua senha?</Text>
                     <Button borderRadius={10} onPress={logar} mt={5} bg='#0094D3'>Entrar</Button>
-                </Box>
-
-
 
 
             </Box>
-            <Box mt={3}>
-                <Image source={ImageWelcome} alt='Imagem bem vindo' />
-                <Button w='138px' borderRadius='10' bg='#0094D3' mt={3}>
-                    Conectar
-                </Button>
+
+            <Box flexDirection='row' mt={'60px'}>
+                <Text>Cliente?</Text>
+                <Text color='#002060' onPress={handleLoginCliente}> Faça login </Text>
             </Box>
+
         </VStack>
     )
 }

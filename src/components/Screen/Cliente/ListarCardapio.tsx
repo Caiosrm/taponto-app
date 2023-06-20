@@ -155,7 +155,7 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                             </Box>
 
                             <Box>
-                                <Image source={{ uri: "https://wallpaperaccess.com/full/317501.jpg" }} alt="Imagem do Produto" size='lg' />
+                                <Image source={{ uri: item.imagem }} alt="Imagem do Produto" size='lg' />
                             </Box>
 
                         </Box>

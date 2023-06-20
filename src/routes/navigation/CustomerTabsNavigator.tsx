@@ -28,7 +28,7 @@ const CustomerTabsNavigator = () => {
             <Tab.Group>
 
                 <Tab.Screen
-                    name="HomeScreen"
+                    name="Home"
                     component={HomeScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
@@ -42,7 +42,7 @@ const CustomerTabsNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name="SacolaScreen"
+                    name="Sacola"
                     component={SacolaScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {
@@ -56,7 +56,7 @@ const CustomerTabsNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name="PedidosClienteScreen"
+                    name="Pedidos"
                     component={PedidosClienteScreen}
                     options={{
                         headerShown: false,
@@ -71,7 +71,7 @@ const CustomerTabsNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name="PerfilClienteScreen"
+                    name="Perfil"
                     component={PerfilClienteScreen}
                     options={{
                         headerShown: false, tabBarIcon: ({ color, size, focused }) => {

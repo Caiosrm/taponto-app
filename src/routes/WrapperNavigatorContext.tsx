@@ -99,6 +99,12 @@ export const WrapperNavigation = ({ isCliente, isLogado }: { isCliente: boolean,
         options={{ headerShown: false }}
       />
 
+      <Stack.Screen
+        name='LoginClienteScreen'
+        component={LoginClienteScreen}
+        options={{ headerShown: false }}
+      />
+
 
 
     </Stack.Navigator>

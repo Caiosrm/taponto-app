@@ -25,7 +25,7 @@ const ShopTabsNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name='Cadastrar Produto'
+                name='Novo Produto'
                 component={CadastroProdutoScreen}
                 options={{
                     headerShown: false,
@@ -39,7 +39,7 @@ const ShopTabsNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name='Meu Cardapio'
+                name='Cardapio'
                 component={ManterProdutosScreen}
                 options={{
                     headerShown: false,
@@ -53,7 +53,7 @@ const ShopTabsNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name='Meus Pedidos'
+                name='Pedidos'
                 component={PedidosCantinaScreen}
                 options={{
                     headerShown: false,

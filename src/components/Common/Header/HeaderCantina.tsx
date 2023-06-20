@@ -23,7 +23,6 @@ export const HeaderCantina: React.FC<HeaderCantinaProps> = ({ pageTitle }) => {
                 </Text>
                 <Image source={Logocantina} alt='Logo da cantina' />
             </Box>
-                <Text textAlign='center'>Nome da Cantina</Text>
         </View>
     );
 };
