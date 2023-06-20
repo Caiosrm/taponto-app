@@ -22,7 +22,7 @@ const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }
     /* States
     /*===================================================================================================*/
     const [sacola, setSacola] = React.useState<ProdutoType[]>();
-    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cantinaId);
+    const [cantinaId, setCantinaId] = React.useState<string>('Madrugao Lanches');
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
 
     /*===================================================================================================*/

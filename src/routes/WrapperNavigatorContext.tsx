@@ -106,6 +106,11 @@ export const WrapperNavigation = ({ isCliente }: { isCliente: boolean, isLogado:
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name='CadastroClienteScreen'
+        component={CadastroClienteScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
         name='SacolaScreen'
         component={SacolaScreen}
         options={{ headerShown: false }}

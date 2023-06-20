@@ -4,6 +4,7 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { CantinaContext } from '../../../contexts/CantinaContext';
 import { ClienteContext } from '../../../contexts/ClienteContext';
 import { RootStackParamList } from '../../../routes/types';
+import { HeaderCantina } from '../../Common/Header/HeaderCantina';
 
 
 
@@ -13,7 +14,7 @@ export const PerfilClienteScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <ScrollView>
-
+      <HeaderCantina pageTitle='Meu Perfil'/>
     </ScrollView>
   )
 }

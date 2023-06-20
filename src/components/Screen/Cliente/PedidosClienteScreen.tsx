@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { CantinaContext } from "../../../contexts/CantinaContext";
 import { ClienteContext } from "../../../contexts/ClienteContext";
 import { RootStackParamList } from "../../../routes/types";
+import { HeaderCantina } from "../../Common/Header/HeaderCantina";
 
 
 
@@ -29,7 +30,7 @@ const PedidosClienteScreen = () => {
 
     return (
         <View>
-            <TopBar />
+            <HeaderCantina pageTitle="Meus Pedidos" />
 
 
         </View>

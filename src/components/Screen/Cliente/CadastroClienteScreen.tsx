@@ -11,6 +11,7 @@ import { ClienteType, initialStateCliente } from "../../../api/types/UserType";
 import { ErrorBadge } from "../../Common/ErrorBadge";
 import { CantinaContext } from "../../../contexts/CantinaContext";
 import { CampusType, initialStateCampus } from "../../../api/types/CampusType";
+import { colors } from "../../../themes/Theme";
 
 
 export const CadastroClienteScreen: React.FC = () => {
@@ -169,13 +170,9 @@ export const CadastroClienteScreen: React.FC = () => {
                         mt={5}
                         flexDirection='row'
                     >
-                        <Text textAlign='center'>
-                            Já tem uma conta?
-                        </Text>
+                        <Text textAlign='center'>Já tem uma conta?</Text>
                         <TouchableOpacity onPress={handleLogin}>
-                            <Text>
-                                Faça seu login
-                            </Text>
+                            <Text color="#002060"> Faça seu login </Text>
                         </TouchableOpacity>
                     </Box>
 
