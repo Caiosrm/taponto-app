@@ -85,7 +85,7 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                     <HeaderCantina pageTitle={cantinaId} />
                 </Box>
 
-                <Image position='absolute' top='110' left='5' source={{ uri: "https://wallpaperaccess.com/full/317501.jpg" }} alt="Imagem  da cantina" size='md' />
+                <Image position='absolute' top='110' left='5' source={{ uri: cantina.imagem }} alt="Imagem da cantina" size='md' />
             </Box>
 
             <Box justifyContent='center' alignItems='center' padding={7}>

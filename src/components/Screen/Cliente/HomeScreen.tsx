@@ -30,13 +30,35 @@ const HomeScreen = () => {
         setCantinas(data);
     };
 
+    const renderStars = (nota: number) => {
+        console.log(nota)
+        const stars = [];
+        const wholeStars = Math.floor(nota);
+        const halfStar = nota - wholeStars >= 0.5;
+
+        // Render estrelas cheias
+        for (let i = 0; i < wholeStars; i++) {
+            stars.push(
+                <Ionicons key={i} name="ios-star" size={13} color="#fcbb01" />
+            );
+        }
+
+        // Render meia estrela, se necessário
+        if (halfStar) {
+            stars.push(
+                <Ionicons key={wholeStars} name="ios-star-half" size={13} color="#fcbb01" />
+            );
+        }
+
+        return stars;
+    };
 
     useEffect(() => { //USE EFFECT INICIAL
         obterDados();
 
     }, []);
 
-    useEffect (() => {
+    useEffect(() => {
         console.log(cantinas)
 
     }, [cantinas])
@@ -71,9 +93,9 @@ const HomeScreen = () => {
                                         flexDirection='column'
                                         alignItems='center'
                                     >
-                                        
-                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id})}>
-                                            <Avatar />
+
+                                        <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', { cantinaId: item.id })}>
+                                            <Avatar source={item.imagem} />
                                             <Text
                                                 textAlign='center'
                                                 fontSize="xs"
@@ -123,38 +145,45 @@ const HomeScreen = () => {
 
                         <Box>
                             <FlatList data={cantinas} renderItem={({ item }) => (
-                                <Box alignItems='center' flexDirection='row' py="2">
-                                    <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', {cantinaId: item.id})}>
-                                        <Avatar />
-                                        <Box marginLeft="2">
-                                            <Text
-                                                fontSize="md"
-                                                _dark={{ color: "warmGray.50" }}
-                                                color="coolGray.800"
-                                            >
-                                                {item.nome}
-                                            </Text>
-                                            <Text
-                                                fontSize="sm"
-                                                _dark={{ color: "warmGray.50" }}
-                                                color="coolGray.600"
-                                            >
-                                                <Badge colorScheme="success" size={"sm"} alignSelf="center" variant={"outline"}>
-                                                    {item.status}
-                                                </Badge>
-                                            </Text>
-                                            <Box alignItems='center' flexDirection='row' >
-                                                <Ionicons name='ios-star' size={15} color='#fcbb01' />
-                                                <Text marginLeft={2}>
-                                                    {item.avaliacoes?.nota}
+                                <TouchableOpacity onPress={() => navigation.navigate('ListarCardapio', { cantinaId: item.id })}>
+                                    <Box
+                                        alignItems='center'
+                                        flexDirection='row'
+                                        py="2"
+                                    >
+                                        <Avatar size={'md'} source={item.imagem} />
+                                        <Box marginLeft="2" flexDirection={'column'}>
+                                            <Box flexDirection={'row'}>
+                                                <Text
+                                                    fontSize="md"
+                                                    _dark={{ color: "warmGray.50" }}
+                                                    color="coolGray.800"
+                                                >
+                                                    {item.nome}
                                                 </Text>
+
+                                            </Box>
+                                            <Box flexDir={'row'}>
+                                                <Text
+                                                    fontSize="xs"
+                                                    _dark={{ color: "warmGray.50" }}
+                                                    color="coolGray.600"
+                                                >
+                                                    <Badge colorScheme="success" size={"xs"} alignSelf="center" variant={"outline"}>
+                                                        {item.status}
+                                                    </Badge>
+                                                </Text>
+
+                                                <Box marginLeft={2} alignSelf="center" flexDir={"row"} >
+                                                    {renderStars(item.notaGeral)}
+                                                </Box>
                                             </Box>
                                         </Box>
                                         <Box marginLeft="auto">
                                             <Ionicons name='heart-outline' size={15} color='red' />
                                         </Box>
-                                    </TouchableOpacity>
-                                </Box>
+                                    </Box>
+                                </TouchableOpacity>
                             )}
                             />
                         </Box>

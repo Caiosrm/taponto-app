@@ -18,7 +18,9 @@ export async function getAllShop() {
 				cardapio: response.cardapio,
 				descricao: response.descricao,
 				status: response.status,
+				notaGeral: response.notaGeral,
 				pedidos: response.pedidos,
+				imagem: response?.imagem,
 				avaliacoes: response.avaliacoes,
 				polo: response.polo
 			}

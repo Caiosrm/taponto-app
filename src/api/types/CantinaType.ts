@@ -8,7 +8,9 @@ export type CantinaType = {
   nome: string;
   descricao: string;
   status: string;
+  imagem?: any;
   cardapio: ProdutoType[];
+  notaGeral: number;
   avaliacoes: {
     comentario: string;
     clienteId: string;
@@ -24,10 +26,11 @@ export const initialStateCantina: CantinaType = {
   descricao: "",
   status: "",
   cardapio: [],
+  notaGeral: 0,
   avaliacoes: {
     comentario: "",
     clienteId: "",
-    nota: 0
+    nota: 0,
   },
   pedidos: [],
   polo: {
