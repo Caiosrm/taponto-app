@@ -14,8 +14,7 @@ import { ClienteContext } from '../../../contexts/ClienteContext';
 import { RootStackParamList } from '../../../routes/types';
 
 
-
-const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }) => {
+const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }, route: any) => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
     const user = useContext(ClienteContext);
     const shop = useContext(CantinaContext);
@@ -23,8 +22,7 @@ const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }
     /* States
     /*===================================================================================================*/
     const [sacola, setSacola] = React.useState<ProdutoType[]>();
-    const [cantinaId, setCantinaId] = React.useState<string>('Madrugao Lanches');
-
+    const [cantinaId, setCantinaId] = React.useState<string>(route.params.cantinaId);
     const [cardapio, setCardapio] = React.useState<CardapioType>(initialStateCardapio);
 
     /*===================================================================================================*/
@@ -47,72 +45,77 @@ const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }
     };
 
     const handleGoBack = () => {
-        navigation.goBack();
+        navigation.navigate('ListarCardapio', );
     };
 
 
     return (
 
         <View>
+            <Box>
                 <Box>
-                    <Box>
-                        <HeaderCantina pageTitle={"Sacola"} />
-                    </Box>
-                    <Image position='absolute' top='110' left='5' source={{ uri: "https://wallpaperaccess.com/full/317501.jpg" }} alt="Imagem  da cantina" size='md' />
-
-                    <Box mt={2} flexDirection='row' justifyContent='center' alignItems='center'>
-
-                        <Ionicons name="md-checkmark-circle" size={24} color="green" />
-                        <Text>Cantina aberta</Text>
-
-                    </Box>
+                    <HeaderCantina pageTitle={"Sacola"} />
                 </Box>
-                <Box padding={5}>
-                    <Box mt={15} h='400px' >
-                        <FlatList
-                            showsHorizontalScrollIndicator={true}
-                            keyExtractor={(item: ProdutoType) => String(item)}
-                            pagingEnabled
-                            data={cardapio.itens}
-                            renderItem={({ item }) => (
-                                <Box padding={3} borderWidth={1} borderColor={colors.light.brancoPuro} flex={1} flexDirection='row' mt={2} >
-                                    <Box alignItems='center' flexDirection='row' w='70%'>
-                                        <Box marginRight={5}>
-                                            <Image borderRadius={10} source={{ uri: "https://wallpaperaccess.com/full/317501.jpg" }} alt="Imagem  do Produto" size='sm' />
+                <Image position='absolute' top='110' left='5' source={{ uri: "https://wallpaperaccess.com/full/317501.jpg" }} alt="Imagem  da cantina" size='md' />
 
-                                        </Box>
-                                        <Box>
-                                            <Text> 5 Und</Text>
-                                            <Text>Sanduiche</Text>
-                                            <Text>Sem queijo</Text>
-                                        </Box>
+                <Box mt={2} flexDirection='row' justifyContent='center' alignItems='center'>
+
+                    <Ionicons name="md-checkmark-circle" size={16} color="green" />
+                    <Text> Cantina aberta</Text>
+
+                </Box>
+            </Box>
+            <Box padding={5}>
+                <Box mt={15} h='400px' >
+                    <FlatList
+                        showsHorizontalScrollIndicator={true}
+                        keyExtractor={(item: ProdutoType) => String(item)}
+                        pagingEnabled
+                        data={cardapio.itens}
+                        renderItem={({ item }) => (
+                            <Box
+                                padding={3}
+                                borderWidth={1}
+                                borderColor={colors.light.brancoPuro}
+                                flex={1}
+                                flexDirection='row'
+                                mt={2}
+                            >
+                                <Box alignItems='center' flexDirection='row' w='87%'>
+                                    <Box marginRight={5}>
+                                        <Image borderRadius={10} source={{ uri: item.imagem }} alt="Imagem  do Produto" size='sm' />
 
                                     </Box>
-                                    <Box justifyContent='center'>
 
-                                        <Text>R$ 12,00</Text>
+                                    <Box>
+                                        <Text bold>{item.nome + " " + item.tipo}</Text>
                                     </Box>
 
                                 </Box>
-
-
-
-                            )}
-                        />
-                        <TouchableOpacity onPress={handleGoBack}>
-                            <Box mt={5} justifyContent='center' alignItems='center' flexDirection='row'>
-                                <Ionicons name="add-circle-outline" size={24} color={colors.light.azulTurquesa} />
-                                <Text color={colors.light.azulTurquesa}>Adicionar mais </Text>
+                                <Box justifyContent='center' alignItems={'left'}>
+                                    <Text>{handleFormatCurrency(item.valor)}</Text>
+                                </Box>
                             </Box>
-                        </TouchableOpacity>
-                    </Box>
-                    <Box mt={5} flexDirection='row' justifyContent='space-between'>
-                        <Text>Total:</Text>
-                        <Text>R$ 50,00</Text>
 
-                    </Box>
-                    <Button bg={colors.light.azulTurquesa} mt={5}>Confirmar</Button>
+
+
+
+                        )}
+                    />
+                    <TouchableOpacity onPress={handleGoBack}>
+                        <Box mt={5} justifyContent='center' alignItems='center' flexDirection='row'>
+                            <Ionicons name="add-circle-outline" size={24} color={colors.light.azulTurquesa} />
+                            <Text color={colors.light.azulTurquesa}>Adicionar mais </Text>
+                        </Box>
+                    </TouchableOpacity>
                 </Box>
+                <Box mt={5} flexDirection='row' justifyContent='space-between'>
+                    <Text>Total:</Text>
+                    <Text>R$ 50,00</Text>
+
+                </Box>
+                <Button bg={colors.light.azulTurquesa} mt={5}>Confirmar</Button>
+            </Box>
 
         </View>
 

@@ -12,12 +12,13 @@ import LoginClienteScreen from '../components/Screen/Cliente/LoginClienteScreen'
 import LoginCantinaScreen from '../components/Screen/Cantina/LoginCantinaScreen';
 import ListarCardapio from '../components/Screen/Cliente/ListarCardapio';
 import CadastroProdutoScreen from '../components/Screen/Cantina/CadastroProdutoScreen';
+import SacolaScreen from '../components/Screen/Cliente/SacolaScreen';
 
 const Stack = createStackNavigator();
 
 
 
-export const WrapperNavigation = ({ isCliente, isLogado }: { isCliente: boolean, isLogado: boolean }) => {
+export const WrapperNavigation = ({ isCliente }: { isCliente: boolean, isLogado: boolean }) => {
   const clienteLogado = useClienteLogado();
   const cantinaLogada = useCantinaLogada();
 
@@ -102,6 +103,11 @@ export const WrapperNavigation = ({ isCliente, isLogado }: { isCliente: boolean,
       <Stack.Screen
         name='LoginClienteScreen'
         component={LoginClienteScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='SacolaScreen'
+        component={SacolaScreen}
         options={{ headerShown: false }}
       />
 

@@ -50,7 +50,10 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
 
     const obterCardapio = async () => {
         const cardapio = await getCardapio(cantinaId);
+        if(cardapio) {
         setCardapio(cardapio);
+        }
+        else return (<Text>Loja sem produtos no cardápio!</Text>)
     };
 
     const handleAddToCart = (product: ProdutoType) => {

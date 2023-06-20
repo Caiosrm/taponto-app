@@ -1,5 +1,6 @@
 export type RootStackParamList = {
     navigate: any;
+    goBack: () => void
     ShopTabsNavigator: undefined;
     CustomerTabsNavigator: undefined;
     //CANTINA

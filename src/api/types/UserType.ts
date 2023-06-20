@@ -11,7 +11,7 @@ export type ClienteType = {
     celular: string;
     email: string;
     senha: string;
-    sacola: SacolaType;
+    sacola?: SacolaType;
     pedidos?: PedidoType[];
     favoritos?: string[];
 };

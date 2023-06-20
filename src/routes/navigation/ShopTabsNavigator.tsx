@@ -4,7 +4,7 @@ import CadastroProdutoScreen from '../../components/Screen/Cantina/CadastroProdu
 import { ManterProdutosScreen } from '../../components/Screen/Cantina/ManterProdutosScreen';
 import { PainelCantinaScreen } from '../../components/Screen/Cantina/PainelCantinaScreen';
 import { PedidosCantinaScreen } from '../../components/Screen/Cantina/PedidosCantinaScreen';
-import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { Entypo, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +21,13 @@ const ShopTabsNavigator = () => {
                 component={PainelCantinaScreen}
                 options={{
                     headerShown: false,
+                    tabBarIcon: ({ color, size, focused }) => {
+                        if (focused) {
+                            return <Entypo name='shop' size={size} color={color} />
+                        } else {
+                            return <Entypo name='shop' size={size} color={color} />
+                        }
+                    },
 
                 }}
             />
