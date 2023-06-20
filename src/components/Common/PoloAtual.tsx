@@ -1,22 +1,29 @@
+import React, { useState } from 'react';
+import { TouchableOpacity, Modal  } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Box, Text } from 'native-base'
-import React, { useRef } from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { colors } from '../../themes/Theme';
-import { Modalize } from "react-native-modalize";
+import { Box, Text, View } from 'native-base';
 
+const PoloAtual = () => {
+    const [modalVisible, setModalVisible] = React.useState<boolean>(false);
 
-export const PoloAtual = () => {
+    const handleOpenModal = () => {
+        setModalVisible(true);
+    };
 
-    const modalizeRef = useRef<Modalize>(null);
-
-    const onOpenModal = () => { modalizeRef.current?.open() };
+    const handleCloseModal = () => {
+        setModalVisible(false);
+    };
 
     return (
-        <Box //POLO ATUAL
-            bg={colors.light.azulTurquesa}>
-            <TouchableOpacity onPress={onOpenModal}>
-                <Box marginLeft={5} alignItems='center' marginBottom={5} flexDirection={'row'}>
+        <Box bg={colors.light.azulTurquesa}>
+            <TouchableOpacity onPress={handleOpenModal}>
+                <Box
+                    marginLeft={5}
+                    alignItems='center'
+                    marginBottom={5}
+                    flexDirection='row'
+                >
                     <Ionicons name='location' size={24} color='red' />
                     <Text color={colors.light.brancoPuro} marginX={1}>
                         Polo Via Corpvs
@@ -24,6 +31,17 @@ export const PoloAtual = () => {
                     <Ionicons name='caret-down' size={15} color='red' />
                 </Box>
             </TouchableOpacity>
+
+            <Modal visible={modalVisible} animationType='slide'>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Text>teste</Text>
+                    <TouchableOpacity onPress={handleCloseModal}>
+                        <Text>Fechar Modal</Text>
+                    </TouchableOpacity>
+                </View>
+            </Modal>
         </Box>
-    )
-}
+    );
+};
+
+export default PoloAtual;

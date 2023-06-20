@@ -10,10 +10,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../../routes/types";
 import { HeaderBemVindo } from "../../Common/Header/HeaderBemVindo";
-import { PoloAtual } from "../../Common/PoloAtual";
 
 import { getAllShop } from "../../../api/utils/get/getAllShop";
 import { CantinaType } from "../../../api/types/CantinaType";
+import PoloAtual from "../../Common/PoloAtual";
 
 
 const HomeScreen = () => {

@@ -56,7 +56,6 @@ const SacolaScreen: React.FC<SacolaType> = ({ id, idCliente, valorTotal, itens }
                 <Box>
                     <HeaderCantina pageTitle={"Sacola"} />
                 </Box>
-                <Image position='absolute' top='110' left='5' source={{ uri: "https://wallpaperaccess.com/full/317501.jpg" }} alt="Imagem  da cantina" size='md' />
 
                 <Box mt={2} flexDirection='row' justifyContent='center' alignItems='center'>
 

@@ -50,8 +50,8 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
 
     const obterCardapio = async () => {
         const cardapio = await getCardapio(cantinaId);
-        if(cardapio) {
-        setCardapio(cardapio);
+        if (cardapio) {
+            setCardapio(cardapio);
         }
         else return (<Text>Loja sem produtos no cardápio!</Text>)
     };
@@ -85,10 +85,21 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
                     <HeaderCantina pageTitle={cantinaId} />
                 </Box>
 
-                <Image position='absolute' top='110' left='5' source={{ uri: cantina.imagem }} alt="Imagem da cantina" size='md' />
+                <Image
+                    position='absolute'
+                    top='110'
+                    left='5'
+                    source={{ uri: cantina.cantina.imagem }}
+                    alt="Imagem da cantina"
+                    size='md'
+                />
             </Box>
 
-            <Box justifyContent='center' alignItems='center' padding={7}>
+            <Box
+                justifyContent='center'
+                alignItems='center'
+                padding={7}
+            >
                 <Text fontSize='22'>
                     Cardápio
                 </Text>
@@ -99,7 +110,8 @@ const ListarCardapio: React.FC = ({ navigation, route }: any) => {
             </Box>
             <Box padding={5}>
 
-                <Input placeholder="Pesquise pelo nome"
+                <Input
+                    placeholder="Pesquise pelo nome"
                     fontSize={16}
                     bg='#e6e6e6'
                     borderWidth={0}

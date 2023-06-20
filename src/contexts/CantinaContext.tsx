@@ -1,20 +1,33 @@
 import React, { createContext, useState } from 'react';
+
 import { CantinaType, initialStateCantina } from '../api/types/CantinaType';
 import { useAuth } from './AuthContext';
 
+type CantinaContextType = {
+    cantina: CantinaType;
+    atualizarCantina: (novaCantina: CantinaType) => void;
+}
 
-export const CantinaContext = createContext<CantinaType>(initialStateCantina);
+export const CantinaContext = createContext<CantinaContextType>({
+    cantina: initialStateCantina,
+    atualizarCantina: () => { },
+});
 
+export const CantinaProvider: React.FC = ({ children }: React.PropsWithChildren<{}>) => {
+    
+    const [cantina, setCantina] = useState<CantinaType | null>(initialStateCantina);
 
+    const atualizarCantina = (novaCantina: CantinaType) => {
+        setCantina(novaCantina)
+    }
 
-export const CantinaProvider: React.FC = ({ children }: any) => {
-    const [cantina, setCantina] = useState<CantinaType>(initialStateCantina);
-
-
-
+    const contexto: CantinaContextType = {
+        cantina: initialStateCantina,
+        atualizarCantina,
+    }
 
     return (
-        <CantinaContext.Provider value={cantina}>
+        <CantinaContext.Provider value={contexto}>
             {children}
         </CantinaContext.Provider>
     );
