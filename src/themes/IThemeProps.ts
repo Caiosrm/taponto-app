@@ -8,6 +8,7 @@ export interface IThemeProps {
             azulPetroleo: string;
             azulTurquesa: string;
             azulMarinho: string;
+            azulRoyal: string;
             brancoPuro: string;
             pretoPuro: string;
 
@@ -17,6 +18,7 @@ export interface IThemeProps {
             azulPetroleo: string;
             azulTurquesa: string;
             azulMarinho: string;
+            azulRoyal: string;
             brancoPuro: string;
             pretoPuro: string;
 

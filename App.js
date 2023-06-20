@@ -2,17 +2,26 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider } from "native-base";
 import { ThemeProvider } from "./src/themes/ThemeContext";
-import TabNavigator, { StackNavigator } from "./src/routes/AppNavigation";
+import { WrapperNavigation } from "./src/routes/WrapperNavigatorContext";
+import { CantinaProvider } from "./src/contexts/CantinaContext";
+import { ClienteProvider } from "./src/contexts/ClienteContext";
+import { AuthProvider } from "./src/contexts/AuthContext";
 
 const App = () => {
   return (
+    <AuthProvider>
     <NativeBaseProvider>
       <ThemeProvider>
         <NavigationContainer>
-          <StackNavigator/>
+          <ClienteProvider>
+            <CantinaProvider>
+              <WrapperNavigation/>
+            </CantinaProvider>
+          </ClienteProvider>
         </NavigationContainer>
       </ThemeProvider>
     </NativeBaseProvider>
+    </AuthProvider>
   );
 };
 

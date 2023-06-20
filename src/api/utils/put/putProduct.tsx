@@ -1,7 +1,7 @@
 import { getFirestore, doc, updateDoc } from '@firebase/firestore';
 import React from 'react'
 import { app } from '../../config/firebaseConfig';
-import { ProdutoType } from '../../types/ProductType';
+import { ProdutoType } from '../../types/ProdutoType';
 
 
 //Método que altera um documento na coleção do firebase

@@ -1,6 +1,6 @@
 import { getFirestore, getDocs, collection } from "@firebase/firestore";
 import { app } from "../../config/firebaseConfig";
-import { CantinaType } from "../../types/ShopType";
+import { CantinaType } from "../../types/CantinaType";
 
 
 //Método para retornar as cantinas cadastrados
@@ -10,6 +10,7 @@ export async function getAllShop() {
 		const querySnapshot = await getDocs(collection(db, "cantinas"));
 		let cantinas: CantinaType[] = [];
 		querySnapshot.forEach((doc) => {
+
 			const response = doc.data();
 			const cantina: CantinaType = {
 				id: doc.id,
@@ -19,9 +20,11 @@ export async function getAllShop() {
 				status: response.status,
 				pedidos: response.pedidos,
 				avaliacoes: response.avaliacoes,
-				idCampus: response.idCampus
+				polo: response.polo
 			}
 			cantinas.push(cantina);
+
+
 		});
 		return cantinas;
 	} catch (error) {

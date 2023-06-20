@@ -5,3 +5,10 @@ export type CampusType = {
   numero: number;
   bairo: number;
 };
+
+export const initialStateCampus: CampusType = {
+  nome: "",
+  rua: "",
+  numero: 0,
+  bairo: 0
+}

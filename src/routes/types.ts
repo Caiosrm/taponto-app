@@ -1,15 +1,20 @@
 export type RootStackParamList = {
-	goBack(): void;
     navigate: any;
-    navigation: string;
-    Home: undefined;
-    Login: undefined;
+    goBack: () => void
+    ShopTabsNavigator: undefined;
+    CustomerTabsNavigator: undefined;
+    //CANTINA
+    LoginCantinaScreen: undefined;
+    CadastroCantinaScreen: undefined;
     ListarCardapio: undefined;
-    ItemDetalhado: undefined;
-    Carteira: undefined;
-    ConfigPerfil: undefined;
-    Perfil: undefined;
-    Pedidos: undefined;
-    Sacola: undefined;
-    Carrinho: undefined;
+    ManterProdutosScreen: undefined;
+    PainelCantinaScreen: undefined;
+    CadastroProdutoScreen: undefined;
+    //CLIENTE
+    HomeScreen: undefined;
+    LoginClienteScreen: undefined;
+    CadastroClienteScreen: undefined;
+    SacolaScreen: undefined;
+    PerfilClienteScreen: undefined;
+    PedidosClienteScreen: undefined;
 };
