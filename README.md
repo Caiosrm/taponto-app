@@ -1,5 +1,5 @@
 # Programação Para Dispositivos Móveis em Android
-## Trabalho Final
+## Trabalho Final : Aplicativo _TaPronto_
 ### Integrantes:
 
 - 202302332137 - Gabriel M. Guimarães 
